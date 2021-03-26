@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.springboot.sample" level="TRACE"/>
+    <property name="LOG_PATH" value="/var/log"/>
+    <!--设置系统日志目录-->
+    <property name="APPDIR" value="/spring-cloud"/>
+    <property name="level" value="INFO"></property>
+    <property name="type" value="/authorization"/>
+    <springProfile name="dev">
+        <logger name="org.springboot.sample" level="DEBUG"/>
+    </springProfile>
+
+    <springProfile name="staging">
+        <logger name="org.springboot.sample" level="INFO"/>
+    </springProfile>
+    <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_PATH}${APPDIR}${type}/eg-authorization.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <FileNamePattern>cloud-zuul.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- Mybatis and SQL -->
+    <logger name="org.apache.ibatis" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </logger>
+
+    <logger name="org.mybatis.spring" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </logger>
+    <logger name="java.sql" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </logger>
+
+    <logger name="java.sql.Connection" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </logger>
+    <logger name="java.sql.Statement" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </logger>
+    <logger name="java.sql.PreparedStatement" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </logger>
+    <logger name="org.springframework" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </logger>
+    <logger name="com.huihe.eg.authorization" level="DEBUG"></logger>
+    <root level="${level}">
+        <appender-ref ref="dailyRollingFileAppender"/>
+    </root>
+</configuration>

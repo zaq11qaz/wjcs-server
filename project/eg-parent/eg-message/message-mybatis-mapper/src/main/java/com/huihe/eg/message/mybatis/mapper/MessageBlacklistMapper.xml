@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.MessageBlacklistMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.MessageBlacklistEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="blacklist_id" jdbcType="BIGINT" property="blacklist_id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="blacklist_type" jdbcType="VARCHAR" property="blacklist_type" />
+    <result column="blacklist_status" jdbcType="INTEGER" property="blacklist_status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="classfiy" jdbcType="VARCHAR" property="classfiy" />
+    <result column="report_reason" jdbcType="VARCHAR" property="report_reason" />
+    <result column="picts" jdbcType="VARCHAR" property="picts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, blacklist_id, status, blacklist_type, blacklist_status, create_time, 
+    update_time, classfiy, report_reason, picts
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_blacklist
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_blacklist
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.MessageBlacklistEntity">
+    insert into message_blacklist (id, user_id, blacklist_id, 
+      status, blacklist_type, blacklist_status, 
+      create_time, update_time, classfiy, 
+      report_reason, picts)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{blacklist_id,jdbcType=BIGINT}, 
+      #{status,jdbcType=INTEGER}, #{blacklist_type,jdbcType=VARCHAR}, #{blacklist_status,jdbcType=INTEGER}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{classfiy,jdbcType=VARCHAR}, 
+      #{report_reason,jdbcType=VARCHAR}, #{picts,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.MessageBlacklistEntity">
+    insert into message_blacklist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="blacklist_id != null">
+        blacklist_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="blacklist_type != null">
+        blacklist_type,
+      </if>
+      <if test="blacklist_status != null">
+        blacklist_status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="classfiy != null">
+        classfiy,
+      </if>
+      <if test="report_reason != null">
+        report_reason,
+      </if>
+      <if test="picts != null">
+        picts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="blacklist_id != null">
+        #{blacklist_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="blacklist_type != null">
+        #{blacklist_type,jdbcType=VARCHAR},
+      </if>
+      <if test="blacklist_status != null">
+        #{blacklist_status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classfiy != null">
+        #{classfiy,jdbcType=VARCHAR},
+      </if>
+      <if test="report_reason != null">
+        #{report_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="picts != null">
+        #{picts,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.MessageBlacklistEntity">
+    update message_blacklist
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="blacklist_id != null">
+        blacklist_id = #{blacklist_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="blacklist_type != null">
+        blacklist_type = #{blacklist_type,jdbcType=VARCHAR},
+      </if>
+      <if test="blacklist_status != null">
+        blacklist_status = #{blacklist_status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classfiy != null">
+        classfiy = #{classfiy,jdbcType=VARCHAR},
+      </if>
+      <if test="report_reason != null">
+        report_reason = #{report_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="picts != null">
+        picts = #{picts,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.MessageBlacklistEntity">
+    update message_blacklist
+    set user_id = #{user_id,jdbcType=BIGINT},
+      blacklist_id = #{blacklist_id,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      blacklist_type = #{blacklist_type,jdbcType=VARCHAR},
+      blacklist_status = #{blacklist_status,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      classfiy = #{classfiy,jdbcType=VARCHAR},
+      report_reason = #{report_reason,jdbcType=VARCHAR},
+      picts = #{picts,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.MessageBlacklistEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_blacklist
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.blacklist_id!=null">
+        AND blacklist_id = #{param.blacklist_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.blacklist_type!=null">
+        AND blacklist_type = #{param.blacklist_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.blacklist_status!=null">
+        AND blacklist_status = #{param.blacklist_status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=VARCHAR}
+      </if>
+      <if test="param.report_reason!=null">
+        AND report_reason = #{param.report_reason,jdbcType=VARCHAR}
+      </if>
+      <if test="param.picts!=null">
+        AND picts = #{param.picts,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.MessageBlacklistEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_blacklist
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.blacklist_id!=null">
+        AND blacklist_id = #{param.blacklist_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.blacklist_type!=null">
+        AND blacklist_type = #{param.blacklist_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.blacklist_status!=null">
+        AND blacklist_status = #{param.blacklist_status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=VARCHAR}
+      </if>
+      <if test="param.report_reason!=null">
+        AND report_reason = #{param.report_reason,jdbcType=VARCHAR}
+      </if>
+      <if test="param.picts!=null">
+        AND picts = #{param.picts,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.MessageBlacklistEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM message_blacklist
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.blacklist_id!=null">
+        AND blacklist_id = #{param.blacklist_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.blacklist_type!=null">
+        AND blacklist_type = #{param.blacklist_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.blacklist_status!=null">
+        AND blacklist_status = #{param.blacklist_status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=VARCHAR}
+      </if>
+      <if test="param.report_reason!=null">
+        AND report_reason = #{param.report_reason,jdbcType=VARCHAR}
+      </if>
+      <if test="param.picts!=null">
+        AND picts = #{param.picts,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

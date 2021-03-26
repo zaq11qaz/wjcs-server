@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.LogOperationHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.LogOperationHistoryEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="userId" jdbcType="BIGINT" property="userId" />
+    <result column="operation" jdbcType="VARCHAR" property="operation" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="param" jdbcType="VARCHAR" property="param" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, content, userId, operation, ip, method, url, result, param
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_log_operation_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eg_log_operation_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.LogOperationHistoryEntity">
+    insert into eg_log_operation_history (id, create_time, content, 
+      userId, operation, ip, 
+      method, url, result, 
+      param)
+    values (#{id,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT}, #{operation,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{method,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
+      #{param,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.LogOperationHistoryEntity">
+    insert into eg_log_operation_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="operation != null">
+        operation,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="param != null">
+        param,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="operation != null">
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        #{param,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.LogOperationHistoryEntity">
+    update eg_log_operation_history
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="operation != null">
+        operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        param = #{param,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.LogOperationHistoryEntity">
+    update eg_log_operation_history
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=BIGINT},
+      operation = #{operation,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      result = #{result,jdbcType=VARCHAR},
+      param = #{param,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.LogOperationHistoryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_log_operation_history
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.userId!=null">
+        AND userId = #{param.userId,jdbcType=BIGINT}
+      </if>
+      <if test="param.operation!=null">
+        AND operation = #{param.operation,jdbcType=VARCHAR}
+      </if>
+      <if test="param.ip!=null">
+        AND ip = #{param.ip,jdbcType=VARCHAR}
+      </if>
+      <if test="param.method!=null">
+        AND method = #{param.method,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.result!=null">
+        AND result = #{param.result,jdbcType=VARCHAR}
+      </if>
+      <if test="param.param!=null">
+        AND param = #{param.param,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.LogOperationHistoryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_log_operation_history
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.userId!=null">
+        AND userId = #{param.userId,jdbcType=BIGINT}
+      </if>
+      <if test="param.operation!=null">
+        AND operation = #{param.operation,jdbcType=VARCHAR}
+      </if>
+      <if test="param.ip!=null">
+        AND ip = #{param.ip,jdbcType=VARCHAR}
+      </if>
+      <if test="param.method!=null">
+        AND method = #{param.method,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.result!=null">
+        AND result = #{param.result,jdbcType=VARCHAR}
+      </if>
+      <if test="param.param!=null">
+        AND param = #{param.param,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.LogOperationHistoryEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_log_operation_history
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.userId!=null">
+        AND userId = #{param.userId,jdbcType=BIGINT}
+      </if>
+      <if test="param.operation!=null">
+        AND operation = #{param.operation,jdbcType=VARCHAR}
+      </if>
+      <if test="param.ip!=null">
+        AND ip = #{param.ip,jdbcType=VARCHAR}
+      </if>
+      <if test="param.method!=null">
+        AND method = #{param.method,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.result!=null">
+        AND result = #{param.result,jdbcType=VARCHAR}
+      </if>
+      <if test="param.param!=null">
+        AND param = #{param.param,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

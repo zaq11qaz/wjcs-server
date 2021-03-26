@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.VideoDurationMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.VideoDurationEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="room_number" jdbcType="VARCHAR" property="room_number" />
+    <result column="other_id" jdbcType="BIGINT" property="other_id" />
+    <result column="appointment_id" jdbcType="BIGINT" property="appointment_id" />
+    <result column="order_id" jdbcType="BIGINT" property="order_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, duration, type, source, create_time, end_time, status, room_number, 
+    other_id, appointment_id, order_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_video_duration
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_video_duration
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.VideoDurationEntity">
+    insert into eg_video_duration (id, user_id, duration, 
+      type, source, create_time, 
+      end_time, status, room_number, 
+      other_id, appointment_id, order_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{duration,jdbcType=INTEGER}, 
+      #{type,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{end_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{room_number,jdbcType=VARCHAR}, 
+      #{other_id,jdbcType=BIGINT}, #{appointment_id,jdbcType=BIGINT}, #{order_id,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.VideoDurationEntity" useGeneratedKeys="true"
+          keyProperty="id">
+    insert into eg_video_duration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="end_time != null">
+        end_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="room_number != null">
+        room_number,
+      </if>
+      <if test="other_id != null">
+        other_id,
+      </if>
+      <if test="appointment_id != null">
+        appointment_id,
+      </if>
+      <if test="order_id != null">
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="room_number != null">
+        #{room_number,jdbcType=VARCHAR},
+      </if>
+      <if test="other_id != null">
+        #{other_id,jdbcType=BIGINT},
+      </if>
+      <if test="appointment_id != null">
+        #{appointment_id,jdbcType=BIGINT},
+      </if>
+      <if test="order_id != null">
+        #{order_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.VideoDurationEntity">
+    update eg_video_duration
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        end_time = #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="room_number != null">
+        room_number = #{room_number,jdbcType=VARCHAR},
+      </if>
+      <if test="other_id != null">
+        other_id = #{other_id,jdbcType=BIGINT},
+      </if>
+      <if test="appointment_id != null">
+        appointment_id = #{appointment_id,jdbcType=BIGINT},
+      </if>
+      <if test="order_id != null">
+        order_id = #{order_id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.VideoDurationEntity">
+    update eg_video_duration
+    set user_id = #{user_id,jdbcType=BIGINT},
+      duration = #{duration,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      end_time = #{end_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      room_number = #{room_number,jdbcType=VARCHAR},
+      other_id = #{other_id,jdbcType=BIGINT},
+      appointment_id = #{appointment_id,jdbcType=BIGINT},
+      order_id = #{order_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.VideoDurationEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_video_duration
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.duration!=null">
+        AND duration = #{param.duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.room_number!=null">
+        AND room_number = #{param.room_number,jdbcType=VARCHAR}
+      </if>
+      <if test="param.other_id!=null">
+        AND other_id = #{param.other_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.order_id!=null">
+        AND order_id = #{param.order_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.VideoDurationEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_video_duration
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.duration!=null">
+        AND duration = #{param.duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.room_number!=null">
+        AND room_number = #{param.room_number,jdbcType=VARCHAR}
+      </if>
+      <if test="param.other_id!=null">
+        AND other_id = #{param.other_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.order_id!=null">
+        AND order_id = #{param.order_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.VideoDurationEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_video_duration
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.duration!=null">
+        AND duration = #{param.duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.room_number!=null">
+        AND room_number = #{param.room_number,jdbcType=VARCHAR}
+      </if>
+      <if test="param.other_id!=null">
+        AND other_id = #{param.other_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.order_id!=null">
+        AND order_id = #{param.order_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryVideoReconnection" parameterType="com.huihe.eg.user.model.VideoDurationEntity"
+          resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM eg_video_duration
+    WHERE
+    (user_id=#{param.user_id,jdbcType=BIGINT} OR other_id=#{param.user_id,jdbcType=BIGINT}) AND status =1 and now()&lt;end_time
+  </select>
+  <select id="queryUnsuspendedVideo" parameterType="com.huihe.eg.user.model.VideoDurationEntity"
+          resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM eg_video_duration
+    WHERE
+    user_id=#{param.user_id,jdbcType=BIGINT} and status=1
+    UNION
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM eg_video_duration
+    WHERE
+    other_id=#{param.user_id,jdbcType=BIGINT} and status=1
+  </select>
+</mapper>

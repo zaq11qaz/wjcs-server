@@ -1,0 +1,284 @@
+.peoplebox {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+	padding: .5rem .32rem .02rem .32rem;
+}
+
+.peoplebox .more_img {
+	width: .48rem;
+	height: .1rem;
+}
+
+.peoplebox_left {
+	display: flex;
+	align-items: center;
+}
+
+.peoplebox_left {
+	display: flex;
+
+}
+
+.headImg {
+	width: .9rem;
+	height: .9rem;
+	margin-right: .21rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.name_box {
+	display: flex;
+	flex-direction: column;
+}
+
+.name_box_top {
+	display: flex;
+	align-items: center;
+	margin-bottom: .1rem;
+}
+
+.name_box_top img {
+	width: .3rem;
+	height: .3rem;
+	margin-left: .13rem;
+}
+
+.name_box_bottom {
+	display: flex;
+	align-items: center;
+	max-width: 2rem;
+	height: .32rem;
+	background: .999999;
+	border-radius: .32rem;
+	opacity: 0.6;
+
+}
+
+.name_box_bottom p {
+	padding-left: .16rem;
+	color: #FFFFFF;
+}
+
+.name_box_bottom img {
+	width: .37rem;
+	height: .37rem;
+}
+
+.contentbox {
+	padding: 0 1.44rem .4rem 1.44rem;
+}
+
+.pinglunbox {
+	padding: 0 .32rem 0 1.44rem;
+	width: 100%;
+}
+
+.pinglun-item {
+	background: rgba(230, 230, 230, 1);
+	width: 100%;
+}
+
+.typebox {
+	width: .74rem;
+	height: .32rem;
+	border-radius: .32rem;
+	border: .02rem solid .47CECF;
+	color: #47CECF;
+	font-size: .24rem;
+	margin-left: .13rem;
+	padding: .03upx .1upx;
+}
+
+.newsTem2 {
+	width: 100%;
+	padding: 0 .32rem;
+}
+
+.tuijianitem {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.pinglunbox2 {
+	padding: .53rem .32rem 0 .32rem;
+	border-top: .02rem solid .e6e6e6;
+	width: 100%;
+
+}
+
+.pinglunbox2_title {
+	display: flex;
+	margin-bottom: .65rem;
+}
+.pinglunbox2_title h3{
+	font-size: .42rem;
+}
+
+.pinglunbox2_title p {
+	color: #999999;
+	font-size: .34rem;
+	align-items: flex-end;
+}
+
+.tuijianitem_left {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-size: .37rem;
+	max-width: 5rem;
+}
+.tuijianitem_left p{
+	word-break:break-all;
+    text-overflow:ellipsis;//显示为省略号
+    display:-webkit-box;//对象作为伸缩盒子模型显示
+    -webkit-box-orient:vertical;//设置或检索伸缩盒对象的子元素的排列方式
+    -webkit-line-clamp:2;//显示行数.# 标题文字 .#
+    overflow:hidden;
+}
+
+.tuijianitem_left_bottom {
+	color: #999999;
+}
+
+.yijipinglun {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.yijipinglun_left img {
+	width: .48rem;
+	height: .48rem;
+	margin-right: .2rem;
+	margin-left: .46rem;
+}
+
+.yijipinglun_left {
+	display: flex;
+
+}
+
+.pinglun_right {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: .26rem;
+}
+
+.pinglun_right img {
+	width: .42rem;
+	height: .37rem;
+}
+
+.erjipinglun {
+	background: .E6E6E6;
+	margin-left: 1.12rem;
+	padding: .16rem;
+}
+
+.erjipinglun_top img {
+	width: .53rem;
+	height: .53rem;
+}
+
+.erjipinglun_top p {
+	margin-left: .24rem;
+}
+
+.erjipinglun_top {
+	display: flex;
+}
+
+.erjipinglun_bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.erjipinglun_bottom_left img {
+	width: .36rem;
+	height: .36rem;
+	margin-left: .2rem;
+	margin-right: .1rem;
+}
+
+.timetext {
+	color: #999999;
+	font-size: .26rem;
+}
+.huifubox{
+	display: flex;
+	margin-left: 1.12rem;
+	color: #666666;
+	font-size: .32rem;
+	align-items: center;
+	margin-top: .33rem;
+}
+.huifubox img{
+	width: .26rem;
+	height:.26rem;
+	margin-left: .16rem;
+	margin-right: .3rem;
+}
+
+.tab_item{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .32rem .32rem;
+	border-bottom: .02rem solid .E6E6E6;
+	position: relative;
+}
+
+.liwu_left{
+	display: flex;
+	align-items: center;
+	font-size: .24rem;
+	color: #333;
+}
+
+.liwu_mid{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 3.7rem;
+	top: 7%;
+}
+.liwu_mid p{
+	color: #333333;
+	font-size:.32rem ;
+	padding-right: .4rem;
+}
+.liwu_mid img{
+	width: 40%;
+}
+.liwu_mid_item{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: .24rem;
+	color: #999999;
+	
+}
+.liwu_right{
+	font-size: .32rem;
+	color: #999999;
+}
+.share_p{
+	color: #333333;
+	font-size: .34rem;
+	margin-left: .26rem;
+}
+.dianzan_item{
+	justify-content: space-between;
+}
+.dianzanImg{
+	width: .57rem;
+	height: .53rem;
+}

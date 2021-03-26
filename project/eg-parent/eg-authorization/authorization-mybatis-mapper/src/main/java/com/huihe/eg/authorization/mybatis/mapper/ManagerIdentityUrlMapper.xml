@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.authorization.mybatis.dao.ManagerIdentityUrlMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="identity_id" jdbcType="BIGINT" property="identity_id" />
+    <result column="url_id" jdbcType="BIGINT" property="url_id" />
+    <result column="update_user" jdbcType="VARCHAR" property="update_user" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, identity_id, url_id, update_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authorization_manager_identity_url
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authorization_manager_identity_url
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <delete id="deleteByIdentityId">
+      delete from authorization_manager_identity_url where  identity_id = #{id}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity">
+    insert into authorization_manager_identity_url (id, create_time, identity_id, 
+      url_id, update_user)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{identity_id,jdbcType=BIGINT}, 
+      #{url_id,jdbcType=BIGINT}, #{update_user,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity">
+    insert into authorization_manager_identity_url
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="identity_id != null">
+        identity_id,
+      </if>
+      <if test="url_id != null">
+        url_id,
+      </if>
+      <if test="update_user != null">
+        update_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identity_id != null">
+        #{identity_id,jdbcType=BIGINT},
+      </if>
+      <if test="url_id != null">
+        #{url_id,jdbcType=BIGINT},
+      </if>
+      <if test="update_user != null">
+        #{update_user,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity">
+    update authorization_manager_identity_url
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identity_id != null">
+        identity_id = #{identity_id,jdbcType=BIGINT},
+      </if>
+      <if test="url_id != null">
+        url_id = #{url_id,jdbcType=BIGINT},
+      </if>
+      <if test="update_user != null">
+        update_user = #{update_user,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity">
+    update authorization_manager_identity_url
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      identity_id = #{identity_id,jdbcType=BIGINT},
+      url_id = #{url_id,jdbcType=BIGINT},
+      update_user = #{update_user,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_manager_identity_url
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.identity_id!=null">
+        AND identity_id = #{param.identity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.url_id!=null">
+        AND url_id = #{param.url_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_manager_identity_url
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.identity_id!=null">
+        AND identity_id = #{param.identity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.url_id!=null">
+        AND url_id = #{param.url_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.authorization.model.ManagerIdentityUrlEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM authorization_manager_identity_url
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.identity_id!=null">
+        AND identity_id = #{param.identity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.url_id!=null">
+        AND url_id = #{param.url_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

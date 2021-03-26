@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.mall.mybatis.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.mall.model.UserInfoEntity">
+    <id column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nick_name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="auction_coin" jdbcType="INTEGER" property="auction_coin" />
+    <result column="gift_coin" jdbcType="INTEGER" property="gift_coin" />
+    <result column="shopping_coin" jdbcType="INTEGER" property="shopping_coin" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, create_time, nick_name, mobile, update_time, avatar, integral, auction_coin, 
+    gift_coin, shopping_coin, address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_info
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.mall.model.UserInfoEntity">
+    insert into user_info (user_id, create_time, nick_name, 
+      mobile, update_time, avatar, 
+      integral, auction_coin, gift_coin, 
+      shopping_coin, address)
+    values (#{user_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{nick_name,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP}, #{avatar,jdbcType=VARCHAR}, 
+      #{integral,jdbcType=INTEGER}, #{auction_coin,jdbcType=INTEGER}, #{gift_coin,jdbcType=INTEGER}, 
+      #{shopping_coin,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.mall.model.UserInfoEntity">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="nick_name != null">
+        nick_name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="auction_coin != null">
+        auction_coin,
+      </if>
+      <if test="gift_coin != null">
+        gift_coin,
+      </if>
+      <if test="shopping_coin != null">
+        shopping_coin,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nick_name != null">
+        #{nick_name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="auction_coin != null">
+        #{auction_coin,jdbcType=INTEGER},
+      </if>
+      <if test="gift_coin != null">
+        #{gift_coin,jdbcType=INTEGER},
+      </if>
+      <if test="shopping_coin != null">
+        #{shopping_coin,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.mall.model.UserInfoEntity">
+    update user_info
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nick_name != null">
+        nick_name = #{nick_name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="auction_coin != null">
+        auction_coin = #{auction_coin,jdbcType=INTEGER},
+      </if>
+      <if test="gift_coin != null">
+        gift_coin = #{gift_coin,jdbcType=INTEGER},
+      </if>
+      <if test="shopping_coin != null">
+        shopping_coin = #{shopping_coin,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.mall.model.UserInfoEntity">
+    update user_info
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      nick_name = #{nick_name,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      auction_coin = #{auction_coin,jdbcType=INTEGER},
+      gift_coin = #{gift_coin,jdbcType=INTEGER},
+      shopping_coin = #{shopping_coin,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR}
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.mall.model.UserInfoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM user_info
+    <where>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.nick_name!=null">
+        AND nick_name = #{param.nick_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.avatar!=null">
+        AND avatar = #{param.avatar,jdbcType=VARCHAR}
+      </if>
+      <if test="param.integral!=null">
+        AND integral = #{param.integral,jdbcType=INTEGER}
+      </if>
+      <if test="param.auction_coin!=null">
+        AND auction_coin = #{param.auction_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.gift_coin!=null">
+        AND gift_coin = #{param.gift_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.shopping_coin!=null">
+        AND shopping_coin = #{param.shopping_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.mall.model.UserInfoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM user_info
+    <where>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.nick_name!=null">
+        AND nick_name = #{param.nick_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.avatar!=null">
+        AND avatar = #{param.avatar,jdbcType=VARCHAR}
+      </if>
+      <if test="param.integral!=null">
+        AND integral = #{param.integral,jdbcType=INTEGER}
+      </if>
+      <if test="param.auction_coin!=null">
+        AND auction_coin = #{param.auction_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.gift_coin!=null">
+        AND gift_coin = #{param.gift_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.shopping_coin!=null">
+        AND shopping_coin = #{param.shopping_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY user_id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.mall.model.UserInfoEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM user_info
+    <where>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.nick_name!=null">
+        AND nick_name = #{param.nick_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.avatar!=null">
+        AND avatar = #{param.avatar,jdbcType=VARCHAR}
+      </if>
+      <if test="param.integral!=null">
+        AND integral = #{param.integral,jdbcType=INTEGER}
+      </if>
+      <if test="param.auction_coin!=null">
+        AND auction_coin = #{param.auction_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.gift_coin!=null">
+        AND gift_coin = #{param.gift_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.shopping_coin!=null">
+        AND shopping_coin = #{param.shopping_coin,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.mall.mybatis.dao.CommodityInfoMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.mall.model.CommodityInfoEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="market_price" jdbcType="DECIMAL" property="market_price" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="show_case" jdbcType="VARCHAR" property="show_case" />
+    <result column="type_id" jdbcType="BIGINT" property="type_id" />
+    <result column="product_parameters" jdbcType="VARCHAR" property="product_parameters" />
+    <result column="watch_number" jdbcType="INTEGER" property="watch_number" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, market_price, create_time, update_time, status, show_case, type_id, product_parameters, 
+    watch_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from commodity_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from commodity_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.mall.model.CommodityInfoEntity">
+    insert into commodity_info (id, title, market_price, 
+      create_time, update_time, status, 
+      show_case, type_id, product_parameters, 
+      watch_number)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{market_price,jdbcType=DECIMAL}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{show_case,jdbcType=VARCHAR}, #{type_id,jdbcType=BIGINT}, #{product_parameters,jdbcType=VARCHAR}, 
+      #{watch_number,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.mall.model.CommodityInfoEntity">
+    insert into commodity_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="market_price != null">
+        market_price,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="show_case != null">
+        show_case,
+      </if>
+      <if test="type_id != null">
+        type_id,
+      </if>
+      <if test="product_parameters != null">
+        product_parameters,
+      </if>
+      <if test="watch_number != null">
+        watch_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="market_price != null">
+        #{market_price,jdbcType=DECIMAL},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="show_case != null">
+        #{show_case,jdbcType=VARCHAR},
+      </if>
+      <if test="type_id != null">
+        #{type_id,jdbcType=BIGINT},
+      </if>
+      <if test="product_parameters != null">
+        #{product_parameters,jdbcType=VARCHAR},
+      </if>
+      <if test="watch_number != null">
+        #{watch_number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.mall.model.CommodityInfoEntity">
+    update commodity_info
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="market_price != null">
+        market_price = #{market_price,jdbcType=DECIMAL},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="show_case != null">
+        show_case = #{show_case,jdbcType=VARCHAR},
+      </if>
+      <if test="type_id != null">
+        type_id = #{type_id,jdbcType=BIGINT},
+      </if>
+      <if test="product_parameters != null">
+        product_parameters = #{product_parameters,jdbcType=VARCHAR},
+      </if>
+      <if test="watch_number != null">
+        watch_number = #{watch_number,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.mall.model.CommodityInfoEntity">
+    update commodity_info
+    set title = #{title,jdbcType=VARCHAR},
+      market_price = #{market_price,jdbcType=DECIMAL},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      show_case = #{show_case,jdbcType=VARCHAR},
+      type_id = #{type_id,jdbcType=BIGINT},
+      product_parameters = #{product_parameters,jdbcType=VARCHAR},
+      watch_number = #{watch_number,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.mall.model.CommodityInfoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM commodity_info
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.market_price!=null">
+        AND market_price = #{param.market_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_case!=null">
+        AND show_case = #{param.show_case,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type_id!=null">
+        AND type_id = #{param.type_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.product_parameters!=null">
+        AND product_parameters = #{param.product_parameters,jdbcType=VARCHAR}
+      </if>
+      <if test="param.watch_number!=null">
+        AND watch_number = #{param.watch_number,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.mall.model.CommodityInfoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM commodity_info
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.title!=null">
+        AND title  LIKE concat(#{param.title,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.market_price!=null">
+        AND market_price = #{param.market_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_case!=null">
+        AND show_case = #{param.show_case,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type_id!=null">
+        AND type_id = #{param.type_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.product_parameters!=null">
+        AND product_parameters = #{param.product_parameters,jdbcType=VARCHAR}
+      </if>
+      <if test="param.watch_number!=null">
+        AND watch_number = #{param.watch_number,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.mall.model.CommodityInfoEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM commodity_info
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.market_price!=null">
+        AND market_price = #{param.market_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_case!=null">
+        AND show_case = #{param.show_case,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type_id!=null">
+        AND type_id = #{param.type_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.product_parameters!=null">
+        AND product_parameters = #{param.product_parameters,jdbcType=VARCHAR}
+      </if>
+      <if test="param.watch_number!=null">
+        AND watch_number = #{param.watch_number,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

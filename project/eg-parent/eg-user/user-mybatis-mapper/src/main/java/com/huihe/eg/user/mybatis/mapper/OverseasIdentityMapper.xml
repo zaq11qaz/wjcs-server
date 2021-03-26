@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.OverseasIdentityMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.OverseasIdentityEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="city_code" jdbcType="VARCHAR" property="city_code" />
+    <result column="go_abroad_time" jdbcType="TIMESTAMP" property="go_abroad_time" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="card_front" jdbcType="VARCHAR" property="card_front" />
+    <result column="card_back" jdbcType="VARCHAR" property="card_back" />
+    <result column="card_onhand" jdbcType="VARCHAR" property="card_onhand" />
+    <result column="brief" jdbcType="VARCHAR" property="brief" />
+    <result column="school_name" jdbcType="VARCHAR" property="school_name" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="specialty" jdbcType="VARCHAR" property="specialty" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="native_place" jdbcType="VARCHAR" property="native_place" />
+    <result column="in_country" jdbcType="VARCHAR" property="in_country" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="slc_dates" jdbcType="VARCHAR" property="slc_dates" />
+    <result column="identity_type" jdbcType="VARCHAR" property="identity_type" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="time_job" jdbcType="INTEGER" property="time_job" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nick_name" />
+    <result column="refuse_contect" jdbcType="VARCHAR" property="refuse_contect" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, city, city_code, go_abroad_time, create_time, status, card_front, card_back, 
+    card_onhand, brief, school_name, department, specialty, language, identity, native_place, 
+    in_country, unit, industry, slc_dates, identity_type, update_time, time_job, mobile, 
+    mail,refuse_contect
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_overseas_identity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_overseas_identity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity">
+    insert into eg_overseas_identity (id, user_id, city, 
+      city_code, go_abroad_time, create_time, 
+      status, card_front, card_back, 
+      card_onhand, brief, school_name, 
+      department, specialty, language, 
+      identity, native_place, in_country, 
+      unit, industry, slc_dates, 
+      identity_type, update_time, time_job, 
+      mobile, mail,refuse_contect)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{city,jdbcType=VARCHAR}, 
+      #{city_code,jdbcType=VARCHAR}, #{go_abroad_time,jdbcType=TIMESTAMP}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{card_front,jdbcType=VARCHAR}, #{card_back,jdbcType=VARCHAR}, 
+      #{card_onhand,jdbcType=VARCHAR}, #{brief,jdbcType=VARCHAR}, #{school_name,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{identity,jdbcType=VARCHAR}, #{native_place,jdbcType=VARCHAR}, #{in_country,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{slc_dates,jdbcType=VARCHAR}, 
+      #{identity_type,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP}, #{time_job,jdbcType=INTEGER}, 
+      #{mobile,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}),#{refuse_contect,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity">
+    insert into eg_overseas_identity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="city_code != null">
+        city_code,
+      </if>
+      <if test="go_abroad_time != null">
+        go_abroad_time,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="card_front != null">
+        card_front,
+      </if>
+      <if test="card_back != null">
+        card_back,
+      </if>
+      <if test="card_onhand != null">
+        card_onhand,
+      </if>
+      <if test="brief != null">
+        brief,
+      </if>
+      <if test="school_name != null">
+        school_name,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="specialty != null">
+        specialty,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+      <if test="native_place != null">
+        native_place,
+      </if>
+      <if test="in_country != null">
+        in_country,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="slc_dates != null">
+        slc_dates,
+      </if>
+      <if test="identity_type != null">
+        identity_type,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="time_job != null">
+        time_job,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="mail != null">
+        mail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="city_code != null">
+        #{city_code,jdbcType=VARCHAR},
+      </if>
+      <if test="go_abroad_time != null">
+        #{go_abroad_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="card_front != null">
+        #{card_front,jdbcType=VARCHAR},
+      </if>
+      <if test="card_back != null">
+        #{card_back,jdbcType=VARCHAR},
+      </if>
+      <if test="card_onhand != null">
+        #{card_onhand,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null">
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="school_name != null">
+        #{school_name,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null">
+        #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="native_place != null">
+        #{native_place,jdbcType=VARCHAR},
+      </if>
+      <if test="in_country != null">
+        #{in_country,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="slc_dates != null">
+        #{slc_dates,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_type != null">
+        #{identity_type,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="time_job != null">
+        #{time_job,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        #{mail,jdbcType=VARCHAR},
+      </if>
+       <if test="refuse_contect != null">
+        #{refuse_contect,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity">
+    update eg_overseas_identity
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="city_code != null">
+        city_code = #{city_code,jdbcType=VARCHAR},
+      </if>
+      <if test="go_abroad_time != null">
+        go_abroad_time = #{go_abroad_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="card_front != null">
+        card_front = #{card_front,jdbcType=VARCHAR},
+      </if>
+      <if test="card_back != null">
+        card_back = #{card_back,jdbcType=VARCHAR},
+      </if>
+      <if test="card_onhand != null">
+        card_onhand = #{card_onhand,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null">
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="school_name != null">
+        school_name = #{school_name,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null">
+        specialty = #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="native_place != null">
+        native_place = #{native_place,jdbcType=VARCHAR},
+      </if>
+      <if test="in_country != null">
+        in_country = #{in_country,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="slc_dates != null">
+        slc_dates = #{slc_dates,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_type != null">
+        identity_type = #{identity_type,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="time_job != null">
+        time_job = #{time_job,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="refuse_contect != null">
+      refuse_contect = #{refuse_contect,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity">
+    update eg_overseas_identity
+    set user_id = #{user_id,jdbcType=BIGINT},
+      city = #{city,jdbcType=VARCHAR},
+      city_code = #{city_code,jdbcType=VARCHAR},
+      go_abroad_time = #{go_abroad_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      card_front = #{card_front,jdbcType=VARCHAR},
+      card_back = #{card_back,jdbcType=VARCHAR},
+      card_onhand = #{card_onhand,jdbcType=VARCHAR},
+      brief = #{brief,jdbcType=VARCHAR},
+      school_name = #{school_name,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      specialty = #{specialty,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      native_place = #{native_place,jdbcType=VARCHAR},
+      in_country = #{in_country,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      slc_dates = #{slc_dates,jdbcType=VARCHAR},
+      identity_type = #{identity_type,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      time_job = #{time_job,jdbcType=INTEGER},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR}
+      refuse_contect = #{refuse_contect,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_overseas_identity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.city!=null">
+        AND city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.go_abroad_time!=null">
+        AND go_abroad_time = #{param.go_abroad_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.card_front!=null">
+        AND card_front = #{param.card_front,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_back!=null">
+        AND card_back = #{param.card_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_onhand!=null">
+        AND card_onhand = #{param.card_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.brief!=null">
+        AND brief = #{param.brief,jdbcType=VARCHAR}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.department!=null">
+        AND department = #{param.department,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specialty!=null">
+        AND specialty = #{param.specialty,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity!=null">
+        AND identity = #{param.identity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.native_place!=null">
+        AND native_place = #{param.native_place,jdbcType=VARCHAR}
+      </if>
+      <if test="param.in_country!=null">
+        AND in_country = #{param.in_country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.unit!=null">
+        AND unit = #{param.unit,jdbcType=VARCHAR}
+      </if>
+      <if test="param.industry!=null">
+        AND industry = #{param.industry,jdbcType=VARCHAR}
+      </if>
+      <if test="param.slc_dates!=null">
+        AND slc_dates = #{param.slc_dates,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.time_job!=null">
+        AND time_job = #{param.time_job,jdbcType=INTEGER}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mail!=null">
+        AND mail = #{param.mail,jdbcType=VARCHAR}
+      </if>
+        <if test="param.refuse_contect!=null">
+        AND refuse_contect = #{param.mail,jdbcType=VARCHAR}
+      </if>
+    </where>
+    order by update_time desc
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_overseas_identity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.city!=null">
+        AND city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.go_abroad_time!=null">
+        AND go_abroad_time = #{param.go_abroad_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.card_front!=null">
+        AND card_front = #{param.card_front,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_back!=null">
+        AND card_back = #{param.card_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_onhand!=null">
+        AND card_onhand = #{param.card_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.brief!=null">
+        AND brief = #{param.brief,jdbcType=VARCHAR}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.department!=null">
+        AND department = #{param.department,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specialty!=null">
+        AND specialty = #{param.specialty,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity!=null">
+        AND identity = #{param.identity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.native_place!=null">
+        AND native_place = #{param.native_place,jdbcType=VARCHAR}
+      </if>
+      <if test="param.in_country!=null">
+        AND in_country = #{param.in_country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.unit!=null">
+        AND unit = #{param.unit,jdbcType=VARCHAR}
+      </if>
+      <if test="param.industry!=null">
+        AND industry = #{param.industry,jdbcType=VARCHAR}
+      </if>
+      <if test="param.slc_dates!=null">
+        AND slc_dates = #{param.slc_dates,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.time_job!=null">
+        AND time_job = #{param.time_job,jdbcType=INTEGER}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mail!=null">
+        AND mail = #{param.mail,jdbcType=VARCHAR}
+      </if>
+      <if test="param.refuse_contect!=null">
+        AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY update_time DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_overseas_identity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.city!=null">
+        AND city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.go_abroad_time!=null">
+        AND go_abroad_time = #{param.go_abroad_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.card_front!=null">
+        AND card_front = #{param.card_front,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_back!=null">
+        AND card_back = #{param.card_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_onhand!=null">
+        AND card_onhand = #{param.card_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.brief!=null">
+        AND brief = #{param.brief,jdbcType=VARCHAR}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.department!=null">
+        AND department = #{param.department,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specialty!=null">
+        AND specialty = #{param.specialty,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity!=null">
+        AND identity = #{param.identity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.native_place!=null">
+        AND native_place = #{param.native_place,jdbcType=VARCHAR}
+      </if>
+      <if test="param.in_country!=null">
+        AND in_country = #{param.in_country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.unit!=null">
+        AND unit = #{param.unit,jdbcType=VARCHAR}
+      </if>
+      <if test="param.industry!=null">
+        AND industry = #{param.industry,jdbcType=VARCHAR}
+      </if>
+      <if test="param.slc_dates!=null">
+        AND slc_dates = #{param.slc_dates,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.time_job!=null">
+        AND time_job = #{param.time_job,jdbcType=INTEGER}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mail!=null">
+        AND mail = #{param.mail,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryOverseasAuthListPage" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity" resultMap="BaseResultMap">
+    SELECT
+    i.id, i.user_id, i.city,i.city_code, i.go_abroad_time, i.create_time, i.status, i.card_front, i.card_back,
+    i.card_onhand, i.brief, i.school_name, i.department, i.specialty, i.language, i.identity, i.native_place,
+    i.in_country, i.unit, i.industry, i.slc_dates, i.identity_type, i.update_time, i.time_job, i.mobile,
+    i.mail
+    FROM eg_overseas_identity i
+    LEFT JOIN eg_user_info u ON (i.user_id=u.user_id)
+    <where>
+      <if test="param.end_time!=null and param.start_time!=null">
+        AND i.create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP}  AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.id!=null">
+        AND i.id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND i.user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.nick_name!=null">
+        AND u.nick_name  LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.city!=null">
+        AND i.city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND i.city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.go_abroad_time!=null">
+        AND i.go_abroad_time = #{param.go_abroad_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.create_time!=null">
+        AND i.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND i.status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.card_front!=null">
+        AND i.card_front = #{param.card_front,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_back!=null">
+        AND i.card_back = #{param.card_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_onhand!=null">
+        AND i.card_onhand = #{param.card_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.brief!=null">
+        AND i.brief = #{param.brief,jdbcType=VARCHAR}
+      </if>
+      <if test="param.school_name!=null">
+        AND i.school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.department!=null">
+        AND i.department = #{param.department,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specialty!=null">
+        AND i.specialty = #{param.specialty,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null">
+        AND i.language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity!=null">
+        AND i.identity = #{param.identity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.native_place!=null">
+        AND i.native_place = #{param.native_place,jdbcType=VARCHAR}
+      </if>
+      <if test="param.in_country!=null">
+        AND i.in_country = #{param.in_country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.unit!=null">
+        AND i.unit = #{param.unit,jdbcType=VARCHAR}
+      </if>
+      <if test="param.industry!=null">
+        AND i.industry = #{param.industry,jdbcType=VARCHAR}
+      </if>
+      <if test="param.slc_dates!=null">
+        AND i.slc_dates = #{param.slc_dates,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND i.identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND i.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.time_job!=null">
+        AND i.time_job = #{param.time_job,jdbcType=INTEGER}
+      </if>
+      <if test="param.mobile!=null">
+        AND i.mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mail!=null">
+        AND i.mail = #{param.mail,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY i.update_time DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryOverseasAuthListPageCount" parameterType="com.huihe.eg.user.model.OverseasIdentityEntity" resultType="java.lang.Integer">
+    SELECT
+    coalesce(count(1),0)
+    FROM eg_overseas_identity i
+    LEFT JOIN eg_user_info u ON (i.user_id=u.user_id)
+    <where>
+      <if test="param.end_time!=null and param.start_time!=null">
+        AND i.create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP}  AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.id!=null">
+        AND i.id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND i.user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.nick_name!=null">
+        AND u.nick_name  LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.city!=null">
+        AND i.city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND i.city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.go_abroad_time!=null">
+        AND i.go_abroad_time = #{param.go_abroad_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.create_time!=null">
+        AND i.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND i.status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.card_front!=null">
+        AND i.card_front = #{param.card_front,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_back!=null">
+        AND i.card_back = #{param.card_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.card_onhand!=null">
+        AND i.card_onhand = #{param.card_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.brief!=null">
+        AND i.brief = #{param.brief,jdbcType=VARCHAR}
+      </if>
+      <if test="param.school_name!=null">
+        AND i.school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.department!=null">
+        AND i.department = #{param.department,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specialty!=null">
+        AND i.specialty = #{param.specialty,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null">
+        AND i.language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity!=null">
+        AND i.identity = #{param.identity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.native_place!=null">
+        AND i.native_place = #{param.native_place,jdbcType=VARCHAR}
+      </if>
+      <if test="param.in_country!=null">
+        AND i.in_country = #{param.in_country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.unit!=null">
+        AND i.unit = #{param.unit,jdbcType=VARCHAR}
+      </if>
+      <if test="param.industry!=null">
+        AND i.industry = #{param.industry,jdbcType=VARCHAR}
+      </if>
+      <if test="param.slc_dates!=null">
+        AND i.slc_dates = #{param.slc_dates,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND i.identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND i.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.time_job!=null">
+        AND i.time_job = #{param.time_job,jdbcType=INTEGER}
+      </if>
+      <if test="param.mobile!=null">
+        AND i.mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mail!=null">
+        AND i.mail = #{param.mail,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryByMessage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from eg_overseas_identity
+    <where>
+      <if test="param.start_time!=null and param.end_time!=null">
+        AND update_time between #{param.start_time,jdbcType=TIMESTAMP}
+        AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name like concat('%',#{param.school_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.specialty!=null">
+        AND specialty like concat('%',#{param.specialty,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+    ORDER BY update_time DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryByMessageCount" resultType="java.lang.Integer">
+    select
+    coalesce(count(1),0)
+    from eg_overseas_identity
+    <where>
+      <if test="param.start_time!=null and param.end_time!=null">
+        AND update_time between #{param.start_time,jdbcType=TIMESTAMP}
+        AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name like concat('%',#{param.school_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.specialty!=null">
+        AND specialty like concat('%',#{param.specialty,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+  </select>
+</mapper>

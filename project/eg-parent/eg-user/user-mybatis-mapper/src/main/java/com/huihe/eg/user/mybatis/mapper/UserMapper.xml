@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserEntity">
+        <id column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="login_time" jdbcType="TIMESTAMP" property="login_time"/>
+        <result column="wx_openid" jdbcType="VARCHAR" property="wx_openid"/>
+        <result column="qq_openid" jdbcType="VARCHAR" property="qq_openid"/>
+        <result column="login_pass" jdbcType="VARCHAR" property="login_pass"/>
+        <result column="login_ip" jdbcType="VARCHAR" property="login_ip"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="login_name" jdbcType="VARCHAR" property="login_name"/>
+        <result column="online_state" jdbcType="INTEGER" property="online_state"/>
+        <result column="login_type" jdbcType="VARCHAR" property="login_type"/>
+        <result column="security_pass" jdbcType="VARCHAR" property="security_pass"/>
+        <result column="apple_id" jdbcType="VARCHAR" property="apple_id"/>
+        <result column="register_platform" jdbcType="VARCHAR" property="register_platform"/>
+        <result column="login_platform" jdbcType="VARCHAR" property="login_platform"/>
+        <result column="is_teach_paypal" jdbcType="BIT" property="is_teach_paypal"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id, create_time, login_time, wx_openid, qq_openid, login_pass, login_ip, status,
+    login_name, online_state, login_type, security_pass, apple_id,register_platform,login_platform,is_teach_paypal
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user
+        where user_id = #{user_id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_user
+        where user_id = #{user_id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserEntity">
+        insert into eg_user (user_id, create_time, login_time,
+                             wx_openid, qq_openid, login_pass,
+                             login_ip, status, login_name,
+                             online_state, login_type, security_pass,
+                             apple_id, register_platform, login_platform)
+        values (#{user_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{login_time,jdbcType=TIMESTAMP},
+                #{wx_openid,jdbcType=VARCHAR}, #{qq_openid,jdbcType=VARCHAR}, #{login_pass,jdbcType=VARCHAR},
+                #{login_ip,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{login_name,jdbcType=VARCHAR},
+                #{online_state,jdbcType=INTEGER}, #{login_type,jdbcType=VARCHAR}, #{security_pass,jdbcType=VARCHAR},
+                #{apple_id,jdbcType=VARCHAR}, #{register_platform,jdbcType=VARCHAR}, #{login_platform,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserEntity" useGeneratedKeys="true"
+            keyProperty="user_id">
+        insert into eg_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="login_time != null">
+                login_time,
+            </if>
+            <if test="wx_openid != null">
+                wx_openid,
+            </if>
+            <if test="qq_openid != null">
+                qq_openid,
+            </if>
+            <if test="login_pass != null">
+                login_pass,
+            </if>
+            <if test="login_ip != null">
+                login_ip,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="login_name != null">
+                login_name,
+            </if>
+            <if test="online_state != null">
+                online_state,
+            </if>
+            <if test="login_type != null">
+                login_type,
+            </if>
+            <if test="security_pass != null">
+                security_pass,
+            </if>
+            <if test="apple_id != null">
+                apple_id,
+            </if>
+            <if test="register_platform != null">
+                register_platform,
+            </if>
+            <if test="login_platform != null">
+                login_platform,
+            </if>
+            <if test="is_teach_paypal != null">
+                is_teach_paypal,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="login_time != null">
+                #{login_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="wx_openid != null">
+                #{wx_openid,jdbcType=VARCHAR},
+            </if>
+            <if test="qq_openid != null">
+                #{qq_openid,jdbcType=VARCHAR},
+            </if>
+            <if test="login_pass != null">
+                #{login_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="login_ip != null">
+                #{login_ip,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="login_name != null">
+                #{login_name,jdbcType=VARCHAR},
+            </if>
+            <if test="online_state != null">
+                #{online_state,jdbcType=INTEGER},
+            </if>
+            <if test="login_type != null">
+                #{login_type,jdbcType=VARCHAR},
+            </if>
+            <if test="security_pass != null">
+                #{security_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="apple_id != null">
+                #{apple_id,jdbcType=VARCHAR},
+            </if>
+            <if test="register_platform != null">
+                #{register_platform,jdbcType=VARCHAR},
+            </if>
+            <if test="login_platform != null">
+                #{login_platform,jdbcType=VARCHAR},
+            </if>
+            <if test="is_teach_paypal != null">
+                #{is_teach_paypal,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserEntity">
+        update eg_user
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="login_time != null">
+                login_time = #{login_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="wx_openid != null">
+                wx_openid = #{wx_openid,jdbcType=VARCHAR},
+            </if>
+            <if test="qq_openid != null">
+                qq_openid = #{qq_openid,jdbcType=VARCHAR},
+            </if>
+            <if test="login_pass != null">
+                login_pass = #{login_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="login_ip != null">
+                login_ip = #{login_ip,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="login_name != null">
+                login_name = #{login_name,jdbcType=VARCHAR},
+            </if>
+            <if test="online_state != null">
+                online_state = #{online_state,jdbcType=INTEGER},
+            </if>
+            <if test="login_type != null">
+                login_type = #{login_type,jdbcType=VARCHAR},
+            </if>
+            <if test="security_pass != null">
+                security_pass = #{security_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="apple_id != null">
+                apple_id = #{apple_id,jdbcType=VARCHAR},
+            </if>
+            <if test="register_platform != null">
+                register_platform = #{register_platform,jdbcType=VARCHAR},
+            </if>
+            <if test="login_platform != null">
+                login_platform = #{login_platform,jdbcType=VARCHAR},
+            </if>
+            <if test="is_teach_paypal != null">
+                is_teach_paypal = #{is_teach_paypal,jdbcType=BIT},
+            </if>
+        </set>
+        where user_id = #{user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserEntity">
+        update eg_user
+        set create_time       = #{create_time,jdbcType=TIMESTAMP},
+            login_time        = #{login_time,jdbcType=TIMESTAMP},
+            wx_openid         = #{wx_openid,jdbcType=VARCHAR},
+            qq_openid         = #{qq_openid,jdbcType=VARCHAR},
+            login_pass        = #{login_pass,jdbcType=VARCHAR},
+            login_ip          = #{login_ip,jdbcType=VARCHAR},
+            status            = #{status,jdbcType=INTEGER},
+            login_name        = #{login_name,jdbcType=VARCHAR},
+            online_state      = #{online_state,jdbcType=INTEGER},
+            login_type        = #{login_type,jdbcType=VARCHAR},
+            security_pass     = #{security_pass,jdbcType=VARCHAR},
+            apple_id          = #{apple_id,jdbcType=VARCHAR},
+            register_platform = #{register_platform,jdbcType=VARCHAR},
+            login_platform    = #{login_platform,jdbcType=VARCHAR}
+        where user_id = #{user_id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user
+        <where>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.login_time!=null">
+                AND login_time = #{param.login_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.wx_openid!=null">
+                AND wx_openid = #{param.wx_openid,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qq_openid!=null">
+                AND qq_openid = #{param.qq_openid,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_pass!=null">
+                AND login_pass = #{param.login_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_ip!=null">
+                AND login_ip = #{param.login_ip,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.login_name!=null">
+                AND login_name = #{param.login_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.online_state!=null">
+                AND online_state = #{param.online_state,jdbcType=INTEGER}
+            </if>
+            <if test="param.login_type!=null">
+                AND login_type = #{param.login_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.security_pass!=null">
+                AND security_pass = #{param.security_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.apple_id!=null">
+                AND apple_id = #{param.apple_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_teach_paypal != null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM(
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user
+        <where>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.login_time!=null">
+                AND login_time = #{param.login_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.wx_openid!=null">
+                AND wx_openid = #{param.wx_openid,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qq_openid!=null">
+                AND qq_openid = #{param.qq_openid,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_pass!=null">
+                AND login_pass = #{param.login_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_ip!=null">
+                AND login_ip = #{param.login_ip,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.login_name!=null">
+                AND login_name = #{param.login_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.online_state!=null">
+                AND online_state = #{param.online_state,jdbcType=INTEGER}
+            </if>
+            <if test="param.login_type!=null">
+                AND login_type = #{param.login_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.security_pass!=null">
+                AND security_pass = #{param.security_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.apple_id!=null">
+                AND apple_id = #{param.apple_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.register_platform != null">
+                AND register_platform = #{param.register_platform,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_platform != null">
+                AND login_platform = #{param.login_platform,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_teach_paypal != null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY status asc
+        )a
+        GROUP BY login_name
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserEntity" resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user
+        <where>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.login_time!=null">
+                AND login_time = #{param.login_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.wx_openid!=null">
+                AND wx_openid = #{param.wx_openid,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qq_openid!=null">
+                AND qq_openid = #{param.qq_openid,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_pass!=null">
+                AND login_pass = #{param.login_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_ip!=null">
+                AND login_ip = #{param.login_ip,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.login_name!=null">
+                AND login_name = #{param.login_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.online_state!=null">
+                AND online_state = #{param.online_state,jdbcType=INTEGER}
+            </if>
+            <if test="param.login_type!=null">
+                AND login_type = #{param.login_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.security_pass!=null">
+                AND security_pass = #{param.security_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.apple_id!=null">
+                AND apple_id = #{param.apple_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.register_platform != null">
+                AND register_platform = #{param.register_platform,jdbcType=VARCHAR}
+            </if>
+            <if test="param.login_platform != null">
+                AND login_platform = #{param.login_platform,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_teach_paypal != null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryByMessage" resultType="com.huihe.eg.user.model.UserEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user
+        <where>
+            <if test="login_name!=null">
+                AND login_name like concat('%',#{login_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="create_time!=null">
+                AND DATE_FORMAT(create_time,'%Y-%m-%d') =
+                DATE_FORMAT(#{create_time,jdbcType=TIMESTAMP},'%Y-%m-%d')
+            </if>
+            <if test="param.is_teach_paypal != null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY user_id DESC limit #{startRow},#{pageSize}
+    </select>
+    <select id="queryDayTotal" resultType="java.lang.Integer">
+        SELECT
+        COALESCE(COUNT(1),0)
+        FROM
+        eg_user
+        where
+        DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d')
+        <if test="param.register_platform!=null">
+            AND register_platform = #{param.register_platform,jdbcType=VARCHAR}
+        </if>
+        <if test="param.login_type!=null">
+            AND login_type = #{param.login_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.is_teach_paypal != null">
+            AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+        </if>
+    </select>
+    <select id="queryIdByLoginName" resultType="java.lang.Long">
+        SELECT user_id
+        from eg_user
+        where login_name like concat('%', #{login_name,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="queryMonthTotal" resultType="java.lang.Integer">
+        SELECT
+            COALESCE(COUNT(1),0)
+        FROM
+            eg_user
+        where
+                MONTH(create_time) = MONTH(CURDATE())
+        <if test="param.register_platform!=null">
+            AND register_platform = #{param.register_platform,jdbcType=VARCHAR}
+        </if>
+        <if test="param.is_teach_paypal != null">
+            AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+        </if>
+    </select>
+</mapper>

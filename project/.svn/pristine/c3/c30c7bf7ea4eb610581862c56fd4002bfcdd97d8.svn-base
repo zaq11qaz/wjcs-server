@@ -1,0 +1,3877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserInfoEntity">
+        <id column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="mail" jdbcType="VARCHAR" property="mail"/>
+        <result column="pay_pass" jdbcType="VARCHAR" property="pay_pass"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="birth" jdbcType="TIMESTAMP" property="birth"/>
+        <result column="lable" jdbcType="VARCHAR" property="lable"/>
+        <result column="intro" jdbcType="VARCHAR" property="intro"/>
+        <result column="cash" jdbcType="DECIMAL" property="cash"/>
+        <result column="signature" jdbcType="VARCHAR" property="signature"/>
+        <result column="member_level" jdbcType="INTEGER" property="member_level"/>
+        <result column="is_member" jdbcType="BIT" property="is_member"/>
+        <result column="identity_auth" jdbcType="BIT" property="identity_auth"/>
+        <result column="cat_coin" jdbcType="DECIMAL" property="cat_coin"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nick_name"/>
+        <result column="national_flag" jdbcType="VARCHAR" property="national_flag"/>
+        <result column="overseas_auth" jdbcType="BIT" property="overseas_auth"/>
+        <result column="hometown" jdbcType="VARCHAR" property="hometown"/>
+        <result column="preference" jdbcType="VARCHAR" property="preference"/>
+        <result column="is_robot" jdbcType="BIT" property="is_robot"/>
+        <result column="admin_id" jdbcType="BIGINT" property="admin_id"/>
+        <result column="qq" jdbcType="BIGINT" property="qq"/>
+        <result column="advertising_position" jdbcType="BIT" property="advertising_position"/>
+        <result column="invite_code" jdbcType="VARCHAR" property="invite_code"/>
+        <result column="qrcode" jdbcType="VARCHAR" property="qrcode"/>
+        <result column="distrib_qrcode" jdbcType="VARCHAR" property="distrib_qrcode"/>
+        <result column="like_num" jdbcType="INTEGER" property="like_num"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="like_category" jdbcType="VARCHAR" property="like_category"/>
+        <result column="contacts_num" jdbcType="INTEGER" property="contacts_num"/>
+        <result column="message_num" jdbcType="INTEGER" property="message_num"/>
+        <result column="registr_num" jdbcType="INTEGER" property="registr_num"/>
+        <result column="latitude" jdbcType="DECIMAL" property="searchParam.latitude"/>
+        <result column="longitude" jdbcType="DECIMAL" property="searchParam.longitude"/>
+        <result column="distance" jdbcType="DECIMAL" property="distance"/>
+        <result column="languages" jdbcType="VARCHAR" property="languages"/>
+        <result column="overseas_identity_name" jdbcType="VARCHAR" property="overseas_identity_name"/>
+        <result column="chatting_count" jdbcType="INTEGER" property="chatting_count"/>
+        <result column="is_id" jdbcType="BIT" property="is_id"/>
+        <result column="is_mobile" jdbcType="BIT" property="is_mobile"/>
+        <result column="is_name" jdbcType="BIT" property="is_name"/>
+        <result column="is_mail" jdbcType="BIT" property="is_mail"/>
+        <result column="mother_tongue" jdbcType="VARCHAR" property="mother_tongue"/>
+        <result column="background_pic" jdbcType="VARCHAR" property="background_pic"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="is_high_quality" jdbcType="BIT" property="is_high_quality"/>
+        <result column="rating" jdbcType="INTEGER" property="rating"/>
+        <result column="is_help" jdbcType="BIT" property="is_help"/>
+        <result column="is_unread" jdbcType="BIT" property="is_unread"/>
+        <result column="duration" jdbcType="INTEGER" property="duration"/>
+        <result column="online_state" jdbcType="INTEGER" property="online_state"/>
+        <result column="account_state" jdbcType="INTEGER" property="account_state"/>
+        <result column="log_out_time" jdbcType="TIMESTAMP" property="log_out_time"/>
+        <result column="begin_time" jdbcType="TIMESTAMP" property="begin_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="statistics_time" jdbcType="TIMESTAMP" property="statistics_time"/>
+        <result column="is_teenagers" jdbcType="BIT" property="is_teenagers"/>
+        <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id"/>
+        <result column="binding_id" jdbcType="BIGINT" property="binding_id"/>
+        <result column="mechanism_recommender_id" jdbcType="BIGINT" property="mechanism_recommender_id"/>
+        <result column="master_recommender_id" jdbcType="BIGINT" property="master_recommender_id"/>
+        <result column="invitees_id" jdbcType="BIGINT" property="invitees_id"/>
+        <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+        <result column="points" jdbcType="INTEGER" property="points"/>
+        <result column="worker_identity" jdbcType="INTEGER" property="worker_identity"/>
+        <result column="teacher_id" jdbcType="BIGINT" property="teacher_id"/>
+        <result column="identity_id" jdbcType="BIGINT" property="identity_id"/>
+        <result column="wx_code_url" jdbcType="VARCHAR" property="wx_code_url"/>
+        <result column="wx_code" jdbcType="VARCHAR" property="wx_code"/>
+        <result column="relationships" jdbcType="VARCHAR" property="relationships"/>
+        <result column="is_collection" jdbcType="BIT" property="is_collection"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    user_id, create_time, mobile, mail, pay_pass, update_time, sex, avatar, birth, lable, 
+    intro, cash, signature, member_level, is_member, identity_auth, cat_coin, nick_name, 
+    national_flag, overseas_auth, hometown, preference, is_robot, admin_id, advertising_position, 
+    invite_code, qrcode, distrib_qrcode, like_num, country, city, like_category,contacts_num,
+    message_num,registr_num,overseas_identity_name,languages,chatting_count,is_id,is_mobile,is_name,is_mail,mother_tongue,
+    background_pic,url,is_high_quality,rating,is_help,is_unread,duration,is_teenagers,mechanism_id,binding_id,
+    mechanism_recommender_id,master_recommender_id,invitees_id,role_id,worker_identity,teacher_id,identity_id,wx_code_url,wx_code,
+    is_collection,points,relationships,age,qq
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_info
+        where user_id = #{user_id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_info
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    insert into eg_user_info (user_id, mobile,
+      mail, pay_pass,
+      sex, avatar, birth, 
+      lable, intro, cash, 
+      signature, member_level, is_member, 
+      identity_auth, cat_coin, nick_name, 
+      national_flag, overseas_auth, hometown,
+      preference, is_robot, admin_id, 
+      advertising_position, invite_code, qrcode, 
+      distrib_qrcode, like_num, country, 
+      city, like_category,overseas_identity_name,languages,chatting_count,
+      is_id,is_mobile,is_name,is_mail,mother_tongue,
+      background_pic,url,is_high_quality,rating,is_help,
+      is_unread,duration,is_teenagers,mechanism_id,binding_id,invitees_id)
+    values (#{user_id,jdbcType=BIGINT}, #{mobile,jdbcType=VARCHAR},
+      #{mail,jdbcType=VARCHAR}, #{pay_pass,jdbcType=VARCHAR},
+      #{sex,jdbcType=INTEGER}, #{avatar,jdbcType=VARCHAR}, #{birth,jdbcType=TIMESTAMP}, 
+      #{lable,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, #{cash,jdbcType=DECIMAL}, 
+      #{signature,jdbcType=VARCHAR}, #{member_level,jdbcType=INTEGER}, #{is_member,jdbcType=BIT}, 
+      #{identity_auth,jdbcType=BIT}, #{cat_coin,jdbcType=DECIMAL}, #{nick_name,jdbcType=VARCHAR}, 
+      #{national_flag,jdbcType=VARCHAR}, #{overseas_auth,jdbcType=BIT}, #{hometown,jdbcType=VARCHAR}, 
+      #{preference,jdbcType=VARCHAR}, #{is_robot,jdbcType=BIT}, #{admin_id,jdbcType=BIGINT}, 
+      #{advertising_position,jdbcType=BIT}, #{invite_code,jdbcType=VARCHAR},#{qrcode,jdbcType=VARCHAR},
+      #{distrib_qrcode,jdbcType=VARCHAR}, #{like_num,jdbcType=INTEGER}, #{country,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{like_category,jdbcType=VARCHAR},#{overseas_identity_name,jdbcType=VARCHAR}#{languages,jdbcType=VARCHAR},
+      #{chatting_count,jdbcType=INTEGER},
+       #{is_id,jdbcType=BIT}, #{is_mobile,jdbcType=BIT}, #{is_name,jdbcType=BIT}, #{is_mail,jdbcType=BIT},
+       #{mother_tongue,jdbcType=VARCHAR},#{background_pic,jdbcType=VARCHAR},
+       #{url,jdbcType=VARCHAR},#{is_high_quality,jdbcType=BIT},#{rating,jdbcType=INTEGER},#{is_help,jdbcType=BIT},
+       #{is_unread,jdbcType=BIT},#{duration,jdbcType=INTEGER},#{is_teenagers,jdbcType=BIT},
+       #{mechanism_id,jdbcType=BIGINT},#{binding_id,jdbcType=BIGINT},#{invitees_id,jdbcType=BIGINT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserInfoEntity"
+            useGeneratedKeys="true" keyProperty="user_id"
+    >
+        insert into eg_user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="mail != null">
+                mail,
+            </if>
+            <if test="pay_pass != null">
+                pay_pass,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+                avatar,
+            <if test="birth != null">
+                birth,
+            </if>
+            <if test="lable != null">
+                lable,
+            </if>
+            <if test="intro != null">
+                intro,
+            </if>
+            <if test="signature != null">
+                signature,
+            </if>
+            <if test="member_level != null">
+                member_level,
+            </if>
+            <if test="is_member != null">
+                is_member,
+            </if>
+            <if test="identity_auth != null">
+                identity_auth,
+            </if>
+            <if test="cat_coin != null">
+                cat_coin,
+            </if>
+            <if test="nick_name != null">
+                nick_name,
+            </if>
+            <if test="national_flag != null">
+                national_flag,
+            </if>
+            <if test="overseas_auth != null">
+                overseas_auth,
+            </if>
+            <if test="hometown != null">
+                hometown,
+            </if>
+            <if test="preference != null">
+                preference,
+            </if>
+            <if test="is_robot != null">
+                is_robot,
+            </if>
+            <if test="admin_id != null">
+                admin_id,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="advertising_position != null">
+                advertising_position,
+            </if>
+            <if test="invite_code != null">
+                invite_code,
+            </if>
+            <if test="qrcode != null">
+                qrcode,
+            </if>
+            <if test="distrib_qrcode != null">
+                distrib_qrcode,
+            </if>
+            <if test="like_num != null">
+                like_num,
+            </if>
+            <if test="country != null">
+                country,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="like_category != null">
+                like_category,
+            </if>
+            <if test="overseas_identity_name != null">
+                overseas_identity_name,
+            </if>
+            <if test="languages != null">
+                languages,
+            </if>
+            <if test="chatting_count != null">
+                chatting_count,
+            </if>
+            <if test="is_id != null">
+                is_id,
+            </if>
+            <if test="is_mobile != null">
+                is_mobile,
+            </if>
+            <if test="is_name != null">
+                is_name,
+            </if>
+            <if test="is_mail != null">
+                is_mail,
+            </if>
+            <if test="mother_tongue != null">
+                mother_tongue,
+            </if>
+            <if test="background_pic != null">
+                background_pic,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="is_high_quality != null">
+                is_high_quality,
+            </if>
+            <if test="rating != null">
+                rating,
+            </if>
+            <if test="is_help != null">
+                is_help,
+            </if>
+            <if test="is_unread != null">
+                is_unread,
+            </if>
+            <if test="duration != null">
+                duration,
+            </if>
+            <if test="is_teenagers != null">
+                is_teenagers,
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id,
+            </if>
+            <if test="binding_id != null">
+                binding_id,
+            </if>
+            <if test="invitees_id != null">
+                invitees_id,
+            </if>
+            <if test="worker_identity != null">
+                worker_identity,
+            </if>
+            <if test="teacher_id != null">
+                teacher_id,
+            </if>
+            <if test="identity_id != null">
+                identity_id,
+            </if>
+            <if test="wx_code_url != null">
+                wx_code_url,
+            </if>
+            <if test="wx_code != null">
+                wx_code,
+            </if>
+            <if test="is_collection != null">
+                is_collection,
+            </if>
+            <if test="relationships != null">
+                relationships,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mail != null">
+                #{mail,jdbcType=VARCHAR},
+            </if>
+            <if test="pay_pass != null">
+                #{pay_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar == null">
+                'http://img.curiousmore.com/2DE-B2A7648763A5/Documents/com_tencent_imsdk_data/image/huihe_453146001',
+            </if>
+            <if test="birth != null">
+                #{birth,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lable != null">
+                #{lable,jdbcType=VARCHAR},
+            </if>
+            <if test="intro != null">
+                #{intro,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="member_level != null">
+                #{member_level,jdbcType=INTEGER},
+            </if>
+            <if test="is_member != null">
+                #{is_member,jdbcType=BIT},
+            </if>
+            <if test="identity_auth != null">
+                #{identity_auth,jdbcType=BIT},
+            </if>
+            <if test="cat_coin != null">
+                #{cat_coin,jdbcType=DECIMAL},
+            </if>
+            <if test="nick_name != null">
+                #{nick_name,jdbcType=VARCHAR},
+            </if>
+            <if test="national_flag != null">
+                #{national_flag,jdbcType=VARCHAR},
+            </if>
+            <if test="overseas_auth != null">
+                #{overseas_auth,jdbcType=BIT},
+            </if>
+            <if test="hometown != null">
+                #{hometown,jdbcType=VARCHAR},
+            </if>
+            <if test="preference != null">
+                #{preference,jdbcType=VARCHAR},
+            </if>
+            <if test="is_robot != null">
+                #{is_robot,jdbcType=BIT},
+            </if>
+            <if test="admin_id != null">
+                #{admin_id,jdbcType=BIGINT},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=BIGINT},
+            </if>
+            <if test="advertising_position != null">
+                #{advertising_position,jdbcType=BIT},
+            </if>
+            <if test="invite_code != null">
+                #{invite_code,jdbcType=VARCHAR},
+            </if>
+            <if test="qrcode != null">
+                #{qrcode,jdbcType=VARCHAR},
+            </if>
+            <if test="distrib_qrcode != null">
+                #{distrib_qrcode,jdbcType=VARCHAR},
+            </if>
+            <if test="like_num != null">
+                #{like_num,jdbcType=INTEGER},
+            </if>
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="like_category != null">
+                #{like_category,jdbcType=VARCHAR},
+            </if>
+            <if test="overseas_identity_name != null">
+                #{overseas_identity_name,jdbcType=VARCHAR},
+            </if>
+            <if test="languages != null">
+                #{languages,jdbcType=VARCHAR},
+            </if>
+            <if test="chatting_count != null">
+                #{chatting_count,jdbcType=INTEGER},
+            </if>
+            <if test="is_id != null">
+                #{is_id,jdbcType=BIT},
+            </if>
+            <if test="is_mobile != null">
+                #{is_mobile,jdbcType=BIT},
+            </if>
+            <if test="is_name != null">
+                #{is_name,jdbcType=BIT},
+            </if>
+            <if test="is_mail != null">
+                #{is_mail,jdbcType=BIT},
+            </if>
+            <if test="mother_tongue != null">
+                #{mother_tongue,jdbcType=VARCHAR},
+            </if>
+            <if test="background_pic != null">
+                #{background_pic,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="is_high_quality != null">
+                #{is_high_quality,jdbcType=BIT},
+            </if>
+            <if test="rating != null">
+                #{rating,jdbcType=INTEGER},
+            </if>
+            <if test="is_help != null">
+                #{is_help,jdbcType=BIT},
+            </if>
+            <if test="is_unread != null">
+                #{is_unread,jdbcType=BIT},
+            </if>
+            <if test="duration != null">
+                #{duration,jdbcType=INTEGER},
+            </if>
+            <if test="is_teenagers != null">
+                #{is_teenagers,jdbcType=BIT},
+            </if>
+            <if test="mechanism_id != null">
+                #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="binding_id != null">
+                #{binding_id,jdbcType=BIGINT},
+            </if>
+            <if test="invitees_id != null">
+                #{invitees_id,jdbcType=BIGINT},
+            </if>
+            <if test="worker_identity != null">
+                #{worker_identity,jdbcType=BIGINT},
+            </if>
+            <if test="teacher_id != null">
+                #{teacher_id,jdbcType=BIGINT},
+            </if>
+            <if test="identity_id != null">
+                #{identity_id,jdbcType=BIGINT},
+            </if>
+            <if test="wx_code_url != null">
+                #{wx_code_url,jdbcType=BIGINT},
+            </if>
+            <if test="wx_code != null">
+                #{wx_code,jdbcType=BIGINT},
+            </if>
+            <if test="is_collection != null">
+                #{is_collection,jdbcType=BIT},
+            </if>
+            <if test="relationships != null">
+                #{relationships,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+        update eg_user_info
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mail != null">
+                mail = #{mail,jdbcType=VARCHAR},
+            </if>
+            <if test="pay_pass != null">
+                pay_pass = #{pay_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="birth != null">
+                birth = #{birth,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lable != null">
+                lable = #{lable,jdbcType=VARCHAR},
+            </if>
+            <if test="intro != null">
+                intro = #{intro,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                signature = #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="member_level != null">
+                member_level = #{member_level,jdbcType=INTEGER},
+            </if>
+            <if test="is_member != null">
+                is_member = #{is_member,jdbcType=BIT},
+            </if>
+            <if test="identity_auth != null">
+                identity_auth = #{identity_auth,jdbcType=BIT},
+            </if>
+            <if test="cat_coin != null">
+                cat_coin = #{cat_coin,jdbcType=DECIMAL},
+            </if>
+            <if test="nick_name != null">
+                nick_name = #{nick_name,jdbcType=VARCHAR},
+            </if>
+            <if test="national_flag != null">
+                national_flag = #{national_flag,jdbcType=VARCHAR},
+            </if>
+            <if test="overseas_auth != null">
+                overseas_auth = #{overseas_auth,jdbcType=BIT},
+            </if>
+            <if test="hometown != null">
+                hometown = #{hometown,jdbcType=VARCHAR},
+            </if>
+            <if test="preference != null">
+                preference = #{preference,jdbcType=VARCHAR},
+            </if>
+            <if test="is_robot != null">
+                is_robot = #{is_robot,jdbcType=BIT},
+            </if>
+            <if test="admin_id != null">
+                admin_id = #{admin_id,jdbcType=BIGINT},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=BIGINT},
+            </if>
+            <if test="advertising_position != null">
+                advertising_position = #{advertising_position,jdbcType=BIT},
+            </if>
+            <if test="invite_code != null">
+                invite_code = #{invite_code,jdbcType=VARCHAR},
+            </if>
+            <if test="qrcode != null">
+                qrcode = #{qrcode,jdbcType=VARCHAR},
+            </if>
+            <if test="distrib_qrcode != null">
+                distrib_qrcode = #{distrib_qrcode,jdbcType=VARCHAR},
+            </if>
+            <if test="like_num != null">
+                like_num = #{like_num,jdbcType=INTEGER},
+            </if>
+            <if test="country != null">
+                country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="like_category != null">
+                like_category = #{like_category,jdbcType=VARCHAR},
+            </if>
+            <if test="overseas_identity_name != null">
+                overseas_identity_name = #{overseas_identity_name,jdbcType=VARCHAR},
+            </if>
+            <if test="languages != null">
+                languages = #{languages,jdbcType=VARCHAR},
+            </if>
+            <if test="chatting_count != null">
+                chatting_count = #{chatting_count,jdbcType=INTEGER},
+            </if>
+            <if test="is_id != null">
+                is_id = #{is_id,jdbcType=BIT},
+            </if>
+            <if test="is_mobile != null">
+                is_mobile = #{is_mobile,jdbcType=BIT},
+            </if>
+            <if test="is_name != null">
+                is_name = #{is_name,jdbcType=BIT},
+            </if>
+            <if test="is_mail != null">
+                is_mail = #{is_mail,jdbcType=BIT},
+            </if>
+            <if test="mother_tongue != null">
+                mother_tongue = #{mother_tongue,jdbcType=VARCHAR},
+            </if>
+            <if test="background_pic != null">
+                background_pic = #{background_pic,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="is_high_quality != null">
+                is_high_quality = #{is_high_quality,jdbcType=BIT},
+            </if>
+            <if test="rating != null">
+                rating = #{rating,jdbcType=INTEGER},
+            </if>
+            <if test="role_id != null">
+                role_id = #{role_id,jdbcType=INTEGER},
+            </if>
+            <if test="is_help != null">
+                is_help= #{is_help,jdbcType=BIT},
+            </if>
+            <if test="is_unread != null">
+                is_unread=#{is_unread,jdbcType=BIT},
+            </if>
+            <if test="duration != null">
+                duration=#{duration,jdbcType=INTEGER},
+            </if>
+            <if test="is_teenagers != null">
+                is_teenagers = #{is_teenagers,jdbcType=BIT},
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="binding_id != null">
+                binding_id = #{binding_id,jdbcType=BIGINT},
+            </if>
+            <if test="mechanism_recommender_id != null">
+                mechanism_recommender_id = #{mechanism_recommender_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_recommender_id != null">
+                master_recommender_id = #{master_recommender_id,jdbcType=BIGINT},
+            </if>
+            <if test="worker_identity != null">
+                worker_identity = #{worker_identity,jdbcType=INTEGER},
+            </if>
+            <if test="teacher_id != null">
+                teacher_id = #{teacher_id,jdbcType=INTEGER},
+            </if>
+            <if test="identity_id != null">
+                identity_id = #{identity_id,jdbcType=INTEGER},
+            </if>
+            <if test="wx_code_url != null">
+                wx_code_url = #{wx_code_url,jdbcType=VARCHAR},
+            </if>
+            <if test="wx_code != null">
+                wx_code = #{wx_code,jdbcType=VARCHAR},
+            </if>
+            <if test="is_collection != null">
+                is_collection = #{is_collection,jdbcType=BIT},
+            </if>
+            <if test="relationships != null">
+                relationships = #{relationships,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+        </set>
+        where user_id = #{user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    update eg_user_info
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      pay_pass = #{pay_pass,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=INTEGER},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=TIMESTAMP},
+      lable = #{lable,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      member_level = #{member_level,jdbcType=INTEGER},
+      is_member = #{is_member,jdbcType=BIT},
+      identity_auth = #{identity_auth,jdbcType=BIT},
+      cat_coin = #{cat_coin,jdbcType=DECIMAL},
+      nick_name = #{nick_name,jdbcType=VARCHAR},
+      national_flag = #{national_flag,jdbcType=VARCHAR},
+      overseas_auth = #{overseas_auth,jdbcType=BIT},
+      hometown = #{hometown,jdbcType=VARCHAR},
+      preference = #{preference,jdbcType=VARCHAR},
+      is_robot = #{is_robot,jdbcType=BIT},
+      admin_id = #{admin_id,jdbcType=BIGINT},
+      advertising_position = #{advertising_position,jdbcType=BIT},
+      invite_code = #{invite_code,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR},
+      distrib_qrcode = #{distrib_qrcode,jdbcType=VARCHAR},
+      like_num = #{like_num,jdbcType=INTEGER},
+      country = #{country,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      like_category = #{like_category,jdbcType=VARCHAR},
+      overseas_identity_name = #{overseas_identity_name,jdbcType=VARCHAR},
+      languages = #{languages,jdbcType=VARCHAR},
+      chatting_count = #{chatting_count,jdbcType=INTEGER},
+      is_id = #{is_id,jdbcType=BIT},
+      is_mobile = #{is_mobile,jdbcType=BIT},
+      is_name = #{is_name,jdbcType=BIT},
+      is_mail = #{is_mail,jdbcType=BIT},
+      mother_tongue = #{mother_tongue,jdbcType=VARCHAR},
+      background_pic = #{background_pic,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      is_high_quality = #{is_high_quality,jdbcType=BIT},
+      rating = #{rating,jdbcType=INTEGER},
+      is_help= #{is_help,jdbcType=BIT},
+      is_unread=#{is_unread,jdbcType=BIT},
+      duration=#{duration,jdbcType=INTEGER},
+      is_teenagers = #{is_teenagers,jdbcType=BIT},
+      mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      binding_id = #{binding_id,jdbcType=BIGINT}
+    where user_id = #{user_id,jdbcType=BIGINT}
+
+  </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        i.user_id, i.create_time, i.mobile, i.mail, i.pay_pass, i.update_time, i.sex, i.avatar, i.birth, i.lable,
+        i.intro, i.cash, i.signature, i.member_level, i.is_member, i.identity_auth, i.cat_coin, i.nick_name,
+        i.national_flag, i.overseas_auth, i.hometown, i.preference, i.is_robot, i.admin_id, i.advertising_position,
+        i.invite_code,i.qrcode, i.distrib_qrcode, i.like_num, i.country , i.city , i.like_category,i.contacts_num,
+        i.message_num,i.registr_num,i.languages,i.overseas_identity_name,i.chatting_count,i.is_id,i.is_mobile,i.is_name,i.is_mail,i.mother_tongue,
+        i.background_pic,i.url,i.is_high_quality,i.rating,i.is_help,i.is_unread,i.duration,i.is_teenagers,i.mechanism_id,i.binding_id,
+        i.mechanism_recommender_id,i.master_recommender_id,i.qq,
+        e.login_time AS log_out_time,e.online_state AS online_state,e.status AS account_state
+        FROM eg_user_info i left join eg_user_address a on (a.user_id = i.user_id)
+        LEFT JOIN eg_user e ON (e.user_id=i.user_id)
+        <where>
+            <if test="param.user_id!=null">
+                AND i.user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND i.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND i.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND i.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND i.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND i.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND i.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND i.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND i.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND i.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND i.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND i.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND i.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND i.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND i.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND i.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND i.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND i.nick_name = concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND i.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND i.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND i.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND i.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND i.is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND i.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND i.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND i.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND i.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND i.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND i.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND i.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND i.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND i.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND i.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND i.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND i.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND i.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND i.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND i.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND i.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND i.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND i.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND i.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND i.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND i.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND i.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND i.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND i.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND i.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND i.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND i.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND i.binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        u.user_id, u.create_time, u.mobile, u.mail, u.update_time, u.sex, u.avatar,u.birth, u.lable,
+        u.intro, u.cash, u.signature, u.member_level, u.is_member, u.identity_auth, u.cat_coin, u.nick_name,
+        u.national_flag, u.overseas_auth, u.hometown, u.preference, u.is_robot, u.admin_id, u.qq, u.advertising_position,
+        u.invite_code, u.qrcode, u.distrib_qrcode, u.like_num,u.country,u.city,u.like_category,u.contacts_num,
+        u.message_num,u.registr_num,u.languages,u.overseas_identity_name,u.chatting_count,u.is_id,u.is_mobile,u.is_name,u.is_mail,u.mother_tongue,
+        u.background_pic,u.url,u.is_high_quality,u.rating,u.is_help,u.is_unread,u.duration,u.is_teenagers,u.mechanism_id,u.binding_id,
+        u.mechanism_recommender_id,u.master_recommender_id,u.is_collection,u.points,e.register_platform AS register_platform,
+               e.is_teach_paypal AS is_teach_paypal,
+        e.login_time AS log_out_time,e.online_state AS online_state,e.status AS account_state
+        FROM eg_user_info u
+        LEFT JOIN eg_user e ON (e.user_id=u.user_id)
+        <where>
+            <if test="param.begin_time!=null and param.end_time!=null">
+                AND u.create_time BETWEEN #{param.begin_time,jdbcType=TIMESTAMP} AND
+                #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.user_id!=null">
+                AND u.user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND u.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND u.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND u.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND u.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND u.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND u.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND u.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND u.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND u.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND u.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND u.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND u.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND u.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND u.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND u.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND u.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND u.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND u.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND u.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND u.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND u.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND u.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND u.is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND u.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND u.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND u.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND u.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND u.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND u.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND u.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND u.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND u.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND u.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND u.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND u.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND u.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND u.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND u.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND u.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND u.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND u.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND u.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND u.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND u.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND u.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND u.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND u.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND u.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND u.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND u.binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.teacher_id != null">
+                AND u.teacher_id = #{param.teacher_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY u.user_id DESC
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="queryUserListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        i.*,u.login_time AS log_out_time,u.online_state AS online_state,u.status AS account_state
+        <if test="param.searchParam != null">
+            <if test="param.searchParam.latitude != null and param.searchParam.longitude != null">
+                ,eg_user.distance (#{param.searchParam.latitude},#{param.searchParam.longitude},
+                a.latitude,a.longitude
+                ) dis
+            </if>
+        </if>
+        FROM eg_user_info i
+        left join eg_user_address a on (a.user_id = i.user_id)
+        LEFT JOIN eg_user u ON (u.user_id=i.user_id)
+        <where>
+            <if test="param.begin_time!=null and param.end_time!=null">
+                AND i.birth BETWEEN #{param.begin_time,jdbcType=BIGINT} AND #{param.end_time,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND i.user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND i.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND i.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND i.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND i.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND i.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND i.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND i.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND i.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND i.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND i.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND i.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND i.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND i.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND i.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND i.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND i.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND i.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND i.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND i.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND i.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND i.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null">
+                AND i.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND i.is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND i.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND i.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND i.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND i.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND i.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND i.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND i.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND i.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null">
+                AND i.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND i.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND i.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND i.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND i.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND i.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND i.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND i.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND i.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND i.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND i.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND i.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND i.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND i.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND i.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND i.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND i.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND i.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND i.binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryColleagueListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        DISTINCT o.*, u.login_time AS log_out_time,u.online_state AS online_state,u.status AS account_state
+        <if test="param.searchParam != null">
+            <if test="param.searchParam.latitude != null and param.searchParam.longitude != null">
+                ,eg_user.distance (#{param.searchParam.latitude},#{param.searchParam.longitude},
+                a.latitude,a.longitude
+                ) distance
+            </if>
+        </if>
+        FROM
+        (
+        SELECT DISTINCT
+        c1.user_id
+        FROM
+        eg_user_company c
+        INNER JOIN eg_user_company c1 ON c.company_name = c1.company_name
+        WHERE
+        c.user_id = #{param.user_id,jdbcType=BIGINT}
+        ) c2
+        LEFT JOIN eg_user_info o ON (c2.user_id = o.user_id)
+        LEFT JOIN eg_user_address a ON (o.user_id = a.user_id)
+        LEFT JOIN eg_user u ON (u.user_id=o.user_id)
+        <where>
+            <if test="param.user_id!=null">
+                AND o.user_id != #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND o.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND o.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND o.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND o.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND o.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND o.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND o.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND o.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND o.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND o.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND o.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND o.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND o.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND o.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND o.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND o.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND o.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND o.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND o.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND o.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null">
+                AND o.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND o.is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND o.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND o.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND o.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND o.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND o.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND o.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND o.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND o.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.country!=''">
+                AND o.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND o.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND o.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND o.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND o.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND o.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND o.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND o.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND o.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND o.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND o.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND o.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND o.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND o.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND o.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND o.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND o.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND o.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND o.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND o.binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="querySchoolmateListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        DISTINCT o.*, u.login_time AS log_out_time,u.online_state AS online_state,u.status AS account_state
+        <if test="param.searchParam != null">
+            <if test="param.searchParam.latitude != null and param.searchParam.longitude != null">
+                ,eg_user.distance (#{param.searchParam.latitude},#{param.searchParam.longitude},
+                a.latitude,a.longitude
+                ) distance
+            </if>
+        </if>
+        FROM
+        (
+        SELECT DISTINCT
+        s1.user_id
+        FROM
+        eg_user_school s
+        INNER JOIN eg_user_school s1 ON s.school_name = s1.school_name
+        WHERE
+        s.user_id = #{param.user_id,jdbcType=BIGINT}
+        ) s2
+        LEFT JOIN eg_user_info o ON (s2.user_id = o.user_id)
+        LEFT JOIN eg_user_address a ON (o.user_id = a.user_id)
+        LEFT JOIN eg_user u ON (u.user_id=o.user_id)
+        <where>
+            <if test="param.user_id!=null">
+                AND o.user_id != #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND o.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND o.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND o.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND o.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND o.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND o.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND o.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND o.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND o.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND o.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND o.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND o.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND o.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND o.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND o.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND o.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND o.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND o.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND o.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND o.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null">
+                AND o.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND o.is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND o.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND o.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND o.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND o.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND o.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND o.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND o.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND o.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND o.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND o.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND o.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND o.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND o.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND o.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND o.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND o.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND o.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND o.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND o.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND o.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND o.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND o.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND o.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND o.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND o.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND o.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND o.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND o.binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY o.user_id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryContactsListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        DISTINCT o.*, u.login_time AS log_out_time,u.online_state AS online_state,u.status AS account_state
+        <if test="param.searchParam != null">
+            <if test="param.searchParam.latitude != null and param.searchParam.longitude != null">
+                ,eg_user.distance (#{param.searchParam.latitude},#{param.searchParam.longitude},
+                a.latitude,a.longitude
+                ) distance
+            </if>
+        </if>
+        FROM
+        eg_user_contacts c
+        LEFT JOIN eg_user_info o ON (o.mobile = c.mobile)
+        left join eg_user_address a on (a.user_id = o.user_id)
+        LEFT JOIN eg_user u ON (u.user_id=o.user_id)
+        <where>
+            <if test="param.user_id!=null">
+                AND c.user_id = #{param.user_id,jdbcType=BIGINT}
+                AND o.user_id != #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND o.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND o.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND o.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND o.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND o.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND o.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND o.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND o.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND o.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND o.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND o.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND o.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND o.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND o.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND o.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND o.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND o.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND o.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND o.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND o.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null">
+                AND o.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND o.is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND o.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND o.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND o.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND o.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND o.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND o.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND o.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND o.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND o.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND o.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND o.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND o.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND o.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND o.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND o.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND o.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND o.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND o.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND o.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND o.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND o.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND o.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND o.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND o.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND o.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND o.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND o.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND o.binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryNearbyListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultMap="BaseResultMap">
+
+        SELECT
+        DISTINCT o.*, u.login_time AS log_out_time,u.online_state AS online_state,u.status AS account_state
+        <if test="param.searchParam != null">
+            <if test="param.searchParam.latitude != null and param.searchParam.longitude != null">
+                ,eg_user.distance (#{param.searchParam.latitude},#{param.searchParam.longitude},
+                a.latitude,a.longitude
+                ) distance
+            </if>
+        </if>
+        FROM
+        eg_user_info o
+        LEFT JOIN eg_user_address a ON (o.user_id = a.user_id)
+        LEFT JOIN eg_user u ON (u.user_id=o.user_id)
+        <where>
+            <if test="param.user_id!=null">
+                AND o.user_id != #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND o.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND o.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND o.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND o.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND o.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND o.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND o.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND o.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND o.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND o.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND o.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND o.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND o.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND o.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND o.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND o.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND o.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND o.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND o.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND o.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null">
+                AND o.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND o.is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND o.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND o.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND o.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND o.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND o.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND o.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND o.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND o.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND o.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND o.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND o.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND o.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND o.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND o.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND o.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND o.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND o.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND o.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND o.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND o.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND o.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND o.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND o.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND o.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND o.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND o.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND o.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND o.binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserInfoEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_info
+        <where>
+            <if test="param.begin_time!=null and param.end_time!=null">
+                AND create_time BETWEEN  #{param.begin_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null and param.signature!=''">
+                AND signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null and param.national_flag!=''">
+                AND national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+    <select id="userStatistics" resultType="com.huihe.eg.user.model.count.StatisticsParam">
+    SELECT
+        SUM(
+            CASE i.user_id
+            WHEN 0 THEN
+                0
+            ELSE
+                1
+            END
+        ) total,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(u.create_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d') THEN
+                1
+            ELSE
+                0
+            END
+        ) nowNum,
+        sum(
+        CASE
+            WHEN u.online_state = 1 THEN
+                1
+            ELSE
+                0
+            END
+        ) currentNum
+    FROM
+        eg_user_info i ,eg_user u
+        WHERE i.user_id=u.user_id
+  </select>
+
+    <select id="queryChart" resultType="com.huihe.eg.user.model.count.ChartParam"
+            parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    SELECT
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(#{param.statistics_time,jdbcType=TIMESTAMP}, '%Y-%m') THEN
+                1
+            ELSE
+                0
+            END
+        ) december,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 1 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) november,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) october,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) september,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) august,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) july,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) june,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) may,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) april,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) march,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) february,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 MONTH),
+                '%Y-%m'
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) january,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(#{param.statistics_time,jdbcType=TIMESTAMP}, '%Y-%m-%d') THEN
+                1
+            ELSE
+                0
+            END
+        ) yiwNum,
+        sum(
+            CASE
+            WHEN #{param.statistics_time,jdbcType=TIMESTAMP} &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 1 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) erNum,
+        sum(
+            CASE
+            WHEN (#{param.statistics_time,jdbcType=TIMESTAMP} + - 1) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) saNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) siNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) wuNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) liuNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) sevenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 DAY)
+             ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) eightNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 DAY)
+             )&gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) nineNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) tenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 DAY)
+             )&gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) elevenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 DAY)
+             )&gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twelveNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 12 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) thirteenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 12 DAY)
+             )&gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 13 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) forteenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 13 DAY)
+             )&gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 14 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) fifteenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 14 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 15 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) sixteenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 15 DAY)
+             )&gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 16 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) seventeenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 16 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 17 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) eighteenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 17 DAY)
+             )&gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 18 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) nineteenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 18 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 19 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 19 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 20 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyOneNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 20 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 21 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyTwoNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 21 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 22 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyThreeNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 22 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 23 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyFourNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 23 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 24 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyFiveNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 24 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 25 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentySixNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 25 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 26 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentySevenNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 26 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 27 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyEightNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 27 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 28 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) twentyNineNum,
+        sum(
+            CASE
+            WHEN (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 28 DAY)
+            ) &gt; create_time
+            AND create_time &gt; (
+                date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 29 DAY)
+            ) THEN
+                1
+            ELSE
+                0
+            END
+        ) thirtyNum,
+        #{param.statistics_time,jdbcType=TIMESTAMP} yi,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 1 DAY) er,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 DAY) sa,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 DAY) si,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 DAY) wu,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 DAY) liu,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 DAY) qi,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 DAY) eight,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 DAY) nine,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 DAY) ten,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 DAY) eleven,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 DAY) twelve,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 12 DAY) thirteen,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 13 DAY) forteen,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 14 DAY) fifteen,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 15 DAY) sixteen,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 16 DAY) seventeen,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 17 DAY) eighteen,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 18 DAY) nineteen,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 19 DAY) twenty,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 20 DAY) twentyOne,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 21 DAY) twentyTwo,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 22 DAY) twentyThree,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 23 DAY) twentyFour,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 24 DAY) twentyFive,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 25 DAY) twentySix,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 26 DAY) twentySeven,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 27 DAY) twentyEight,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 28 DAY) twentyNine,
+        date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 29 DAY) thirty
+    FROM
+        eg_user_info
+  </select>
+    <select id="queryAllUserid" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultType="java.lang.Long">
+  SELECT  user_id FROM eg_user_info  limit #{param.startRow},#{param.pageSize}
+</select>
+
+    <update id="updateChattingCount" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    update  eg_user_info set chatting_count=chatting_count -1 where user_id=  #{param.user_id,jdbcType=BIGINT}
+  </update>
+    <update id="updateAddChattingCount" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    update  eg_user_info set chatting_count=chatting_count + #{param.chatting_count,jdbcType=INTEGER} where user_id=  #{param.user_id,jdbcType=BIGINT}
+  </update>
+
+    <update id="updateRegistrNum" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    update  eg_user_info set registr_num=registr_num +1 where user_id=  #{param.user_id,jdbcType=BIGINT}
+  </update>
+    <update id="updateAddCatCoin" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    update  eg_user_info set cat_coin=cat_coin + #{param.cat_coin,jdbcType=INTEGER} where user_id=  #{param.user_id,jdbcType=BIGINT}
+  </update>
+    <update id="updateReduceCatCoin" parameterType="com.huihe.eg.user.model.UserInfoEntity">
+    update  eg_user_info set cat_coin=cat_coin - #{param.cat_coin,jdbcType=INTEGER} where user_id=  #{param.user_id,jdbcType=BIGINT}
+  </update>
+    <!-- 查询最新真实用户-->
+    <select id="queryNewListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        u.user_id, u.create_time, u.mobile, u.mail, u.update_time, u.sex, u.avatar,u.birth, u.lable,
+        u.intro, u.cash, u.signature, u.member_level, u.is_member, u.identity_auth, u.cat_coin, u.nick_name,
+        u.national_flag, u.overseas_auth, u.hometown, u.preference, u.is_robot, u.admin_id, u.qq, u.advertising_position,
+        u.invite_code, u.qrcode, u.distrib_qrcode, u.like_num, u.country , u.city , u.like_category,u.contacts_num,
+        u.message_num,u.registr_num,u.overseas_identity_name,u.languages,u.chatting_count,u.is_id,u.is_mobile,u.is_name,u.is_mail,
+        u.mother_tongue,u.background_pic,u.url,u.is_high_quality,u.rating,u.is_help,u.is_unread,u.duration,u.is_teenagers,u.mechanism_id,u.binding_id,
+        u.mechanism_recommender_id,u.master_recommender_id,
+        e.login_time AS log_out_time,e.online_state AS online_state,e.status AS account_state
+        FROM eg_user_info u
+        left join eg_user_address a on (a.user_id = u.user_id)
+        LEFT JOIN eg_user e ON (e.user_id=u.user_id)
+        <where>
+            (u.is_robot = 0 OR u.is_robot IS NULL )
+            <if test="param.user_id!=null">
+                AND u.user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND u.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND u.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND u.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND u.pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND u.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND u.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND u.avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND u.birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND u.lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND u.intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND u.cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND u.signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND u.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND u.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND u.identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND u.cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND u.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND u.national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND u.overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND u.hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND u.preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.admin_id!=null">
+                AND u.admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND u.qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND u.advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND u.invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND u.qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND u.distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND u.like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND u.country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND u.city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND u.like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND u.overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND u.languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND u.chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND u.is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND u.is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND u.is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND u.is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND u.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND u.background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND u.url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND u.is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND u.rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND u.is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND u.is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND u.duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND u.is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND u.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY user_id DESC
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterListPage" parameterType="com.huihe.eg.user.model.UserInfoEntity"
+            resultType="com.huihe.eg.user.model.UserInfoEntity">
+        SELECT
+        i.user_id,i.avatar,i.sex,i.national_flag,i.nick_name,u.login_time AS log_out_time,u.online_state AS
+        online_state,m.type AS master_type
+        FROM eg_user_info i
+        LEFT JOIN eg_user u ON (u.user_id=i.user_id)
+        LEFT JOIN eg_master_info m ON (i.user_id=m.user_id)
+        <where>
+            m.status=2
+            <if test="param.languages!=null and param.languages!='' ">
+                AND m.teach_language = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_type!=null and param.master_type!='' ">
+                AND m.type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="queryUserOnline" parameterType="com.huihe.eg.user.model.UserInfoEntity"
+            resultType="com.huihe.eg.user.model.UserInfoEntity">
+
+        SELECT
+        count(DISTINCT h.user_id) as loginStatistical
+        FROM
+        eg_login_history h,
+        eg_user_info i
+        WHERE
+        h.user_id=i.user_id and
+        DATE_FORMAT(login_time, '%H') &gt;= 7
+        AND DATE_FORMAT(logout_time, '%H') &lt; 9
+        <if test="param.begin_time!=null and param.end_time!=null">
+            AND i.birth BETWEEN #{param.begin_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.sex!=null">
+            AND i.sex = #{param.sex,jdbcType=INTEGER}
+        </if>
+        <if test="param.begin_time_statistics!=null and param.end_time_statistics!=null">
+            AND login_time BETWEEN #{param.begin_time_statistics,jdbcType=TIMESTAMP} AND
+            #{param.end_time_statistics,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.country!=null and param.country!=''">
+            AND i.country = #{param.country,jdbcType=VARCHAR}
+        </if>
+        <if test="param.city!=null and param.city!=''">
+            AND i.city = #{param.city,jdbcType=VARCHAR}
+        </if>
+        UNION all
+        SELECT
+        count(DISTINCT h.user_id) as loginStatistical
+        FROM
+        eg_login_history h,
+        eg_user_info i
+        WHERE
+        h.user_id=i.user_id and
+        DATE_FORMAT(login_time, '%H') &gt;= 9
+        AND DATE_FORMAT(logout_time, '%H') &lt; 12
+        <if test="param.begin_time!=null and param.end_time!=null">
+            AND i.birth BETWEEN #{param.begin_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.begin_time_statistics!=null and param.end_time_statistics!=null">
+            AND login_time BETWEEN #{param.begin_time_statistics,jdbcType=TIMESTAMP} AND
+            #{param.end_time_statistics,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.sex!=null">
+            AND i.sex = #{param.sex,jdbcType=INTEGER}
+        </if>
+        <if test="param.country!=null and param.country!=''">
+            AND i.country = #{param.country,jdbcType=VARCHAR}
+        </if>
+        <if test="param.city!=null and param.city!=''">
+            AND i.city = #{param.city,jdbcType=VARCHAR}
+        </if>
+        UNION all
+        SELECT
+        count(DISTINCT h.user_id) as loginStatistical
+        FROM
+        eg_login_history h,
+        eg_user_info i
+        WHERE
+        h.user_id=i.user_id and
+        DATE_FORMAT(login_time, '%H') &gt;= 12
+        AND DATE_FORMAT(logout_time, '%H') &lt; 14
+        <if test="param.begin_time!=null and param.end_time!=null">
+            AND i.birth BETWEEN #{param.begin_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.sex!=null">
+            AND i.sex = #{param.sex,jdbcType=INTEGER}
+        </if>
+        <if test="param.begin_time_statistics!=null and param.end_time_statistics!=null">
+            AND login_time BETWEEN #{param.begin_time_statistics,jdbcType=TIMESTAMP} AND
+            #{param.end_time_statistics,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.country!=null and param.country!=''">
+            AND i.country = #{param.country,jdbcType=VARCHAR}
+        </if>
+        <if test="param.city!=null and param.city!=''">
+            AND i.city = #{param.city,jdbcType=VARCHAR}
+        </if>
+        UNION all
+        SELECT
+        count(DISTINCT h.user_id) as loginStatistical
+        FROM
+        eg_login_history h,
+        eg_user_info i
+        WHERE
+        h.user_id=i.user_id and
+        DATE_FORMAT(login_time, '%H') &gt;= 14
+        AND DATE_FORMAT(logout_time, '%H') &lt; 18
+        <if test="param.begin_time!=null and param.end_time!=null">
+            AND i.birth BETWEEN #{param.begin_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.begin_time_statistics!=null and param.end_time_statistics!=null">
+            AND login_time BETWEEN #{param.begin_time_statistics,jdbcType=TIMESTAMP} AND
+            #{param.end_time_statistics,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.sex!=null">
+            AND i.sex = #{param.sex,jdbcType=INTEGER}
+        </if>
+        <if test="param.country!=null and param.country!=''">
+            AND i.country = #{param.country,jdbcType=VARCHAR}
+        </if>
+        <if test="param.city!=null and param.city!=''">
+            AND i.city = #{param.city,jdbcType=VARCHAR}
+        </if>
+        UNION all
+        SELECT
+        count(DISTINCT h.user_id) as loginStatistical
+        FROM
+        eg_login_history h,
+        eg_user_info i
+        WHERE
+        h.user_id=i.user_id and
+        DATE_FORMAT(login_time, '%H') &gt;= 18
+        AND DATE_FORMAT(logout_time, '%H') &lt; 23
+        <if test="param.begin_time!=null and param.end_time!=null">
+            AND i.birth BETWEEN #{param.begin_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.begin_time_statistics!=null and param.end_time_statistics!=null">
+            AND login_time BETWEEN #{param.begin_time_statistics,jdbcType=TIMESTAMP} AND
+            #{param.end_time_statistics,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.sex!=null">
+            AND i.sex = #{param.sex,jdbcType=INTEGER}
+        </if>
+        <if test="param.country!=null and param.country!=''">
+            AND i.country = #{param.country,jdbcType=VARCHAR}
+        </if>
+        <if test="param.city!=null and param.city!=''">
+            AND i.city = #{param.city,jdbcType=VARCHAR}
+        </if>
+        UNION all
+        SELECT
+        count(DISTINCT h.user_id) as loginStatistical
+        FROM
+        eg_login_history h,
+        eg_user_info i
+        WHERE
+        h.user_id=i.user_id and
+        DATE_FORMAT(login_time, '%H') &gt;= 23
+        AND DATE_FORMAT(logout_time, '%H') &lt; 7
+        <if test="param.begin_time!=null and param.end_time!=null">
+            AND i.birth BETWEEN #{param.begin_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.sex!=null">
+            AND i.sex = #{param.sex,jdbcType=INTEGER}
+        </if>
+        <if test="param.begin_time_statistics!=null and param.end_time_statistics!=null">
+            AND login_time BETWEEN #{param.begin_time_statistics,jdbcType=TIMESTAMP} AND
+            #{param.end_time_statistics,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.country!=null and param.country!=''">
+            AND i.country = #{param.country,jdbcType=VARCHAR}
+        </if>
+        <if test="param.city!=null and param.city!=''">
+            AND i.city = #{param.city,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryMemberListPage" resultType="com.huihe.eg.user.model.UserInfoEntity"
+            parameterType="com.huihe.eg.user.model.UserInfoEntity">
+        SELECT
+        u.user_id,
+        i.nick_name,
+        mobile,
+        m.start_time AS begin_time,
+        m.end_time,
+        u. STATUS AS account_state,
+        i.is_member,
+        m.member_level
+        FROM
+        eg_user_member m
+        LEFT JOIN eg_user u ON m.user_id = u.user_id
+        LEFT JOIN eg_user_info i ON u.user_id = i.user_id
+        <where>
+            <if test="param.member_level!=null">
+                AND m.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND i.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMemberListPageCount" resultType="java.lang.Integer"
+            parameterType="com.huihe.eg.user.model.UserInfoEntity">
+        SELECT
+        count(1)
+        FROM
+        eg_user_member m
+        LEFT JOIN eg_user u ON m.user_id = u.user_id
+        LEFT JOIN eg_user_info i ON u.user_id = i.user_id
+        <where>
+            <if test="param.member_level!=null">
+                AND m.member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND i.is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByMessage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_info
+        <where>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.begin_time!=null and param.end_time!=null">
+                AND create_time
+                BETWEEN #{param.begin_time,jdbcType=TIMESTAMP}
+                AND #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY user_id DESC
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryByNickName" resultType="com.huihe.eg.user.model.UserInfoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_info
+        where nick_name = #{param.nick_name,jdbcType=VARCHAR}
+    </select>
+    <select id="queryThisMonth" resultType="com.huihe.eg.user.model.UserInfoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_info
+        where  DATE_FORMAT( create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+        and invitees_id = #{param.invitees_id,jdbcType=VARCHAR}
+        <if test="param.country!=null">
+            AND country like concat('%',{param.country,jdbcType=VARCHAR},'%')
+        </if>
+    </select>
+    <select id="queryMasterCountTotal" resultType="java.lang.Integer">
+        SELECT COALESCE(COUNT(1),0) from eg_user_info
+        where admin_id = #{param.admin_id,jdbcType=BIGINT}
+    </select>
+    <select id="queryByInviteCode" resultType="com.huihe.eg.user.model.UserInfoEntity">
+        select <include refid="Base_Column_List"/>
+        from eg_user_info
+        where invite_code = #{param.invite_code,jdbcType=VARCHAR}
+        limit 1
+    </select>
+    <select id="queryIdByNickName" resultType="java.lang.Long">
+    select user_id from eg_user_info
+    where nick_name like ('%',#{nick_name,jdbcType=VARCHAR},'%')
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        select
+        coalesce(count(1),0)
+        from eg_user_info
+        <where>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.begin_time!=null and param.end_time!=null">
+                AND create_time
+                BETWEEN #{param.begin_time,jdbcType=TIMESTAMP}
+                AND #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryHelperList" resultType="com.huihe.eg.user.model.UserInfoEntity">
+    select
+    <include refid="Base_Column_List"/>
+    from eg_user_info where identity_id = #{identity_id,jdbcType=BIGINT}
+    limit 1
+    </select>
+    <select id="queryMechanismMasterList" resultType="com.huihe.eg.user.model.UserInfoEntity">
+
+
+
+    </select>
+    <select id="queryInfoList" resultType="com.huihe.eg.user.model.UserInfoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_info
+        <where>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryUserAvatar" parameterType="com.huihe.eg.user.model.UserInfoEntity" resultType="java.lang.String">
+        select
+        avatar
+        from eg_user_info
+        <where>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.begin_time!=null and param.end_time!=null">
+                AND create_time
+                BETWEEN #{param.begin_time,jdbcType=TIMESTAMP}
+                AND #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_pass!=null">
+                AND pay_pass = #{param.pay_pass,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.avatar!=null">
+                AND avatar = #{param.avatar,jdbcType=VARCHAR}
+            </if>
+            <if test="param.birth!=null">
+                AND birth = #{param.birth,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.lable!=null">
+                AND lable = #{param.lable,jdbcType=VARCHAR}
+            </if>
+            <if test="param.intro!=null">
+                AND intro = #{param.intro,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.signature!=null">
+                AND signature = #{param.signature,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_identity_name!=null">
+                AND overseas_identity_name = #{param.overseas_identity_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.identity_auth!=null">
+                AND identity_auth = #{param.identity_auth,jdbcType=BIT}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nick_name!=null">
+                AND nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.national_flag!=null">
+                AND national_flag = #{param.national_flag,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overseas_auth!=null">
+                AND overseas_auth = #{param.overseas_auth,jdbcType=BIT}
+            </if>
+            <if test="param.hometown!=null">
+                AND hometown = #{param.hometown,jdbcType=VARCHAR}
+            </if>
+            <if test="param.preference!=null and param.preference!=''">
+                AND preference = #{param.preference,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_robot!=null">
+                AND is_robot = #{param.is_robot,jdbcType=BIT}
+            </if>
+            <if test="param.admin_id!=null">
+                AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.qq!=null">
+                AND qq = #{param.qq,jdbcType=BIGINT}
+            </if>
+            <if test="param.advertising_position!=null">
+                AND advertising_position = #{param.advertising_position,jdbcType=BIT}
+            </if>
+            <if test="param.invite_code!=null">
+                AND invite_code = #{param.invite_code,jdbcType=VARCHAR}
+            </if>
+            <if test="param.qrcode!=null">
+                AND qrcode = #{param.qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.distrib_qrcode!=null">
+                AND distrib_qrcode = #{param.distrib_qrcode,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_num!=null">
+                AND like_num = #{param.like_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.country!=null and param.country!=''">
+                AND country = #{param.country,jdbcType=VARCHAR}
+            </if>
+            <if test="param.city!=null and param.city!=''">
+                AND city = #{param.city,jdbcType=VARCHAR}
+            </if>
+            <if test="param.like_category!=null">
+                AND like_category = #{param.like_category,jdbcType=VARCHAR}
+            </if>
+            <if test="param.languages!=null">
+                AND languages = #{param.languages,jdbcType=VARCHAR}
+            </if>
+            <if test="param.chatting_count!=null">
+                AND chatting_count = #{param.chatting_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_id != null">
+                AND is_id = #{param.is_id,jdbcType=BIT}
+            </if>
+            <if test="param.is_mobile != null">
+                AND is_mobile = #{param.is_mobile,jdbcType=BIT}
+            </if>
+            <if test="param.is_name != null">
+                AND is_name = #{param.is_name,jdbcType=BIT}
+            </if>
+            <if test="param.is_mail != null">
+                AND is_mail = #{param.is_mail,jdbcType=BIT}
+            </if>
+            <if test="param.mother_tongue != null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.background_pic != null">
+                AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.url != null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_high_quality != null">
+                AND is_high_quality = #{param.is_high_quality,jdbcType=BIT}
+            </if>
+            <if test="param.rating != null">
+                AND rating = #{param.rating,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_help != null">
+                AND is_help = #{param.is_help,jdbcType=BIT}
+            </if>
+            <if test="param.is_unread != null">
+                AND is_unread = #{param.is_unread,jdbcType=BIT}
+            </if>
+            <if test="param.duration != null">
+                AND duration=#{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teenagers != null">
+                AND is_teenagers = #{param.is_teenagers,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id != null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.binding_id != null">
+                AND binding_id = #{param.binding_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <update id="updateCash">
+        update eg_user_info
+        set cash = #{param.cash,jdbcType=DECIMAL}
+        where user_id = #{param.user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateRoleId">
+    update eg_user_info
+    set role_id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <update id="updateInvateCode">
+    update         eg_user_info
+    set invite_code = #{param.invite_code,jdbcType=VARCHAR}
+    where user_id = #{param.user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateSubCash">
+        update  eg_user_info set cash=cash - #{bigDecimal,jdbcType=DECIMAL} where user_id=  #{user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateReduceChattingCount">
+        update  eg_user_info set chatting_count=chatting_count - 1 where user_id=  #{param.user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateIsCollection">
+    update eg_user_info set is_collection=true
+    where  user_id= #{param.user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateSubPoint">
+        update eg_user_info set points=points- #{param.points,jdbcType=INTEGER}
+        where user_id= #{param.user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateAddPoint">
+        update eg_user_info set points=points+ #{param.points,jdbcType=INTEGER}
+        where user_id= #{param.user_id,jdbcType=BIGINT}
+    </update>
+</mapper>

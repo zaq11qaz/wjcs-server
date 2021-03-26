@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.authorization.mybatis.dao.UserButtonMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.authorization.model.UserButtonEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="button_name" jdbcType="VARCHAR" property="button_name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="add_user" jdbcType="VARCHAR" property="add_user" />
+    <result column="update_user" jdbcType="VARCHAR" property="update_user" />
+    <result column="button_id" jdbcType="BIGINT" property="button_id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, button_name, create_time, update_time, add_user, update_user, button_id, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authorization_user_button
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authorization_user_button
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.authorization.model.UserButtonEntity">
+    insert into authorization_user_button (id, button_name, create_time, 
+      update_time, add_user, update_user, 
+      button_id, user_id)
+    values (#{id,jdbcType=BIGINT}, #{button_name,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{add_user,jdbcType=VARCHAR}, #{update_user,jdbcType=VARCHAR}, 
+      #{button_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.authorization.model.UserButtonEntity">
+    insert into authorization_user_button
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="button_name != null">
+        button_name,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="add_user != null">
+        add_user,
+      </if>
+      <if test="update_user != null">
+        update_user,
+      </if>
+      <if test="button_id != null">
+        button_id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="button_name != null">
+        #{button_name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="add_user != null">
+        #{add_user,jdbcType=VARCHAR},
+      </if>
+      <if test="update_user != null">
+        #{update_user,jdbcType=VARCHAR},
+      </if>
+      <if test="button_id != null">
+        #{button_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.authorization.model.UserButtonEntity">
+    update authorization_user_button
+    <set>
+      <if test="button_name != null">
+        button_name = #{button_name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="add_user != null">
+        add_user = #{add_user,jdbcType=VARCHAR},
+      </if>
+      <if test="update_user != null">
+        update_user = #{update_user,jdbcType=VARCHAR},
+      </if>
+      <if test="button_id != null">
+        button_id = #{button_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.authorization.model.UserButtonEntity">
+    update authorization_user_button
+    set button_name = #{button_name,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      add_user = #{add_user,jdbcType=VARCHAR},
+      update_user = #{update_user,jdbcType=VARCHAR},
+      button_id = #{button_id,jdbcType=BIGINT},
+      user_id = #{user_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.authorization.model.UserButtonEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_user_button
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.button_name!=null">
+        AND button_name = #{param.button_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.button_id!=null">
+        AND button_id = #{param.button_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.authorization.model.UserButtonEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_user_button
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.button_name!=null">
+        AND button_name = #{param.button_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.button_id!=null">
+        AND button_id = #{param.button_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.authorization.model.UserButtonEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM authorization_user_button
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.button_name!=null">
+        AND button_name = #{param.button_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.button_id!=null">
+        AND button_id = #{param.button_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+</mapper>

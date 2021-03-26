@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserAddressMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserAddressEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="street" jdbcType="VARCHAR" property="street" />
+    <result column="poiname" jdbcType="VARCHAR" property="poiname" />
+    <result column="postalcode" jdbcType="VARCHAR" property="postalcode" />
+    <result column="city_code" jdbcType="VARCHAR" property="city_code" />
+    <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+    <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+    <result column="country_code" jdbcType="VARCHAR" property="country_code" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, address, create_time, country, province, city, district, street, poiname, 
+    postalcode, city_code, latitude, longitude, country_code, status, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_address
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_address
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserAddressEntity">
+    insert into eg_user_address (id, user_id, address, 
+      create_time, country, province, 
+      city, district, street, 
+      poiname, postalcode, city_code, 
+      latitude, longitude, country_code, 
+      status, update_time)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{address,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, 
+      #{poiname,jdbcType=VARCHAR}, #{postalcode,jdbcType=VARCHAR}, #{city_code,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=DECIMAL}, #{longitude,jdbcType=DECIMAL}, #{country_code,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserAddressEntity">
+    insert into eg_user_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="street != null">
+        street,
+      </if>
+      <if test="poiname != null">
+        poiname,
+      </if>
+      <if test="postalcode != null">
+        postalcode,
+      </if>
+      <if test="city_code != null">
+        city_code,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="country_code != null">
+        country_code,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null">
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="poiname != null">
+        #{poiname,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="city_code != null">
+        #{city_code,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="country_code != null">
+        #{country_code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserAddressEntity">
+    update eg_user_address
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null">
+        street = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="poiname != null">
+        poiname = #{poiname,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        postalcode = #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="city_code != null">
+        city_code = #{city_code,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="country_code != null">
+        country_code = #{country_code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserAddressEntity">
+    update eg_user_address
+    set user_id = #{user_id,jdbcType=BIGINT},
+      address = #{address,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      street = #{street,jdbcType=VARCHAR},
+      poiname = #{poiname,jdbcType=VARCHAR},
+      postalcode = #{postalcode,jdbcType=VARCHAR},
+      city_code = #{city_code,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=DECIMAL},
+      longitude = #{longitude,jdbcType=DECIMAL},
+      country_code = #{country_code,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserAddressEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_address
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.country!=null">
+        AND country = #{param.country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.province!=null">
+        AND province = #{param.province,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city!=null">
+        AND city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.district!=null">
+        AND district = #{param.district,jdbcType=VARCHAR}
+      </if>
+      <if test="param.street!=null">
+        AND street = #{param.street,jdbcType=VARCHAR}
+      </if>
+      <if test="param.poiname!=null">
+        AND poiname = #{param.poiname,jdbcType=VARCHAR}
+      </if>
+      <if test="param.postalcode!=null">
+        AND postalcode = #{param.postalcode,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.latitude!=null">
+        AND latitude = #{param.latitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.longitude!=null">
+        AND longitude = #{param.longitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.country_code!=null">
+        AND country_code = #{param.country_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserAddressEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_address
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.country!=null">
+        AND country = #{param.country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.province!=null">
+        AND province = #{param.province,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city!=null">
+        AND city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.district!=null">
+        AND district = #{param.district,jdbcType=VARCHAR}
+      </if>
+      <if test="param.street!=null">
+        AND street = #{param.street,jdbcType=VARCHAR}
+      </if>
+      <if test="param.poiname!=null">
+        AND poiname = #{param.poiname,jdbcType=VARCHAR}
+      </if>
+      <if test="param.postalcode!=null">
+        AND postalcode = #{param.postalcode,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.latitude!=null">
+        AND latitude = #{param.latitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.longitude!=null">
+        AND longitude = #{param.longitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.country_code!=null">
+        AND country_code = #{param.country_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserAddressEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_address
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.country!=null">
+        AND country = #{param.country,jdbcType=VARCHAR}
+      </if>
+      <if test="param.province!=null">
+        AND province = #{param.province,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city!=null">
+        AND city = #{param.city,jdbcType=VARCHAR}
+      </if>
+      <if test="param.district!=null">
+        AND district = #{param.district,jdbcType=VARCHAR}
+      </if>
+      <if test="param.street!=null">
+        AND street = #{param.street,jdbcType=VARCHAR}
+      </if>
+      <if test="param.poiname!=null">
+        AND poiname = #{param.poiname,jdbcType=VARCHAR}
+      </if>
+      <if test="param.postalcode!=null">
+        AND postalcode = #{param.postalcode,jdbcType=VARCHAR}
+      </if>
+      <if test="param.city_code!=null">
+        AND city_code = #{param.city_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.latitude!=null">
+        AND latitude = #{param.latitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.longitude!=null">
+        AND longitude = #{param.longitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.country_code!=null">
+        AND country_code = #{param.country_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>

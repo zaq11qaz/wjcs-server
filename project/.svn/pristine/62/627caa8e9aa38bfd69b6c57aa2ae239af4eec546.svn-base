@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterTypeMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterTypeEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="position_details" jdbcType="VARCHAR" property="position_details" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="class_hour" jdbcType="INTEGER" property="class_hour" />
+    <result column="class_duration" jdbcType="INTEGER" property="class_duration" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="earnings" jdbcType="DECIMAL" property="earnings" />
+    <result column="proportion" jdbcType="DECIMAL" property="proportion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, position_details, type, requirement, price, class_hour, class_duration, 
+    create_time, update_time, earnings, proportion
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_master_type
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_master_type
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MasterTypeEntity">
+    insert into eg_master_type (id, name, position_details, 
+      type, requirement, price, 
+      class_hour, class_duration, create_time, 
+      update_time, earnings, proportion
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{position_details,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{requirement,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, 
+      #{class_hour,jdbcType=INTEGER}, #{class_duration,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{earnings,jdbcType=DECIMAL}, #{proportion,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterTypeEntity">
+    insert into eg_master_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="position_details != null">
+        position_details,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="requirement != null">
+        requirement,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="class_hour != null">
+        class_hour,
+      </if>
+      <if test="class_duration != null">
+        class_duration,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="earnings != null">
+        earnings,
+      </if>
+      <if test="proportion != null">
+        proportion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="position_details != null">
+        #{position_details,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="requirement != null">
+        #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="class_hour != null">
+        #{class_hour,jdbcType=INTEGER},
+      </if>
+      <if test="class_duration != null">
+        #{class_duration,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="earnings != null">
+        #{earnings,jdbcType=DECIMAL},
+      </if>
+      <if test="proportion != null">
+        #{proportion,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterTypeEntity">
+    update eg_master_type
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="position_details != null">
+        position_details = #{position_details,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="requirement != null">
+        requirement = #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="class_hour != null">
+        class_hour = #{class_hour,jdbcType=INTEGER},
+      </if>
+      <if test="class_duration != null">
+        class_duration = #{class_duration,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="earnings != null">
+        earnings = #{earnings,jdbcType=DECIMAL},
+      </if>
+      <if test="proportion != null">
+        proportion = #{proportion,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterTypeEntity">
+    update eg_master_type
+    set name = #{name,jdbcType=VARCHAR},
+      position_details = #{position_details,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      requirement = #{requirement,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      class_hour = #{class_hour,jdbcType=INTEGER},
+      class_duration = #{class_duration,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      earnings = #{earnings,jdbcType=DECIMAL},
+      proportion = #{proportion,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.MasterTypeEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_master_type
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.position_details!=null">
+        AND position_details = #{param.position_details,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.requirement!=null">
+        AND requirement = #{param.requirement,jdbcType=VARCHAR}
+      </if>
+      <if test="param.price!=null">
+        AND price = #{param.price,jdbcType=INTEGER}
+      </if>
+      <if test="param.class_hour!=null">
+        AND class_hour = #{param.class_hour,jdbcType=INTEGER}
+      </if>
+      <if test="param.class_duration!=null">
+        AND class_duration = #{param.class_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.proportion!=null">
+        AND proportion = #{param.proportion,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterTypeEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_master_type
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.position_details!=null">
+        AND position_details = #{param.position_details,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.requirement!=null">
+        AND requirement = #{param.requirement,jdbcType=VARCHAR}
+      </if>
+      <if test="param.price!=null">
+        AND price = #{param.price,jdbcType=INTEGER}
+      </if>
+      <if test="param.class_hour!=null">
+        AND class_hour = #{param.class_hour,jdbcType=INTEGER}
+      </if>
+      <if test="param.class_duration!=null">
+        AND class_duration = #{param.class_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.proportion!=null">
+        AND proportion = #{param.proportion,jdbcType=DECIMAL}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterTypeEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_master_type
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.position_details!=null">
+        AND position_details = #{param.position_details,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.requirement!=null">
+        AND requirement = #{param.requirement,jdbcType=VARCHAR}
+      </if>
+      <if test="param.price!=null">
+        AND price = #{param.price,jdbcType=INTEGER}
+      </if>
+      <if test="param.class_hour!=null">
+        AND class_hour = #{param.class_hour,jdbcType=INTEGER}
+      </if>
+      <if test="param.class_duration!=null">
+        AND class_duration = #{param.class_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.proportion!=null">
+        AND proportion = #{param.proportion,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+
+</mapper>

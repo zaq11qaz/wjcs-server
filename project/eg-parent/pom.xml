@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cy.framework</groupId>
+        <artifactId>cy-framework</artifactId>
+        <version>5.0.6</version>
+    </parent>
+
+    <groupId>com.huihe.eg</groupId>
+    <artifactId>eg-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <modules>
+        <module>eg-user</module>
+        <module>eg-comm</module>
+        <module>eg-message</module>
+        <module>eg-authorization</module>
+        <module>eg-news</module>
+        <module>eg-push</module>
+        <module>eg-grab</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <cy.framework.version>5.0.6</cy.framework.version>
+        <docker.url>http://localhost:2375</docker.url>
+        <docker.repostory>localhost:5000</docker.repostory>
+        <mybatis.generator>1.0.5</mybatis.generator>
+    </properties>
+
+
+
+</project>

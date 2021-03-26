@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.authorization.mybatis.dao.ManagerUserMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.authorization.model.ManagerUserEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="add_user" jdbcType="VARCHAR" property="add_user" />
+    <result column="update_user" jdbcType="VARCHAR" property="update_user" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="last_login_time" />
+    <result column="available" jdbcType="BIT" property="available" />
+    <result column="short_name" jdbcType="VARCHAR" property="short_name" />
+    <result column="business" jdbcType="BIT" property="business" />
+    <result column="parent_id" jdbcType="BIGINT" property="parent_id" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="admin" jdbcType="BIT" property="admin" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="login_name" jdbcType="VARCHAR" property="login_name" />
+    <result column="managers_student" jdbcType="VARCHAR" property="managers_student" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, create_time, update_time, add_user, update_user, mobile, pwd, last_login_time, 
+    available, short_name, business, parent_id, balance, admin, type,login_name,managers_student
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authorization_manager_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authorization_manager_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.authorization.model.ManagerUserEntity">
+    insert into authorization_manager_user (id, name, create_time, 
+      update_time, add_user, update_user, 
+      mobile, pwd, last_login_time, 
+      available, short_name, business, 
+      parent_id, balance, admin, 
+      type,login_name,managers_student)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{add_user,jdbcType=VARCHAR}, #{update_user,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{last_login_time,jdbcType=TIMESTAMP}, 
+      #{available,jdbcType=BIT}, #{short_name,jdbcType=VARCHAR}, #{business,jdbcType=BIT}, 
+      #{parent_id,jdbcType=BIGINT}, #{balance,jdbcType=DECIMAL}, #{admin,jdbcType=BIT}, 
+      #{type,jdbcType=VARCHAR},#{login_name,jdbcType=VARCHAR},#{managers_student,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.authorization.model.ManagerUserEntity">
+    insert into authorization_manager_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="add_user != null">
+        add_user,
+      </if>
+      <if test="update_user != null">
+        update_user,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="last_login_time != null">
+        last_login_time,
+      </if>
+      <if test="available != null">
+        available,
+      </if>
+      <if test="short_name != null">
+        short_name,
+      </if>
+      <if test="business != null">
+        business,
+      </if>
+      <if test="parent_id != null">
+        parent_id,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="admin != null">
+        admin,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="login_name != null">
+        login_name,
+      </if>
+        <if test="managers_student != null">
+          managers_student,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="add_user != null">
+        #{add_user,jdbcType=VARCHAR},
+      </if>
+      <if test="update_user != null">
+        #{update_user,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="last_login_time != null">
+        #{last_login_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=BIT},
+      </if>
+      <if test="short_name != null">
+        #{short_name,jdbcType=VARCHAR},
+      </if>
+      <if test="business != null">
+        #{business,jdbcType=BIT},
+      </if>
+      <if test="parent_id != null">
+        #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="admin != null">
+        #{admin,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="login_name != null">
+        #{login_name,jdbcType=VARCHAR},
+      </if>
+        <if test="managers_student != null">
+        #{managers_student,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.authorization.model.ManagerUserEntity">
+    update authorization_manager_user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="add_user != null">
+        add_user = #{add_user,jdbcType=VARCHAR},
+      </if>
+      <if test="update_user != null">
+        update_user = #{update_user,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="last_login_time != null">
+        last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=BIT},
+      </if>
+      <if test="short_name != null">
+        short_name = #{short_name,jdbcType=VARCHAR},
+      </if>
+      <if test="business != null">
+        business = #{business,jdbcType=BIT},
+      </if>
+      <if test="parent_id != null">
+        parent_id = #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="admin != null">
+        admin = #{admin,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="login_name != null">
+        login_name = #{login_name,jdbcType=VARCHAR},
+      </if>
+        <if test="managers_student != null">
+          managers_student = #{managers_student,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.authorization.model.ManagerUserEntity">
+    update authorization_manager_user
+    set name = #{name,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      add_user = #{add_user,jdbcType=VARCHAR},
+      update_user = #{update_user,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+      available = #{available,jdbcType=BIT},
+      short_name = #{short_name,jdbcType=VARCHAR},
+      business = #{business,jdbcType=BIT},
+      parent_id = #{parent_id,jdbcType=BIGINT},
+      balance = #{balance,jdbcType=DECIMAL},
+      admin = #{admin,jdbcType=BIT},
+      type = #{type,jdbcType=VARCHAR},
+      login_name = #{login_name,jdbcType=VARCHAR},
+        managers_student = #{managers_student,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateStudentCount">
+    update authorization_manager_user set managers_student=managers_student+1 where id =#{id}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.authorization.model.ManagerUserEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_manager_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pwd!=null">
+        AND pwd = #{param.pwd,jdbcType=VARCHAR}
+      </if>
+      <if test="param.last_login_time!=null">
+        AND last_login_time = #{param.last_login_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.available!=null">
+        AND available = #{param.available,jdbcType=BIT}
+      </if>
+      <if test="param.short_name!=null">
+        AND short_name = #{param.short_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.business!=null">
+        AND business = #{param.business,jdbcType=BIT}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.balance!=null">
+        AND balance = #{param.balance,jdbcType=DECIMAL}
+      </if>
+      <if test="param.admin!=null">
+        AND admin = #{param.admin,jdbcType=BIT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.login_name!=null">
+        AND login_name = #{param.login_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.managers_student!=null">
+        AND managers_student = #{param.managers_student,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.authorization.model.ManagerUserEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_manager_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pwd!=null">
+        AND pwd = #{param.pwd,jdbcType=VARCHAR}
+      </if>
+      <if test="param.last_login_time!=null">
+        AND last_login_time = #{param.last_login_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.available!=null">
+        AND available = #{param.available,jdbcType=BIT}
+      </if>
+      <if test="param.short_name!=null">
+        AND short_name = #{param.short_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.business!=null">
+        AND business = #{param.business,jdbcType=BIT}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.balance!=null">
+        AND balance = #{param.balance,jdbcType=DECIMAL}
+      </if>
+      <if test="param.admin!=null">
+        AND admin = #{param.admin,jdbcType=BIT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.login_name!=null">
+        AND login_name = #{param.login_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.managers_student!=null">
+        AND managers_student = #{param.managers_student,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.authorization.model.ManagerUserEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM authorization_manager_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pwd!=null">
+        AND pwd = #{param.pwd,jdbcType=VARCHAR}
+      </if>
+      <if test="param.last_login_time!=null">
+        AND last_login_time = #{param.last_login_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.available!=null">
+        AND available = #{param.available,jdbcType=BIT}
+      </if>
+      <if test="param.short_name!=null">
+        AND short_name = #{param.short_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.business!=null">
+        AND business = #{param.business,jdbcType=BIT}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.balance!=null">
+        AND balance = #{param.balance,jdbcType=DECIMAL}
+      </if>
+      <if test="param.admin!=null">
+        AND admin = #{param.admin,jdbcType=BIT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.managers_student!=null">
+        AND managers_student = #{param.managers_student,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+    <select id="queryIdenetity" resultType="java.lang.Integer">
+      SELECT
+          COUNT( 1 )
+      FROM
+          authorization_api_url apu
+          INNER JOIN authorization_manager_identity_url amiu ON apu.id = amiu.url_id
+      WHERE
+          amiu.identity_id = ( SELECT id FROM authorization_manager_identity WHERE type = #{param.managerUser_type} )
+          AND apu.url = #{param.url}
+          AND apu.method = #{param.method}
+    </select>
+    <select id="queryManagerId" resultType="java.lang.Long">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM authorization_manager_user
+      where type = #{type}
+      AND available = true
+      ORDER BY managers_student
+      limit 1
+    </select>
+</mapper>

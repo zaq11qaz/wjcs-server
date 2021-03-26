@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterSetPriceDisplayMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterSetPriceDisplayEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="sorted" jdbcType="INTEGER" property="sorted" />
+    <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id" />
+    <result column="live_stream_price" jdbcType="DECIMAL" property="live_stream_price" />
+    <result column="earnings" jdbcType="DECIMAL" property="earnings" />
+    <result column="original_price" jdbcType="DECIMAL" property="original_price" />
+    <result column="living_single_session_price" jdbcType="DECIMAL" property="living_single_session_price" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="is_live_streaming" jdbcType="BIT" property="is_live_streaming" />
+    <result column="live_streaming_id" jdbcType="BIGINT" property="live_streaming_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, master_set_price_id, status, mechanism_id, live_stream_price, 
+    earnings, title, is_live_streaming,live_streaming_id,original_price,pic,living_single_session_price,sorted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_master_set_price_display
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_master_set_price_display
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity">
+    insert into eg_master_set_price_display (id, create_time, update_time, 
+      master_set_price_id, status, mechanism_id, 
+      live_stream_price, earnings, title, 
+      is_live_streaming)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{master_set_price_id,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{mechanism_id,jdbcType=BIGINT}, 
+      #{live_stream_price,jdbcType=DECIMAL}, #{earnings,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, 
+      #{is_live_streaming,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity">
+    insert into eg_master_set_price_display
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="master_set_price_id != null">
+        master_set_price_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+        <if test="sorted != null">
+          sorted,
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id,
+      </if>
+        <if test="live_streaming_id != null">
+          live_streaming_id,
+      </if>
+      <if test="live_stream_price != null">
+        live_stream_price,
+      </if>
+      <if test="earnings != null">
+        earnings,
+      </if>
+        <if test="original_price != null">
+          original_price,
+      </if>
+        <if test="living_single_session_price != null">
+          living_single_session_price,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+        <if test="pic != null">
+          pic,
+      </if>
+      <if test="is_live_streaming != null">
+        is_live_streaming,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="master_set_price_id != null">
+        #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+        <if test="sorted != null">
+        #{sorted,jdbcType=INTEGER},
+      </if>
+      <if test="mechanism_id != null">
+        #{mechanism_id,jdbcType=BIGINT},
+      </if>
+        <if test="live_streaming_id != null">
+        #{live_streaming_id,jdbcType=BIGINT},
+      </if>
+      <if test="live_stream_price != null">
+        #{live_stream_price,jdbcType=DECIMAL},
+      </if>
+      <if test="earnings != null">
+        #{earnings,jdbcType=DECIMAL},
+      </if>
+        <if test="original_price != null">
+        #{original_price,jdbcType=DECIMAL},
+      </if>
+        <if test="living_single_session_price != null">
+        #{living_single_session_price,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="is_live_streaming != null">
+        #{is_live_streaming,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity">
+    update eg_master_set_price_display
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="master_set_price_id != null">
+        master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+        <if test="sorted != null">
+          sorted = #{sorted,jdbcType=INTEGER},
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      </if>
+        <if test="live_streaming_id != null">
+          live_streaming_id = #{live_streaming_id,jdbcType=BIGINT},
+      </if>
+      <if test="live_stream_price != null">
+        live_stream_price = #{live_stream_price,jdbcType=DECIMAL},
+      </if>
+      <if test="earnings != null">
+        earnings = #{earnings,jdbcType=DECIMAL},
+      </if>
+        <if test="original_price != null">
+          original_price = #{original_price,jdbcType=DECIMAL},
+      </if>
+        <if test="living_single_session_price != null">
+          living_single_session_price = #{living_single_session_price,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+        <if test="pic != null">
+          pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="is_live_streaming != null">
+        is_live_streaming = #{is_live_streaming,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity">
+    update eg_master_set_price_display
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      live_stream_price = #{live_stream_price,jdbcType=DECIMAL},
+      earnings = #{earnings,jdbcType=DECIMAL},
+      title = #{title,jdbcType=VARCHAR},
+      is_live_streaming = #{is_live_streaming,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateCloseById">
+    update eg_master_set_price_display set is_live_streaming=false where live_streaming_id = #{id}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_master_set_price_display
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.sorted!=null">
+        AND sorted = #{param.sorted,jdbcType=INTEGER}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.live_streaming_id!=null">
+        AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.live_stream_price!=null">
+        AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.original_price!=null">
+        AND original_price = #{param.original_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.living_single_session_price!=null">
+        AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_live_streaming!=null">
+        AND is_live_streaming = #{param.is_live_streaming,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_master_set_price_display
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.sorted!=null">
+      AND sorted = #{param.sorted,jdbcType=INTEGER}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.live_streaming_id!=null">
+      AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+    </if>
+      <if test="param.live_stream_price!=null">
+        AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.original_price!=null">
+        AND original_price = #{param.original_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.living_single_session_price!=null">
+        AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_live_streaming!=null">
+        AND is_live_streaming = #{param.is_live_streaming,jdbcType=BIT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_master_set_price_display
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.sorted!=null">
+      AND sorted = #{param.sorted,jdbcType=INTEGER}
+        </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.live_streaming_id!=null">
+      AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+    </if>
+      <if test="param.live_stream_price!=null">
+        AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.original_price!=null">
+        AND original_price = #{param.original_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.living_single_session_price!=null">
+        AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_live_streaming!=null">
+        AND is_live_streaming = #{param.is_live_streaming,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+    <select id="selectMasterSetPriceId" resultType="com.huihe.eg.user.model.MasterSetPriceDisplayEntity">
+        select
+        <include refid="Base_Column_List" />
+        from eg_master_set_price_display
+        where master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+        order by id desc
+        limit   0,1
+    </select>
+</mapper>

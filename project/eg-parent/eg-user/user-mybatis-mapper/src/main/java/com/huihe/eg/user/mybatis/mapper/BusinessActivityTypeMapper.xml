@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.BusinessActivityTypeMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.BusinessActivityTypeEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+    <result column="is_new_customers" jdbcType="BIT" property="is_new_customers" />
+    <result column="coupon_time" jdbcType="INTEGER" property="coupon_time" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+    <result column="background_image" jdbcType="VARCHAR" property="background_image" />
+    <result column="activity_description" jdbcType="VARCHAR" property="activity_description" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="number_of_people" jdbcType="INTEGER" property="number_of_people" />
+    <result column="each_time_percentage" jdbcType="DECIMAL" property="each_time_percentage" />
+    <result column="each_time_percentage_max" jdbcType="DECIMAL" property="each_time_percentage_max" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, name, title, status, create_time, update_time, start_time, end_time, is_new_customers, 
+    coupon_time, tags, background_image, activity_description, source, url, number_of_people, 
+    each_time_percentage, each_time_percentage_max
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_business_activity_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eg_business_activity_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.BusinessActivityTypeEntity">
+    insert into eg_business_activity_type (id, type, name, 
+      title, status, create_time, 
+      update_time, start_time, end_time, 
+      is_new_customers, coupon_time, tags, 
+      background_image, activity_description, 
+      source, url, number_of_people, 
+      each_time_percentage, each_time_percentage_max
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{start_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP}, 
+      #{is_new_customers,jdbcType=BIT}, #{coupon_time,jdbcType=INTEGER}, #{tags,jdbcType=VARCHAR}, 
+      #{background_image,jdbcType=VARCHAR}, #{activity_description,jdbcType=VARCHAR}, 
+      #{source,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{number_of_people,jdbcType=INTEGER}, 
+      #{each_time_percentage,jdbcType=DECIMAL}, #{each_time_percentage_max,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.BusinessActivityTypeEntity">
+    insert into eg_business_activity_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="end_time != null">
+        end_time,
+      </if>
+      <if test="is_new_customers != null">
+        is_new_customers,
+      </if>
+      <if test="coupon_time != null">
+        coupon_time,
+      </if>
+      <if test="tags != null">
+        tags,
+      </if>
+      <if test="background_image != null">
+        background_image,
+      </if>
+      <if test="activity_description != null">
+        activity_description,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="number_of_people != null">
+        number_of_people,
+      </if>
+      <if test="each_time_percentage != null">
+        each_time_percentage,
+      </if>
+      <if test="each_time_percentage_max != null">
+        each_time_percentage_max,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_new_customers != null">
+        #{is_new_customers,jdbcType=BIT},
+      </if>
+      <if test="coupon_time != null">
+        #{coupon_time,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="background_image != null">
+        #{background_image,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_description != null">
+        #{activity_description,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="number_of_people != null">
+        #{number_of_people,jdbcType=INTEGER},
+      </if>
+      <if test="each_time_percentage != null">
+        #{each_time_percentage,jdbcType=DECIMAL},
+      </if>
+      <if test="each_time_percentage_max != null">
+        #{each_time_percentage_max,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.BusinessActivityTypeEntity">
+    update eg_business_activity_type
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="start_time != null">
+        start_time = #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        end_time = #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_new_customers != null">
+        is_new_customers = #{is_new_customers,jdbcType=BIT},
+      </if>
+      <if test="coupon_time != null">
+        coupon_time = #{coupon_time,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null">
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="background_image != null">
+        background_image = #{background_image,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_description != null">
+        activity_description = #{activity_description,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="number_of_people != null">
+        number_of_people = #{number_of_people,jdbcType=INTEGER},
+      </if>
+      <if test="each_time_percentage != null">
+        each_time_percentage = #{each_time_percentage,jdbcType=DECIMAL},
+      </if>
+      <if test="each_time_percentage_max != null">
+        each_time_percentage_max = #{each_time_percentage_max,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.BusinessActivityTypeEntity">
+    update eg_business_activity_type
+    set type = #{type,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      end_time = #{end_time,jdbcType=TIMESTAMP},
+      is_new_customers = #{is_new_customers,jdbcType=BIT},
+      coupon_time = #{coupon_time,jdbcType=INTEGER},
+      tags = #{tags,jdbcType=VARCHAR},
+      background_image = #{background_image,jdbcType=VARCHAR},
+      activity_description = #{activity_description,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      number_of_people = #{number_of_people,jdbcType=INTEGER},
+      each_time_percentage = #{each_time_percentage,jdbcType=DECIMAL},
+      each_time_percentage_max = #{each_time_percentage_max,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.BusinessActivityTypeEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_business_activity_type
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_new_customers!=null">
+        AND is_new_customers = #{param.is_new_customers,jdbcType=BIT}
+      </if>
+      <if test="param.coupon_time!=null">
+        AND coupon_time = #{param.coupon_time,jdbcType=INTEGER}
+      </if>
+      <if test="param.tags!=null">
+        AND tags = #{param.tags,jdbcType=VARCHAR}
+      </if>
+      <if test="param.background_image!=null">
+        AND background_image = #{param.background_image,jdbcType=VARCHAR}
+      </if>
+      <if test="param.activity_description!=null">
+        AND activity_description = #{param.activity_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.number_of_people!=null">
+        AND number_of_people = #{param.number_of_people,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_time_percentage!=null">
+        AND each_time_percentage = #{param.each_time_percentage,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_time_percentage_max!=null">
+        AND each_time_percentage_max = #{param.each_time_percentage_max,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.BusinessActivityTypeEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_business_activity_type
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_new_customers!=null">
+        AND is_new_customers = #{param.is_new_customers,jdbcType=BIT}
+      </if>
+      <if test="param.coupon_time!=null">
+        AND coupon_time = #{param.coupon_time,jdbcType=INTEGER}
+      </if>
+      <if test="param.tags!=null">
+        AND tags = #{param.tags,jdbcType=VARCHAR}
+      </if>
+      <if test="param.background_image!=null">
+        AND background_image = #{param.background_image,jdbcType=VARCHAR}
+      </if>
+      <if test="param.activity_description!=null">
+        AND activity_description = #{param.activity_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.number_of_people!=null">
+        AND number_of_people = #{param.number_of_people,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_time_percentage!=null">
+        AND each_time_percentage = #{param.each_time_percentage,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_time_percentage_max!=null">
+        AND each_time_percentage_max = #{param.each_time_percentage_max,jdbcType=DECIMAL}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.BusinessActivityTypeEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_business_activity_type
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_new_customers!=null">
+        AND is_new_customers = #{param.is_new_customers,jdbcType=BIT}
+      </if>
+      <if test="param.coupon_time!=null">
+        AND coupon_time = #{param.coupon_time,jdbcType=INTEGER}
+      </if>
+      <if test="param.tags!=null">
+        AND tags = #{param.tags,jdbcType=VARCHAR}
+      </if>
+      <if test="param.background_image!=null">
+        AND background_image = #{param.background_image,jdbcType=VARCHAR}
+      </if>
+      <if test="param.activity_description!=null">
+        AND activity_description = #{param.activity_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.number_of_people!=null">
+        AND number_of_people = #{param.number_of_people,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_time_percentage!=null">
+        AND each_time_percentage = #{param.each_time_percentage,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_time_percentage_max!=null">
+        AND each_time_percentage_max = #{param.each_time_percentage_max,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+    <select id="selectByType" resultType="com.huihe.eg.user.model.BusinessActivityTypeEntity">
+      select
+      <include refid="Base_Column_List" />
+      from eg_business_activity_type
+      where type = #{type,jdbcType=VARCHAR}
+    and status = 2
+    order by id desc limit 1
+    </select>
+</mapper>

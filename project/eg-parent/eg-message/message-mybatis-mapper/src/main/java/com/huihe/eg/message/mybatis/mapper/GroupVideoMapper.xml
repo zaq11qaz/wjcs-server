@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.GroupVideoMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.GroupVideoEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="video_format" jdbcType="VARCHAR" property="video_format" />
+    <result column="stream_id" jdbcType="VARCHAR" property="stream_id" />
+    <result column="stream_param" jdbcType="VARCHAR" property="stream_param" />
+    <result column="record_file_id" jdbcType="VARCHAR" property="record_file_id" />
+    <result column="task_id" jdbcType="VARCHAR" property="task_id" />
+    <result column="video_url" jdbcType="VARCHAR" property="video_url" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="recording_id" jdbcType="BIGINT" property="recording_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, video_format, stream_id, stream_param, record_file_id, task_id, video_url, status, 
+    create_time, update_time, recording_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_group_video
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_group_video
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.GroupVideoEntity">
+    insert into eg_group_video (id, video_format, stream_id, 
+      stream_param, record_file_id, task_id, 
+      video_url, status, create_time, 
+      update_time, recording_id)
+    values (#{id,jdbcType=BIGINT}, #{video_format,jdbcType=VARCHAR}, #{stream_id,jdbcType=VARCHAR}, 
+      #{stream_param,jdbcType=VARCHAR}, #{record_file_id,jdbcType=VARCHAR}, #{task_id,jdbcType=VARCHAR}, 
+      #{video_url,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{recording_id,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.GroupVideoEntity">
+    insert into eg_group_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="video_format != null">
+        video_format,
+      </if>
+      <if test="stream_id != null">
+        stream_id,
+      </if>
+      <if test="stream_param != null">
+        stream_param,
+      </if>
+      <if test="record_file_id != null">
+        record_file_id,
+      </if>
+      <if test="task_id != null">
+        task_id,
+      </if>
+      <if test="video_url != null">
+        video_url,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="recording_id != null">
+        recording_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="video_format != null">
+        #{video_format,jdbcType=VARCHAR},
+      </if>
+      <if test="stream_id != null">
+        #{stream_id,jdbcType=VARCHAR},
+      </if>
+      <if test="stream_param != null">
+        #{stream_param,jdbcType=VARCHAR},
+      </if>
+      <if test="record_file_id != null">
+        #{record_file_id,jdbcType=VARCHAR},
+      </if>
+      <if test="task_id != null">
+        #{task_id,jdbcType=VARCHAR},
+      </if>
+      <if test="video_url != null">
+        #{video_url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recording_id != null">
+        #{recording_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.GroupVideoEntity">
+    update eg_group_video
+    <set>
+      <if test="video_format != null">
+        video_format = #{video_format,jdbcType=VARCHAR},
+      </if>
+      <if test="stream_id != null">
+        stream_id = #{stream_id,jdbcType=VARCHAR},
+      </if>
+      <if test="stream_param != null">
+        stream_param = #{stream_param,jdbcType=VARCHAR},
+      </if>
+      <if test="record_file_id != null">
+        record_file_id = #{record_file_id,jdbcType=VARCHAR},
+      </if>
+      <if test="task_id != null">
+        task_id = #{task_id,jdbcType=VARCHAR},
+      </if>
+      <if test="video_url != null">
+        video_url = #{video_url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recording_id != null">
+        recording_id = #{recording_id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.GroupVideoEntity">
+    update eg_group_video
+    set video_format = #{video_format,jdbcType=VARCHAR},
+      stream_id = #{stream_id,jdbcType=VARCHAR},
+      stream_param = #{stream_param,jdbcType=VARCHAR},
+      record_file_id = #{record_file_id,jdbcType=VARCHAR},
+      task_id = #{task_id,jdbcType=VARCHAR},
+      video_url = #{video_url,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      recording_id = #{recording_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.GroupVideoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_group_video
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.video_format!=null">
+        AND video_format = #{param.video_format,jdbcType=VARCHAR}
+      </if>
+      <if test="param.stream_id!=null">
+        AND stream_id = #{param.stream_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.stream_param!=null">
+        AND stream_param = #{param.stream_param,jdbcType=VARCHAR}
+      </if>
+      <if test="param.record_file_id!=null">
+        AND record_file_id = #{param.record_file_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.task_id!=null">
+        AND task_id = #{param.task_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.video_url!=null">
+        AND video_url = #{param.video_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.recording_id!=null">
+        AND recording_id = #{param.recording_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.GroupVideoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_group_video
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.video_format!=null">
+        AND video_format = #{param.video_format,jdbcType=VARCHAR}
+      </if>
+      <if test="param.stream_id!=null">
+        AND stream_id = #{param.stream_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.stream_param!=null">
+        AND stream_param = #{param.stream_param,jdbcType=VARCHAR}
+      </if>
+      <if test="param.record_file_id!=null">
+        AND record_file_id = #{param.record_file_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.task_id!=null">
+        AND task_id = #{param.task_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.video_url!=null">
+        AND video_url = #{param.video_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.recording_id!=null">
+        AND recording_id = #{param.recording_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.GroupVideoEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_group_video
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.video_format!=null">
+        AND video_format = #{param.video_format,jdbcType=VARCHAR}
+      </if>
+      <if test="param.stream_id!=null">
+        AND stream_id = #{param.stream_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.stream_param!=null">
+        AND stream_param = #{param.stream_param,jdbcType=VARCHAR}
+      </if>
+      <if test="param.record_file_id!=null">
+        AND record_file_id = #{param.record_file_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.task_id!=null">
+        AND task_id = #{param.task_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.video_url!=null">
+        AND video_url = #{param.video_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.recording_id!=null">
+        AND recording_id = #{param.recording_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+</mapper>

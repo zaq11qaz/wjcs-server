@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserMemberLevelMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserMemberLevelEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="member_name" jdbcType="VARCHAR" property="member_name" />
+    <result column="member_level" jdbcType="INTEGER" property="member_level" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="Introduction" jdbcType="VARCHAR" property="Introduction" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="is_discount" jdbcType="BIT" property="is_discount" />
+    <result column="member_equity" jdbcType="VARCHAR" property="member_equity" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="chatting_count" jdbcType="INTEGER" property="chatting_count" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, member_name, member_level, create_time, update_time, Introduction, platform, 
+    discount, is_discount, member_equity,status,chatting_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_member_level
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_member_level
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserMemberLevelEntity">
+    insert into eg_member_level (id, member_name, member_level, 
+      create_time, update_time, Introduction, 
+      platform, discount, is_discount, 
+      member_equity,status,chatting_count)
+    values (#{id,jdbcType=BIGINT}, #{member_name,jdbcType=VARCHAR}, #{member_level,jdbcType=INTEGER}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{Introduction,jdbcType=VARCHAR}, 
+      #{platform,jdbcType=VARCHAR}, #{discount,jdbcType=DECIMAL}, #{is_discount,jdbcType=BIT}, 
+      #{member_equity,jdbcType=VARCHAR}  ,#{status,jdbcType=INTEGER},#{chatting_count,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserMemberLevelEntity">
+    insert into eg_member_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="member_name != null">
+        member_name,
+      </if>
+      <if test="member_level != null">
+        member_level,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="Introduction != null">
+        Introduction,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="is_discount != null">
+        is_discount,
+      </if>
+      <if test="member_equity != null">
+        member_equity,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+        <if test="chatting_count != null">
+          chatting_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="member_name != null">
+        #{member_name,jdbcType=VARCHAR},
+      </if>
+      <if test="member_level != null">
+        #{member_level,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="Introduction != null">
+        #{Introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="is_discount != null">
+        #{is_discount,jdbcType=BIT},
+      </if>
+      <if test="member_equity != null">
+        #{member_equity,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+        <if test="chatting_count != null">
+        #{chatting_count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserMemberLevelEntity">
+    update eg_member_level
+    <set>
+      <if test="member_name != null">
+        member_name = #{member_name,jdbcType=VARCHAR},
+      </if>
+      <if test="member_level != null">
+        member_level = #{member_level,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="Introduction != null">
+        Introduction = #{Introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="is_discount != null">
+        is_discount = #{is_discount,jdbcType=BIT},
+      </if>
+      <if test="member_equity != null">
+        member_equity = #{member_equity,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+        <if test="status != null">
+          chatting_count = #{chatting_count,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserMemberLevelEntity">
+    update eg_member_level
+    set member_name = #{member_name,jdbcType=VARCHAR},
+      member_level = #{member_level,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      Introduction = #{Introduction,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=DECIMAL},
+      is_discount = #{is_discount,jdbcType=BIT},
+      member_equity = #{member_equity,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      chatting_count = #{chatting_count,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserMemberLevelEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_member_level
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.member_name!=null">
+        AND member_name = #{param.member_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.member_level!=null">
+        AND member_level = #{param.member_level,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.Introduction!=null">
+        AND Introduction = #{param.Introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.platform!=null">
+        AND platform = #{param.platform,jdbcType=VARCHAR}
+      </if>
+      <if test="param.discount!=null">
+        AND discount = #{param.discount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.is_discount!=null">
+        AND is_discount = #{param.is_discount,jdbcType=BIT}
+      </if>
+      <if test="param.member_equity!=null">
+        AND member_equity = #{param.member_equity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserMemberLevelEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_member_level
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.member_name!=null">
+        AND member_name = #{param.member_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.member_level!=null">
+        AND member_level = #{param.member_level,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.Introduction!=null">
+        AND Introduction = #{param.Introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.platform!=null">
+        AND platform = #{param.platform,jdbcType=VARCHAR}
+      </if>
+      <if test="param.discount!=null">
+        AND discount = #{param.discount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.is_discount!=null">
+        AND is_discount = #{param.is_discount,jdbcType=BIT}
+      </if>
+      <if test="param.member_equity!=null">
+        AND member_equity = #{param.member_equity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserMemberLevelEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_member_level
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.member_name!=null">
+        AND member_name = #{param.member_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.member_level!=null">
+        AND member_level = #{param.member_level,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.Introduction!=null">
+        AND Introduction = #{param.Introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.platform!=null">
+        AND platform = #{param.platform,jdbcType=VARCHAR}
+      </if>
+      <if test="param.discount!=null">
+        AND discount = #{param.discount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.is_discount!=null">
+        AND is_discount = #{param.is_discount,jdbcType=BIT}
+      </if>
+      <if test="param.member_equity!=null">
+        AND member_equity = #{param.member_equity,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

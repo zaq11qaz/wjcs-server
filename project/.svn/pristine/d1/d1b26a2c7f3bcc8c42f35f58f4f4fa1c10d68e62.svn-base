@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.GroupRecordingMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.GroupRecordingEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="group_id" jdbcType="BIGINT" property="group_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="record_url" jdbcType="VARCHAR" property="record_url"/>
+        <result column="video_format" jdbcType="VARCHAR" property="video_format"/>
+        <result column="cover" jdbcType="VARCHAR" property="cover"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="start_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="appointment_id" jdbcType="BIGINT" property="appointment_id"/>
+        <result column="stream_id" jdbcType="VARCHAR" property="stream_id"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="task_id" jdbcType="VARCHAR" property="task_id"/>
+        <result column="RequestId" jdbcType="VARCHAR" property="RequestId"/>
+        <result column="watch_count" jdbcType="INTEGER" property="watch_count"/>
+        <result column="is_teach_paypal" jdbcType="BIT" property="is_teach_paypal"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, group_id, create_time, update_time, record_url, video_format, cover, user_id,
+    start_time, end_time, appointment_id, stream_id, status, task_id, RequestId, watch_count,is_teach_paypal
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_group_recording
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_group_recording
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.message.model.GroupRecordingEntity">
+        insert into eg_group_recording (id, group_id, create_time,
+                                        update_time, record_url, video_format,
+                                        cover, user_id, start_time,
+                                        end_time, appointment_id, stream_id,
+                                        status, task_id, RequestId,
+                                        watch_count)
+        values (#{id,jdbcType=BIGINT}, #{group_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP},
+                #{update_time,jdbcType=TIMESTAMP}, #{record_url,jdbcType=VARCHAR}, #{video_format,jdbcType=VARCHAR},
+                #{cover,jdbcType=VARCHAR}, #{user_id,jdbcType=BIGINT}, #{start_time,jdbcType=TIMESTAMP},
+                #{end_time,jdbcType=TIMESTAMP}, #{appointment_id,jdbcType=BIGINT}, #{stream_id,jdbcType=VARCHAR},
+                #{status,jdbcType=INTEGER}, #{task_id,jdbcType=VARCHAR}, #{RequestId,jdbcType=VARCHAR},
+                #{watch_count,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.message.model.GroupRecordingEntity">
+        insert into eg_group_recording
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="group_id != null">
+                group_id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="record_url != null">
+                record_url,
+            </if>
+            <if test="video_format != null">
+                video_format,
+            </if>
+            <if test="cover != null">
+                cover,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="start_time != null">
+                start_time,
+            </if>
+            <if test="end_time != null">
+                end_time,
+            </if>
+            <if test="appointment_id != null">
+                appointment_id,
+            </if>
+            <if test="stream_id != null">
+                stream_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="task_id != null">
+                task_id,
+            </if>
+            <if test="RequestId != null">
+                RequestId,
+            </if>
+            <if test="watch_count != null">
+                watch_count,
+            </if>
+            <if test="is_teach_paypal != null">
+                is_teach_paypal,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="group_id != null">
+                #{group_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record_url != null">
+                #{record_url,jdbcType=VARCHAR},
+            </if>
+            <if test="video_format != null">
+                #{video_format,jdbcType=VARCHAR},
+            </if>
+            <if test="cover != null">
+                #{cover,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="start_time != null">
+                #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="stream_id != null">
+                #{stream_id,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="task_id != null">
+                #{task_id,jdbcType=VARCHAR},
+            </if>
+            <if test="RequestId != null">
+                #{RequestId,jdbcType=VARCHAR},
+            </if>
+            <if test="watch_count != null">
+                #{watch_count,jdbcType=INTEGER},
+            </if>
+            <if test="is_teach_paypal != null">
+                #{is_teach_paypal,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.GroupRecordingEntity">
+        update eg_group_recording
+        <set>
+            <if test="group_id != null">
+                group_id = #{group_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record_url != null">
+                record_url = #{record_url,jdbcType=VARCHAR},
+            </if>
+            <if test="video_format != null">
+                video_format = #{video_format,jdbcType=VARCHAR},
+            </if>
+            <if test="cover != null">
+                cover = #{cover,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="start_time != null">
+                start_time = #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                end_time = #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                appointment_id = #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="stream_id != null">
+                stream_id = #{stream_id,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="task_id != null">
+                task_id = #{task_id,jdbcType=VARCHAR},
+            </if>
+            <if test="RequestId != null">
+                RequestId = #{RequestId,jdbcType=VARCHAR},
+            </if>
+            <if test="watch_count != null">
+                watch_count = #{watch_count,jdbcType=INTEGER},
+            </if>
+            <if test="is_teach_paypal != null">
+                is_teach_paypal = #{is_teach_paypal,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.GroupRecordingEntity">
+        update eg_group_recording
+        set group_id       = #{group_id,jdbcType=BIGINT},
+            create_time    = #{create_time,jdbcType=TIMESTAMP},
+            update_time    = #{update_time,jdbcType=TIMESTAMP},
+            record_url     = #{record_url,jdbcType=VARCHAR},
+            video_format   = #{video_format,jdbcType=VARCHAR},
+            cover          = #{cover,jdbcType=VARCHAR},
+            user_id        = #{user_id,jdbcType=BIGINT},
+            start_time     = #{start_time,jdbcType=TIMESTAMP},
+            end_time       = #{end_time,jdbcType=TIMESTAMP},
+            appointment_id = #{appointment_id,jdbcType=BIGINT},
+            stream_id      = #{stream_id,jdbcType=VARCHAR},
+            status         = #{status,jdbcType=INTEGER},
+            task_id        = #{task_id,jdbcType=VARCHAR},
+            RequestId      = #{RequestId,jdbcType=VARCHAR},
+            watch_count    = #{watch_count,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.message.model.GroupRecordingEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_group_recording
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.record_url!=null">
+                AND record_url = #{param.record_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.video_format!=null">
+                AND video_format = #{param.video_format,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.stream_id!=null">
+                AND stream_id = #{param.stream_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.task_id!=null">
+                AND task_id = #{param.task_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.RequestId!=null">
+                AND RequestId = #{param.RequestId,jdbcType=VARCHAR}
+            </if>
+            <if test="param.watch_count!=null">
+                AND watch_count = #{param.watch_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.is_teach_paypal==null">
+                AND is_teach_paypal = false
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.message.model.GroupRecordingEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_group_recording
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.record_url!=null">
+                AND record_url = #{param.record_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.video_format!=null">
+                AND video_format = #{param.video_format,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.stream_id!=null">
+                AND stream_id = #{param.stream_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.task_id!=null">
+                AND task_id = #{param.task_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.RequestId!=null">
+                AND RequestId = #{param.RequestId,jdbcType=VARCHAR}
+            </if>
+            <if test="param.watch_count!=null">
+                AND watch_count = #{param.watch_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.is_teach_paypal==null">
+                AND is_teach_paypal = false
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.GroupRecordingEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_group_recording
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.record_url!=null">
+                AND record_url = #{param.record_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.video_format!=null">
+                AND video_format = #{param.video_format,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.stream_id!=null">
+                AND stream_id = #{param.stream_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.task_id!=null">
+                AND task_id = #{param.task_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.RequestId!=null">
+                AND RequestId = #{param.RequestId,jdbcType=VARCHAR}
+            </if>
+            <if test="param.watch_count!=null">
+                AND watch_count = #{param.watch_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.is_teach_paypal==null">
+                AND is_teach_paypal = false
+            </if>
+        </where>
+    </select>
+    <select id="queryByAppointmentId" resultType="java.lang.String">
+        select record_url
+        from eg_group_recording
+        where appointment_id = #{appointment_id}
+        order by id desc
+        limit 1
+    </select>
+    <update id="updateWatchCount" parameterType="com.huihe.eg.message.model.GroupRecordingEntity">
+        update eg_group_recording
+        set watch_count = #watch_count + 1
+        where appointment_id = #{appointment_id,jdbcType=BIGINT},
+    </update>
+</mapper>

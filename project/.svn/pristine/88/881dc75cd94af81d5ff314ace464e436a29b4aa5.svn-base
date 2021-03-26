@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterMechanismMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterMechanismEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="mechanism_name" jdbcType="VARCHAR" property="mechanism_name"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="live_streaming_id" jdbcType="BIGINT" property="live_streaming_id"/>
+        <result column="mechanism_addr" jdbcType="VARCHAR" property="mechanism_addr"/>
+        <result column="mechanism_logo" jdbcType="VARCHAR" property="mechanism_logo"/>
+        <result column="mechanism_telephone" jdbcType="VARCHAR" property="mechanism_telephone"/>
+        <result column="mechanism_language" jdbcType="VARCHAR" property="mechanism_language"/>
+        <result column="mechanism_advantage" jdbcType="VARCHAR" property="mechanism_advantage"/>
+        <result column="introduction_pic" jdbcType="VARCHAR" property="introduction_pic"/>
+        <result column="introduction_content" jdbcType="VARCHAR" property="introduction_content"/>
+        <result column="contacts" jdbcType="VARCHAR" property="contacts"/>
+        <result column="contact_telephone" jdbcType="VARCHAR" property="contact_telephone"/>
+        <result column="contact_information" jdbcType="VARCHAR" property="contact_information"/>
+        <result column="contacts_title" jdbcType="VARCHAR" property="contacts_title"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="support_means" jdbcType="VARCHAR" property="support_means"/>
+        <result column="mechanism_no" jdbcType="VARCHAR" property="mechanism_no"/>
+        <result column="sort_weight" jdbcType="INTEGER" property="sort_weight"/>
+        <result column="resource_classes_old" jdbcType="INTEGER" property="resource_classes_old"/>
+        <result column="resource_classes_new" jdbcType="INTEGER" property="resource_classes_new"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+        <result column="cash" jdbcType="DECIMAL" property="cash"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="distance" jdbcType="DECIMAL" property="distance"/>
+        <result column="refuse_contect" jdbcType="VARCHAR" property="refuse_contect"/>
+        <result column="recommender_id" jdbcType="VARCHAR" property="recommender_id"/>
+        <result column="categories" jdbcType="VARCHAR" property="categories"/>
+        <result column="categories_child" jdbcType="VARCHAR" property="categories_child"/>
+        <result column="payee_logon_id" jdbcType="VARCHAR" property="payee_logon_id"/>
+        <result column="facade_view" jdbcType="VARCHAR" property="facade_view"/>
+        <result column="is_recommend" jdbcType="BIT" property="is_recommend"/>
+        <result column="is_support_teach_paypal" jdbcType="BIT" property="is_support_teach_paypal"/>
+        <result column="avg_rating" jdbcType="DOUBLE" property="avg_rating"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time, update_time, mechanism_name, user_id, mechanism_addr, mechanism_logo,
+    mechanism_telephone, mechanism_language, mechanism_advantage, introduction_pic, introduction_content, 
+    contacts, contact_telephone, contact_information, contacts_title, status, support_means, 
+    mechanism_no, sort_weight, latitude, longitude,type,refuse_contect,recommender_id,is_recommend,cash,
+    categories,categories_child,payee_logon_id,is_support_teach_paypal,facade_view,resource_classes_old,
+    resource_classes_new,avg_rating,live_streaming_id
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_mechanism
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_master_mechanism
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.MasterMechanismEntity">
+        insert into eg_master_mechanism (id, create_time, update_time,
+                                         mechanism_name, user_id, mechanism_addr,
+                                         mechanism_logo, mechanism_telephone, mechanism_language,
+                                         mechanism_advantage, introduction_pic,
+                                         introduction_content, contacts, contact_telephone,
+                                         contact_information, contacts_title, status,
+                                         support_means, mechanism_no, sort_weight,
+                                         latitude, longitude, type, recommender_id)
+        values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP},
+                #{mechanism_name,jdbcType=VARCHAR}, #{user_id,jdbcType=BIGINT}, #{mechanism_addr,jdbcType=VARCHAR},
+                #{mechanism_logo,jdbcType=VARCHAR}, #{mechanism_telephone,jdbcType=VARCHAR},
+                #{mechanism_language,jdbcType=VARCHAR},
+                #{mechanism_advantage,jdbcType=VARCHAR}, #{introduction_pic,jdbcType=VARCHAR},
+                #{introduction_content,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR},
+                #{contact_telephone,jdbcType=VARCHAR},
+                #{contact_information,jdbcType=VARCHAR}, #{contacts_title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+                #{support_means,jdbcType=VARCHAR}, #{mechanism_no,jdbcType=VARCHAR}, #{sort_weight,jdbcType=INTEGER},
+                #{latitude,jdbcType=DECIMAL}, #{longitude,jdbcType=DECIMAL}, #{type,jdbcType=VARCHAR},
+                #{recommender_id,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterMechanismEntity"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into eg_master_mechanism
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="mechanism_name != null">
+                mechanism_name,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="live_streaming_id != null">
+                live_streaming_id,
+            </if>
+            <if test="mechanism_addr != null">
+                mechanism_addr,
+            </if>
+            <if test="mechanism_logo != null">
+                mechanism_logo,
+            </if>
+            <if test="mechanism_telephone != null">
+                mechanism_telephone,
+            </if>
+            <if test="mechanism_language != null">
+                mechanism_language,
+            </if>
+            <if test="mechanism_advantage != null">
+                mechanism_advantage,
+            </if>
+            <if test="introduction_pic != null">
+                introduction_pic,
+            </if>
+            <if test="introduction_content != null">
+                introduction_content,
+            </if>
+            <if test="contacts != null">
+                contacts,
+            </if>
+            <if test="contact_telephone != null">
+                contact_telephone,
+            </if>
+            <if test="contact_information != null">
+                contact_information,
+            </if>
+            <if test="contacts_title != null">
+                contacts_title,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="support_means != null">
+                support_means,
+            </if>
+            <if test="mechanism_no != null">
+                mechanism_no,
+            </if>
+            <if test="sort_weight != null">
+                sort_weight,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="recommender_id != null">
+                recommender_id,
+            </if>
+            cash,
+            <if test="categories != null">
+                categories,
+            </if>
+            <if test="categories_child != null">
+                categories_child,
+            </if>
+            <if test="payee_logon_id != null">
+                payee_logon_id,
+            </if>
+            <if test="is_support_teach_paypal != null">
+                is_support_teach_paypal,
+            </if>
+            <if test="facade_view != null">
+                facade_view,
+            </if>
+            <if test="resource_classes_old != null">
+                resource_classes_old,
+            </if>
+            <if test="resource_classes_new != null">
+                resource_classes_new,
+            </if>
+            <if test="avg_rating != null">
+                avg_rating,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mechanism_name != null">
+                #{mechanism_name,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="live_streaming_id != null">
+                #{live_streaming_id,jdbcType=BIGINT},
+            </if>
+            <if test="mechanism_addr != null">
+                #{mechanism_addr,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_logo != null">
+                #{mechanism_logo,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_telephone != null">
+                #{mechanism_telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_language != null">
+                #{mechanism_language,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_advantage != null">
+                #{mechanism_advantage,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_pic != null">
+                #{introduction_pic,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_content != null">
+                #{introduction_content,jdbcType=VARCHAR},
+            </if>
+            <if test="contacts != null">
+                #{contacts,jdbcType=VARCHAR},
+            </if>
+            <if test="contact_telephone != null">
+                #{contact_telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="contact_information != null">
+                #{contact_information,jdbcType=VARCHAR},
+            </if>
+            <if test="contacts_title != null">
+                #{contacts_title,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="support_means != null">
+                #{support_means,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_no != null">
+                #{mechanism_no,jdbcType=VARCHAR},
+            </if>
+            <if test="sort_weight != null">
+                #{sort_weight,jdbcType=INTEGER},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="recommender_id != null">
+                #{recommender_id,jdbcType=VARCHAR},
+            </if>
+            0,
+            <if test="categories != null">
+                #{categories,jdbcType=VARCHAR},
+            </if>
+            <if test="categories_child != null">
+                #{categories_child,jdbcType=VARCHAR},
+            </if>
+            <if test="payee_logon_id != null">
+                #{payee_logon_id,jdbcType=VARCHAR},
+            </if>
+            <if test="is_support_teach_paypal != null">
+                #{is_support_teach_paypal,jdbcType=BIT},
+            </if>
+            <if test="facade_view != null">
+                #{facade_view,jdbcType=VARCHAR},
+            </if>
+            <if test="resource_classes_old != null">
+                #{resource_classes_old,jdbcType=INTEGER},
+            </if>
+            <if test="resource_classes_new != null">
+                #{resource_classes_new,jdbcType=INTEGER},
+            </if>
+            <if test="avg_rating != null">
+                #{avg_rating,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterMechanismEntity">
+        update eg_master_mechanism
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mechanism_name != null">
+                mechanism_name = #{mechanism_name,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="live_streaming_id != null">
+                live_streaming_id = #{live_streaming_id,jdbcType=BIGINT},
+            </if>
+            <if test="mechanism_addr != null">
+                mechanism_addr = #{mechanism_addr,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_logo != null">
+                mechanism_logo = #{mechanism_logo,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_telephone != null">
+                mechanism_telephone = #{mechanism_telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_language != null">
+                mechanism_language = #{mechanism_language,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_advantage != null">
+                mechanism_advantage = #{mechanism_advantage,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_pic != null">
+                introduction_pic = #{introduction_pic,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_content != null">
+                introduction_content = #{introduction_content,jdbcType=VARCHAR},
+            </if>
+            <if test="contacts != null">
+                contacts = #{contacts,jdbcType=VARCHAR},
+            </if>
+            <if test="contact_telephone != null">
+                contact_telephone = #{contact_telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="contact_information != null">
+                contact_information = #{contact_information,jdbcType=VARCHAR},
+            </if>
+            <if test="contacts_title != null">
+                contacts_title = #{contacts_title,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="support_means != null">
+                support_means = #{support_means,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_no != null">
+                mechanism_no = #{mechanism_no,jdbcType=VARCHAR},
+            </if>
+            <if test="sort_weight != null">
+                sort_weight = #{sort_weight,jdbcType=INTEGER},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="refuse_contect != null">
+                refuse_contect = #{refuse_contect,jdbcType=VARCHAR},
+            </if>
+            <if test="categories != null">
+                categories = #{categories,jdbcType=VARCHAR},
+            </if>
+            <if test="categories_child != null">
+                categories_child = #{categories_child,jdbcType=VARCHAR},
+            </if>
+            <if test="payee_logon_id != null">
+                payee_logon_id = #{payee_logon_id,jdbcType=VARCHAR},
+            </if>
+            <if test="facade_view != null">
+                facade_view = #{facade_view,jdbcType=VARCHAR},
+            </if>
+            <if test="is_support_teach_paypal != null">
+                is_support_teach_paypal = #{is_support_teach_paypal,jdbcType=BIT},
+            </if>
+            <if test="resource_classes_old != null">
+                resource_classes_old = #{resource_classes_old,jdbcType=INTEGER},
+            </if>
+            <if test="resource_classes_new != null">
+                resource_classes_new = #{resource_classes_new,jdbcType=INTEGER},
+            </if>
+            <if test="avg_rating != null">
+                avg_rating = #{avg_rating,jdbcType=INTEGER},
+            </if>
+            <if test="is_recommend!=null">
+                is_recommend = #{is_recommend,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterMechanismEntity">
+        update eg_master_mechanism
+        set create_time          = #{create_time,jdbcType=TIMESTAMP},
+            update_time          = #{update_time,jdbcType=TIMESTAMP},
+            mechanism_name       = #{mechanism_name,jdbcType=VARCHAR},
+            user_id              = #{user_id,jdbcType=BIGINT},
+            mechanism_addr       = #{mechanism_addr,jdbcType=VARCHAR},
+            mechanism_logo       = #{mechanism_logo,jdbcType=VARCHAR},
+            mechanism_telephone  = #{mechanism_telephone,jdbcType=VARCHAR},
+            mechanism_language   = #{mechanism_language,jdbcType=VARCHAR},
+            mechanism_advantage  = #{mechanism_advantage,jdbcType=VARCHAR},
+            introduction_pic     = #{introduction_pic,jdbcType=VARCHAR},
+            introduction_content = #{introduction_content,jdbcType=VARCHAR},
+            contacts             = #{contacts,jdbcType=VARCHAR},
+            contact_telephone    = #{contact_telephone,jdbcType=VARCHAR},
+            contact_information  = #{contact_information,jdbcType=VARCHAR},
+            contacts_title       = #{contacts_title,jdbcType=VARCHAR},
+            status               = #{status,jdbcType=INTEGER},
+            support_means        = #{support_means,jdbcType=VARCHAR},
+            mechanism_no         = #{mechanism_no,jdbcType=VARCHAR},
+            sort_weight          = #{sort_weight,jdbcType=INTEGER},
+            latitude             = #{latitude,jdbcType=DECIMAL},
+            longitude            = #{longitude,jdbcType=DECIMAL},
+            type                 = #{type,jdbcType=VARCHAR},
+            refuse_contect       = #{refuse_contect,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateStreamId">
+        update eg_master_mechanism
+        set live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+        where id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.MasterMechanismEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_mechanism
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mechanism_name!=null">
+                AND mechanism_name = #{param.mechanism_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+                AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_addr!=null">
+                AND mechanism_addr = #{param.mechanism_addr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_logo!=null">
+                AND mechanism_logo = #{param.mechanism_logo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_telephone!=null">
+                AND mechanism_telephone = #{param.mechanism_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_language!=null">
+                AND mechanism_language = #{param.mechanism_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_advantage!=null">
+                AND mechanism_advantage = #{param.mechanism_advantage,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_pic!=null">
+                AND introduction_pic = #{param.introduction_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts!=null">
+                AND contacts = #{param.contacts,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_telephone!=null">
+                AND contact_telephone = #{param.contact_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts_title!=null">
+                AND contacts_title = #{param.contacts_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.support_means!=null">
+                AND support_means = #{param.support_means,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_no!=null">
+                AND mechanism_no = #{param.mechanism_no,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sort_weight!=null">
+                AND sort_weight = #{param.sort_weight,jdbcType=INTEGER}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommender_id!=null">
+                AND recommender_id = #{param.recommender_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories_child!=null">
+                AND categories_child = #{param.categories_child,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY update_time DESC
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterMechanismEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_mechanism
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mechanism_name!=null">
+                AND mechanism_name = #{param.mechanism_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+            AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_addr!=null">
+                AND mechanism_addr = #{param.mechanism_addr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_logo!=null">
+                AND mechanism_logo = #{param.mechanism_logo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_telephone!=null">
+                AND mechanism_telephone = #{param.mechanism_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_language!=null">
+                AND mechanism_language = #{param.mechanism_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_advantage!=null">
+                AND mechanism_advantage = #{param.mechanism_advantage,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_pic!=null">
+                AND introduction_pic = #{param.introduction_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts!=null">
+                AND contacts = #{param.contacts,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_telephone!=null">
+                AND contact_telephone = #{param.contact_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts_title!=null">
+                AND contacts_title = #{param.contacts_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.support_means!=null">
+                AND support_means = #{param.support_means,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_no!=null">
+                AND mechanism_no = #{param.mechanism_no,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sort_weight!=null">
+                AND sort_weight = #{param.sort_weight,jdbcType=INTEGER}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.recommender_id!=null">
+                AND recommender_id = #{param.recommender_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories_child!=null">
+                AND categories_child = #{param.categories_child,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.resource_classes_old!=null">
+                AND resource_classes_old = #{param.resource_classes_old,jdbcType=INTEGER}
+            </if>
+            <if test="param.resource_classes_new!=null">
+                AND resource_classes_new = #{param.resource_classes_new,jdbcType=INTEGER}
+            </if>
+        </where>
+        ORDER BY update_time DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterMechanismEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(0),0)
+        FROM eg_master_mechanism
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mechanism_name!=null">
+                AND mechanism_name = #{param.mechanism_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+            AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_addr!=null">
+                AND mechanism_addr = #{param.mechanism_addr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_logo!=null">
+                AND mechanism_logo = #{param.mechanism_logo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_telephone!=null">
+                AND mechanism_telephone = #{param.mechanism_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_language!=null">
+                AND mechanism_language = #{param.mechanism_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_advantage!=null">
+                AND mechanism_advantage = #{param.mechanism_advantage,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_pic!=null">
+                AND introduction_pic = #{param.introduction_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts!=null">
+                AND contacts = #{param.contacts,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_telephone!=null">
+                AND contact_telephone = #{param.contact_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts_title!=null">
+                AND contacts_title = #{param.contacts_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.support_means!=null">
+                AND support_means = #{param.support_means,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_no!=null">
+                AND mechanism_no = #{param.mechanism_no,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sort_weight!=null">
+                AND sort_weight = #{param.sort_weight,jdbcType=INTEGER}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.recommender_id!=null">
+                AND type = #{param.recommender_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories_child!=null">
+                AND categories_child = #{param.categories_child,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.resource_classes_old!=null">
+                AND resource_classes_old = #{param.resource_classes_old,jdbcType=INTEGER}
+            </if>
+            <if test="param.resource_classes_new!=null">
+                AND resource_classes_new = #{param.resource_classes_new,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="queryNearbyListPage" parameterType="com.huihe.eg.user.model.MasterMechanismEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        id, create_time, update_time, mechanism_name, user_id, mechanism_addr, mechanism_logo,
+        mechanism_telephone, mechanism_language, mechanism_advantage, introduction_pic, introduction_content,
+        contacts, contact_telephone, contact_information, contacts_title, status, support_means,
+        mechanism_no, sort_weight, latitude, longitude, type
+        <if test="param.latitude != null and param.longitude != null">
+            ,eg_user.distance (#{param.latitude},#{param.longitude},
+            latitude,longitude
+            ) distance
+        </if>
+        FROM eg_master_mechanism
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mechanism_name!=null">
+                AND mechanism_name = #{param.mechanism_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+            AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_addr!=null">
+                AND mechanism_addr = #{param.mechanism_addr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_logo!=null">
+                AND mechanism_logo = #{param.mechanism_logo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_telephone!=null">
+                AND mechanism_telephone = #{param.mechanism_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_language!=null">
+                AND mechanism_language = #{param.mechanism_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_advantage!=null">
+                AND mechanism_advantage = #{param.mechanism_advantage,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_pic!=null">
+                AND introduction_pic = #{param.introduction_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts!=null">
+                AND contacts = #{param.contacts,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_telephone!=null">
+                AND contact_telephone = #{param.contact_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts_title!=null">
+                AND contacts_title = #{param.contacts_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.support_means!=null">
+                AND support_means = #{param.support_means,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_no!=null">
+                AND mechanism_no = #{param.mechanism_no,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sort_weight!=null">
+                AND sort_weight = #{param.sort_weight,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+        </where>
+        <choose>
+            <when test="param.latitude != null and param.longitude != null">
+                ORDER BY distance DESC
+            </when>
+            <otherwise>
+                ORDER BY update_time DESC
+            </otherwise>
+        </choose>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="queryByMessage" resultMap="BaseResultMap" parameterType="com.huihe.eg.user.model.MasterMechanismEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_mechanism
+        <where>
+            <if test="param.mechanism_name!=null">
+                AND mechanism_name like concat('%',#{param.mechanism_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.mechanism_telephone!=null">
+                AND mechanism_telephone like concat('%',#{param.mechanism_telephone,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.mechanism_addr!=null">
+                AND mechanism_addr like concat('%',#{param.mechanism_addr,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.create_time!=null">
+                AND DATE_FORMAT(create_time,'%Y-%m-%d') =
+                DATE_FORMAT(#{param.create_time,jdbcType=TIMESTAMP},'%Y-%m-%d')
+            </if>
+            <if test="param.mechanism_no!=null">
+                AND mechanism_no like concat(#{param.mechanism_no,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryEnglishCount" resultType="java.lang.Integer">
+        select
+        COALESCE(count(1),0)
+        from eg_master_mechanism
+        <where>
+            <if test="param.mechanism_language!=null">
+                (mechanism_language like '%English%' or mechanism_language like '%英语%')
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryJapaneseCount" resultType="java.lang.Integer">
+        select
+        COALESCE(count(1),0)
+        from eg_master_mechanism
+        <where>
+            <if test="param.mechanism_language!=null">
+                (mechanism_language like '%Japanese%' or mechanism_language like '%日语%')
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryFrenchCount" resultType="java.lang.Integer">
+        select
+        COALESCE(count(1),0)
+        from eg_master_mechanism
+        <where>
+            <if test="param.mechanism_language!=null">
+                (mechanism_language like '%French%' or mechanism_language like '%法语%')
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryMonthNewlyAdded" resultType="java.lang.Integer">
+        select
+        COALESCE(count(1),0)
+        from eg_master_mechanism
+        <where>
+            DATE_FORMAT( create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+            and status = 2
+            <if test="param.recommender_id!=null">
+                AND recommender_id = #{param.recommender_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryMonthNewlyAddedList" resultType="com.huihe.eg.user.model.MasterMechanismEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_mechanism
+        <where>DATE_FORMAT( create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+            and status = 2
+            and recommender_id = #{param.recommender_id,jdbcType=VARCHAR}
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryAppointmentMechanismList" resultType="com.huihe.eg.user.model.MasterMechanismEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_mechanism
+        <where>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                status = 6 or status = 7
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        order by status asc , update_time desc
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="query2And5List" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_mechanism
+        <where>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                status = 2 or status = 5
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+    <select id="queryAppointmentMechanismListCount" resultType="java.lang.Integer">
+        select
+        coalesce(count(1),0)
+        from eg_master_mechanism
+        <where>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                status = 6 or status = 7
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="query2And5ListCount" resultType="java.lang.Integer">
+        select
+        coalesce(count(1),0)
+        from eg_master_mechanism
+        <where>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                status = 2 or status = 5
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        select
+        coalesce(count(1),0)
+        from eg_master_mechanism
+        <where>
+            <if test="param.mechanism_name!=null">
+                AND mechanism_name like concat('%',#{param.mechanism_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.mechanism_telephone!=null">
+                AND mechanism_telephone like concat('%',#{param.mechanism_telephone,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.create_time!=null">
+                AND DATE_FORMAT(create_time,'%Y-%m-%d') =
+                DATE_FORMAT(#{param.create_time,jdbcType=TIMESTAMP},'%Y-%m-%d')
+            </if>
+            <if test="param.mechanism_no!=null">
+                AND mechanism_no like concat(#{param.mechanism_no,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type = 'online_mechanism' or type = 'offline_mechanism' )
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryMechanismList" resultType="com.huihe.eg.user.model.MasterMechanismEntity">
+
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_mechanism
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mechanism_name!=null">
+                AND mechanism_name = #{param.mechanism_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+            AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_addr!=null">
+                AND mechanism_addr = #{param.mechanism_addr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_logo!=null">
+                AND mechanism_logo = #{param.mechanism_logo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_telephone!=null">
+                AND mechanism_telephone = #{param.mechanism_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_language!=null">
+                AND mechanism_language = #{param.mechanism_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_advantage!=null">
+                AND mechanism_advantage = #{param.mechanism_advantage,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_pic!=null">
+                AND introduction_pic = #{param.introduction_pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts!=null">
+                AND contacts = #{param.contacts,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_telephone!=null">
+                AND contact_telephone = #{param.contact_telephone,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.contacts_title!=null">
+                AND contacts_title = #{param.contacts_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.support_means!=null">
+                AND support_means = #{param.support_means,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_no!=null">
+                AND mechanism_no = #{param.mechanism_no,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sort_weight!=null">
+                AND sort_weight = #{param.sort_weight,jdbcType=INTEGER}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommender_id!=null">
+                AND recommender_id = #{param.recommender_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories_child!=null">
+                AND categories_child = #{param.categories_child,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY update_time DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <delete id="updateCash">
+        update eg_master_mechanism
+        set cash = #{param.cash,jdbcType=DECIMAL}
+        where id = #{param.id,jdbcType=BIGINT}
+    </delete>
+
+</mapper>

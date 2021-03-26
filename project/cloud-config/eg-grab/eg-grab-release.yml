@@ -1,0 +1,121 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.1.102:3306/qfx_product?autoReconnect=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    #数据库连接池
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 8000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+   #管理页面配置
+    registration:
+      url: /druid/*
+      addUrlPatterns: /*
+      addInitParameter:
+        #白名单，如果不配置或value为空，则允许所有
+        allow: 127.0.0.1,192.0.0.1
+        #黑名单，与白名单存在相同IP时，优先于白名单
+        deny: 192.0.0.1
+        #用户名
+        loginUsername: root
+        #密码
+        loginPassword: yangchengfu
+        ##禁用页面上的“Reset All”功能
+        resetEnable: false
+        urlPatternsu: /*
+  redis:
+    port: 6379
+    password: 123456
+    host: 192.168.1.102
+    timeout: 3000
+    pool:
+      maxActice: 300
+      maxWait: -1
+      maxIdle: 8
+      minIdle: 0
+  session:
+    store-type: redis
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 8MB
+  jps:
+    showsql: true
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            ##断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试
+            timeoutInMilliseconds: 80000
+  threadpool:
+    default:
+      coreSize: 20
+ribbon:
+  ##请求处理的超时时间
+  ReadTimeout: 30000
+  ##请求连接的超时时间
+  ConnectTimeout: 2000
+  ##对当前实例的重试次数
+  MaxAutoRetries: 0
+  ##对所有操作请求都进行重试
+  OkToRetryOnAllOperations: true
+  ##切换实例的重试次数
+  MaxAutoRetriesNextServer: 1
+management:
+  security:
+    enabled: false
+logging:
+  level: debug
+service:
+  shuli:
+    access_id: sl2018071116062101
+    access_key: 7AxuyGFNiTGnGCjnbmaoKHuGDSjwctthMqZDDp2PvCKb
+    url: https://openapi.shulidata.com/auth/token
+##aactivemq 自定义配置
+  activemq:
+    broker-url: tcp://192.168.1.102:61616
+    in-memory: false
+    password: admin
+    user: admin
+    close-timeout: 5000
+    pool:
+      max-connections: 100
+    ##七牛云
+  qiniu:
+    accessKey: 92IPjDZkILUZwPhD5LlwlcKu_ZX6rXzLiS1bkJfa
+    secretKey: gbOqhIGeTF_jPo2S9p-kjG52vhGC3Jr90xVYfaTN
+    url: http://ou0206y97.bkt.clouddn.com/
+    bucket: image
+    expires: 72000
+    speech:
+      url: http://p53tzb0uq.bkt.clouddn.com/
+  mapper:
+    location: classpath*:com/zs/auction/product/mybaties/mapper/*Mapper.xml

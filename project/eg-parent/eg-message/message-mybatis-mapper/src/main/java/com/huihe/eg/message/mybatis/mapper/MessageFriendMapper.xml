@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.MessageFriendMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.MessageFriendEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="firend_id" jdbcType="BIGINT" property="firend_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="friend_remarks" jdbcType="VARCHAR" property="friend_remarks" />
+    <result column="add_type" jdbcType="VARCHAR" property="add_type" />
+    <result column="group_name" jdbcType="VARCHAR" property="group_name" />
+    <result column="add_source" jdbcType="VARCHAR" property="add_source" />
+    <result column="add_wording" jdbcType="VARCHAR" property="add_wording" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, firend_id, create_time, status, friend_remarks, add_type, group_name, 
+    add_source, add_wording, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_friend
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_friend
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.MessageFriendEntity">
+    insert into message_friend (id, user_id, firend_id, 
+      create_time, status, friend_remarks, 
+      add_type, group_name, add_source, 
+      add_wording, update_time)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{firend_id,jdbcType=BIGINT}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{friend_remarks,jdbcType=VARCHAR}, 
+      #{add_type,jdbcType=VARCHAR}, #{group_name,jdbcType=VARCHAR}, #{add_source,jdbcType=VARCHAR}, 
+      #{add_wording,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.MessageFriendEntity">
+    insert into message_friend
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="firend_id != null">
+        firend_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="friend_remarks != null">
+        friend_remarks,
+      </if>
+      <if test="add_type != null">
+        add_type,
+      </if>
+      <if test="group_name != null">
+        group_name,
+      </if>
+      <if test="add_source != null">
+        add_source,
+      </if>
+      <if test="add_wording != null">
+        add_wording,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="firend_id != null">
+        #{firend_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="friend_remarks != null">
+        #{friend_remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="add_type != null">
+        #{add_type,jdbcType=VARCHAR},
+      </if>
+      <if test="group_name != null">
+        #{group_name,jdbcType=VARCHAR},
+      </if>
+      <if test="add_source != null">
+        #{add_source,jdbcType=VARCHAR},
+      </if>
+      <if test="add_wording != null">
+        #{add_wording,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.MessageFriendEntity">
+    update message_friend
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="firend_id != null">
+        firend_id = #{firend_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="friend_remarks != null">
+        friend_remarks = #{friend_remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="add_type != null">
+        add_type = #{add_type,jdbcType=VARCHAR},
+      </if>
+      <if test="group_name != null">
+        group_name = #{group_name,jdbcType=VARCHAR},
+      </if>
+      <if test="add_source != null">
+        add_source = #{add_source,jdbcType=VARCHAR},
+      </if>
+      <if test="add_wording != null">
+        add_wording = #{add_wording,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.MessageFriendEntity">
+    update message_friend
+    set user_id = #{user_id,jdbcType=BIGINT},
+      firend_id = #{firend_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      friend_remarks = #{friend_remarks,jdbcType=VARCHAR},
+      add_type = #{add_type,jdbcType=VARCHAR},
+      group_name = #{group_name,jdbcType=VARCHAR},
+      add_source = #{add_source,jdbcType=VARCHAR},
+      add_wording = #{add_wording,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.MessageFriendEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_friend
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.firend_id!=null">
+        AND firend_id = #{param.firend_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.friend_remarks!=null">
+        AND friend_remarks = #{param.friend_remarks,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_type!=null">
+        AND add_type = #{param.add_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_source!=null">
+        AND add_source = #{param.add_source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_wording!=null">
+        AND add_wording = #{param.add_wording,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.MessageFriendEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_friend
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.firend_id!=null">
+        AND firend_id = #{param.firend_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.friend_remarks!=null">
+        AND friend_remarks = #{param.friend_remarks,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_type!=null">
+        AND add_type = #{param.add_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_source!=null">
+        AND add_source = #{param.add_source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_wording!=null">
+        AND add_wording = #{param.add_wording,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.MessageFriendEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM message_friend
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.firend_id!=null">
+        AND firend_id = #{param.firend_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.friend_remarks!=null">
+        AND friend_remarks = #{param.friend_remarks,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_type!=null">
+        AND add_type = #{param.add_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_source!=null">
+        AND add_source = #{param.add_source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_wording!=null">
+        AND add_wording = #{param.add_wording,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <!--查询好友-->
+  <select id="queryUserFirendInfo" parameterType="com.huihe.eg.message.model.MessageFriendEntity" resultType="com.huihe.eg.message.model.MessageFriendEntity">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_friend WHERE status =2 AND user_id = #{param.user_id,jdbcType=BIGINT}
+    UNION ALL
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_friend WHERE status =2 AND firend_id = #{param.user_id,jdbcType=BIGINT}
+
+  </select>
+</mapper>

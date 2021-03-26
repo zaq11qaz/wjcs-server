@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.CommodityCouponMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.CommodityCouponEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="creat_time" jdbcType="TIMESTAMP" property="creat_time"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="discount" jdbcType="DECIMAL" property="discount"/>
+        <result column="cash" jdbcType="DECIMAL" property="cash"/>
+        <result column="duration" jdbcType="INTEGER" property="duration"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="activity_id" jdbcType="BIGINT" property="activity_id"/>
+        <result column="full_amount" jdbcType="DECIMAL" property="full_amount"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="start_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="course_num" jdbcType="INTEGER" property="course_num"/>
+        <result column="platform" jdbcType="VARCHAR" property="platform"/>
+        <result column="member_level" jdbcType="VARCHAR" property="member_level"/>
+        <result column="descr" jdbcType="VARCHAR" property="descr"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, type, name, creat_time, status, discount, cash, duration, update_time, activity_id, 
+    full_amount, start_time, end_time, course_num,platform,member_level,descr
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_commodity_coupon
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_commodity_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.CommodityCouponEntity">
+    insert into eg_commodity_coupon (id, type, name, 
+      creat_time, status, discount, 
+      cash, duration, update_time, 
+      activity_id, full_amount, start_time, 
+      end_time, course_num,platform,member_level)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+      #{creat_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{discount,jdbcType=DECIMAL}, 
+      #{cash,jdbcType=DECIMAL}, #{duration,jdbcType=INTEGER}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{activity_id,jdbcType=BIGINT}, #{full_amount,jdbcType=DECIMAL}, #{start_time,jdbcType=TIMESTAMP}, 
+      #{end_time,jdbcType=TIMESTAMP}, #{course_num,jdbcType=INTEGER}),#{platform,jdbcType=VARCHAR},#{member_level,jdbcType=VARCHAR}
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.CommodityCouponEntity">
+        insert into eg_commodity_coupon
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="creat_time != null">
+                creat_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="cash != null">
+                cash,
+            </if>
+            <if test="duration != null">
+                duration,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="activity_id != null">
+                activity_id,
+            </if>
+            <if test="full_amount != null">
+                full_amount,
+            </if>
+            <if test="start_time != null">
+                start_time,
+            </if>
+            <if test="end_time != null">
+                end_time,
+            </if>
+            <if test="course_num != null">
+                course_num,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="member_level != null">
+                member_level,
+            </if>
+            <if test="descr != null">
+                descr,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="creat_time != null">
+                #{creat_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=DECIMAL},
+            </if>
+            <if test="cash != null">
+                #{cash,jdbcType=DECIMAL},
+            </if>
+            <if test="duration != null">
+                #{duration,jdbcType=INTEGER},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activity_id != null">
+                #{activity_id,jdbcType=BIGINT},
+            </if>
+            <if test="full_amount != null">
+                #{full_amount,jdbcType=DECIMAL},
+            </if>
+            <if test="start_time != null">
+                #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="course_num != null">
+                #{course_num,jdbcType=INTEGER},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=VARCHAR},
+            </if>
+            <if test="member_level != null">
+                #{member_level,jdbcType=VARCHAR},
+            </if>
+            <if test="descr != null">
+                #{descr,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.CommodityCouponEntity">
+        update eg_commodity_coupon
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="creat_time != null">
+                creat_time = #{creat_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=DECIMAL},
+            </if>
+            <if test="cash != null">
+                cash = #{cash,jdbcType=DECIMAL},
+            </if>
+            <if test="duration != null">
+                duration = #{duration,jdbcType=INTEGER},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activity_id != null">
+                activity_id = #{activity_id,jdbcType=BIGINT},
+            </if>
+            <if test="full_amount != null">
+                full_amount = #{full_amount,jdbcType=DECIMAL},
+            </if>
+            <if test="start_time != null">
+                start_time = #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                end_time = #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="course_num != null">
+                course_num = #{course_num,jdbcType=INTEGER},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=VARCHAR},
+            </if>
+            <if test="member_level != null">
+                member_level = #{member_level,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.CommodityCouponEntity">
+    update eg_commodity_coupon
+    set type = #{type,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      creat_time = #{creat_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=DECIMAL},
+      cash = #{cash,jdbcType=DECIMAL},
+      duration = #{duration,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      activity_id = #{activity_id,jdbcType=BIGINT},
+      full_amount = #{full_amount,jdbcType=DECIMAL},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      end_time = #{end_time,jdbcType=TIMESTAMP},
+      course_num = #{course_num,jdbcType=INTEGER},
+       platform = #{platform,jdbcType=VARCHAR},
+       member_level = #{member_level,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.CommodityCouponEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_commodity_coupon
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.creat_time!=null">
+                AND creat_time = #{param.creat_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.duration!=null">
+                AND duration = #{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.activity_id!=null">
+                AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.full_amount!=null">
+                AND full_amount = #{param.full_amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.platform != null">
+                AND platform = #{param.platform,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level != null">
+                AND member_level = #{param.member_level,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.CommodityCouponEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_commodity_coupon
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.creat_time!=null">
+                AND creat_time = #{param.creat_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.duration!=null">
+                AND duration = #{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.activity_id!=null">
+                AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.full_amount!=null">
+                AND full_amount = #{param.full_amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.platform != null">
+                AND platform = #{param.platform,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level != null">
+                AND member_level = #{param.member_level,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.CommodityCouponEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_commodity_coupon
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.creat_time!=null">
+                AND creat_time = #{param.creat_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.cash!=null">
+                AND cash = #{param.cash,jdbcType=DECIMAL}
+            </if>
+            <if test="param.duration!=null">
+                AND duration = #{param.duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.activity_id!=null">
+                AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.full_amount!=null">
+                AND full_amount = #{param.full_amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.platform != null">
+                AND platform = #{param.platform,jdbcType=VARCHAR}
+            </if>
+            <if test="param.member_level != null">
+                AND member_level = #{param.member_level,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

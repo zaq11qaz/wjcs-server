@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>动态详情</title>
+		<link rel="stylesheet" href="./css/mui.min.css" />
+		<link rel="stylesheet" href="./css/mui.picker.min.css" />
+		<link rel="stylesheet" href="./css/newOversea/reset.css" />
+		<link rel="stylesheet" href="./css/newOversea/common.css" />
+		<link rel="stylesheet" href="./css/newOversea/jly.css" />
+		<link rel="stylesheet" href="./css/newOversea/sxz.css" />
+		<link rel="stylesheet" href="./css/newOversea/lbw.css" />
+		<link rel="stylesheet" href="./css/newOversea/Andy.css" />
+		<link rel="stylesheet" type="text/css" href="./css/AwdInformationlist.css" />
+		<link rel="stylesheet" type="text/css" href="./css/css.css" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0
+			}
+
+			ul,
+			li {
+				list-style: none
+			}
+			#wrap{
+				width: 100%;
+			}
+
+			.tabClick {
+				background: #fff;
+				overflow: hidden;
+				width:100%;
+				border-top: .26rem solid #F3F3F3;
+			}
+
+			.tabClick li {
+				height: 1.17rem;
+				line-height: 1.17rem;
+				width: 25%;
+				float: left;
+				text-align: center
+			}
+
+			.tabClick li.active {
+				color: #099;
+				transition: 0.1s;
+				font-weight: bold
+			}
+
+			.tabCon {
+				overflow: hidden
+			}
+
+			.tabBox {
+				position: relative
+			}
+
+			.tabList {
+				/* word-break: break-all; */
+				width: 100%;
+				float: left;
+				/* line-height: 1.33rem; */
+				/* text-align: center; */
+				/* color: #D3D3D3; */
+				/* font-size: .48rem; */
+				/* font-family: "Arial Black" */
+				white-space:nowrap;
+			}
+
+			.lineBorder {
+				height: .02rem;
+				overflow: hidden;
+				/* border-top: 1px solid #f3f3f3; */
+				/* background: #f3f3f3; */
+				width:100%
+			}
+
+			.lineDiv {
+				background: #099;
+				height: .02rem;
+				width: 25%;
+			}
+
+			/*pic*/
+			.informationListImage,
+			.OnepicImgFather {
+				position: relative;
+			}
+
+			.informationListImage>img,
+			.OnepicImgFather>img {
+				position: absolute;
+				width: 120%;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			/* .interesting-fixed {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background: #000;
+				padding: 0 .4rem;
+				height: .8rem;
+				line-height: .8rem;
+				font-size: .3rem;
+				color: #fff;
+			} */
+
+			.floatbox img {
+				width: .96rem;
+				height: .96rem;
+				float: left;
+				margin: .15rem 0;
+				/* margin-right: .1rem; */
+			}
+
+			.floatbox a {
+				margin-top: .12rem;
+				height: .5rem;
+				line-height: .5rem;
+				background: #33CBCC;
+				font-size: .15rem;
+				border-radius: .02rem;
+				color: #fff;
+				float: right;
+				display: block;
+				padding: 0 .1rem;
+			}
+
+			.floatbox {
+				display: flex;
+				align-items: center;
+			}
+
+			#newsTem {
+				width: 100%;
+				/*height: 300px; */
+				overflow: hidden;
+				position: relative;
+				z-index: -1;
+			}
+
+			#douible_down {
+				width: 100%;
+				height: 0.6rem;
+				background-color: rgba(255, 255, 255, .01);
+				position: relative;
+				text-align: center;
+				box-shadow: -0.1rem -0.4rem 0.8rem 0.03rem #fff;
+			}
+
+			#recommendListTitle {
+				width: 100%;
+			}
+
+			.arrow_up {
+				width: 0.3rem;
+				animation: arrow_up 500ms linear 0s infinite;
+			}
+
+			@keyframes arrow_up {
+				0% {
+					transform: translateY(0px);
+				}
+
+				100% {
+					transform: translateY(0.3rem);
+				}
+
+				0% {
+					transform: translateY(0px);
+				}
+			}
+		</style>
+		<script type="text/javascript" src="./js/rem.js"></script>
+		<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="./js/fenxiang.js"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				newsDetails();
+				/* var myData = {};
+				 myData.file_name="C:\\Users\\Administrator\\Desktop\\H56D517FF_0511191325.apk";
+				 myData.phone_num = '156875244'
+				 $.ajax({
+				     type:"POST",
+				     contentType:"application/json",
+				     url:"http://localhost:8088/guidetravel/uploadFile/downloadFile.do",
+				     data :JSON.stringify(myData),
+				     dataType:"json",
+				     success:function(data){
+
+				     }
+
+				 })*/
+			});
+		</script>
+		<script type="application/javascript">
+
+		</script>
+
+	</head>
+	<body style="padding-bottom: 1.2rem">
+		<div class="interesting-fixed">
+			<!-- <img src="/images/logo3.png" alt="">
+			<span>好奇地球</span>
+			<a href="http://www.huihejituan.com/yichujing/download/download.html">下载</a>
+			</div> -->
+			<div class="floatbox floatTop" style="z-index: 99999">
+				<img id="funnyAvatar-an" src="./img/logo1.png" alt="">
+				<span class="twoRowEllipsis" id="hotcomments">世界动态：好奇地球等你来探索</span>
+				<i onclick="download()">打开</i>
+			</div>
+			<div class="common-content hidden_add" id="vueContent" style="padding: 0;">
+
+				<div class="content" id="Funny">
+					<ul class="interUl interesting-detail-content" style="padding-top: 1.2rem;">
+						<!-- <h2 class="twoRowEllipsis" style="line-height: 0.64rem" id="inforTitle">{{interestingTitle}}</h2>
+						<li class="interUl_01"><span class="interesting-span"><img id="avatar" src="/images/logo3.png" alt="" /></span></li>
+						<li class="interUl_02">
+							<span class="oneRowEllipsis" id="interesting-name">好奇地球</span>
+							<i id="inforTime">{{interestingTime}}</i>
+						</li>
+						<li id="newsTem">
+
+						</li> -->
+						<li class="peoplebox">
+							<div class="peoplebox_left">
+								<img class="headImg" src="./img/logo1.png">
+								<div class="name_box">
+									<div class="name_box_top">
+										<span class="" >分数是的</span>
+										<img src="./img/man.png">
+										<img src="./img/huiyuan.png" >
+									</div>
+									<div class="name_box_bottom">
+										<img src="./img/logo1.png">
+										<p>10:20</p>
+									</div>
+								</div>
+							</div>
+
+							<img class="more_img" src="./img/sandian.png">
+						</li>
+						<li class="contentbox">
+							<p>内容</p>
+							<img src="./img/logo2.png">
+							<span class="typebox">#其他</span>
+						</li>
+						<!-- <li class="pinglunbox">
+							<div class="pinglun-item">
+								<image src="/static/diqiuquan/liwu.png" mode=""></image>
+								<p class="nameText"></p>
+							</div>
+							<div class="pinglun-item">
+								<image src="/static/diqiuquan/dianzan.png" mode=""></image>
+								<p class="nameText"></p>
+							</div>
+							<div class="pinglun-item-box">
+								<div class="pinglun-item">
+									<i class="nameText">用户</i>
+									<i class="nameText">回复</i>
+									<i class="nameText">用户：</i>
+									<i>内容</i>
+								</div>
+								<div class="pinglun-item">
+									<i class="nameText">用户：</i>
+									<i>内容</i>
+								</div>
+							</div>
+						</li> -->
+
+
+						<li class="wrap" id="wrap">
+						    <ul class="tabClick">
+						        <li class="active">礼物()</li>
+						        <li>转发()</li>
+						        <li>评论()</li>
+						        <li>点赞()</li>
+						    </ul>
+						    <div class="lineBorder">
+						        <div class="lineDiv"><!--移动的div--></div>
+						    </div>
+						    <div class="tabCon">
+						        <div class="tabBox">
+						            <div class="tabList">
+										<div class="tab_item">
+											<div class="liwu_left">
+												<img class="headImg" src="./img/logo1.png">
+												<div class="name_box">
+													<div class="name_box_top">
+														<span class="" >分数是的</span>
+														<img src="./img/man.png">
+														<img src="./img/huiyuan.png">
+													</div>
+													<div class="name_box_bottom">
+														<img src="./img/logo1.png">
+														<p>10:20</p>
+													</div>
+												</div>
+											</div>
+											<div class="liwu_mid">
+												<div class="liwu_mid_item">
+													<img src="http://www.huihejituan.com/tripPictstorage/qmore/gift/redwine.png" >
+													<span>红酒</span>
+												</div>
+												<p>x11</p>
+											</div>
+											<div class="liwu_right">
+												500猫币
+											</div>
+										</div>
+										<div class="tab_item">
+											<div class="liwu_left">
+												<img class="headImg" src="./img/logo1.png">
+												<div class="name_box">
+													<div class="name_box_top">
+														<span class="" >分数是的</span>
+														<img src="./img/man.png">
+														<img src="./img/huiyuan.png">
+													</div>
+													<div class="name_box_bottom">
+														<img src="./img/logo1.png">
+														<p>10:20</p>
+													</div>
+												</div>
+											</div>
+											<div class="liwu_mid">
+												<div class="liwu_mid_item">
+													<img src="http://www.huihejituan.com/tripPictstorage/qmore/gift/redwine.png" >
+													<span>红酒</span>
+												</div>
+												<p>x11</p>
+											</div>
+											<div class="liwu_right">
+												500猫币
+											</div>
+										</div>
+						            </div>
+						            <div class="tabList">
+										<div class="tab_item">
+											<div class="liwu_left">
+												<img class="headImg" src="./img/logo1.png">
+												<div class="name_box">
+													<div class="name_box_top">
+														<span class="" >分数是的</span>
+														<img src="./img/man.png">
+														<img src="./img/huiyuan.png">
+													</div>
+													<div class="name_box_bottom">
+														<img src="./img/logo1.png">
+														<p>10:20</p>
+													</div>
+												</div>
+											</div>
+											<p class="share_p">分享到微信</p>
+										</div>
+										<div class="tab_item">
+											<div class="liwu_left">
+												<img class="headImg" src="./img/logo1.png">
+												<div class="name_box">
+													<div class="name_box_top">
+														<span class="" >分数是的</span>
+														<img src="./img/man.png">
+														<img src="./img/huiyuan.png">
+													</div>
+													<div class="name_box_bottom">
+														<img src="./img/logo1.png">
+														<p>10:20</p>
+													</div>
+												</div>
+											</div>
+											<p class="share_p">分享到微信</p>
+										</div>
+										<div class="tab_item">
+											<div class="liwu_left">
+												<img class="headImg" src="./img/logo1.png">
+												<div class="name_box">
+													<div class="name_box_top">
+														<span class="" >分数是的</span>
+														<img src="./img/man.png">
+														<img src="./img/huiyuan.png">
+													</div>
+													<div class="name_box_bottom">
+														<img src="./img/logo1.png">
+														<p>10:20</p>
+													</div>
+												</div>
+											</div>
+											<p class="share_p">分享到微信</p>
+										</div>
+						            </div>
+						            <div class="tabList">
+										<div class="pinglunbox2">
+											<div class="peoplebox_left">
+												<img class="headImg" src="./img/logo1.png">
+												<div class="name_box">
+													<div class="name_box_top">
+														<span class="" >分数是的</span>
+														<img src="./img/man.png">
+													</div>
+													<div class="name_box_bottom">
+														<img src="./img/logo1.png">
+														<p>10:20</p>
+													</div>
+												</div>
+											</div>
+											<div id="yijipinglun">
+												<div class="yijipinglun_left">
+													<img src="./img/fanyi.png">
+													<span>评论内容
+														<i class="timetext">30分钟前</i>
+													</span>
+												</div>
+												<div class="pinglun_right">
+													<img src="./img/hongxin.png">
+													<span>3502</span>
+												</div>
+
+											</div>
+											<div id="erjipinglun">
+												<div class="erjipinglun_top">
+													<img src="./img/logo1.png">
+													<p>用户1</p>
+													<p>回复</p>
+													<p>用户2</p>
+												</div>
+												<div class="erjipinglun_bottom">
+													<div class="erjipinglun_bottom_left">
+														<img src="./img/fanyi.png">
+														<span>
+															二级评论内容
+															<i class="timetext">2019.5.14</i>
+														</span>
+													</div>
+													<div class="pinglun_right">
+														<img src="./img/huixin.png">
+														<span>2035</span>
+													</div>
+												</div>
+											</div>
+											<div id="huifubox">
+												<span>查看<i>105</i>条对话</span>
+												<img src="./img/youjiantou.png">
+												<span>回复</span>
+											</div>
+										</div>
+									</div>
+						            <div class="tabList">
+										<div class="tab_item dianzan_item">
+											<div class="liwu_left">
+												<img class="headImg" src="./img/logo1.png">
+												<div class="name_box">
+													<div class="name_box_top">
+														<span class="" >分数是的</span>
+														<img src="./img/man.png">
+														<img src="./img/huiyuan.png">
+													</div>
+													<div class="name_box_bottom">
+														<img src="./img/logo1.png">
+														<p>10:20</p>
+													</div>
+												</div>
+											</div>
+											<img class="dianzanImg" src="./img/dianzan.png" >
+										</div>
+									</div>
+						        </div>
+						    </div>
+						</li>
+						<!-- <li class="pinglunbox2">
+							<div id="pinglunbox2_item">
+								<div class="peoplebox_left">
+									<img class="headImg" src="./img/logo1.png">
+									<div class="name_box">
+										<div class="name_box_top">
+											<span class="" >分数是的</span>
+											<img src="./img/man.png">
+										</div>
+										<div class="name_box_bottom">
+											<img src="./img/logo1.png">
+											<p>10:20</p>
+										</div>
+									</div>
+								</div>
+								<div id="yijipinglun">
+									<div class="yijipinglun_left">
+										<img src="./img/fanyi.png">
+										<span>评论内容
+											<i class="timetext">30分钟前</i>
+										</span>
+									</div>
+									<div class="pinglun_right">
+										<img src="./img/hongxin.png">
+										<span>3502</span>
+									</div>
+
+								</div>
+								<div id="erjipinglun">
+									<div class="erjipinglun_top">
+										<img src="./img/logo1.png">
+										<p>用户1</p>
+										<p>回复</p>
+										<p>用户2</p>
+									</div>
+									<div class="erjipinglun_bottom">
+										<div class="erjipinglun_bottom_left">
+											<img src="./img/fanyi.png">
+											<span>
+												二级评论内容
+												<i class="timetext">2019.5.14</i>
+											</span>
+										</div>
+										<div class="pinglun_right">
+											<img src="./img/huixin.png">
+											<span>2035</span>
+										</div>
+									</div>
+								</div>
+								<div id="huifubox">
+									<span>查看<i>105</i>条对话</span>
+									<img src="./img/youjiantou.png">
+									<span>回复</span>
+								</div>
+							</div>
+						</li> -->
+
+						<!-- <li class="douible_down" id="douible_down">
+							<img class="arrow_up" src="./images/double_down.png" />
+						</li> -->
+						<li class="openApp" id="openApp">
+							<span onclick="download()">打开好奇地球App，阅读体验更佳</span>
+						</li>
+						<li class="recommendListTitle" id="recommendListTitle">
+							<img class="all_like_img" src="./img/look.png" alt="">
+						</li>
+						<li id="newsTem2">
+							<div id="tuijianitem">
+								<div class="tuijianitem_left">
+									<p>推荐内容</p>
+									<span class="tuijianitem_left_bottom">
+										<i style="color: #33cbcc;">打开APP</i> 999+评论 1小时前
+									</span>
+								</div>
+								<img src="./img/logo2.png">
+							</div>
+						</li>
+						<!--<li class="interUl_04">关注</li>-->
+						<li></li>
+						<li class="interUl_08"><i>免责申明</i>
+							<p class="MianzePdding">
+								本站刊载的内容所有权归属原作者，好气地球仅提供信息发布平台，不代表同意原作者的观点和立场，部分内容经网络转载，如有侵权烦请联系我们（邮箱：huihejituan@joingp.net),以便及时删除。</p>
+						</li>
+						<!-- <li class="interUl_02"></li> -->
+
+						<!--<li class="interUl_09 interesting-report"><img class="lf" src="/images/lajitong_03.png" alt="" />举报内容
+        <template v-for="click in vm.clickText">
+            <template v-if="click.match('点击')=='点击'">
+                <span class="Marg-left">{{click}}</span>
+            </template>
+        </template>
+    </li>-->
+					</ul>
+				</div>
+
+
+			</div>
+
+			<div class="openAppBott">
+				<img src="./img/logo2.png" alt="">
+				<div class="bottComment">
+					<h4>好奇地球</h4>
+					<span>世界动态：好奇地球等你来探索</span>
+				</div>
+				<i onclick="download()">打开</i>
+				<div class="clear"></div>
+			</div>
+
+			<div class="">
+				<template id="newsDetails">
+					<li style="line-height: 0.42rem" class="interUl_05">{{infor}}</li>
+				</template>
+				<template id="newsDetailsImage">
+					<li class="interUl_06"><img src="{{infor}}" alt="" /></li>
+				</template>
+
+
+
+				<template id="newList">
+					<div class="new-boederBox" onclick="download()">
+						<div class="informationListText changePadd onePicInfor" style="float: left;">
+							<p class="twoRowEllipsis" style="font-size: 0.36rem;">推荐内容</p>
+							<div style="" class="subfield-lr new-subfield-lr">
+								<!-- {{infor.quoteFrom}}  {{infor.hits}}点击  {{infor.infoStartTime | andy}}-->
+								<span><i style="color: #33cbcc;">打开App</i> 132评论 1小时前</span>
+							</div>
+						</div>
+						<div class="informationListImage changeMargin Onepic onePicRightmodel info-li" style="">
+							<img style="width: 150%" class="info-li-img" src="{{image}}" alt="" />
+						</div>
+						<div class="clear"></div>
+					</div>
+				</template>
+
+				<template id="newListByOneImg">
+					<div class="new-boederBox" onclick="funNewDetail(this)" data-new-url="{{new_url}}" data-funnews-id="{{new_id}}">
+						<div class="informationListText changePadd onePicInfor" style="float: left;">
+							<p class="twoRowEllipsis" style="font-size: 0.36rem;">{{covercontent}}</p>
+							<div style="" class="subfield-lr new-subfield-lr">
+								<!-- {{infor.quoteFrom}}  {{infor.hits}}点击  {{infor.infoStartTime | andy}}-->
+								<span><i>{{address}}</i> <i>3</i>评论 1小时前</span>
+							</div>
+						</div>
+						<div class="informationListImage changeMargin Onepic onePicRightmodel info-li" style="margin-left: 0.36rem">
+							<img style="width: 150%" class="info-li-img" src="{{image}}" alt="" />
+						</div>
+						<div class="clear"></div>
+					</div>
+				</template>
+
+				<template id="newListByThreeImg">
+					<div class="new-boederBox" onclick="funNewDetail(this)" data-new-url="{{new_url}}" data-funnews-id="{{new_id}}">
+						<div class="interestingListChange changePadd changeMargin">
+							<div style="padding: 0 !important;" class="informationList noneBgcColor changePadd changeMargin">
+								<h3 class="twoRowEllipsis new-twoRowEllipsis">{{covercontent}}</h3>
+								<ul class="rasterization">
+									<li style="height: 1.5rem;" class="OnepicImgFather funny-li">
+										<img style="width: 150%" class="OnepicImg funny-li-img imgAuto" src="{{image}}" />
+									</li>
+									<li style="height: 1.5rem;" class="OnepicImgFather funny-li">
+										<img style="width: 150%" class="OnepicImg funny-li-img imgAuto" src="{{image1}}" />
+									</li>
+									<li style="height: 1.5rem;" class="OnepicImgFather funny-li">
+										<img style="width: 150%" class="OnepicImg funny-li-img imgAuto" src="{{image2}}" />
+									</li>
+								</ul>
+								<div class="subfield-lr new-subfield-lr">
+									<span><i>{{address}}</i><i>3</i>评论 1小时前</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		//向上滑动页面  全球消失
+		var mybody = document.getElementsByTagName('body')[0];
+		var startX, startY, moveEndX, moveEndY, X, Y;
+		mybody.addEventListener('touchstart', function(e) {
+			startX = e.touches[0].pageX;
+			startY = e.touches[0].pageY;
+		})
+		mybody.addEventListener('touchmove', function(e) {
+			moveEndX = e.changedTouches[0].pageX;
+			moveEndY = e.changedTouches[0].pageY;
+			X = moveEndX - startX;
+			Y = moveEndY - startY;
+			if (Math.abs(Y) > Math.abs(X) && Y < 0) {
+				$('.floatTop').hide();
+			} else if (Math.abs(Y) > Math.abs(X) && Y > 0) {
+				$('.floatTop').show();
+			}
+		})
+	</script>
+	<script charset="utf-8">
+		window.onload = function (){
+	        var windowWidth = document.body.clientWidth; //window 宽度;
+			var wrap = document.getElementById('wrap');
+	        var tabClick = wrap.querySelectorAll('.tabClick')[0];
+	        var tabLi = tabClick.getElementsByTagName('li');
+
+	        var tabBox =  wrap.querySelectorAll('.tabBox')[0];
+	        var tabList = tabBox.querySelectorAll('.tabList');
+
+	        var lineBorder = wrap.querySelectorAll('.lineBorder')[0];
+	        var lineDiv = lineBorder.querySelectorAll('.lineDiv')[0];
+
+	        var tar = 0;
+	        var endX = 0;
+	        var dist = 0;
+
+	        tabBox.style.overflow='hidden';
+	        tabBox.style.position='relative';
+	        tabBox.style.width=windowWidth*tabList.length+"px";
+
+	        for(var i = 0 ;i<tabLi.length; i++ ){
+	              tabList[i].style.width=windowWidth+"px";
+	              tabList[i].style.float='left';
+	              tabList[i].style.float='left';
+	              tabList[i].style.padding='0';
+	              tabList[i].style.margin='0';
+	              tabList[i].style.verticalAlign='top';
+	              tabList[i].style.display='table-cell';
+	        }
+
+	        for(var i = 0 ;i<tabLi.length; i++ ){
+	            tabLi[i].start = i;
+	            tabLi[i].onclick = function(){
+	                var star = this.start;
+	                for(var i = 0 ;i<tabLi.length; i++ ){
+	                    tabLi[i].className='';
+	                };
+	                tabLi[star].className='active';
+	                init.lineAnme(lineDiv,windowWidth/tabLi.length*star)
+	                init.translate(tabBox,windowWidth,star);
+	                endX= -star*windowWidth;
+	            }
+	        }
+
+	        function OnTab(star){
+	            if(star<0){
+	                star=0;
+	            }else if(star>=tabLi.length){
+	                star=tabLi.length-1
+	            }
+	            for(var i = 0 ;i<tabLi.length; i++ ){
+	                tabLi[i].className='';
+	            };
+
+	             tabLi[star].className='active';
+	            init.translate(tabBox,windowWidth,star);
+	            endX= -star*windowWidth;
+	        };
+
+	        tabBox.addEventListener('touchstart',chstart,false);
+	        tabBox.addEventListener('touchmove',chmove,false);
+	        tabBox.addEventListener('touchend',chend,false);
+	        //按下
+	        function chstart(ev){
+	            ev.preventDefault;
+	            var touch = ev.touches[0];
+	            tar=touch.pageX;
+	            tabBox.style.webkitTransition='all 0s ease-in-out';
+	            tabBox.style.transition='all 0s ease-in-out';
+	        };
+	        //滑动
+	        function chmove(ev){
+	            var stars = wrap.querySelector('.active').start;
+	            ev.preventDefault;
+	            var touch = ev.touches[0];
+	            var distance = touch.pageX-tar;
+	            dist = distance;
+	            init.touchs(tabBox,windowWidth,tar,distance,endX);
+	            init.lineAnme(lineDiv,-dist/tabLi.length-endX/4);
+	        };
+	        //离开
+	        function chend(ev){
+	            var str= tabBox.style.transform;
+	            var strs = JSON.stringify(str.split(",",1));
+	            endX = Number(strs.substr(14,strs.length-18));
+
+	            if(endX>0){
+	                init.back(tabBox,windowWidth,tar,0,0,0.3);
+	                endX=0
+	            }else if(endX<-windowWidth*tabList.length+windowWidth){
+	                endX=-windowWidth*tabList.length+windowWidth
+	                init.back(tabBox,windowWidth,tar,0,endX,0.3);
+	            }else if(dist<-windowWidth/3){
+	                 OnTab(tabClick.querySelector('.active').start+1);
+	                 init.back(tabBox,windowWidth,tar,0,endX,0.3);
+	            }else if(dist>windowWidth/3){
+	                 OnTab(tabClick.querySelector('.active').start-1);
+	            }else{
+	                 OnTab(tabClick.querySelector('.active').start);
+	            }
+	            var stars = wrap.querySelector('.active').start;
+	            init.lineAnme(lineDiv,stars*windowWidth/4);
+
+	        };
+		};
+
+	    var init={
+	        translate:function(obj,windowWidth,star){
+	            obj.style.webkitTransform='translate3d('+-star*windowWidth+'px,0,0)';
+	            obj.style.transform='translate3d('+-star*windowWidth+',0,0)px';
+	            obj.style.webkitTransition='all 0.3s ease-in-out';
+	            obj.style.transition='all 0.3s ease-in-out';
+	        },
+	        touchs:function(obj,windowWidth,tar,distance,endX){
+	            obj.style.webkitTransform='translate3d('+(distance+endX)+'px,0,0)';
+	            obj.style.transform='translate3d('+(distance+endX)+',0,0)px';
+	        },
+	        lineAnme:function(obj,stance){
+	            obj.style.webkitTransform='translate3d('+stance+'px,0,0)';
+	            obj.style.transform='translate3d('+stance+'px,0,0)';
+	            obj.style.webkitTransition='all 0.1s ease-in-out';
+	            obj.style.transition='all 0.1s ease-in-out';
+	        },
+	        back:function(obj,windowWidth,tar,distance,endX,time){
+	            obj.style.webkitTransform='translate3d('+(distance+endX)+'px,0,0)';
+	            obj.style.transform='translate3d('+(distance+endX)+',0,0)px';
+	            obj.style.webkitTransition='all '+time+'s ease-in-out';
+	            obj.style.transition='all '+time+'s ease-in-out';
+	        },
+	    }
+
+	</script>
+</html>

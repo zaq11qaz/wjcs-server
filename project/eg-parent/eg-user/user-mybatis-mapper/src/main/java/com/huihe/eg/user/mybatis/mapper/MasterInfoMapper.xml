@@ -1,0 +1,4244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterInfoMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterInfoEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="nationality" jdbcType="VARCHAR" property="nationality"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="introduction" jdbcType="VARCHAR" property="introduction"/>
+        <result column="grade" jdbcType="INTEGER" property="grade"/>
+        <result column="score" jdbcType="DECIMAL" property="score"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="mother_tongue" jdbcType="VARCHAR" property="mother_tongue"/>
+        <result column="labels" jdbcType="VARCHAR" property="labels"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="identity" jdbcType="VARCHAR" property="identity"/>
+        <result column="graduation_school" jdbcType="VARCHAR" property="graduation_school"/>
+        <result column="specialty" jdbcType="VARCHAR" property="specialty"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="mail" jdbcType="VARCHAR" property="mail"/>
+        <result column="teach_language" jdbcType="VARCHAR" property="teach_language"/>
+        <result column="relevant_information" jdbcType="VARCHAR" property="relevant_information"/>
+        <result column="mother_tongue_url" jdbcType="VARCHAR" property="mother_tongue_url"/>
+        <result column="language_url" jdbcType="VARCHAR" property="language_url"/>
+        <result column="teach_language_url" jdbcType="VARCHAR" property="teach_language_url"/>
+        <result column="requirement_type" jdbcType="VARCHAR" property="requirement_type"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+        <result column="recommend_type" jdbcType="VARCHAR" property="recommend_type"/>
+        <result column="layout" jdbcType="INTEGER" property="layout"/>
+        <result column="earnings" jdbcType="DECIMAL" property="earnings"/>
+        <result column="recommend_video" jdbcType="VARCHAR" property="recommend_video"/>
+        <result column="cover" jdbcType="VARCHAR" property="cover"/>
+        <result column="activity_type" jdbcType="VARCHAR" property="activity_type"/>
+        <result column="popularity" jdbcType="INTEGER" property="popularity"/>
+        <result column="online" jdbcType="VARCHAR" property="online"/>
+        <result column="offline" jdbcType="VARCHAR" property="offline"/>
+        <result column="service_type" jdbcType="INTEGER" property="service_type"/>
+        <result column="serve_people" jdbcType="VARCHAR" property="serve_people"/>
+        <result column="language_level" jdbcType="VARCHAR" property="language_level"/>
+        <result column="serve_range" jdbcType="DECIMAL" property="serve_range"/>
+        <result column="nhom_address" jdbcType="VARCHAR" property="nhom_address"/>
+        <result column="introduction_content" jdbcType="VARCHAR" property="introduction_content"/>
+        <result column="introduction_cover" jdbcType="VARCHAR" property="introduction_cover"/>
+        <result column="max_student_count" jdbcType="INTEGER" property="max_student_count"/>
+        <result column="contact_information" jdbcType="VARCHAR" property="contact_information"/>
+        <result column="charging_standard" jdbcType="DECIMAL" property="charging_standard"/>
+        <result column="photo" jdbcType="VARCHAR" property="photo"/>
+        <result column="full_name" jdbcType="VARCHAR" property="full_name"/>
+        <result column="master_age" jdbcType="INTEGER" property="master_age"/>
+        <result column="course_duration" jdbcType="INTEGER" property="course_duration"/>
+        <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nick_name"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="start_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="is_self_modification" jdbcType="BIT" property="is_self_modification"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+        <result column="distance" jdbcType="DECIMAL" property="distance"/>
+        <result column="login_name" jdbcType="VARCHAR" property="login_name"/>
+        <result column="login_pass" jdbcType="VARCHAR" property="login_pass"/>
+        <result column="is_open" jdbcType="INTEGER" property="is_open"/>
+        <result column="refuse_contect" jdbcType="VARCHAR" property="refuse_contect"/>
+        <result column="frozen_contect" jdbcType="VARCHAR" property="frozen_contect"/>
+        <result column="is_special" jdbcType="BIT" property="is_special"/>
+        <result column="is_recommend" jdbcType="BIT" property="is_recommend"/>
+        <result column="charging_standard_offline" jdbcType="DECIMAL" property="charging_standard_offline"/>
+        <result column="minimum_pay" jdbcType="INTEGER" property="minimum_pay"/>
+        <result column="invitees_id" jdbcType="VARCHAR" property="invitees_id"/>
+        <result column="country_type" jdbcType="VARCHAR" property="country_type"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, nationality, user_id, language, create_time, introduction, grade, score, address,
+    update_time, mother_tongue, sex, status, type, identity, graduation_school, specialty,
+    mobile, mail, teach_language, relevant_information, mother_tongue_url, language_url,
+    teach_language_url, requirement_type, education, recommend_type, layout, earnings,
+    recommend_video, cover, activity_type, popularity, online, offline, service_type,
+    serve_people, language_level, serve_range, nhom_address, introduction_content, introduction_cover,
+    max_student_count, contact_information, charging_standard, photo, full_name, master_age,
+    course_duration, mechanism_id,is_self_modification,latitude,longitude,refuse_contect,
+    login_name,login_pass,is_open,refuse_contect,frozen_contect,is_special,charging_standard_offline,
+    minimum_pay,invitees_id,is_recommend,country_type,labels
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_master_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.MasterInfoEntity">
+        insert into eg_master_info (id, nationality, user_id,
+                                    language, create_time, introduction,
+                                    grade, score, address,
+                                    update_time, mother_tongue, sex,
+                                    status, type, identity,
+                                    graduation_school, specialty, mobile,
+                                    mail, teach_language, relevant_information,
+                                    mother_tongue_url, language_url, teach_language_url,
+                                    requirement_type, education, recommend_type,
+                                    layout, earnings, recommend_video,
+                                    cover, activity_type, popularity,
+                                    online, offline, service_type,
+                                    serve_people, language_level, serve_range,
+                                    nhom_address, introduction_content, introduction_cover,
+                                    max_student_count, contact_information,
+                                    charging_standard, photo, full_name,
+                                    master_age, course_duration, mechanism_id, is_self_modification,
+                                    latitude, longitude, invitees_id)
+        values (#{id,jdbcType=BIGINT}, #{nationality,jdbcType=VARCHAR}, #{user_id,jdbcType=BIGINT},
+                #{language,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{introduction,jdbcType=VARCHAR},
+                #{grade,jdbcType=INTEGER}, #{score,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR},
+                #{update_time,jdbcType=TIMESTAMP}, #{mother_tongue,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER},
+                #{status,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR},
+                #{graduation_school,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
+                #{mail,jdbcType=VARCHAR}, #{teach_language,jdbcType=VARCHAR}, #{relevant_information,jdbcType=VARCHAR},
+                #{mother_tongue_url,jdbcType=VARCHAR}, #{language_url,jdbcType=VARCHAR},
+                #{teach_language_url,jdbcType=VARCHAR},
+                #{requirement_type,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{recommend_type,jdbcType=VARCHAR},
+                #{layout,jdbcType=INTEGER}, #{earnings,jdbcType=DECIMAL}, #{recommend_video,jdbcType=VARCHAR},
+                #{cover,jdbcType=VARCHAR}, #{activity_type,jdbcType=VARCHAR}, #{popularity,jdbcType=INTEGER},
+                #{online,jdbcType=VARCHAR}, #{offline,jdbcType=VARCHAR}, #{service_type,jdbcType=INTEGER},
+                #{serve_people,jdbcType=VARCHAR}, #{language_level,jdbcType=VARCHAR}, #{serve_range,jdbcType=DECIMAL},
+                #{nhom_address,jdbcType=VARCHAR}, #{introduction_content,jdbcType=VARCHAR},
+                #{introduction_cover,jdbcType=VARCHAR},
+                #{max_student_count,jdbcType=INTEGER}, #{contact_information,jdbcType=VARCHAR},
+                #{charging_standard,jdbcType=DECIMAL}, #{photo,jdbcType=VARCHAR}, #{full_name,jdbcType=VARCHAR},
+                #{master_age,jdbcType=INTEGER}, #{course_duration,jdbcType=INTEGER}, #{mechanism_id,jdbcType=BIGINT},
+                #{is_self_modification,jdbcType=BIT}, #{latitude,jdbcType=DECIMAL}, #{longitude,jdbcType=DECIMAL},
+                #{invitees_id,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterInfoEntity">
+        insert into eg_master_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="nationality != null">
+                nationality,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="introduction != null">
+                introduction,
+            </if>
+            <if test="grade != null">
+                grade,
+            </if>
+            <if test="score != null">
+                score,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="mother_tongue != null">
+                mother_tongue,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="identity != null">
+                identity,
+            </if>
+            <if test="graduation_school != null">
+                graduation_school,
+            </if>
+            <if test="specialty != null">
+                specialty,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="mail != null">
+                mail,
+            </if>
+            <if test="teach_language != null">
+                teach_language,
+            </if>
+            <if test="relevant_information != null">
+                relevant_information,
+            </if>
+            <if test="mother_tongue_url != null">
+                mother_tongue_url,
+            </if>
+            <if test="labels != null">
+                labels,
+            </if>
+            <if test="language_url != null">
+                language_url,
+            </if>
+            <if test="teach_language_url != null">
+                teach_language_url,
+            </if>
+            <if test="requirement_type != null">
+                requirement_type,
+            </if>
+            <if test="education != null">
+                education,
+            </if>
+            <if test="recommend_type != null">
+                recommend_type,
+            </if>
+            <if test="layout != null">
+                layout,
+            </if>
+            <if test="earnings != null">
+                earnings,
+            </if>
+            <if test="recommend_video != null">
+                recommend_video,
+            </if>
+            <if test="cover != null">
+                cover,
+            </if>
+            <if test="activity_type != null">
+                activity_type,
+            </if>
+            <if test="popularity != null">
+                popularity,
+            </if>
+            <if test="online != null">
+                online,
+            </if>
+            <if test="offline != null">
+                offline,
+            </if>
+            <if test="service_type != null">
+                service_type,
+            </if>
+            <if test="serve_people != null">
+                serve_people,
+            </if>
+            <if test="language_level != null">
+                language_level,
+            </if>
+            <if test="serve_range != null">
+                serve_range,
+            </if>
+            <if test="nhom_address != null">
+                nhom_address,
+            </if>
+            <if test="introduction_content != null">
+                introduction_content,
+            </if>
+            <if test="introduction_cover != null">
+                introduction_cover,
+            </if>
+            <if test="max_student_count != null">
+                max_student_count,
+            </if>
+            <if test="contact_information != null">
+                contact_information,
+            </if>
+            <if test="charging_standard != null">
+                charging_standard,
+            </if>
+            <if test="photo != null">
+                photo,
+            </if>
+            <if test="full_name != null">
+                full_name,
+            </if>
+            <if test="master_age != null">
+                master_age,
+            </if>
+            <if test="course_duration != null">
+                course_duration,
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id,
+            </if>
+            <if test="is_self_modification != null">
+                is_self_modification,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="login_name != null">
+                login_name,
+            </if>
+            <if test="login_pass != null">
+                login_pass,
+            </if>
+            <if test="is_open != null">
+                is_open,
+            </if>
+            <if test="charging_standard_offline != null">
+                charging_standard_offline,
+            </if>
+            <if test="minimum_pay != null">
+                minimum_pay,
+            </if>
+            <if test="invitees_id != null">
+                invitees_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="nationality != null">
+                #{nationality,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="language != null">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="introduction != null">
+                #{introduction,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null">
+                #{grade,jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=DECIMAL},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mother_tongue != null">
+                #{mother_tongue,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="identity != null">
+                #{identity,jdbcType=VARCHAR},
+            </if>
+            <if test="graduation_school != null">
+                #{graduation_school,jdbcType=VARCHAR},
+            </if>
+            <if test="specialty != null">
+                #{specialty,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mail != null">
+                #{mail,jdbcType=VARCHAR},
+            </if>
+            <if test="teach_language != null">
+                #{teach_language,jdbcType=VARCHAR},
+            </if>
+            <if test="relevant_information != null">
+                #{relevant_information,jdbcType=VARCHAR},
+            </if>
+            <if test="mother_tongue_url != null">
+                #{mother_tongue_url,jdbcType=VARCHAR},
+            </if>
+            <if test="labels != null">
+                #{labels,jdbcType=VARCHAR},
+            </if>
+            <if test="language_url != null">
+                #{language_url,jdbcType=VARCHAR},
+            </if>
+            <if test="teach_language_url != null">
+                #{teach_language_url,jdbcType=VARCHAR},
+            </if>
+            <if test="requirement_type != null">
+                #{requirement_type,jdbcType=VARCHAR},
+            </if>
+            <if test="education != null">
+                #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="recommend_type != null">
+                #{recommend_type,jdbcType=VARCHAR},
+            </if>
+            <if test="layout != null">
+                #{layout,jdbcType=INTEGER},
+            </if>
+            <if test="earnings != null">
+                #{earnings,jdbcType=DECIMAL},
+            </if>
+            <if test="recommend_video != null">
+                #{recommend_video,jdbcType=VARCHAR},
+            </if>
+            <if test="cover != null">
+                #{cover,jdbcType=VARCHAR},
+            </if>
+            <if test="activity_type != null">
+                #{activity_type,jdbcType=VARCHAR},
+            </if>
+            <if test="popularity != null">
+                #{popularity,jdbcType=INTEGER},
+            </if>
+            <if test="online != null">
+                #{online,jdbcType=VARCHAR},
+            </if>
+            <if test="offline != null">
+                #{offline,jdbcType=VARCHAR},
+            </if>
+            <if test="service_type != null">
+                #{service_type,jdbcType=INTEGER},
+            </if>
+            <if test="serve_people != null">
+                #{serve_people,jdbcType=VARCHAR},
+            </if>
+            <if test="language_level != null">
+                #{language_level,jdbcType=VARCHAR},
+            </if>
+            <if test="serve_range != null">
+                #{serve_range,jdbcType=DECIMAL},
+            </if>
+            <if test="nhom_address != null">
+                #{nhom_address,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_content != null">
+                #{introduction_content,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_cover != null">
+                #{introduction_cover,jdbcType=VARCHAR},
+            </if>
+            <if test="max_student_count != null">
+                #{max_student_count,jdbcType=INTEGER},
+            </if>
+            <if test="contact_information != null">
+                #{contact_information,jdbcType=VARCHAR},
+            </if>
+            <if test="charging_standard != null">
+                #{charging_standard,jdbcType=DECIMAL},
+            </if>
+            <if test="photo != null">
+                #{photo,jdbcType=VARCHAR},
+            </if>
+            <if test="full_name != null">
+                #{full_name,jdbcType=VARCHAR},
+            </if>
+            <if test="master_age != null">
+                #{master_age,jdbcType=INTEGER},
+            </if>
+            <if test="course_duration != null">
+                #{course_duration,jdbcType=INTEGER},
+            </if>
+            <if test="mechanism_id != null">
+                #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="is_self_modification != null">
+                #{is_self_modification,jdbcType=BIT},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="login_name != null">
+                #{login_name,jdbcType=VARCHAR},
+            </if>
+            <if test="login_pass != null">
+                #{login_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="is_open != null">
+                #{is_open,jdbcType=INTEGER},
+            </if>
+            <if test="charging_standard_offline != null">
+                #{charging_standard_offline,jdbcType=DECIMAL},
+            </if>
+            <if test="minimum_pay != null">
+                #{minimum_pay,jdbcType=INTEGER},
+            </if>
+            <if test="invitees_id != null">
+                #{invitees_id,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterInfoEntity">
+        update eg_master_info
+        <set>
+            <if test="nationality != null">
+                nationality = #{nationality,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="introduction != null">
+                introduction = #{introduction,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null">
+                grade = #{grade,jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                score = #{score,jdbcType=DECIMAL},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mother_tongue != null">
+                mother_tongue = #{mother_tongue,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="identity != null">
+                identity = #{identity,jdbcType=VARCHAR},
+            </if>
+            <if test="graduation_school != null">
+                graduation_school = #{graduation_school,jdbcType=VARCHAR},
+            </if>
+            <if test="specialty != null">
+                specialty = #{specialty,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mail != null">
+                mail = #{mail,jdbcType=VARCHAR},
+            </if>
+            <if test="teach_language != null">
+                teach_language = #{teach_language,jdbcType=VARCHAR},
+            </if>
+            <if test="relevant_information != null">
+                relevant_information = #{relevant_information,jdbcType=VARCHAR},
+            </if>
+            <if test="mother_tongue_url != null">
+                mother_tongue_url = #{mother_tongue_url,jdbcType=VARCHAR},
+            </if>
+            <if test="labels != null">
+                labels = #{labels,jdbcType=VARCHAR},
+            </if>
+            <if test="language_url != null">
+                language_url = #{language_url,jdbcType=VARCHAR},
+            </if>
+            <if test="teach_language_url != null">
+                teach_language_url = #{teach_language_url,jdbcType=VARCHAR},
+            </if>
+            <if test="requirement_type != null">
+                requirement_type = #{requirement_type,jdbcType=VARCHAR},
+            </if>
+            <if test="education != null">
+                education = #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="recommend_type != null">
+                recommend_type = #{recommend_type,jdbcType=VARCHAR},
+            </if>
+            <if test="layout != null">
+                layout = #{layout,jdbcType=INTEGER},
+            </if>
+            <if test="earnings != null">
+                earnings = #{earnings,jdbcType=DECIMAL},
+            </if>
+            <if test="recommend_video != null">
+                recommend_video = #{recommend_video,jdbcType=VARCHAR},
+            </if>
+            <if test="cover != null">
+                cover = #{cover,jdbcType=VARCHAR},
+            </if>
+            <if test="activity_type != null">
+                activity_type = #{activity_type,jdbcType=VARCHAR},
+            </if>
+            <if test="popularity != null">
+                popularity = #{popularity,jdbcType=INTEGER},
+            </if>
+            <if test="online != null">
+                online = #{online,jdbcType=VARCHAR},
+            </if>
+            <if test="offline != null">
+                offline = #{offline,jdbcType=VARCHAR},
+            </if>
+            <if test="service_type != null">
+                service_type = #{service_type,jdbcType=INTEGER},
+            </if>
+            <if test="serve_people != null">
+                serve_people = #{serve_people,jdbcType=VARCHAR},
+            </if>
+            <if test="language_level != null">
+                language_level = #{language_level,jdbcType=VARCHAR},
+            </if>
+            <if test="serve_range != null">
+                serve_range = #{serve_range,jdbcType=DECIMAL},
+            </if>
+            <if test="nhom_address != null">
+                nhom_address = #{nhom_address,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_content != null">
+                introduction_content = #{introduction_content,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_cover != null">
+                introduction_cover = #{introduction_cover,jdbcType=VARCHAR},
+            </if>
+            <if test="max_student_count != null">
+                max_student_count = #{max_student_count,jdbcType=INTEGER},
+            </if>
+            <if test="contact_information != null">
+                contact_information = #{contact_information,jdbcType=VARCHAR},
+            </if>
+            <if test="charging_standard != null">
+                charging_standard = #{charging_standard,jdbcType=DECIMAL},
+            </if>
+            <if test="photo != null">
+                photo = #{photo,jdbcType=VARCHAR},
+            </if>
+            <if test="full_name != null">
+                full_name = #{full_name,jdbcType=VARCHAR},
+            </if>
+            <if test="master_age != null">
+                master_age = #{master_age,jdbcType=INTEGER},
+            </if>
+            <if test="course_duration != null">
+                course_duration = #{course_duration,jdbcType=INTEGER},
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="is_self_modification != null">
+                is_self_modification = #{is_self_modification,jdbcType=BIT},
+            </if>
+            <if test="is_recommend != null">
+                is_recommend = #{is_recommend,jdbcType=BIT},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="refuse_contect != null">
+                refuse_contect = #{refuse_contect,jdbcType=VARCHAR},
+            </if>
+            <if test="login_name != null">
+                login_name = #{login_name,jdbcType=VARCHAR},
+            </if>
+            <if test="login_pass != null">
+                login_pass = #{login_pass,jdbcType=VARCHAR},
+            </if>
+            <if test="is_open != null">
+                is_open = #{is_open,jdbcType=INTEGER},
+            </if>
+            <if test="frozen_contect != null">
+                frozen_contect = #{frozen_contect,jdbcType=VARCHAR},
+            </if>
+            <if test="charging_standard_offline != null">
+                charging_standard_offline = #{charging_standard_offline,jdbcType=DECIMAL},
+            </if>
+            <if test="minimum_pay != null">
+                minimum_pay = #{minimum_pay,jdbcType=INTEGER},
+            </if>
+            <if test="is_special != null">
+                is_special = #{is_special,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterInfoEntity">
+        update eg_master_info
+        set nationality          = #{nationality,jdbcType=VARCHAR},
+            user_id              = #{user_id,jdbcType=BIGINT},
+            language             = #{language,jdbcType=VARCHAR},
+            create_time          = #{create_time,jdbcType=TIMESTAMP},
+            introduction         = #{introduction,jdbcType=VARCHAR},
+            grade                = #{grade,jdbcType=INTEGER},
+            score                = #{score,jdbcType=DECIMAL},
+            address              = #{address,jdbcType=VARCHAR},
+            update_time          = #{update_time,jdbcType=TIMESTAMP},
+            mother_tongue        = #{mother_tongue,jdbcType=VARCHAR},
+            sex                  = #{sex,jdbcType=INTEGER},
+            status               = #{status,jdbcType=INTEGER},
+            type                 = #{type,jdbcType=VARCHAR},
+            identity             = #{identity,jdbcType=VARCHAR},
+            graduation_school    = #{graduation_school,jdbcType=VARCHAR},
+            specialty            = #{specialty,jdbcType=VARCHAR},
+            mobile               = #{mobile,jdbcType=VARCHAR},
+            mail                 = #{mail,jdbcType=VARCHAR},
+            teach_language       = #{teach_language,jdbcType=VARCHAR},
+            relevant_information = #{relevant_information,jdbcType=VARCHAR},
+            mother_tongue_url    = #{mother_tongue_url,jdbcType=VARCHAR},
+            language_url         = #{language_url,jdbcType=VARCHAR},
+            teach_language_url   = #{teach_language_url,jdbcType=VARCHAR},
+            requirement_type     = #{requirement_type,jdbcType=VARCHAR},
+            education            = #{education,jdbcType=VARCHAR},
+            recommend_type       = #{recommend_type,jdbcType=VARCHAR},
+            layout               = #{layout,jdbcType=INTEGER},
+            earnings             = #{earnings,jdbcType=DECIMAL},
+            recommend_video      = #{recommend_video,jdbcType=VARCHAR},
+            cover                = #{cover,jdbcType=VARCHAR},
+            activity_type        = #{activity_type,jdbcType=VARCHAR},
+            popularity           = #{popularity,jdbcType=INTEGER},
+            online               = #{online,jdbcType=VARCHAR},
+            offline              = #{offline,jdbcType=VARCHAR},
+            service_type         = #{service_type,jdbcType=INTEGER},
+            serve_people         = #{serve_people,jdbcType=VARCHAR},
+            language_level       = #{language_level,jdbcType=VARCHAR},
+            serve_range          = #{serve_range,jdbcType=DECIMAL},
+            nhom_address         = #{nhom_address,jdbcType=VARCHAR},
+            introduction_content = #{introduction_content,jdbcType=VARCHAR},
+            introduction_cover   = #{introduction_cover,jdbcType=VARCHAR},
+            max_student_count    = #{max_student_count,jdbcType=INTEGER},
+            contact_information  = #{contact_information,jdbcType=VARCHAR},
+            charging_standard    = #{charging_standard,jdbcType=DECIMAL},
+            photo                = #{photo,jdbcType=VARCHAR},
+            full_name            = #{full_name,jdbcType=VARCHAR},
+            master_age           = #{master_age,jdbcType=INTEGER},
+            course_duration      = #{course_duration,jdbcType=INTEGER},
+            mechanism_id         = #{mechanism_id,jdbcType=BIGINT},
+            is_self_modification = #{is_self_modification,jdbcType=BIT},
+            latitude             = #{latitude,jdbcType=DECIMAL},
+            longitude            = #{longitude,jdbcType=DECIMAL},
+            refuse_contect       = #{refuse_contect,jdbcType=VARCHAR},
+            frozen_contect       = #{frozen_contect,jdbcType=VARCHAR},
+            is_recommend         = #{is_recommend,jdbcType=BIT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.MasterInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_info
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality =#{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_special!=null">
+                AND is_special = #{param.is_special,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_info
+        <if test="param.latitude!=null and param.longitude!=null">
+            ,(
+            6371 * acos (
+            cos (radians(
+            #{param.latitude,jdbcType=DECIMAL}
+            ))
+            * cos( radians( t1.latitude ) )
+            * cos( radians( t1.longitude ) - radians(
+            #{param.longitude,jdbcType=DECIMAL}
+            ))
+            + sin ( radians(
+            #{param.latitude,jdbcType=DECIMAL}
+            )
+            * sin( radians( t1.latitude ) )
+            )
+            )
+            ) AS distance
+        </if>
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+                AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.is_special != null">
+                AND is_special = #{param.is_special,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend != null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.charging_standard_offline!=null">
+                AND charging_standard_offline = #{param.charging_standard_offline,jdbcType=DECIMAL}
+            </if>
+            <if test="param.minimum_pay != null">
+                AND minimum_pay = #{param.minimum_pay,jdbcType=INTEGER}
+            </if>
+            <if test="param.invitees_id != null">
+                AND invitees_id = #{param.invitees_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.country_type != null">
+                AND country_type = #{param.country_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY
+        <if test="param.latitude!=null and param.longitude!=null">
+            distance asc,
+        </if>
+        id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_master_info
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_special!=null">
+                AND is_special = #{param.is_special,jdbcType=BIT}
+            </if>
+            <if test="param.minimum_pay!=null">
+                AND minimum_pay = #{param.minimum_pay,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryHomeHotListPage" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT i.id,
+               i.nationality,
+               i.user_id,
+               i.LANGUAGE,
+               i.create_time,
+               i.introduction,
+               i.grade,
+               i.score,
+               i.address,
+               i.update_time,
+               i.mother_tongue,
+               i.sex,
+               i.STATUS,
+               i.type,
+               i.identity,
+               i.graduation_school,
+               i.specialty,
+               i.mobile,
+               i.mail,
+               i.teach_language,
+               i.relevant_information,
+               i.mother_tongue_url,
+               i.language_url,
+               i.teach_language_url,
+               i.requirement_type,
+               i.education,
+               i.recommend_type,
+               i.layout,
+               i.earnings,
+               i.recommend_video,
+               i.cover,
+               i.activity_type,
+               i.popularity,
+               i.online,
+               i.offline,
+               i.service_type,
+               i.serve_people,
+               i.language_level,
+               i.serve_range,
+               i.nhom_address,
+               i.introduction_content,
+               i.introduction_cover,
+               i.max_student_count,
+               i.contact_information,
+               i.charging_standard,
+               i.photo,
+               i.full_name,
+               i.master_age,
+               i.course_duration,
+               i.mechanism_id,
+               i.is_self_modification,
+               i.latitude,
+               i.longitude
+        FROM eg_master_info i
+                 LEFT JOIN eg_user_appointment a ON i.user_id = a.master_id
+        GROUP BY a.master_id
+        ORDER BY count(DISTINCT a.user_id) DESC
+        LIMIT #{param.startRow},#{param.pageSize}
+    </select>
+
+    <update id="updateAddEarnings" parameterType="com.huihe.eg.user.model.MasterInfoEntity">
+        UPDATE eg_master_info
+        SET earnings=earnings + #{param.earnings,jdbcType=DECIMAL}
+        WHERE id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <select id="queryTodayStatistics" resultType="com.huihe.eg.user.model.count.MasterParam">
+        SELECT count(1) AS total_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 2 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       adopt_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 1 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       stay_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 3 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       refuse_num
+        FROM eg_master_info
+        WHERE DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d')
+    </select>
+    <select id="queryWeekStatistics" resultType="com.huihe.eg.user.model.count.MasterParam">
+        SELECT count(1) AS total_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 2 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       adopt_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 1 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       stay_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 3 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       refuse_num
+        FROM eg_master_info
+        WHERE YEARWEEK(date_format(create_time, '%Y-%m-%d')) = YEARWEEK(now());
+    </select>
+    <select id="queryMonthStatistics" resultType="com.huihe.eg.user.model.count.MasterParam">
+        SELECT count(1) AS total_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 2 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       adopt_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 1 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       stay_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 3 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       refuse_num
+        FROM eg_master_info
+        WHERE date_format(create_time, '%Y-%m') = date_format(now(), '%Y-%m')
+    </select>
+    <select id="queryStatistics" resultType="com.huihe.eg.user.model.count.MasterParam">
+        SELECT count(1) AS total_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 2 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       adopt_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 1 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       stay_num,
+               sum(
+                       CASE
+                           WHEN STATUS = 3 THEN
+                               1
+                           ELSE
+                               0
+                           END
+                   )       refuse_num
+        FROM eg_master_info
+    </select>
+    <select id="queryMasterAuthListPage" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        m.*
+        FROM eg_master_info m LEFT JOIN eg_user_info i ON m.user_id=i.user_id
+        <where>
+            <if test="param.id!=null">
+                AND m.id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nick_name!=null and param.nick_name !=''">
+                AND i.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.start_time!=null and param.end_time !=null">
+                AND m.create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND
+                #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.nationality!=null">
+                AND m.nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND m.user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND m.language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND m.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND m.introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND m.grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND m.score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND m.address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND m.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND m.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND m.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND m.status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND m.type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND m.identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND m.graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND m.specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND m.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND m.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND m.teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND m.relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND m.mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND m.language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND m.teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND m.requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND m.education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND m.recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.layout!=null">
+                AND m.layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND m.earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND m.recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND m.cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND m.activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND m.popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND m.online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND m.offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND m.service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND m.serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND m.language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND m.serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND m.nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND m.introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND m.introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND m.max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND m.contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND m.charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND m.photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND m.full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND m.master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND m.course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND m.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND m.is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.latitude!=null">
+                AND m.latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND m.longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND m.is_recommend = #{param.is_recommend,jdbcType=DECIMAL}
+            </if>
+        </where>
+        ORDER BY m.id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterAuthCount" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM eg_master_info m LEFT JOIN eg_user_info i ON m.user_id=i.user_id
+        <where>
+            <if test="param.id!=null">
+                AND m.id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nick_name!=null and param.nick_name !=''">
+                AND i.nick_name LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.nationality!=null">
+                AND m.nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND m.user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND m.language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND m.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND m.introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND m.grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND m.score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND m.address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND m.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND m.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND m.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND m.status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND m.type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND m.identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND m.graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND m.specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND m.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND m.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND m.teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND m.relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND m.mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND m.language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND m.teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND m.requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND m.education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND m.recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.layout!=null">
+                AND m.layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND m.earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND m.recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND m.cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND m.activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND m.popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND m.online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND m.offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND m.service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND m.serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND m.language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND m.serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND m.nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND m.introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND m.introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND m.max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND m.contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND m.charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND m.photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND m.full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND m.master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND m.course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND m.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND m.is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.latitude!=null">
+                AND m.latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND m.longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+    <!--查询私教-->
+    <select id="queryPrivateListPage" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        id, nationality, user_id, language, create_time, introduction, grade, score, address,
+        update_time, mother_tongue, sex, status, type, identity, graduation_school, specialty,
+        mobile, mail, teach_language, relevant_information, mother_tongue_url, language_url,
+        teach_language_url, requirement_type, education, recommend_type, layout, earnings,
+        recommend_video, cover, activity_type, popularity, online, offline, service_type,
+        serve_people, language_level, serve_range, nhom_address, introduction_content, introduction_cover,
+        max_student_count, contact_information, charging_standard, photo, full_name, master_age,
+        course_duration, mechanism_id,is_self_modification,latitude,longitude
+        <if test="param.latitude != null ">
+            ,eg_user.distance (#{param.latitude},#{param.longitude},
+            latitude,longitude
+            ) distance
+        </if>
+        FROM eg_master_info
+
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+        <choose>
+            <when test="param.latitude != null and param.longitude != null">
+                ORDER BY distance DESC
+            </when>
+            <otherwise>
+                ORDER BY is_recommend DESC , id DESC
+            </otherwise>
+        </choose>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterListPage" parameterType="com.huihe.eg.user.model.MasterInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        id, nationality, user_id, language, create_time, introduction, grade, score, address,
+        update_time, mother_tongue, sex, status, type, identity, graduation_school, specialty,
+        mobile, mail, teach_language, relevant_information, mother_tongue_url, language_url,
+        teach_language_url, requirement_type, education, recommend_type, layout, earnings,
+        recommend_video, cover, activity_type, popularity, online, offline, service_type,
+        serve_people, language_level, serve_range, nhom_address, introduction_content, introduction_cover,
+        max_student_count, contact_information, charging_standard, photo, full_name, master_age,
+        course_duration, mechanism_id,is_self_modification,latitude,longitude,is_recommend,country_type
+        <if test="param.latitude != null ">
+            ,eg_user.distance (#{param.latitude},#{param.longitude},
+            latitude,longitude
+            ) distance
+        </if>
+        FROM eg_master_info
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+        <choose>
+            <when test="param.latitude != null">
+                ORDER BY distance DESC
+            </when>
+            <otherwise>
+                ORDER BY id DESC
+            </otherwise>
+        </choose>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterListPageCount" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_info
+        <where>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterCount" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_master_info
+        <where>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id==null">
+                AND mechanism_id &lt;&gt; 0
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.language!=null">
+                AND language like concat('%', #{param.language,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterInfo" parameterType="com.huihe.eg.user.model.MasterInfoEntity" resultMap="BaseResultMap">
+        SELECT
+        DISTINCT user_id
+        FROM eg_master_info
+        <where>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterInfoListPage" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        DISTINCT user_id
+        FROM eg_master_info
+        <where>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id==null">
+                AND mechanism_id &lt;&gt; 0
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+        </where>
+        order by is_recommend desc
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryRecommendMasterInfo" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_info
+        <where>
+            (type='major' or type='cross_border' or type='mother_tongue' )
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+        GROUP BY user_id
+        ORDER BY is_recommend DESC , id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="queryByMessage" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_info
+        <where>
+            <if test="param.loginIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name like concat('%',#{param.full_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language like concat('%',#{param.teach_language,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.create_time!=null and param.update_time!=null">
+                AND create_time between
+                #{param.create_time,jdbcType=TIMESTAMP}
+                and #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        order by is_recommend desc , id desc limit #{param.startRow},#{param.pageSize}
+    </select>
+    <!--查询私教-->
+    <select id="queryMechanismPrivateListPage" parameterType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        i.id, i.nationality, i.user_id, i.language, i.create_time, i.introduction, i.grade, i.score, i.address,
+        i.update_time,i.mother_tongue, i.sex, i.status, i.type,i.identity, i.graduation_school, i.specialty,
+        i.mobile, i.mail, i.teach_language, i.relevant_information, i.mother_tongue_url,i.language_url,
+        i.teach_language_url, i.requirement_type, i.education, i.recommend_type, i.layout, i.earnings,
+        i.recommend_video, i.cover, i.activity_type, i.popularity, i.online, i.offline, i.service_type,
+        i.serve_people, i.language_level, i.serve_range, i.nhom_address, i.introduction_content, i.introduction_cover,
+        i.max_student_count, i.contact_information, i.charging_standard, i.photo, i.full_name,i.master_age,
+        i.course_duration, i.mechanism_id,i.is_self_modification,i.latitude,i.longitude
+        <if test="param.latitude != null ">
+            ,eg_user.distance (#{param.latitude},#{param.longitude},
+            i.latitude,i.longitude
+            ) distance
+        </if>
+        FROM eg_master_info i, eg_master_mechanism m
+
+        <where>
+            i.mechanism_id=m.id and m.status=2
+            <if test="param.id!=null">
+                AND i.id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND i.nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND i.user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND i.language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND i.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND i.introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND i.grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND i.score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND i.address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND i.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND i.mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND i.sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND i.status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND i.type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND i.identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND i.graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND i.specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND i.mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND i.mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND i.teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND i.relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND i.mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND i.language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND i.teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND i.requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND i.education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND i.recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.layout!=null">
+                AND i.layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND i.earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND i.recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND i.cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND i.activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND i.popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND i.online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND i.offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND i.service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND i.serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND i.language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND i.serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND i.nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND i.introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND i.introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND i.max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND i.contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND i.charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND i.photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND i.full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND i.master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND i.course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND i.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND i.is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+        </where>
+        <choose>
+            <when test="param.latitude != null">
+                ORDER BY distance DESC
+            </when>
+            <otherwise>
+                ORDER BY i.is_recommend, i.id DESC
+            </otherwise>
+        </choose>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterLoginInfo" resultType="com.huihe.eg.user.model.MasterInfoEntity"
+            resultMap="BaseResultMap">
+        select login_name, login_pass, type, is_open
+        from eg_master_info
+        where user_id = #{param.user_id,jdbcType=INTEGER}
+    </select>
+    <select id="queryMasterInfoList" resultType="com.huihe.eg.user.model.MasterInfoEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_info
+        where user_id = #{param.user_id,jdbcType=INTEGER}
+    </select>
+    <select id="qeuryHelperCount" resultType="java.lang.Integer">
+        select count(1) from eg_master_info where
+        (type='major' or type='cross_border' or type='mother_tongue' )
+        <if test="param.status!=null">
+            AND status = #{param.status,jdbcType=VARCHAR}
+        </if>
+        <if test="param.language!=null">
+            AND language = #{param.language,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryList" resultType="com.huihe.eg.user.model.MasterInfoEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_info
+        <where>
+
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+        </where>
+        ORDER BY is_recommend DESC,status asc limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryEnglishCount" resultType="java.lang.Integer">
+        SELECT
+        COALESCE( count(1),0)
+        FROM eg_master_info
+        <where>
+            <choose>
+                <when test="param.type!=null">
+                    AND type = #{param.type,jdbcType=DECIMAL}
+                </when>
+                <when test='param.type=="single_class"'>
+                    AND (type='major' or type='cross_border' or type='mother_tongue' )
+                </when>
+                <otherwise>
+                    (type='major' or type='cross_border' or type='mother_tongue' or type='private_education')
+                </otherwise>
+            </choose>
+            <if test="param.teach_language!=null">
+                AND (teach_language like '%English%' or teach_language like '%英语%')
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="queryFrenchCount" resultType="java.lang.Integer">
+        SELECT
+        COALESCE( count(1),0)
+        FROM eg_master_info
+        <where>
+            <choose>
+                <when test="param.type!=null">
+                    AND type = #{param.type,jdbcType=DECIMAL}
+                </when>
+                <when test='param.type=="single_class"'>
+                    AND (type='major' or type='cross_border' or type='mother_tongue' )
+                </when>
+                <otherwise>
+                    (type='major' or type='cross_border' or type='mother_tongue' or type='private_education')
+                </otherwise>
+            </choose>
+            <if test="param.teach_language!=null">
+                AND (teach_language like '%French%' or teach_language like '%法语%')
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="queryJapaneseCount" resultType="java.lang.Integer">
+        SELECT
+        COALESCE( count(1),0)
+        FROM eg_master_info
+        <where>
+            <choose>
+                <when test="param.type!=null">
+                    AND type = #{param.type,jdbcType=DECIMAL}
+                </when>
+                <when test='param.type=="single_class"'>
+                    AND (type='major' or type='cross_border' or type='mother_tongue' )
+                </when>
+                <otherwise>
+                    (type='major' or type='cross_border' or type='mother_tongue' or type='private_education' )
+                </otherwise>
+            </choose>
+            <if test="param.teach_language!=null">
+                AND (teach_language like '%Japanese%' or teach_language like '%日语%')
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterCountTotal" resultType="java.lang.Integer">
+        SELECT COALESCE(COUNT(1), 0)
+        FROM (
+                 SELECT DISTINCT user_id
+                 from eg_master_info
+                 WHERE mechanism_id &lt;&gt; 0) t
+    </select>
+
+    <select id="queryMasterTotal" resultType="com.huihe.eg.user.model.MasterInfoEntity">
+        SELECT
+        distinct(user_id)
+        FROM eg_master_info
+        where invitees_id = #{param.invitees_id,jdbcType=VARCHAR}
+        AND DATE_FORMAT( create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+        <if test="param.status != null">
+            status = #{param.status,jdbcType=INTEGER},
+        </if>
+        <if test="param.user_id != null">
+            param.user_id = #{param.user_id,jdbcType=INTEGER},
+        </if>
+        order by id desc
+    </select>
+
+    <update id="updateIsSpecial">
+        update eg_master_info
+        set is_special = true
+        where user_id = #{userId,jdbcType=BIGINT}
+          and type = 'live_lecturer'
+    </update>
+
+    <update id="updateFaceVideo">
+        update eg_master_info
+        set recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+        where id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <update id="updateMechanismMasterStatus">
+        update eg_master_info
+        set status = 2
+        where is_open = true
+          and user_id = #{param.user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateMechanismID">
+        update eg_master_info
+        set mechanism_id = #{param.mechanism_id,jdbcType=BIGINT},
+            country_type = #{param.country_type,jdbcType=VARCHAR}
+        where user_id = #{param.user_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateMechanismMasterStatus3">
+        update eg_master_info
+        set status = 3
+        where is_open = true
+          and user_id = #{param.user_id,jdbcType=BIGINT}
+    </update>
+
+    <select id="queryPassMasterListPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_info
+        where (status = 2 or status = 5)
+        <if test="param.type==null ">
+            AND (type='major' or type='cross_border' or type='mother_tongue' )
+        </if>
+        <if test="param.type!=null">
+            and type = #{param.type,jdbcType=VARCHAR}
+        </if>
+        order by id desc limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="queryByFullName" resultType="com.huihe.eg.user.model.MasterInfoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_info
+        where full_name like concat('%',#{param.full_name,jdbcType=VARCHAR},'%')
+    </select>
+    <select id="queryIdByFullName" resultType="java.lang.Long">
+        select distinct(user_id)
+        from eg_master_info
+        where full_name like concat('%', #{full_name}, '%')
+
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_info
+        <where>
+            <if test="param.loginIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name like concat('%',#{param.full_name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.create_time!=null and param.update_time!=null">
+                AND create_time between
+                #{param.create_time,jdbcType=TIMESTAMP}
+                and #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterCountNum" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1))
+        FROM eg_master_info
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterListCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_info
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterInfoListPageCount" resultType="java.lang.Integer">
+        select coalesce(count(1),0) from
+        (SELECT
+        DISTINCT user_id
+        FROM eg_master_info
+        <where>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id==null">
+                AND mechanism_id &lt;&gt; 0
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+        </where>
+        )t
+    </select>
+    <select id="queryRecommendMasterInfoCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_info
+        <where>
+            (type='major' or type='cross_border' or type='mother_tongue' )
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryPrivateListPageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_info
+
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterListPageCountPC" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_info
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (1,2,3,4,5)
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type==null">
+                AND (type='major' or type='cross_border' or type='mother_tongue' )
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language = #{param.teach_language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                AND is_self_modification = #{param.is_self_modification,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryPrivateListPageWith3" resultType="com.huihe.eg.user.model.MasterInfoEntity">
+        SELECT
+        id, nationality, user_id, language, create_time, introduction, grade, score, address,
+        update_time, mother_tongue, sex, status, type, identity, graduation_school, specialty,
+        mobile, mail, teach_language, relevant_information, mother_tongue_url, language_url,
+        teach_language_url, requirement_type, education, recommend_type, layout, earnings,
+        recommend_video, cover, activity_type, popularity, online, offline, service_type,
+        serve_people, language_level, serve_range, nhom_address, introduction_content, introduction_cover,
+        max_student_count, contact_information, charging_standard, photo, full_name, master_age,
+        course_duration, mechanism_id,is_self_modification,latitude,longitude
+        <if test="param.latitude != null ">
+            ,eg_user.distance (#{param.latitude},#{param.longitude},
+            latitude,longitude
+            ) distance
+        </if>
+        FROM eg_master_info
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.nationality!=null">
+                AND nationality = #{param.nationality,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.introduction!=null">
+                AND introduction = #{param.introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.grade!=null">
+                AND grade = #{param.grade,jdbcType=INTEGER}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.address!=null">
+                AND address = #{param.address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.mother_tongue!=null">
+                AND mother_tongue = #{param.mother_tongue,jdbcType=VARCHAR}
+            </if>
+            <if test="param.sex!=null">
+                AND sex = #{param.sex,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.identity!=null">
+                AND identity = #{param.identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.graduation_school!=null">
+                AND graduation_school = #{param.graduation_school,jdbcType=VARCHAR}
+            </if>
+            <if test="param.specialty!=null">
+                AND specialty = #{param.specialty,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mobile!=null">
+                AND mobile = #{param.mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mail!=null">
+                AND mail = #{param.mail,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language!=null">
+                AND teach_language like concat('%',#{param.teach_language,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.relevant_information!=null">
+                AND relevant_information = #{param.relevant_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mother_tongue_url!=null">
+                AND mother_tongue_url = #{param.mother_tongue_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.labels!=null">
+                AND labels = #{param.labels,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_url!=null">
+                AND language_url = #{param.language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.teach_language_url!=null">
+                AND teach_language_url = #{param.teach_language_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.requirement_type!=null">
+                AND requirement_type = #{param.requirement_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.education!=null">
+                AND education = #{param.education,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type!=null">
+                AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recommend_type==null">
+               AND (recommend_type &lt;&gt; 'advertising_position' AND recommend_type &lt;&gt; 'teach_paypal_course')
+            </if>
+            <if test="param.layout!=null">
+                AND layout = #{param.layout,jdbcType=INTEGER}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.recommend_video!=null">
+                AND recommend_video = #{param.recommend_video,jdbcType=VARCHAR}
+            </if>
+            <if test="param.cover!=null">
+                AND cover = #{param.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_type!=null">
+                AND activity_type = #{param.activity_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.popularity!=null">
+                AND popularity = #{param.popularity,jdbcType=INTEGER}
+            </if>
+            <if test="param.online!=null">
+                AND online = #{param.online,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline!=null">
+                AND offline = #{param.offline,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND (service_type = #{param.service_type,jdbcType=INTEGER} or service_type = 3)
+            </if>
+            <if test="param.serve_people!=null">
+                AND serve_people = #{param.serve_people,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language_level!=null">
+                AND language_level = #{param.language_level,jdbcType=VARCHAR}
+            </if>
+            <if test="param.serve_range!=null">
+                AND serve_range = #{param.serve_range,jdbcType=DECIMAL}
+            </if>
+            <if test="param.nhom_address!=null">
+                AND nhom_address = #{param.nhom_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduction_cover!=null">
+                AND introduction_cover = #{param.introduction_cover,jdbcType=VARCHAR}
+            </if>
+            <if test="param.max_student_count!=null">
+                AND max_student_count = #{param.max_student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.contact_information!=null">
+                AND contact_information = #{param.contact_information,jdbcType=VARCHAR}
+            </if>
+            <if test="param.charging_standard!=null">
+                AND charging_standard = #{param.charging_standard,jdbcType=DECIMAL}
+            </if>
+            <if test="param.photo!=null">
+                AND photo = #{param.photo,jdbcType=VARCHAR}
+            </if>
+            <if test="param.full_name!=null">
+                AND full_name = #{param.full_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_age!=null">
+                AND master_age = #{param.master_age,jdbcType=INTEGER}
+            </if>
+            <if test="param.course_duration!=null">
+                AND course_duration = #{param.course_duration,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_self_modification!=null">
+                <choose>
+                    <when test="param.is_self_modification">
+                        AND mechanism_id = 0
+                    </when>
+                    <otherwise>
+                        AND mechanism_id &lt;&gt; 0
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+        </where>
+        <choose>
+            <when test="param.latitude != null and param.longitude != null">
+                ORDER BY distance DESC
+            </when>
+            <otherwise>
+                ORDER BY is_recommend DESC , id DESC
+            </otherwise>
+        </choose>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+</mapper>

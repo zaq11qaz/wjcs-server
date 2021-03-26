@@ -1,0 +1,57 @@
+service:
+  localhost:
+    port: 8761
+    name: eureka
+    url: localhost
+    ip: localhost
+  dev:
+    port: 8761
+    name: eureka
+    url: localhost
+    ip: localhost
+  test:
+    port: 8761
+    name: eureka
+    url: 101.37.66.151
+    ip: 101.37.66.151
+  release:
+    port: 8761
+    name: eureka
+    url: 101.37.66.151
+    ip: 101.37.66.151
+  type: localhost
+  port: ${service.${service.type}.port}
+  name: ${service.${service.type}.name}
+  ip: ${service.${service.type}.ip}
+  url: ${service.${service.type}.url}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${service.url}:${service.port}/${service.name}/
+  instance:
+    prefer-ip-address: true
+    ip-address: ${service.ip}
+server:
+  port: 1444
+  tomcat:
+    uri-encoding: UTF-8
+    max-http-header-size: 10000000
+spring:
+  application:
+    name: eg-mall
+  cloud:
+    config:
+      profile: ${service.type}
+      discovery:
+        enabled: true
+        service-id: config-service
+      label: ${spring.application.name}
+      retry:
+        initial-interval: 1000
+        max-attempts: 6
+        multiplier: 1.1
+        max-interval: 2000
+      fail-fast: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss

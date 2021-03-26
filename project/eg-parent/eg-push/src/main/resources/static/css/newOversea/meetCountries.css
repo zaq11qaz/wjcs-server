@@ -1,0 +1,459 @@
+.country-show,
+.country-show-small {
+	position: absolute;
+}
+
+.country-name {
+	color: #fff;
+	font-size: .18rem;
+	white-space: nowrap;
+}
+
+.country-show-small .country-name {
+	color: #fff;
+	font-size: .16rem;
+	white-space: nowrap;
+}
+
+.country-icon {
+	position: relative;
+	height: .46rem;
+}
+
+.country-show-small .country-icon {
+	height: .36rem;
+}
+
+.avatar-container-light {
+	border-radius: 50%;
+	width: .3rem;
+	height: .3rem;
+	position: absolute;
+	top: .04rem;
+	left: .04rem;
+	z-index: -1;
+}
+
+.country-show-small .avatar-container-light {
+	width: .24rem;
+	height: .24rem;
+	top: .03rem;
+	left: .03rem;
+}
+
+.avatar-container-light.woman {
+	background: rgba(255, 234, 93, 0);
+}
+
+.avatar-container-light.woman.active {
+	background: rgba(255, 234, 93, .6);
+	background-clip: content-box;
+	animation: myScale 1s infinite normal linear;
+}
+@keyframes myScale{
+	from{transform: scale(1, 1);}
+	to{transform: scale(3, 3);}
+}
+
+.avatar-container-light.man {
+	background: rgba(94, 255, 195, 0);
+}
+
+.avatar-container-light.man.active {
+	background: rgba(94, 255, 195, .6);
+	background-clip: content-box;
+	animation: myScale 1s infinite normal linear;
+}
+
+.avatar-container {
+	width: .38rem;
+	height: .46rem;
+	display: block;
+}
+
+.country-show-small .avatar-container {
+	width: .3rem;
+	height: .36rem;
+	display: block;
+}
+
+.avatar {
+	border-radius: 50%;
+	position: absolute;
+	top: .04rem;
+	left: .04rem;
+	width: .3rem;
+	height: .3rem;
+}
+
+.country-show-small .avatar {
+	width: .24rem;
+	height: .24rem;
+	top: .03rem;
+	left: .03rem;
+}
+
+
+/*美国*/
+
+.meiguo1 {
+	top: 1.4rem;
+	left: 1.82rem;
+}
+
+.meiguo2 {
+	top: 1.86rem;
+	left: 2.4rem;
+}
+
+.meiguo3 {
+	top: 1.9rem;
+	left: 3.78rem;
+}
+
+.meiguo4 {
+	top: -.1rem;
+	left: 5.73rem;
+}
+
+
+/*加拿大*/
+
+.jianada1 {
+	top: .84rem;
+	left: 2.58rem;
+}
+
+.jianada2 {
+	top: .9rem;
+	left: 3.68rem;
+}
+
+.jianada3 {
+	top: 1.14rem;
+	left: 4.68rem;
+}
+
+
+/*墨西哥*/
+
+.moxige {
+	top: 2.78rem;
+	left: 2.57rem;
+}
+
+
+/*古巴*/
+
+.guba {
+	top: 2.86rem;
+	left: 3.34rem;
+}
+
+
+/*秘鲁*/
+
+.bilu {
+	top: 4.2rem;
+	left: 4.05rem;
+}
+
+
+/*智利*/
+
+.zhili {
+	top: 5.2rem;
+	left: 4.1rem;
+}
+
+
+/*巴西*/
+
+.baxi1 {
+	top: 3.96rem;
+	left: 4.88rem;
+}
+
+.baxi2 {
+	top: 4.4rem;
+	left: 5.12rem;
+}
+
+
+/*阿根廷*/
+
+.agentin1 {
+	top: 5.26rem;
+	left: 4.74rem;
+}
+
+.agentin2 {
+	top: 6.44rem;
+	left: 4.2rem;
+}
+
+
+/*英国*/
+
+.yingguo {
+	top: .8rem;
+	left: 6.83rem;
+}
+
+
+/*法国*/
+
+.faguo {
+	top: 1.28rem;
+	left: 6.86rem;
+}
+
+
+/*德国*/
+
+.deguo {
+	top: 1.2rem;
+	left: 7.28rem;
+}
+
+
+/*西班牙*/
+
+.xibanya {
+	top: 1.94rem;
+	left: 7.02rem;
+}
+
+
+/*摩洛哥*/
+
+.moluoge {
+	top: 1.97rem;
+	left: 6.68rem;
+}
+
+
+/*阿尔及利亚*/
+
+.aerjiliya {
+	top: 2.46rem;
+	left: 7.18rem;
+}
+
+
+/*尼日利亚*/
+
+.niriliya {
+	top: 3.64rem;
+	left: 7.12rem;
+}
+
+
+/*乌克兰*/
+
+.wukelan {
+	top: 1.16rem;
+	left: 8.16rem;
+}
+
+
+/*意大利*/
+
+.yidali {
+	top: 1.9rem;
+	left: 7.76rem;
+}
+
+
+/*埃及*/
+
+.aiji {
+	top: 2.28rem;
+	left: 8.23rem;
+}
+
+
+/*刚果*/
+
+.gangguo {
+	top: 4.08rem;
+	left: 7.84rem;
+}
+
+
+/*南非*/
+
+.nanfei {
+	top: 5.66rem;
+	left: 8.05rem;
+}
+
+
+/*俄罗斯*/
+
+.eluosi1 {
+	top: 1rem;
+	left: 8.56rem;
+}
+
+.eluosi2 {
+	top: .78rem;
+	left: 10.66rem;
+}
+
+.eluosi3 {
+	top: -.06rem;
+	left: 11.5rem;
+}
+
+.eluosi4 {
+	top: 1.14rem;
+	left: 12.4rem;
+}
+
+.eluosi5 {
+	top: .7rem;
+	left: 13.9rem;
+}
+
+
+/*伊朗*/
+
+.yilang {
+	top: 2.02rem;
+	left: 8.92rem;
+}
+
+
+/*哈萨克斯坦*/
+
+.hasakesitan {
+	top: 1.56rem;
+	left: 9.62rem;
+}
+
+
+/*沙特阿拉伯*/
+
+.shatealabo {
+	top: 2.7rem;
+	left: 8.95rem;
+}
+
+
+/*阿联酋*/
+
+.alianqiu {
+	top: 2.6rem;
+	left: 9.48rem;
+}
+
+
+/*中国*/
+
+.zhongguo1 {
+	top: 2.08rem;
+	left: 10.53rem;
+}
+
+.zhongguo2 {
+	top: 1.62rem;
+	left: 11.26rem;
+}
+
+.zhongguo3 {
+	top: 2.34rem;
+	left: 11.38rem;
+}
+
+.zhongguo4 {
+	top: 1.86rem;
+	left: 12.08rem;
+}
+
+.zhongguo5 {
+	top: 2.4rem;
+	left: 12.25rem;
+}
+
+
+/*韩国*/
+
+.hanguo {
+	top: 2.14rem;
+	left: 12.64rem;
+}
+
+
+/*日本*/
+
+.riben {
+	top: 1.93rem;
+	left: 13.05rem;
+}
+
+
+/*索马里*/
+
+.suomali {
+	top: 3.75rem;
+	left: 9.06rem;
+}
+
+
+/*印度*/
+
+.yindu {
+	top: 3.2rem;
+	left: 10.43rem;
+}
+
+
+/*泰国*/
+
+.taiguo {
+	top: 3.06rem;
+	left: 11.31rem;
+}
+
+
+/*新加坡*/
+
+.xinjiapo {
+	top: 3.85rem;
+	left: 11.48rem;
+}
+
+
+/*印度尼西亚*/
+
+.yindunixiya {
+	top: 4.2rem;
+	left: 12.27rem;
+}
+
+
+/*澳大利亚*/
+
+.aodaliya1 {
+	top: 5.42rem;
+	left: 11.88rem;
+}
+
+.aodaliya2 {
+	top: 5.3rem;
+	left: 13.1rem;
+}
+
+.aodaliya3 {
+	top: 5.7rem;
+	left: 13.49rem;
+}
+
+
+/*新西兰*/
+
+.xinxilan {
+	top: 6.14rem;
+	left: 14.55rem;
+}

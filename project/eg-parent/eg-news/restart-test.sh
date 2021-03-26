@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker stop news-service-web && docker rm news-service-web && docker rmi localhost:5000/news-service-web:1.0 && docker rmi localhost:5000/news-service-web:latest && mvn clean package  && docker run -d --name news-service-web -v /etc/localtime:/etc/localtime -e params="-Dservice.type=test" -p 1123:1123 localhost:5000/news-service-web:1.0

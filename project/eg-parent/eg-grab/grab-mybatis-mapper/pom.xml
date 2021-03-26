@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>eg-grab</artifactId>
+        <groupId>com.huihe.eg.grab</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.huihe.eg.grab.mybatis.mapper</groupId>
+    <artifactId>grab-mybatis-mapper</artifactId>
+    <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.huihe.eg.grab.mybatis.dao</groupId>
+            <artifactId>grab-mybatis-dao</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cy.framework.mybaties.mapper</groupId>
+            <artifactId>cy-framework-mybaties-mapper</artifactId>
+            <version>${cy.framework.version}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

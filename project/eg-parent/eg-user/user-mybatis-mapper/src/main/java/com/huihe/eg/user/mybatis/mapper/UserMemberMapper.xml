@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserMemberMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserMemberEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="member_level" jdbcType="INTEGER" property="member_level"/>
+        <result column="is_member" jdbcType="BIT" property="is_member"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="start_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="statistics_time" jdbcType="TIMESTAMP" property="statistics_time"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user_id, member_level, is_member, create_time, start_time, end_time
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_member
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_member
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserMemberEntity">
+    insert into eg_user_member (id, user_id, member_level, 
+      is_member, create_time, start_time, 
+      end_time)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{member_level,jdbcType=INTEGER}, 
+      #{is_member,jdbcType=BIT}, #{create_time,jdbcType=TIMESTAMP}, #{start_time,jdbcType=TIMESTAMP}, 
+      #{end_time,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserMemberEntity">
+        insert into eg_user_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="member_level != null">
+                member_level,
+            </if>
+            <if test="is_member != null">
+                is_member,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="start_time != null">
+                start_time,
+            </if>
+            <if test="end_time != null">
+                end_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="member_level != null">
+                #{member_level,jdbcType=INTEGER},
+            </if>
+            <if test="is_member != null">
+                #{is_member,jdbcType=BIT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="start_time != null">
+                #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                #{end_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserMemberEntity">
+        update eg_user_member
+        <set>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="member_level != null">
+                member_level = #{member_level,jdbcType=INTEGER},
+            </if>
+            <if test="is_member != null">
+                is_member = #{is_member,jdbcType=BIT},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="start_time != null">
+                start_time = #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                end_time = #{end_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserMemberEntity">
+    update eg_user_member
+    set user_id = #{user_id,jdbcType=BIGINT},
+      member_level = #{member_level,jdbcType=INTEGER},
+      is_member = #{is_member,jdbcType=BIT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      end_time = #{end_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserMemberEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_member
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserMemberEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_member
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserMemberEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_member
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.member_level!=null">
+                AND member_level = #{param.member_level,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_member!=null">
+                AND is_member = #{param.is_member,jdbcType=BIT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <select id="memberCount" resultType="com.huihe.eg.user.model.count.MemberParam">
+    SELECT
+        SUM(
+            CASE user_id
+            WHEN 0 THEN
+                0
+            ELSE
+                1
+            END
+        ) total_num,
+        SUM(
+             CASE
+            WHEN DATE_FORMAT(start_time, '%Y-%m-%d') &lt; DATE_FORMAT(now(), '%Y-%m-%d')
+            AND DATE_FORMAT(end_time, '%Y-%m-%d') &gt; DATE_FORMAT(now(), '%Y-%m-%d')
+                AND is_member = 1
+            THEN
+                1
+            ELSE
+                0
+            END
+        ) member_total_num,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d')
+                AND is_member = 1
+            THEN
+                1
+            ELSE
+                0
+            END
+        ) teday_num,
+        sum(
+            CASE
+            WHEN DATE_FORMAT(end_time, '%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d') THEN
+                1
+            ELSE
+                0
+            END
+        ) today_expire_num
+    FROM
+        eg_user_member
+  </select>
+    <select id="memberTedayCount" resultType="com.huihe.eg.user.model.count.MemberParam">
+        SELECT
+        member_level,count(1) as teday_num
+        FROM
+        eg_user_member where DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d')
+        AND is_member = 1 GROUP BY member_level
+    </select>
+    <select id="memberExpireCount" resultType="com.huihe.eg.user.model.count.MemberParam">
+        SELECT
+        member_level,count(1) as today_expire_num
+        FROM
+        eg_user_member where DATE_FORMAT(end_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d')
+        AND is_member = 1 GROUP BY member_level
+    </select>
+    <select id="memberOnlineCount" resultType="com.huihe.eg.user.model.count.MemberParam">
+        SELECT
+	     member_level,
+	     count(1) AS  online_num
+        FROM
+	     eg_user_member m
+        LEFT JOIN eg_user u ON m.user_id = u.user_id
+        WHERE
+	     online_state = 1
+         AND is_member = 1 GROUP BY member_level
+    </select>
+    <select id="memberTotalCount" resultType="com.huihe.eg.user.model.count.MemberParam">
+        SELECT
+        member_level,count(1) as member_total_num
+        FROM
+        eg_user_member where DATE_FORMAT(start_time, '%Y-%m-%d') &lt; DATE_FORMAT(
+        now(),'%Y-%m-%d')
+        AND DATE_FORMAT(end_time, '%Y-%m-%d') &gt; DATE_FORMAT(
+        now(),'%Y-%m-%d')
+        AND is_member = 1 GROUP BY member_level
+    </select>
+    <select id="memberCountProportion" resultType="com.huihe.eg.user.model.count.MemberParam"
+            parameterType="com.huihe.eg.user.model.UserMemberEntity">
+        SELECT
+        member_level,
+        count(1) AS member_num
+        FROM
+        eg_user_member
+        WHERE
+        is_member = 1 and  DATE_FORMAT(start_time, '%Y-%m-%d') &lt; DATE_FORMAT(#{param.statistics_time,jdbcType=TIMESTAMP}, '%Y-%m-%d')
+        AND DATE_FORMAT(end_time, '%Y-%m-%d') &gt; DATE_FORMAT(#{param.statistics_time,jdbcType=TIMESTAMP}, '%Y-%m-%d')
+        GROUP BY
+        member_level
+    </select>
+    <select id="memberStatistics" resultType="com.huihe.eg.user.model.count.ChartParam"
+            parameterType="com.huihe.eg.user.model.UserMemberEntity">
+      SELECT
+      member_level,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(#{param.statistics_time,jdbcType=TIMESTAMP}, '%Y-%m') THEN
+      1
+      ELSE
+      0
+      END
+      ) december,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 1 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) november,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) october,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) september,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) august,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) july,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') =DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) june,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) may,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) april,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) march,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) february,
+      sum(
+      CASE
+      WHEN DATE_FORMAT(start_time, '%Y-%m') = DATE_FORMAT(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 MONTH),
+      '%Y-%m'
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) january,
+      sum(
+      CASE
+      WHEN  DATE_FORMAT(start_time, '%Y-%m-%d') = DATE_FORMAT(#{param.statistics_time,jdbcType=TIMESTAMP}, '%Y-%m-%d') THEN
+      1
+      ELSE
+      0
+      END
+      ) yiwNum,
+      sum(
+      CASE
+      WHEN (
+      #{param.statistics_time,jdbcType=TIMESTAMP} &gt; start_time
+      AND start_time &gt;
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 1 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) erNum,
+      sum(
+      CASE
+      WHEN (#{param.statistics_time,jdbcType=TIMESTAMP} + - 1)&gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) saNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) siNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 DAY)
+      ) &lt; start_time
+      AND start_time &lt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) wuNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 DAY)
+      ) &gt; start_time
+      AND start_time &lt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) liuNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 DAY)
+      ) &gt; start_time
+      AND start_time  &gt;  (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) sevenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) eightNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) nineNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) tenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) elevenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 DAY)
+      ) &gt; start_time
+      AND start_time &gt;  (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twelveNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 DAY)
+      )&gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 12 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) thirteenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 12 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 13 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) forteenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 13 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 14 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) fifteenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 14 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 15 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) sixteenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 15 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 16 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) seventeenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 16 DAY)
+      ) &gt; start_time
+      AND start_time &gt;(
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 17 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) eighteenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 17 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 18 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) nineteenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 18 DAY)
+      ) &gt;  start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 19 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 19 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 20 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyOneNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 20 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 21 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyTwoNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 21 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 22 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyThreeNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 22 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 23 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyFourNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 23 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 24 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyFiveNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 24 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 25 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentySixNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 25 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 26 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentySevenNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 26 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 27 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyEightNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 27 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 28 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) twentyNineNum,
+      sum(
+      CASE
+      WHEN (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 28 DAY)
+      ) &gt; start_time
+      AND start_time &gt; (
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 29 DAY)
+      ) THEN
+      1
+      ELSE
+      0
+      END
+      ) thirtyNum,
+      #{param.statistics_time,jdbcType=TIMESTAMP} yi,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 1 DAY) er,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 2 DAY) sa,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 3 DAY) si,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 4 DAY) wu,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 5 DAY) liu,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 6 DAY) qi,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 7 DAY) eight,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 8 DAY) nine,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 9 DAY) ten,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 10 DAY) eleven,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 11 DAY) twelve,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 12 DAY) thirteen,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 13 DAY) forteen,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 14 DAY) fifteen,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 15 DAY) sixteen,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 16 DAY) seventeen,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 17 DAY) eighteen,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 18 DAY) nineteen,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 19 DAY) twenty,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 20 DAY) twentyOne,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 21 DAY) twentyTwo,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 22 DAY) twentyThree,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 23 DAY) twentyFour,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 24 DAY) twentyFive,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 25 DAY) twentySix,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 26 DAY) twentySeven,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 27 DAY) twentyEight,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 28 DAY) twentyNine,
+      date_sub(#{param.statistics_time,jdbcType=TIMESTAMP}, INTERVAL 29 DAY) thirty
+
+      FROM
+      eg_user_member where is_member is true  GROUP BY member_level
+  </select>
+</mapper>

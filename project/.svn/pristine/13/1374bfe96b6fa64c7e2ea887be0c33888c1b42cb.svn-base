@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.ClassRecordMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.ClassRecordEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="curriculum_num" jdbcType="INTEGER" property="curriculum_num"/>
+        <result column="minute_num" jdbcType="INTEGER" property="minute_num"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="group_id" jdbcType="BIGINT" property="group_id"/>
+        <result column="curriculum_id" jdbcType="BIGINT" property="curriculum_id"/>
+        <result column="free_minute" jdbcType="INTEGER" property="free_minute"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time, update_time, type, status, curriculum_num, minute_num, user_id,
+    group_id, curriculum_id, free_minute
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_class_record
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_class_record
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.ClassRecordEntity">
+        insert into eg_class_record (id, create_time, update_time,
+                                     type, status, curriculum_num,
+                                     minute_num, user_id, group_id,
+                                     curriculum_id, free_minute)
+        values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP},
+                #{type,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{curriculum_num,jdbcType=INTEGER},
+                #{minute_num,jdbcType=INTEGER}, #{user_id,jdbcType=BIGINT}, #{group_id,jdbcType=BIGINT},
+                #{curriculum_id,jdbcType=BIGINT}, #{free_minute,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.ClassRecordEntity" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into eg_class_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="curriculum_num != null">
+                curriculum_num,
+            </if>
+            <if test="minute_num != null">
+                minute_num,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="group_id != null">
+                group_id,
+            </if>
+            <if test="curriculum_id != null">
+                curriculum_id,
+            </if>
+            <if test="free_minute != null">
+                free_minute,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="curriculum_num != null">
+                #{curriculum_num,jdbcType=INTEGER},
+            </if>
+            <if test="minute_num != null">
+                #{minute_num,jdbcType=INTEGER},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="group_id != null">
+                #{group_id,jdbcType=BIGINT},
+            </if>
+            <if test="curriculum_id != null">
+                #{curriculum_id,jdbcType=BIGINT},
+            </if>
+            <if test="free_minute != null">
+                #{free_minute,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.ClassRecordEntity">
+        update eg_class_record
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="curriculum_num != null">
+                curriculum_num = #{curriculum_num,jdbcType=INTEGER},
+            </if>
+            <if test="minute_num != null">
+                minute_num = #{minute_num,jdbcType=INTEGER},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="group_id != null">
+                group_id = #{group_id,jdbcType=BIGINT},
+            </if>
+            <if test="curriculum_id != null">
+                curriculum_id = #{curriculum_id,jdbcType=BIGINT},
+            </if>
+            <if test="free_minute != null">
+                free_minute = #{free_minute,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.ClassRecordEntity">
+        update eg_class_record
+        set create_time    = #{create_time,jdbcType=TIMESTAMP},
+            update_time    = #{update_time,jdbcType=TIMESTAMP},
+            type           = #{type,jdbcType=VARCHAR},
+            status         = #{status,jdbcType=INTEGER},
+            curriculum_num = #{curriculum_num,jdbcType=INTEGER},
+            minute_num     = #{minute_num,jdbcType=INTEGER},
+            user_id        = #{user_id,jdbcType=BIGINT},
+            group_id       = #{group_id,jdbcType=BIGINT},
+            curriculum_id  = #{curriculum_id,jdbcType=BIGINT},
+            free_minute    = #{free_minute,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateFreeMinute">
+        update eg_class_record set free_minute=free_minute+1 where id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.ClassRecordEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_class_record
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.free_minute!=null">
+                AND free_minute = #{param.free_minute,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.ClassRecordEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_class_record
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.free_minute!=null">
+                AND free_minute = #{param.free_minute,jdbcType=INTEGER}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.ClassRecordEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_class_record
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.free_minute!=null">
+                AND free_minute = #{param.free_minute,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryStayListPage" parameterType="com.huihe.eg.user.model.ClassRecordEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_class_record c
+        <where>
+            free_minute &gt; 15
+            and (select count(1) from eg_master_comment m where m.user_id=c.user_id and m.group_id=c.group_id and
+            c.curriculum_id=m.appointment_id)=0
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryHistoryListPage" parameterType="com.huihe.eg.user.model.ClassRecordEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_class_record
+        <where>
+            free_minute &gt; 5
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryPayCount" parameterType="com.huihe.eg.user.model.ClassRecordEntity" resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_class_record
+        <where>
+            free_minute &gt; 5
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryThisMonthCount" resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_class_record
+        where
+        free_minute &gt; 5
+        and create_time > DATE_SUB(now(), INTERVAL 1 MONTH)
+        <if test="param.status!=null">
+            AND status = #{param.status,jdbcType=INTEGER}
+        </if>
+        <if test="param.curriculum_id!=null">
+            AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+        </if>
+    </select>
+    <select id="queryByMessage" resultType="com.huihe.eg.user.model.ClassRecordEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_class_record
+        <where>
+            <if test="param.nickNameIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.nickNameIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time != null and param.update_time != null">
+                AND finished_time() between #{param.start_time,jdbcType=TIMESTAMP}
+                AND #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.free_minute!=null">
+                AND free_minute = #{param.free_minute,jdbcType=INTEGER}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_class_record
+        <where>
+            <if test="param.nickNameIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.nickNameIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time != null and param.update_time != null">
+                AND finished_time() between #{param.start_time,jdbcType=TIMESTAMP}
+                AND #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.curriculum_id!=null">
+                AND curriculum_id = #{param.curriculum_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.free_minute!=null">
+                AND free_minute = #{param.free_minute,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

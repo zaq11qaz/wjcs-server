@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MechanismCategoryMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MechanismCategoryEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="parent_id" jdbcType="BIGINT" property="parent_id" />
+    <result column="weights" jdbcType="INTEGER" property="weights" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, type, parent_id, weights, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_mechanism_category
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_mechanism_category
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MechanismCategoryEntity">
+    insert into eg_mechanism_category (id, name, type, 
+      parent_id, weights, status, 
+      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{parent_id,jdbcType=BIGINT}, #{weights,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MechanismCategoryEntity">
+    insert into eg_mechanism_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="parent_id != null">
+        parent_id,
+      </if>
+      <if test="weights != null">
+        weights,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="parent_id != null">
+        #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="weights != null">
+        #{weights,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MechanismCategoryEntity">
+    update eg_mechanism_category
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="parent_id != null">
+        parent_id = #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="weights != null">
+        weights = #{weights,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MechanismCategoryEntity">
+    update eg_mechanism_category
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      parent_id = #{parent_id,jdbcType=BIGINT},
+      weights = #{weights,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.MechanismCategoryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_category
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=INTEGER}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.weights!=null">
+        AND weights = #{param.weights,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY weights desc
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MechanismCategoryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_category
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=INTEGER}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.weights!=null">
+        AND weights = #{param.weights,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY weights desc limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MechanismCategoryEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_mechanism_category
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=INTEGER}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.weights!=null">
+        AND weights = #{param.weights,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>

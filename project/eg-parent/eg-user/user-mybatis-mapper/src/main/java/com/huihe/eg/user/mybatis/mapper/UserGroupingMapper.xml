@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserGroupingMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserGroupingEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id" />
+    <result column="present_lesson" jdbcType="INTEGER" property="present_lesson" />
+    <result column="activity_id" jdbcType="BIGINT" property="activity_id" />
+    <result column="group_id" jdbcType="VARCHAR" property="group_id" />
+    <result column="is_one_time_payment" jdbcType="BIT" property="is_one_time_payment" />
+    <result column="is_settlement" jdbcType="BIT" property="is_settlement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, user_id, master_set_price_id, present_lesson, group_id,activity_id,is_one_time_payment,is_settlement
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_grouping
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_grouping
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserGroupingEntity">
+    insert into eg_user_grouping (id, create_time, update_time, 
+      user_id, master_set_price_id, present_lesson, 
+      group_id)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{user_id,jdbcType=BIGINT}, #{master_set_price_id,jdbcType=BIGINT}, #{present_lesson,jdbcType=INTEGER}, 
+      #{group_id,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserGroupingEntity"
+          useGeneratedKeys="true" keyProperty="id">
+    insert into eg_user_grouping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="master_set_price_id != null">
+        master_set_price_id,
+      </if>
+        <if test="activity_id != null">
+          activity_id,
+      </if>
+      <if test="present_lesson != null">
+        present_lesson,
+      </if>
+      <if test="group_id != null">
+        group_id,
+      </if>
+        <if test="is_one_time_payment != null">
+          is_one_time_payment,
+      </if>
+        <if test="is_settlement != null">
+          is_settlement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="master_set_price_id != null">
+        #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+        <if test="activity_id != null">
+        #{activity_id,jdbcType=BIGINT},
+      </if>
+      <if test="present_lesson != null">
+        #{present_lesson,jdbcType=INTEGER},
+      </if>
+      <if test="group_id != null">
+        #{group_id,jdbcType=VARCHAR},
+      </if>
+        <if test="is_one_time_payment != null">
+        #{is_one_time_payment,jdbcType=BIT},
+      </if>
+        <if test="is_settlement != null">
+        #{is_settlement,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserGroupingEntity">
+    update eg_user_grouping
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="master_set_price_id != null">
+        master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+        <if test="activity_id != null">
+          activity_id = #{activity_id,jdbcType=BIGINT},
+      </if>
+      <if test="present_lesson != null">
+        present_lesson = #{present_lesson,jdbcType=INTEGER},
+      </if>
+      <if test="group_id != null">
+        group_id = #{group_id,jdbcType=VARCHAR},
+      </if>
+        <if test="is_one_time_payment != null">
+          is_one_time_payment = #{is_one_time_payment,jdbcType=BIT},
+      </if>
+        <if test="is_settlement != null">
+          is_settlement = #{is_settlement,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserGroupingEntity">
+    update eg_user_grouping
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      user_id = #{user_id,jdbcType=BIGINT},
+      master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+      present_lesson = #{present_lesson,jdbcType=INTEGER},
+      group_id = #{group_id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <update id="updatePresentLesson">
+      update eg_user_grouping
+      set present_lesson=present_lesson+1
+    where group_id = #{group_id,jdbcType=VARCHAR}
+    and user_id = #{user_id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserGroupingEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_grouping
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.present_lesson!=null">
+        AND present_lesson = #{param.present_lesson,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_one_time_payment!=null">
+        AND is_one_time_payment = #{param.is_one_time_payment,jdbcType=BIT}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserGroupingEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_grouping
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.present_lesson!=null">
+        AND present_lesson = #{param.present_lesson,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_one_time_payment!=null">
+        AND is_one_time_payment = #{param.is_one_time_payment,jdbcType=BIT}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserGroupingEntity" resultType="java.lang.Integer">
+    SELECT
+    coalesce(count(0),0)
+    FROM eg_user_grouping
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.present_lesson!=null">
+        AND present_lesson = #{param.present_lesson,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_one_time_payment!=null">
+        AND is_one_time_payment = #{param.is_one_time_payment,jdbcType=BIT}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  <select id="querylistPageByIdAsc" resultType="com.huihe.eg.user.model.UserGroupingEntity">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_grouping
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.present_lesson!=null">
+        AND present_lesson = #{param.present_lesson,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_one_time_payment!=null">
+        AND is_one_time_payment = #{param.is_one_time_payment,jdbcType=BIT}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+    ORDER BY id ASC limit #{param.startRow},#{param.pageSize}
+  </select>
+    <select id="querylistPageByIdAscInTime" resultType="com.huihe.eg.user.model.UserGroupingEntity">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM eg_user_grouping
+      <where>
+        DATE_ADD(create_time,INTERVAL 1 DAY) > now()
+        <if test="param.id!=null">
+          AND id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.create_time!=null">
+          AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.update_time!=null">
+          AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.user_id!=null">
+          AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_set_price_id!=null">
+          AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.present_lesson!=null">
+          AND present_lesson = #{param.present_lesson,jdbcType=INTEGER}
+        </if>
+        <if test="param.group_id!=null">
+          AND group_id = #{param.group_id,jdbcType=VARCHAR}
+        </if>
+        <if test="param.is_one_time_payment!=null">
+          AND is_one_time_payment = #{param.is_one_time_payment,jdbcType=BIT}
+        </if>
+        <if test="param.is_settlement!=null">
+          AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+        </if>
+      </where>
+      ORDER BY id ASC limit #{param.startRow},#{param.pageSize}
+    </select>
+  <select id="queryUserIds" resultType="java.lang.Long">
+    SELECT
+    user_id
+    FROM eg_user_grouping
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.present_lesson!=null">
+        AND present_lesson = #{param.present_lesson,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_one_time_payment!=null">
+        AND is_one_time_payment = #{param.is_one_time_payment,jdbcType=BIT}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+    <select id="queryEndTime" resultType="java.lang.Object">
+      select
+        DATE_ADD(create_time,INTERVAL 1 DAY)
+      FROM eg_user_grouping
+      <where>
+        <if test="param.id!=null">
+          AND id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.create_time!=null">
+          AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.update_time!=null">
+          AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.user_id!=null">
+          AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_set_price_id!=null">
+          AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.present_lesson!=null">
+          AND present_lesson = #{param.present_lesson,jdbcType=INTEGER}
+        </if>
+        <if test="param.group_id!=null">
+          AND group_id = #{param.group_id,jdbcType=VARCHAR}
+        </if>
+        <if test="param.is_one_time_payment!=null">
+          AND is_one_time_payment = #{param.is_one_time_payment,jdbcType=BIT}
+        </if>
+        <if test="param.is_settlement!=null">
+          AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+        </if>
+      </where>
+    </select>
+  <select id="queryMoreThanListPageCount" resultType="java.lang.Integer">
+    SELECT
+      coalesce(count(0),0)
+    FROM eg_user_grouping
+    where present_lesson &gt;= #{param.present_lesson,jdbcType=INTEGER}
+    AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      AND is_one_time_payment = false
+  </select>
+  <select id="queryListPageNotIn" resultType="com.huihe.eg.user.model.UserGroupingEntity">
+    SELECT
+      <include refid="Base_Column_List"/>
+    FROM eg_user_grouping
+    where present_lesson &gt;= #{param.present_lesson,jdbcType=INTEGER}
+      AND group_id = #{param.group_id,jdbcType=VARCHAR}
+    AND id &lt;&gt; #{param.id,jdbcType=BIGINT}
+    AND is_one_time_payment = false
+  </select>
+  <select id="queryGroupIdList" resultType="com.huihe.eg.user.model.UserGroupingEntity">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from(
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM
+      eg_user_grouping
+    WHERE
+      is_one_time_payment = TRUE
+      AND is_settlement = FALSE
+      AND now()> DATE_ADD( create_time, INTERVAL 1 DAY )
+    GROUP BY
+      group_id
+    )a
+  </select>
+</mapper>

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+mvn clean package  && docker run -d --name user-service-web -v /opt/crt/:/opt/crt/ -v /etc/localtime:/etc/localtime -v /var/log/:/var/log/ -e params="-Dservice.type=release" -p 1120:1120 localhost:5000/user-service-web:1.0  -e TZ=Asia/Shanghai

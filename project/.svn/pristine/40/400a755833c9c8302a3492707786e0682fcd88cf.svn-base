@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterSetPriceMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterSetPriceEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="course_num" jdbcType="INTEGER" property="course_num"/>
+        <result column="amout" jdbcType="DECIMAL" property="amout"/>
+        <result column="service_type" jdbcType="INTEGER" property="service_type"/>
+        <result column="discount" jdbcType="DECIMAL" property="discount"/>
+        <result column="discount_amout" jdbcType="DECIMAL" property="discount_amout"/>
+        <result column="price_per_session" jdbcType="DECIMAL" property="price_per_session"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="introduction_content" jdbcType="VARCHAR" property="introduction_content"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="titile_url" jdbcType="VARCHAR" property="titile_url"/>
+        <result column="first_free" jdbcType="BIT" property="first_free"/>
+        <result column="is_enlightenment" jdbcType="BIT" property="is_enlightenment"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="connect_peoplenum" jdbcType="INTEGER" property="connect_peoplenum"/>
+        <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id"/>
+        <result column="face_url" jdbcType="VARCHAR" property="face_url"/>
+        <result column="pay_num" jdbcType="BIGINT" property="pay_num"/>
+        <result column="duration" jdbcType="BIGINT" property="duration"/>
+        <result column="master_appointment_id" jdbcType="BIGINT" property="master_appointment_id"/>
+        <result column="introduction_url" jdbcType="VARCHAR" property="introduction_url"/>
+        <result column="introduction_text" jdbcType="LONGVARCHAR" property="introduction_text"/>
+        <result column="label" jdbcType="VARCHAR" property="label"/>
+        <result column="appointment_type" jdbcType="VARCHAR" property="appointment_type"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="age_grade" jdbcType="VARCHAR" property="age_grade"/>
+        <result column="categories" jdbcType="VARCHAR" property="categories"/>
+        <result column="activity_list" jdbcType="VARCHAR" property="activity_list"/>
+        <result column="master_set_price_group_id" jdbcType="BIGINT" property="master_set_price_group_id"/>
+        <result column="is_recommend" jdbcType="BIT" property="is_recommend"/>
+        <result column="is_public_exclusive" jdbcType="BIT" property="is_public_exclusive"/>
+        <result column="is_attend_activities" jdbcType="BIT" property="is_attend_activities"/>
+        <result column="is_interoperability" jdbcType="BIT" property="is_interoperability"/>
+        <result column="is_support_teach_paypal" jdbcType="BIT" property="is_support_teach_paypal"/>
+        <result column="is_default_syllabus" jdbcType="BIT" property="is_default_syllabus"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+        <result column="default_discount_price" jdbcType="DECIMAL" property="default_discount_price"/>
+        <result column="original_price" jdbcType="DECIMAL" property="original_price"/>
+        <result column="live_stream_price" jdbcType="DECIMAL" property="live_stream_price"/>
+        <result column="activity_id" jdbcType="BIGINT" property="activity_id"/>
+        <result column="live_streaming_id" jdbcType="BIGINT" property="live_streaming_id"/>
+        <result column="sort_weight" jdbcType="INTEGER" property="sort_weight"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time, update_time, title, course_num, amout, service_type, discount, discount_amout,
+    user_id, introduction_content, status, titile_url, first_free, type, connect_peoplenum, 
+    mechanism_id,face_url,pay_num,master_appointment_id,introduction_url,introduction_text,label,
+    is_recommend,language,is_public_exclusive,age_grade,is_attend_activities,is_interoperability,price_per_session,
+    latitude,longitude,appointment_type,is_support_teach_paypal,duration,activity_id,original_price,categories,sort_weight,
+    master_set_price_group_id,is_default_syllabus,default_discount_price,live_streaming_id,live_stream_price,activity_list,is_enlightenment
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_set_price
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_master_set_price
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        insert into eg_master_set_price (id, create_time, update_time,
+                                         title, course_num, amout,
+                                         service_type, discount, discount_amout,
+                                         user_id, introduction_content, status,
+                                         titile_url, first_free, type,
+                                         connect_peoplenum, mechanism_id, face_url, master_appointment_id,
+                                         introduction_url, introduction_text, label)
+        values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP},
+                #{title,jdbcType=VARCHAR}, #{course_num,jdbcType=INTEGER}, #{amout,jdbcType=DECIMAL},
+                #{service_type,jdbcType=INTEGER}, #{discount,jdbcType=DECIMAL}, #{discount_amout,jdbcType=DECIMAL},
+                #{user_id,jdbcType=BIGINT}, #{introduction_content,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+                #{titile_url,jdbcType=VARCHAR}, #{first_free,jdbcType=BIT}, #{type,jdbcType=VARCHAR},
+                #{connect_peoplenum,jdbcType=INTEGER}, #{mechanism_id,jdbcType=BIGINT}, #{face_url,jdbcType=VARCHAR},
+                #{master_appointment_id,jdbcType=BIGINT}, #{introduction_url,jdbcType=VARCHAR},
+                #{introduction_text,jdbcType=LONGVARCHAR},
+                #{label,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterSetPriceEntity"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into eg_master_set_price
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="course_num != null">
+                course_num,
+            </if>
+            <if test="amout != null">
+                amout,
+            </if>
+            <if test="service_type != null">
+                service_type,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="discount_amout != null">
+                discount_amout,
+            </if>
+            <if test="default_discount_price != null">
+                default_discount_price,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="introduction_content != null">
+                introduction_content,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            titile_url,
+            <if test="first_free != null">
+                first_free,
+            </if>
+            <if test="is_enlightenment != null">
+                is_enlightenment,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="connect_peoplenum != null">
+                connect_peoplenum,
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id,
+            </if>
+            <if test="face_url != null">
+                face_url,
+            </if>
+            <if test="master_appointment_id != null">
+                master_appointment_id,
+            </if>
+            <if test="introduction_url != null">
+                introduction_url,
+            </if>
+            introduction_text,
+            <if test="label != null">
+                label,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            <if test="is_public_exclusive != null">
+                is_public_exclusive,
+            </if>
+            <if test="age_grade != null">
+                age_grade,
+            </if>
+            <if test="is_attend_activities != null">
+                is_attend_activities,
+            </if>
+            <if test="is_interoperability != null">
+                is_interoperability,
+            </if>
+            <if test="is_default_syllabus != null">
+                is_default_syllabus,
+            </if>
+            <if test="appointment_type != null">
+                appointment_type,
+            </if>
+            <if test="is_support_teach_paypal != null">
+                is_support_teach_paypal,
+            </if>
+            <if test="duration != null">
+                duration,
+            </if>
+            <if test="activity_id != null">
+                activity_id,
+            </if>
+            <if test="original_price != null">
+                original_price,
+            </if>
+            <if test="live_stream_price != null">
+                live_stream_price,
+            </if>
+            <if test="categories != null">
+                categories,
+            </if>
+            <if test="activity_list != null">
+                activity_list,
+            </if>
+            <if test="master_set_price_group_id != null">
+                master_set_price_group_id,
+            </if>
+            <if test="live_streaming_id != null">
+                live_streaming_id,
+            </if>
+            <if test="sort_weight != null">
+                sort_weight,
+            </if>
+            price_per_session,
+            longitude,
+            latitude,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="course_num != null">
+                #{course_num,jdbcType=INTEGER},
+            </if>
+            <if test="amout != null">
+                #{amout,jdbcType=DECIMAL},
+            </if>
+            <if test="service_type != null">
+                #{service_type,jdbcType=INTEGER},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=DECIMAL},
+            </if>
+            <if test="discount_amout != null">
+                #{discount_amout,jdbcType=DECIMAL},
+            </if>
+            <if test="default_discount_price != null">
+                #{default_discount_price,jdbcType=DECIMAL},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="introduction_content != null">
+                #{introduction_content,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="titile_url != null">
+                #{titile_url,jdbcType=VARCHAR},
+            </if>
+            <if test="titile_url == null">
+                '',
+            </if>
+            <if test="first_free != null">
+                #{first_free,jdbcType=BIT},
+            </if>
+            <if test="is_enlightenment != null">
+                #{is_enlightenment,jdbcType=BIT},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="connect_peoplenum != null">
+                #{connect_peoplenum,jdbcType=INTEGER},
+            </if>
+            <if test="mechanism_id != null">
+                #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="face_url != null">
+                #{face_url,jdbcType=VARCHAR},
+            </if>
+            <if test="master_appointment_id != null">
+                #{master_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="introduction_url != null">
+                #{introduction_url,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction_text != null">
+                #{introduction_text,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="introduction_text == null">
+                '',
+            </if>
+            <if test="label != null">
+                #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="is_public_exclusive != null">
+                #{is_public_exclusive,jdbcType=BIT},
+            </if>
+            <if test="age_grade != null">
+                #{age_grade,jdbcType=VARCHAR},
+            </if>
+            <if test="is_attend_activities != null">
+                #{is_attend_activities,jdbcType=BIT},
+            </if>
+            <if test="is_interoperability != null">
+                #{is_interoperability,jdbcType=BIT},
+            </if>
+            <if test="is_default_syllabus != null">
+                #{is_default_syllabus,jdbcType=BIT},
+            </if>
+            <if test="appointment_type != null">
+                #{appointment_type,jdbcType=VARCHAR},
+            </if>
+            <if test="is_support_teach_paypal != null">
+                #{is_support_teach_paypal,jdbcType=BIT},
+            </if>
+            <if test="duration != null">
+                #{duration,jdbcType=BIGINT},
+            </if>
+            <if test="activity_id != null">
+                #{activity_id,jdbcType=BIGINT},
+            </if>
+            <if test="original_price != null">
+                #{original_price,jdbcType=DECIMAL},
+            </if>
+            <if test="live_stream_price != null">
+                #{live_stream_price,jdbcType=DECIMAL},
+            </if>
+            <if test="categories != null">
+                #{categories,jdbcType=VARCHAR},
+            </if>
+            <if test="activity_list != null">
+                #{activity_list,jdbcType=VARCHAR},
+            </if>
+            <if test="master_set_price_group_id != null">
+                #{master_set_price_group_id,jdbcType=BIGINT},
+            </if>
+            <if test="live_streaming_id != null">
+                #{live_streaming_id,jdbcType=BIGINT},
+            </if>
+            <if test="sort_weight != null">
+                #{sort_weight,jdbcType=INTEGER},
+            </if>
+            <if test="discount_amout != null and course_num != null">
+                #{discount_amout,jdbcType=DECIMAL}/#{course_num,jdbcType=INTEGER},
+            </if>
+            <if test="discount_amout == null or course_num == null">
+                0,
+            </if>
+            <if test="longitude != null">
+                #{ longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="longitude == null">
+                0,
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="latitude == null">
+                0,
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        update eg_master_set_price
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="course_num != null">
+                course_num = #{course_num,jdbcType=INTEGER},
+            </if>
+            <if test="amout != null">
+                amout = #{amout,jdbcType=DECIMAL},
+            </if>
+            <if test="service_type != null">
+                service_type = #{service_type,jdbcType=INTEGER},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=DECIMAL},
+            </if>
+            <if test="discount_amout != null">
+                discount_amout = #{discount_amout,jdbcType=DECIMAL},
+            </if>
+            <if test="default_discount_price != null">
+                default_discount_price = #{default_discount_price,jdbcType=DECIMAL},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="introduction_content != null">
+                introduction_content = #{introduction_content,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="titile_url != null">
+                titile_url = #{titile_url,jdbcType=VARCHAR},
+            </if>
+            <if test="first_free != null">
+                first_free = #{first_free,jdbcType=BIT},
+            </if>
+            <if test="is_enlightenment != null">
+                is_enlightenment = #{is_enlightenment,jdbcType=BIT},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="connect_peoplenum != null">
+                connect_peoplenum = #{connect_peoplenum,jdbcType=INTEGER},
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="face_url != null">
+                face_url = #{face_url,jdbcType=VARCHAR},
+            </if>
+            <if test="pay_num != null">
+                pay_num = #{pay_num,jdbcType=BIGINT},
+            </if>
+            <if test="master_appointment_id != null">
+                master_appointment_id = #{master_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="introduction_text != null">
+                introduction_text = #{introduction_text,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="introduction_url != null">
+                introduction_url = #{introduction_url,jdbcType=VARCHAR},
+            </if>
+            <if test="label != null">
+                label = #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="is_recommend != null">
+                is_recommend = #{is_recommend,jdbcType=BIT},
+            </if>
+            <if test="is_attend_activities != null">
+                is_attend_activities = #{is_attend_activities,jdbcType=BIT},
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="appointment_type != null">
+                appointment_type = #{appointment_type,jdbcType=VARCHAR},
+            </if>
+            <if test="is_interoperability != null">
+                is_interoperability = #{is_interoperability,jdbcType=BIT},
+            </if>
+            <if test="is_support_teach_paypal != null">
+                is_support_teach_paypal = #{is_support_teach_paypal,jdbcType=BIT},
+            </if>
+            <if test="is_default_syllabus != null">
+                is_default_syllabus = #{is_default_syllabus,jdbcType=BIT},
+            </if>
+            <if test="duration != null">
+                duration = #{duration,jdbcType=INTEGER},
+            </if>
+            <if test="activity_id != null">
+                activity_id = #{activity_id,jdbcType=BIGINT},
+            </if>
+            <if test="live_streaming_id != null">
+                live_streaming_id = #{live_streaming_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_set_price_group_id != null">
+                master_set_price_group_id = #{master_set_price_group_id,jdbcType=BIGINT},
+            </if>
+            <if test="original_price != null">
+                original_price = #{original_price,jdbcType=DECIMAL},
+            </if>
+            <if test="live_stream_price != null">
+                live_stream_price = #{live_stream_price,jdbcType=DECIMAL},
+            </if>
+            <if test="categories != null">
+                categories = #{categories,jdbcType=VARCHAR},
+            </if>
+            <if test="activity_list != null">
+                activity_list = #{activity_list,jdbcType=VARCHAR},
+            </if>
+            <if test="sort_weight != null">
+                sort_weight = #{sort_weight,jdbcType=INTEGER},
+            </if>
+            <if test="discount_amout != null and course_num != null">
+                price_per_session = #{discount_amout}/#{course_num},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        update eg_master_set_price
+        set create_time           = #{create_time,jdbcType=TIMESTAMP},
+            update_time           = #{update_time,jdbcType=TIMESTAMP},
+            title                 = #{title,jdbcType=VARCHAR},
+            course_num            = #{course_num,jdbcType=INTEGER},
+            amout                 = #{amout,jdbcType=DECIMAL},
+            service_type          = #{service_type,jdbcType=INTEGER},
+            discount              = #{discount,jdbcType=DECIMAL},
+            discount_amout        = #{discount_amout,jdbcType=DECIMAL},
+            user_id               = #{user_id,jdbcType=BIGINT},
+            introduction_content  = #{introduction_content,jdbcType=VARCHAR},
+            status                = #{status,jdbcType=INTEGER},
+            titile_url            = #{titile_url,jdbcType=VARCHAR},
+            first_free            = #{first_free,jdbcType=BIT},
+            type                  = #{type,jdbcType=VARCHAR},
+            connect_peoplenum     = #{connect_peoplenum,jdbcType=INTEGER},
+            mechanism_id          = #{mechanism_id,jdbcType=BIGINT},
+            face_url              = #{face_url,jdbcType=VARCHAR},
+            pay_num               = #{pay_num,jdbcType=BIGINT},
+            master_appointment_id = #{master_appointment_id,jdbcType=BIGINT},
+            is_recommend          = #{is_recommend,jdbcType=BIT},
+            is_attend_activities  = #{is_attend_activities,jdbcType=BIT},
+            is_interoperability   = #{is_interoperability,jdbcType=BIT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updatePayNumByPrimaryKey">
+        update eg_master_set_price
+        set pay_num=pay_num + 1
+        where id = #{studyCard_id}
+    </update>
+    <update id="updateStreamId">
+        update eg_master_set_price p , eg_master_set_price_display d
+         set   p.live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+        where p.id = d.master_set_price_id
+            and d.live_streaming_id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.MasterSetPriceEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.is_enlightenment!=null">
+                AND is_enlightenment = #{param.is_enlightenment,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_set_price_group_id!=null">
+                AND master_set_price_group_id = #{param.master_set_price_group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.appointment_type!=null">
+                AND appointment_type = #{param.appointment_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterSetPriceEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.is_enlightenment!=null">
+                AND is_enlightenment = #{param.is_enlightenment,jdbcType=BIT}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.appointment_type!=null">
+                AND appointment_type = #{param.appointment_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_set_price_group_id!=null">
+                AND master_set_price_group_id = #{param.master_set_price_group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+                AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.is_attend_activities!=null">
+                AND is_attend_activities = #{param.is_attend_activities,jdbcType=BIT}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY pay_num DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterSetPriceEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_master_set_price
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.is_enlightenment!=null">
+                AND is_enlightenment = #{param.is_enlightenment,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+                AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.appointment_type!=null">
+                AND appointment_type = #{param.appointment_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryStatus12ListPage" resultType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price
+        <where>
+            (status = 1 or status = 2)
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="query12ListPageCount" resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_master_set_price
+        <where>
+            (status = 1 or status = 2)
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryOnSale" resultType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status==null">
+                AND (status = 2 or status = 1)
+            </if>
+            <if test="param.is_attend_activities!=null">
+                AND is_attend_activities = #{param.is_attend_activities,jdbcType=BIT}
+            </if>
+            <if test="param.appointment_type!=null">
+                AND appointment_type = #{param.appointment_type,jdbcType=VARCHAR}
+            </if>
+            ORDER BY is_recommend desc ,
+            FIELD(type,'study_card','exclusive_courses','mechanism_offline','recording','mechanism_course');
+        </where>
+    </select>
+
+    <select id="queryRecommendList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price
+        <where>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_attend_activities!=null">
+                AND is_attend_activities = #{param.is_attend_activities,jdbcType=BIT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY is_attend_activities DESC,is_recommend DESC , id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="queryOnSaleCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_set_price
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.status==null">
+                AND (status = 2 or status = 1)
+            </if>
+            <if test="param.appointment_type!=null">
+                AND appointment_type = #{param.appointment_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByMessage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from (
+        SELECT
+        <include refid="Base_Column_List"/>
+        <if test="param.latitude!=null and param.longitude!=null">
+            ,(
+            6371 * acos (
+            cos (radians(
+            #{param.latitude,jdbcType=DECIMAL}
+            ))
+            * cos( radians( latitude ) )
+            * cos( radians( longitude ) - radians(
+            #{param.longitude,jdbcType=DECIMAL}
+            ))
+            + sin ( radians(
+            #{param.latitude,jdbcType=DECIMAL}
+            )
+            * sin( radians( latitude ) )
+            )
+            )
+            ) AS distance
+        </if>
+        FROM
+        (
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price
+        <where>
+            <if test="param.ids!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.mechanism_ids!=null">
+                AND mechanism_id in
+                <foreach item="item" index="index" collection="param.mechanism_ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.create_time!=null and param.update_time!=null ">
+                AND create_time between #{param.create_time,jdbcType=TIMESTAMP}
+                AND #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.title!=null">
+                AND title like concat('%',#{param.title,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="param.status != null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_support_teach_paypal != null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        )a
+        ORDER BY
+        <if test="param.latitude!=null and param.longitude!=null">
+            is_attend_activities DESC ,is_recommend DESC , distance ASC ,
+        </if>
+        pay_num DESC limit #{param.startRow},#{param.pageSize}
+        )b
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_master_set_price
+        <where>
+            <if test="param.ids!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.create_time!=null and param.update_time!=null ">
+                AND create_time between #{param1.create_time,jdbcType=TIMESTAMP}
+                and #{param1.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.title!=null">
+                AND title like concat('%',#{param.title,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+    <select id="queryActivityListPageByType" resultType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        <if test="param.latitude!=null and param.longitude!=null">
+        ,(
+        6371 * acos (
+        cos (radians(
+        #{param.latitude,jdbcType=DECIMAL}
+        ))
+        * cos( radians( latitude ) )
+        * cos( radians( longitude ) - radians(
+        #{param.longitude,jdbcType=DECIMAL}
+        ))
+        + sin ( radians(
+        #{param.latitude,jdbcType=DECIMAL}
+        )
+        * sin( radians( latitude ) )
+        )
+        )
+        ) AS distance
+        </if>
+        from (
+        SELECT
+        emsp.*
+        FROM
+        `eg_master_set_price` emsp
+        INNER JOIN eg_business_activity eba ON eba.master_set_price_id = emsp.id
+        <where>
+        eba.type = #{param.type,jdbcType=VARCHAR}
+        and eba.status &lt;&gt; 0
+            <if test="param.status != null">
+                AND emsp.status = #{param.status,jdbcType=INTEGER}
+            </if>
+    </where>
+        )a
+        <if test="param.latitude!=null and param.longitude!=null">
+            ORDER BY distance ASC
+        </if>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMechanismDisplay" resultType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        SELECT
+            m.id, m.create_time, m.update_time, m.title, m.course_num,m.amout,m.service_type,m.discount,m.discount_amout,
+            m.user_id,m.introduction_content,m.status,m.titile_url,m.first_free,m.type,m.connect_peoplenum,
+            m.mechanism_id,m.face_url,m.pay_num,m.master_appointment_id,m.introduction_url,m.introduction_text,m.label,
+            m.is_recommend,m.language,m.is_public_exclusive,m.age_grade,m.is_attend_activities,m.is_interoperability,m.price_per_session,
+            m.latitude,m.longitude,m.appointment_type,m.is_support_teach_paypal,m.duration,m.activity_id,m.original_price,m.categories,m.sort_weight,
+            m.master_set_price_group_id,m.is_default_syllabus,m.default_discount_price,m.live_streaming_id,
+            d.live_stream_price AS live_stream_price , d.living_single_session_price AS living_single_session_price, d.sorted AS sorted, d.is_live_streaming AS is_live_streaming
+            from  eg_master_set_price m
+            inner join eg_master_set_price_display d
+            where d.master_set_price_id = m.id
+        <if test="param.id!=null">
+            AND m.id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.create_time!=null">
+            AND m.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.update_time!=null">
+            AND m.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.title!=null">
+            AND m.title = #{param.title,jdbcType=VARCHAR}
+        </if>
+        <if test="param.course_num!=null">
+            AND m.course_num = #{param.course_num,jdbcType=INTEGER}
+        </if>
+        <if test="param.amout!=null">
+            AND m.amout = #{param.amout,jdbcType=DECIMAL}
+        </if>
+        <if test="param.service_type!=null">
+            AND m.service_type = #{param.service_type,jdbcType=INTEGER}
+        </if>
+        <if test="param.discount!=null">
+            AND m.discount = #{param.discount,jdbcType=DECIMAL}
+        </if>
+        <if test="param.discount_amout!=null">
+            AND m.discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+        </if>
+        <if test="param.default_discount_price!=null">
+            AND m.default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+        </if>
+        <if test="param.user_id!=null">
+            AND m.user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.introduction_content!=null">
+            AND m.introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+        </if>
+        <if test="param.status!=null">
+            AND d.status = #{param.status,jdbcType=INTEGER}
+        </if>
+        <if test="param.titile_url!=null">
+            AND m.titile_url = #{param.titile_url,jdbcType=VARCHAR}
+        </if>
+        <if test="param.first_free!=null">
+            AND m.first_free = #{param.first_free,jdbcType=BIT}
+        </if>
+        <if test="param.is_support_teach_paypal!=null">
+            AND m.is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+        </if>
+        <if test="param.type!=null">
+            AND m.type = #{param.type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.language!=null">
+            AND m.language = #{param.language,jdbcType=VARCHAR}
+        </if>
+        <if test="param.appointment_type!=null">
+            AND m.appointment_type = #{param.appointment_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.connect_peoplenum!=null">
+            AND m.connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND m.mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_appointment_id!=null">
+            AND m.master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_set_price_group_id!=null">
+            AND m.master_set_price_group_id = #{param.master_set_price_group_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.live_streaming_id!=null">
+            AND d.live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.is_recommend!=null">
+            AND m.is_recommend = #{param.is_recommend,jdbcType=BIT}
+        </if>
+        <if test="param.is_attend_activities!=null">
+            AND m.is_attend_activities = #{param.is_attend_activities,jdbcType=BIT}
+        </if>
+        <if test="param.categories!=null">
+            AND m.categories = #{param.categories,jdbcType=VARCHAR}
+        </if>
+        <if test="param.is_live_streaming!=null">
+            AND d.is_live_streaming = #{param.is_live_streaming,jdbcType=VARCHAR}
+        </if>
+        order by id desc
+    </select>
+    <select id="queryEqualsNotFu" resultType="com.huihe.eg.user.model.MasterSetPriceEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price
+        <where>
+            activity_list &lt;&gt; '赋'
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.amout!=null">
+                AND amout = #{param.amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=INTEGER}
+            </if>
+            <if test="param.discount!=null">
+                AND discount = #{param.discount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.default_discount_price!=null">
+                AND default_discount_price = #{param.default_discount_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.introduction_content!=null">
+                AND introduction_content = #{param.introduction_content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.titile_url!=null">
+                AND titile_url = #{param.titile_url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.first_free!=null">
+                AND first_free = #{param.first_free,jdbcType=BIT}
+            </if>
+            <if test="param.is_support_teach_paypal!=null">
+                AND is_support_teach_paypal = #{param.is_support_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.appointment_type!=null">
+                AND appointment_type = #{param.appointment_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.connect_peoplenum!=null">
+                AND connect_peoplenum = #{param.connect_peoplenum,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_appointment_id!=null">
+                AND master_appointment_id = #{param.master_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_set_price_group_id!=null">
+                AND master_set_price_group_id = #{param.master_set_price_group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_streaming_id!=null">
+                AND live_streaming_id = #{param.live_streaming_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_recommend!=null">
+                AND is_recommend = #{param.is_recommend,jdbcType=BIT}
+            </if>
+            <if test="param.is_attend_activities!=null">
+                AND is_attend_activities = #{param.is_attend_activities,jdbcType=BIT}
+            </if>
+            <if test="param.categories!=null">
+                AND categories = #{param.categories,jdbcType=VARCHAR}
+            </if>
+            <if test="param.activity_list!=null">
+                AND activity_list = #{param.activity_list,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY pay_num DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+</mapper>

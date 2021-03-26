@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\admin\.m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"></classPathEntry>
+    <context id="context1">
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator type="org.mybatis.generator.MyCommentGenerator">
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <!-- <property name="suppressAllComments" value="true" /> -->
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://101.37.66.151:3306/eg_news?characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root" password="123456"/>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 实体类 -->
+        <javaModelGenerator targetPackage="com.huihe.eg.news.model"
+                            extendsPackage="com.cy.framework.model.PageInfo"
+                            targetProject="D:\project\20190315\project\eg-parent\eg-news\news-model\src\main\java">
+
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- mapperXML存放目录 -->
+        <sqlMapGenerator targetPackage="com.huihe.eg.news.mybatis.mapper"
+                         targetProject="D:\project\20190315\project\eg-parent\eg-news\news-mybatis-mapper\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+       <!--&lt;!&ndash; 生成Dao类存放位置&ndash;&gt;
+        <javaClientGenerator targetPackage="com.huihe.eg.news.mybatis.dao"
+                             extendsPackage="com.cy.framework.mybaties.dao.BaseFrameworkMapper"
+                             targetProject="D:\project\20190103\easy-go\project\eg-parent\eg-news\news-mybatis-dao\src\main\java"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+         &lt;!&ndash;service&ndash;&gt;
+       <javaServiceGenerator targetPackage="com.huihe.eg.news.service.dao"
+                             extendsPackage="com.cy.framework.service.dao.BaseFrameworkService"
+                             targetProject="D:\project\20190103\easy-go\project\eg-parent\eg-news\news-service-dao\src\main\java">
+           <property name="enableSubPackages" value="true"/>
+       </javaServiceGenerator>
+       &lt;!&ndash;serviceImpl&ndash;&gt;
+       <javaServiceImplGenerator targetPackage="com.huihe.eg.news.service.impl"
+                                 extendsPackage="com.cy.framework.service.impl.BaseFrameworkServiceImpl"
+                                 targetProject="D:\project\20190103\easy-go\project\eg-parent\eg-news\news-service-impl\src\main\java">
+           <property name="enableSubPackages" value="true"/>
+       </javaServiceImplGenerator>
+        &lt;!&ndash;controller&ndash;&gt;
+       <javaControllerGenerator targetPackage="com.huihe.eg.news.service.web"
+                                targetProject="D:\project\20190103\easy-go\project\eg-parent\eg-news\news-service-web\src\main\java"
+                                extendsPackage="com.cy.framework.service.web.BaseFrameworkController">
+           <property name="enableSubPackages" value="true"/>
+       </javaControllerGenerator>-->
+       <!--生成对应表及类名-->
+
+
+
+        <!--<table tableName="message_blacklist" domainObjectName="MessageBlacklist"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="message_content" domainObjectName="MessageContent"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="message_friend" domainObjectName="MessageFriend"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="message_group" domainObjectName="MessageGroup"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="message_join_group" domainObjectName="MessageJoinGroup"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+        <table tableName="news_curiosity" domainObjectName="Curiosity"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+
+
+    </context>
+</generatorConfiguration>

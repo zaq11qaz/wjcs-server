@@ -1,0 +1,101 @@
+/*聊天界面*/
+.chatInterfaceList{
+	width: 100%;
+	padding: 1.428rem;
+	background-color: #fff;
+	margin-top: 0.714rem;
+	margin-bottom: 1.642rem;
+	position: relative;
+}
+.chatInterfaceList>.image{
+	width: 25%;
+	float: left;
+}
+.chatInterfaceList>.image>img{
+	width: 5.714rem;
+	height: 5.714rem;
+}
+.chatInterfaceList>.describe{
+	width: 71%;
+	float: left;
+	margin-left: 0.857rem;
+}
+.chatInterfaceList>.describe>p{
+	color: #404a4c;
+	font-weight: 500;
+	line-height: 2.071rem;
+	font-size: 1.142rem;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+.chatInterfaceList>.describe>p>span{
+	display: inline-block;
+	background-color: #33cbcc;
+	font-size: 0.785rem;
+	text-align: center;
+	line-height: 1.142rem;
+	color: #fff;
+	padding: 0.214rem 0.428rem;
+	
+}
+.chatInterfaceList > .send{
+	width: 5.357rem;
+	height: 2.142rem;
+	background-color: #33cbcc;
+	position: absolute;
+	bottom: -1.071rem;
+	right: 1.428rem;
+	border-radius: 1rem;
+	text-align: center;
+	line-height: 2.142rem;
+	color: #fff;
+}
+/*跑腿国家列表*/
+.chatInterfaceList>.describe>ul>li{
+	color: #404a4c;
+	/*margin-top: 0.3rem;*/
+	font-size: 1.142rem;
+	line-height: 2rem;
+}
+.chatInterfaceList>.describe>ul>li:first-child{
+	margin-top: 0;
+}
+.chatInterfaceList>.describe>ul>li>span{
+	color: #858697;
+}
+/*跑腿两地*/
+.chatInterfaceList>.describe>.d-one{
+	height: 3.75rem;
+}
+.chatInterfaceList>.describe>.d-one>.d-left,.d-center,.d-right{
+	float: left;
+	width: 33%;
+}
+.chatInterfaceList>.describe>.d-one>.d-left>h4,.d-center>h4,.d-right>h4{
+	color: #858697;
+	font-weight: 400;
+	margin-bottom: 0.6rem;
+	font-size: 1.142rem;
+}
+.chatInterfaceList>.describe>.d-one>.d-left>p,.d-center>p,.d-right>p{
+	font-size: 1.142rem;
+}
+.chatInterfaceList>.describe>.d-one>.d-right{
+	text-align: right;
+}
+.chatInterfaceList>.describe>.d-two{
+	margin-top: 0.5rem;
+	font-size: 1.142rem;
+}
+.chatInterfaceList>.describe>.d-two>span{
+	color: #858697;
+}
+.chatInterfaceList>.describe>.d-one>.d-center{
+	padding-top: 2rem;
+	padding-left: 2rem;
+}
+.chatInterfaceList>.describe>.d-one>.d-center>img{
+	width: 1.357rem;
+}

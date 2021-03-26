@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>eg-mall</artifactId>
+        <groupId>com.huihe.eg.mall</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.huihe.eg.mall.service.impl</groupId>
+    <artifactId>mall-service-impl</artifactId>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.webjars.bower/SHA-1 -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>SHA-1</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv</artifactId>
+            <version>0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cy.framework.service.impl</groupId>
+            <artifactId>cy-framework-service-impl</artifactId>
+            <version>${cy.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huihe.eg.mall.service.dao</groupId>
+            <artifactId>mall-service-dao</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20170516</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huihe.eg.cloud.feign</groupId>
+            <artifactId>cloud-feign</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

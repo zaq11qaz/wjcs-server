@@ -1,0 +1,11 @@
+package com.huihe.eg.user.service.dao;
+
+import com.cy.framework.service.dao.BaseFrameworkService;
+import com.huihe.eg.user.model.SignInEntity;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public interface SignInService extends BaseFrameworkService<SignInEntity, Long> {
+    public SignInEntity querySignDetail(SignInEntity entity, HttpServletRequest request, HttpServletResponse response);
+}

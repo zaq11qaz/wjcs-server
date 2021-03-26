@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>eg-message</artifactId>
+        <groupId>com.huihe.eg.message</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.huihe.eg.message.service.impl</groupId>
+    <artifactId>message-service-impl</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.cy.framework.service.impl</groupId>
+            <artifactId>cy-framework-service-impl</artifactId>
+            <version>${cy.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huihe.eg.message.service.dao</groupId>
+            <artifactId>message-service-dao</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huihe.eg.cloud.feign</groupId>
+            <artifactId>cloud-feign</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java</artifactId>
+            <!-- go to https://search.maven.org/search?q=tencentcloud-sdk-java and get the latest version. -->
+            <!-- 请到https://search.maven.org/search?q=tencentcloud-sdk-java查询最新版本 -->
+            <version>3.0.9</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/tencentcloud-sdk-java-3.0.9.jar</systemPath>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>2.7.5</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/okhttp-2.7.5.jar</systemPath>
+        </dependency>
+
+
+    </dependencies>
+
+</project>

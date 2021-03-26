@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserClassCardMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserClassCardEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="curriculum_num" jdbcType="INTEGER" property="curriculum_num"/>
+        <result column="minute_num" jdbcType="INTEGER" property="minute_num"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="expire_time" jdbcType="TIMESTAMP" property="expire_time"/>
+        <result column="default_use" jdbcType="BIT" property="default_use"/>
+        <result column="is_experience" jdbcType="BIT" property="is_experience"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, create_time, update_time, type, status, curriculum_num, minute_num, user_id, 
+    expire_time, default_use,is_experience
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_class_card
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_class_card
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserClassCardEntity">
+    insert into eg_user_class_card (id, create_time, update_time, 
+      type, status, curriculum_num, 
+      minute_num, user_id, expire_time, 
+      default_use,is_experience)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{curriculum_num,jdbcType=INTEGER}, 
+      #{minute_num,jdbcType=INTEGER}, #{user_id,jdbcType=BIGINT}, #{expire_time,jdbcType=TIMESTAMP}, 
+      #{default_use,jdbcType=BIT},#{is_experience,jdbcType=BIT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserClassCardEntity">
+        insert into eg_user_class_card
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="curriculum_num != null">
+                curriculum_num,
+            </if>
+            <if test="minute_num != null">
+                minute_num,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="expire_time != null">
+                expire_time,
+            </if>
+            <if test="default_use != null">
+                default_use,
+            </if>
+            <if test="is_experience != null">
+                is_experience,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="curriculum_num != null">
+                #{curriculum_num,jdbcType=INTEGER},
+            </if>
+            <if test="minute_num != null">
+                #{minute_num,jdbcType=INTEGER},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="expire_time != null">
+                #{expire_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="default_use != null">
+                #{default_use,jdbcType=BIT},
+            </if>
+            <if test="is_experience != null">
+                #{is_experience,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserClassCardEntity">
+        update eg_user_class_card
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="curriculum_num != null">
+                curriculum_num = #{curriculum_num,jdbcType=INTEGER},
+            </if>
+            <if test="minute_num != null">
+                minute_num = #{minute_num,jdbcType=INTEGER},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="expire_time != null">
+                expire_time = #{expire_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="default_use != null">
+                default_use = #{default_use,jdbcType=BIT},
+            </if>
+            <if test="is_experience != null">
+                is_experience = #{is_experience,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserClassCardEntity">
+    update eg_user_class_card
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      curriculum_num = #{curriculum_num,jdbcType=INTEGER},
+      minute_num = #{minute_num,jdbcType=INTEGER},
+      user_id = #{user_id,jdbcType=BIGINT},
+      expire_time = #{expire_time,jdbcType=TIMESTAMP},
+      default_use = #{default_use,jdbcType=BIT},
+        is_experience = #{is_experience,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserClassCardEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class_card
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.expire_time!=null">
+                AND expire_time = #{param.expire_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.default_use!=null">
+                AND default_use = #{param.default_use,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserClassCardEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class_card
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null ">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num==null and param.type!=null and param.type=='curriculum'.toString()">
+                AND curriculum_num &lt;&gt; 0
+            </if>
+            <if test="param.minute_num==null and param.type!=null and param.type=='minute'.toString()">
+                AND minute_num &lt;&gt; 0
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.expire_time!=null">
+                AND expire_time = #{param.expire_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.default_use!=null">
+                AND default_use = #{param.default_use,jdbcType=BIT}
+            </if>
+            <if test="param.is_experience!=null">
+                AND is_experience = #{param.is_experience,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserClassCardEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_class_card
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.expire_time!=null">
+                AND expire_time = #{param.expire_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.default_use!=null">
+                AND default_use = #{param.default_use,jdbcType=BIT}
+            </if>
+            <if test="param.is_experience!=null">
+                AND is_experience = #{param.is_experience,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryDayTotal" parameterType="com.huihe.eg.user.model.UserClassCardEntity"
+            resultType="java.lang.Integer">
+        select         COALESCE(sum(
+        <if test="param.type=='curriculum'.toString()">
+            curriculum_num
+        </if>
+        <if test="param.type=='minute'.toString()">
+            minute_num
+        </if>),0)
+        from eg_user_class_card
+        <where>
+            create_time > date_sub(NOW(), interval 1 DAY)
+        <if test="param.type=='curriculum'.toString()">
+            and type = 'curriculum'
+        </if>
+        <if test="param.type=='minute'.toString()">
+            and type = 'minute'
+        </if>
+            <if test="param.status != null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+        </where>
+
+    </select>
+    <select id="queryWeekTotal" parameterType="com.huihe.eg.user.model.UserClassCardEntity"
+            resultType="java.lang.Integer">
+        select COALESCE(sum(
+        <if test="param.type=='curriculum'.toString()">
+            curriculum_num
+        </if>
+        <if test="param.type=='minute'.toString()">
+            minute_num
+        </if>),0)
+        from eg_user_class_card
+        <where>
+            YEARWEEK(date_format(create_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+            <if test="param.type=='curriculum'.toString()">
+                and type = 'curriculum'
+            </if>
+            <if test="param.type=='minute'.toString()">
+                and type = 'minute'
+            </if>
+            <if test="param.status != null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="queryMonthTotal" parameterType="com.huihe.eg.user.model.UserClassCardEntity"
+            resultType="java.lang.Integer">
+        select COALESCE(sum(
+        <if test="param.type=='curriculum'.toString()">
+            curriculum_num
+        </if>
+        <if test="param.type=='minute'.toString()">
+            minute_num
+        </if>),0)
+        from eg_user_class_card
+        <where>
+            create_time > date_sub(NOW(), interval 1 MONTH)
+            <if test="param.type=='curriculum'.toString()">
+                and type = 'curriculum'
+            </if>
+            <if test="param.type=='minute'.toString()">
+                and type = 'minute'
+            </if>
+            <if test="param.status != null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="queryPayTotal" parameterType="com.huihe.eg.user.model.UserClassCardEntity"
+            resultType="java.lang.Integer">
+        select COALESCE(sum(
+        <if test="param.type=='curriculum'.toString()">
+            curriculum_num
+        </if>
+        <if test="param.type=='minute'.toString()">
+            minute_num
+        </if>),0)
+        from eg_user_class_card
+        <where>
+            <if test="param.type=='curriculum'.toString()">
+                type = 'curriculum'
+            </if>
+            <if test="param.type=='minute'.toString()">
+                type = 'minute'
+            </if>
+            <if test="param.status != null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id != null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryByMessage" resultType="com.huihe.eg.user.model.UserClassCardEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class_card
+        <where>
+            <if test="param.loginIds!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIds" separator="," open="(" close=")" >
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="param.nickNameIds!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.nickNameIds" separator="," open="(" close=")" >
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null and param.end_time!=null">
+                AND create_time between #{param.start_time,jdbcType=TIMESTAMP}
+                AND #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.expire_time!=null">
+                AND expire_time = #{param.expire_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.default_use!=null">
+                AND default_use = #{param.default_use,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_user_class_card
+        <where>
+            <if test="param.loginIds!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIds" separator="," open="(" close=")" >
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.nickNameIds!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.nickNameIds" separator="," open="(" close=")" >
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.curriculum_num!=null">
+                AND curriculum_num = #{param.curriculum_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.minute_num!=null">
+                AND minute_num = #{param.minute_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.expire_time!=null">
+                AND expire_time = #{param.expire_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.default_use!=null">
+                AND default_use = #{param.default_use,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <update id="updateDefaultUse" parameterType="com.huihe.eg.user.model.UserClassCardEntity">
+        update eg_user_class_card
+        <set>
+            <if test="param.default_use!=null">
+                default_use = #{param.default_use,jdbcType=BIT},
+            </if>
+        </set>
+        <where>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+</mapper>

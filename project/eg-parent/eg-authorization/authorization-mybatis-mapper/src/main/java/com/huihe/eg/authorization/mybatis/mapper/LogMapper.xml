@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.authorization.mybatis.dao.LogMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.authorization.model.LogEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="requestURI" jdbcType="VARCHAR" property="requestURI" />
+    <result column="param" jdbcType="VARCHAR" property="param" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="old_param" jdbcType="VARCHAR" property="old_param" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, method, requestURI, param, user_id, old_param
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authorization_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from authorization_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.authorization.model.LogEntity">
+    insert into authorization_log (id, create_time, method, 
+      requestURI, param, user_id, 
+      old_param)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{method,jdbcType=VARCHAR}, 
+      #{requestURI,jdbcType=VARCHAR}, #{param,jdbcType=VARCHAR}, #{user_id,jdbcType=BIGINT}, 
+      #{old_param,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.authorization.model.LogEntity">
+    insert into authorization_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="requestURI != null">
+        requestURI,
+      </if>
+      <if test="param != null">
+        param,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="old_param != null">
+        old_param,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="requestURI != null">
+        #{requestURI,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="old_param != null">
+        #{old_param,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.authorization.model.LogEntity">
+    update authorization_log
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="requestURI != null">
+        requestURI = #{requestURI,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        param = #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="old_param != null">
+        old_param = #{old_param,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.authorization.model.LogEntity">
+    update authorization_log
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      method = #{method,jdbcType=VARCHAR},
+      requestURI = #{requestURI,jdbcType=VARCHAR},
+      param = #{param,jdbcType=VARCHAR},
+      user_id = #{user_id,jdbcType=BIGINT},
+      old_param = #{old_param,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.authorization.model.LogEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.method!=null">
+        AND method = #{param.method,jdbcType=VARCHAR}
+      </if>
+      <if test="param.requestURI!=null">
+        AND requestURI = #{param.requestURI,jdbcType=VARCHAR}
+      </if>
+      <if test="param.param!=null">
+        AND param = #{param.param,jdbcType=VARCHAR}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.old_param!=null">
+        AND old_param = #{param.old_param,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.authorization.model.LogEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.method!=null">
+        AND method = #{param.method,jdbcType=VARCHAR}
+      </if>
+      <if test="param.requestURI!=null">
+        AND requestURI = #{param.requestURI,jdbcType=VARCHAR}
+      </if>
+      <if test="param.param!=null">
+        AND param = #{param.param,jdbcType=VARCHAR}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.old_param!=null">
+        AND old_param = #{param.old_param,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.authorization.model.LogEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM authorization_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.method!=null">
+        AND method = #{param.method,jdbcType=VARCHAR}
+      </if>
+      <if test="param.requestURI!=null">
+        AND requestURI = #{param.requestURI,jdbcType=VARCHAR}
+      </if>
+      <if test="param.param!=null">
+        AND param = #{param.param,jdbcType=VARCHAR}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.old_param!=null">
+        AND old_param = #{param.old_param,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

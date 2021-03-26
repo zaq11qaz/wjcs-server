@@ -1,0 +1,291 @@
+.head_top {}
+
+.bgImg {
+	width: 100%;
+}
+
+.card {
+	width: 6.02rem;
+	height: 3.4rem;
+	border-radius: .24rem;
+	box-shadow: 0rem .05rem .29rem .03rem rgba(70, 206, 207, 0.69);
+	position: absolute;
+	left: .74rem;
+	top: 1.55rem;
+	z-index: 1000;
+	background: #FFFFFF;
+	padding: .29rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.headImg_box {
+	position: relative;
+
+}
+.headImg{
+	height: 1.25rem;
+	width: 1.25rem;
+}
+
+.huiyuan {
+	position: absolute;
+	width: .3rem;
+	height: .3rem;
+	bottom: 0rem;
+	right: 0rem;
+}
+
+.xihuan {
+	position: absolute;
+	left: 2.7rem;
+	top: 0rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: .2rem;
+	color: #999;
+}
+.xihuan img{
+	width: .6rem;
+	height: .5rem;
+}
+
+.sex_box,
+.add_box {
+	display: flex;
+	align-items: center;
+}
+
+.add_box {
+	margin: 0 .2rem;
+}
+
+.sex_box{
+	width: .26rem;
+	height: .26rem;
+}
+.sex_box img{
+	width: .26rem;
+	height: .26rem;
+}
+
+.add_box img {
+	width: .23rem;
+	height: .26rem;
+}
+
+.message_mid {
+	display: flex;
+	justify-content: center;
+	margin: .1rem 0;
+}
+
+.text1 {
+	color: #333333;
+	font-size: .32rem;
+}
+
+.text2 {
+	color: #999999;
+	font-size: .24rem;
+}
+
+.meunList {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 1.4rem;
+	font-size: .3rem;
+	line-height: .8rem;
+}
+
+
+.active {
+	color: #46CECF;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.border_box {
+	height: .06rem;
+	background: rgba(70, 206, 207, 1);
+	border-radius: 3px;
+	width: 1rem;
+}
+
+.border_botom {
+	width: 100%;
+	height: .2rem;
+	background: #F3F3F3;
+}
+
+.border_botom2 {
+	width: 100%;
+	height: .1rem;
+	background: #F3F3F3;
+}
+
+.imgList {
+	width:100%;
+    display: inline;
+    white-space: nowrap;/*规定段落中的文本不进行换行*/
+    overflow-x:scroll;/*水平方向，超出部分添加滚动机制*/
+    float:left;/*一定要设置左侧浮动*/
+    overflow-y:hidden;/*竖直方向，超出部分隐藏*/
+	padding: .2rem .24rem;
+}
+
+
+.imgList img {
+	margin-right: .16rem;
+	width: 2rem;
+	height: 2rem;
+	border-radius: .1rem;
+	overflow: hidden;
+	 display:inline-block;
+}
+
+.messageItem {
+	height: .88rem;
+	line-height: .88rem;
+	padding: 0 .24rem;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: .01rem solid #E6E6E6;
+
+}
+
+.messageItem span {
+	color: #999999;
+	font-size: .32rem;
+}
+
+
+.morPeople {
+	width: 100%;
+	/* position: relative; */
+}
+
+.morePeopleImg {
+	width: 3.63rem;
+	height: .23rem;
+	display: table-cell;
+	/* vertical-align: middle; */
+	text-align: center;
+}
+
+.peopleItem {
+	padding: .3rem .24rem;
+	border-top: .01rem solid #E6E6E6;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.peopleItem_left {
+	position: relative;
+}
+
+.peopleItem_left p {
+	/* height: 23px; */
+	background: rgba(153, 153, 153, 1);
+	border: .02rem solid rgba(153, 153, 153, 1);
+	opacity: 0.8;
+	border-radius: 12px;
+	color: #FFFFFF;
+	position: absolute;
+	bottom: .04rem;
+	left: .04rem;
+	white-space: nowrap;
+	font-size: .14rem;
+	padding-left: .2rem;
+}
+
+.mid_top p {
+	font-size: .3rem;
+	color: #333333;
+	font-weight: 700;
+	margin-right: .06rem;
+}
+
+.prove1,
+.prove2 {
+	border: .02rem solid #32CCCC;
+	margin-left: .06rem;
+	font-size: .18rem;
+	color: #32CCCC;
+	/* padding: .02rem; */
+}
+
+.prove2 {
+	border: .02rem solid #999999;
+	color: #999999;
+}
+
+.peopleItem_headImg {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+.peopleItem_countryImg {
+	width: .33rem;
+	height: .33rem;
+	position: absolute;
+	bottom: .04rem;
+	left: 0rem;
+	z-index: 10;
+}
+
+.mid_top,
+.mid_mid,
+.mid_bottom {
+	display: flex;
+	align-items: center;
+	width: 4.1rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding-bottom: .06rem;
+}
+
+.mid_mid,
+.mid_bottom {
+	color: #999999;
+	font-size: .26rem;
+}
+.next{
+	margin-right: .1rem;
+}
+.peopleItem_right{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.text3{
+	color: #999999;
+	font-size: .26rem;
+	margin-bottom: .5rem;
+}
+.text4{
+	color: #33CBCC;
+	font-size: .28rem;
+}
+.message_item{
+	/* position: relative; */
+	filter: blur(.1rem);
+}
+.clickLook{
+	position: absolute;
+	text-align: -moz-center;
+	z-index: 1000;
+	width: 1.76rem;
+	height: .45rem;
+	left: 40%;
+	top: 50%;
+}
+.message_box{
+	position: relative;
+}

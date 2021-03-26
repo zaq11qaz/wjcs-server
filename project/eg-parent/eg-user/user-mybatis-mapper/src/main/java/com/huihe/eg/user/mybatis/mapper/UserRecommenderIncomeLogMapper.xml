@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserRecommenderIncomeLogMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="recommender_id" jdbcType="BIGINT" property="recommender_id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="is_settlement" jdbcType="BIT" property="is_settlement" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id" />
+    <result column="master_id" jdbcType="BIGINT" property="master_id" />
+    <result column="appointment_id" jdbcType="BIGINT" property="appointment_id" />
+    <result column="user_appointment_id" jdbcType="BIGINT" property="user_appointment_id" />
+    <result column="mastersetprice_id" jdbcType="BIGINT" property="mastersetprice_id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="recharge_record_id" jdbcType="BIGINT" property="recharge_record_id" />
+    <result column="invitation_id" jdbcType="BIGINT" property="invitation_id" />
+    <result column="cash" jdbcType="DECIMAL" property="cash" />
+    <result column="role_id" jdbcType="DECIMAL" property="role_id" />
+    <result column="cash_describe" jdbcType="VARCHAR" property="cash_describe" />
+    <result column="recommender_type" jdbcType="VARCHAR" property="recommender_type" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, recommender_id, type, is_settlement, create_time, update_time, mechanism_id,
+    master_id, appointment_id, mastersetprice_id, cash, cash_describe,recommender_type,user_id,invitation_id,recharge_record_id,role_id,duration,
+    user_appointment_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from eg_user_recommender_income_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_recommender_income_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity"
+          useGeneratedKeys="true" keyProperty="id">
+    insert into eg_user_recommender_income_log (id, recommender_id, type,
+    is_settlement, create_time, update_time,
+    mechanism_id, master_id, appointment_id,
+    mastersetprice_id, cash, cash_describe,recommender_type
+    )
+    values (#{id,jdbcType=BIGINT}, #{recommender_id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR},
+    #{is_settlement,jdbcType=BIT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP},
+    #{mechanism_id,jdbcType=BIGINT}, #{master_id,jdbcType=BIGINT}, #{appointment_id,jdbcType=BIGINT},
+    #{mastersetprice_id,jdbcType=BIGINT}, #{cash,jdbcType=DECIMAL}, #{cash_describe,jdbcType=VARCHAR}, #{recommender_type,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity"
+          useGeneratedKeys="true" keyProperty="id">
+    insert into eg_user_recommender_income_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="recommender_id != null">
+        recommender_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="is_settlement != null">
+        is_settlement,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id,
+      </if>
+      <if test="master_id != null">
+        master_id,
+      </if>
+      <if test="appointment_id != null">
+        appointment_id,
+      </if>
+        <if test="user_appointment_id != null">
+          user_appointment_id,
+      </if>
+      <if test="mastersetprice_id != null">
+        mastersetprice_id,
+      </if>
+      <if test="cash != null">
+        cash,
+      </if>
+      <if test="cash_describe != null">
+        cash_describe,
+      </if>
+        <if test="recommender_type != null">
+          recommender_type,
+      </if>
+        <if test="user_id != null">
+          user_id,
+      </if>
+        <if test="role_id != null">
+          role_id,
+      </if>
+        <if test="recharge_record_id != null">
+          recharge_record_id,
+      </if>
+        <if test="invitation_id != null">
+          invitation_id,
+      </if>
+        <if test="duration != null">
+          duration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="recommender_id != null">
+        #{recommender_id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="is_settlement != null">
+        #{is_settlement,jdbcType=BIT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechanism_id != null">
+        #{mechanism_id,jdbcType=BIGINT},
+      </if>
+      <if test="master_id != null">
+        #{master_id,jdbcType=BIGINT},
+      </if>
+      <if test="appointment_id != null">
+        #{appointment_id,jdbcType=BIGINT},
+      </if>
+        <if test="user_appointment_id != null">
+        #{user_appointment_id,jdbcType=BIGINT},
+      </if>
+      <if test="mastersetprice_id != null">
+        #{mastersetprice_id,jdbcType=BIGINT},
+      </if>
+      <if test="cash != null">
+        #{cash,jdbcType=DECIMAL},
+      </if>
+      <if test="cash_describe != null">
+        #{cash_describe,jdbcType=VARCHAR},
+      </if>
+        <if test="recommender_type != null">
+        #{recommender_type,jdbcType=VARCHAR},
+      </if>
+        <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+        <if test="role_id != null">
+        #{role_id,jdbcType=BIGINT},
+      </if>
+        <if test="recharge_record_id != null">
+        #{recharge_record_id,jdbcType=BIGINT},
+      </if>
+        <if test="invitation_id != null">
+        #{invitation_id,jdbcType=BIGINT},
+      </if>
+        <if test="duration != null">
+        #{duration,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+    update eg_user_recommender_income_log
+    <set>
+      <if test="recommender_id != null">
+        recommender_id = #{recommender_id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="is_settlement != null">
+        is_settlement = #{is_settlement,jdbcType=BIT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      </if>
+      <if test="master_id != null">
+        master_id = #{master_id,jdbcType=BIGINT},
+      </if>
+      <if test="appointment_id != null">
+        appointment_id = #{appointment_id,jdbcType=BIGINT},
+      </if>
+      <if test="mastersetprice_id != null">
+        mastersetprice_id = #{mastersetprice_id,jdbcType=BIGINT},
+      </if>
+      <if test="cash != null">
+        cash = #{cash,jdbcType=DECIMAL},
+      </if>
+      <if test="cash_describe != null">
+        cash_describe = #{cash_describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+    update eg_user_recommender_income_log
+    set recommender_id = #{recommender_id,jdbcType=BIGINT},
+    type = #{type,jdbcType=VARCHAR},
+    is_settlement = #{is_settlement,jdbcType=BIT},
+    create_time = #{create_time,jdbcType=TIMESTAMP},
+    update_time = #{update_time,jdbcType=TIMESTAMP},
+    mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+    master_id = #{master_id,jdbcType=BIGINT},
+    appointment_id = #{appointment_id,jdbcType=BIGINT},
+    mastersetprice_id = #{mastersetprice_id,jdbcType=BIGINT},
+    cash = #{cash,jdbcType=DECIMAL},
+    cash_describe = #{cash_describe,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_appointment_id!=null">
+        AND user_appointment_id = #{param.user_appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_appointment_id!=null">
+        AND user_appointment_id = #{param.user_appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_appointment_id!=null">
+        AND user_appointment_id = #{param.user_appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="querySumMechanismMasterCash" resultType="java.math.BigDecimal">
+    select coalesce(sum(cash),0)
+    from eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryMechanismList" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_income_log
+    <where>
+
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id==null">
+        AND recommender_id = 0
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+
+  <select id="queryMasterList" parameterType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_income_log
+    where
+    <if test="param.mechanism_id!=null">
+      AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+    </if>
+    <if test="param.recommender_id!=null">
+      AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+    </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+    AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+    AND #{param.update_time,jdbcType=TIMESTAMP}
+    </if>
+    order by create_time desc limit #{param.startRow},#{param.pageSize}
+  </select>
+
+  <select id="queryMechanismThisDayTotal" resultType="java.math.BigDecimal">
+    select coalesce(sum(cash),0)
+    from eg_user_recommender_income_log
+    <where>
+      mechanism_id &lt;&gt; 0
+      AND DATE_FORMAT(create_time,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    order by create_time desc limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryDayCash" resultType="java.math.BigDecimal">
+        select  coalesce(sum(cash),0)
+        from eg_user_recommender_income_log
+    <where>
+      DATE_FORMAT(create_time,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id==null">
+        AND mechanism_id = 0
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id==null">
+        AND master_id = 0
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id==null">
+        AND recommender_id = 0
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryMonthCash" resultType="java.math.BigDecimal">
+        select  coalesce(sum(cash),0)
+        from eg_user_recommender_income_log
+    <where>
+      DATE_FORMAT(create_time,'%Y-%m')  =  DATE_FORMAT(NOW(),'%Y-%m')
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id==null">
+        AND mechanism_id = 0
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id==null">
+        AND master_id = 0
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id==null">
+        AND recommender_id = 0
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  <select id="queryTotalCash" resultType="java.math.BigDecimal">
+        select  coalesce(sum(cash),0)
+        from eg_user_recommender_income_log
+    <where>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id==null">
+        AND mechanism_id = 0
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id==null">
+        AND master_id = 0
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id==null">
+        AND recommender_id = 0
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+    <select id="queryMechanismCashList" resultType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM eg_user_recommender_income_log
+      <where>
+        <if test="param.id!=null">
+          AND id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.recommender_id!=null">
+          AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.mechanism_id!=null">
+          AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test='param.type!=null and param.type=="master_recommender"'>
+          AND mechanism_id = 0
+        </if>
+        <if test="param.is_settlement!=null">
+          AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+        </if>
+        <if test="param.create_time!=null">
+          AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.update_time!=null">
+          AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.master_id!=null">
+          AND master_id = #{param.master_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.appointment_id!=null">
+          AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.mastersetprice_id!=null">
+          AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.cash!=null">
+          AND cash = #{param.cash,jdbcType=DECIMAL}
+        </if>
+        <if test="param.cash_describe!=null">
+          AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+        </if>
+        <if test="param.recommender_type!=null">
+          AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+        </if>
+      </where>
+      ORDER BY update_time DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+  <select id="querySumMechanismCash" resultType="java.lang.Integer">
+    select coalesce(sum(cash),0)
+    from eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryCashList" resultType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY update_time DESC limit 1
+  </select>
+  <select id="queryInviteUserList" resultType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryDayInviteCash"  resultType="java.math.BigDecimal">
+    select  coalesce(sum(cash),0)
+    from eg_user_recommender_income_log
+    <where>
+      DATE_FORMAT(create_time,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryMonthInviteCash"  resultType="java.math.BigDecimal">
+    select  coalesce(sum(cash),0)
+    from eg_user_recommender_income_log
+    <where>
+      DATE_FORMAT(create_time,'%Y-%m')  =  DATE_FORMAT(NOW(),'%Y-%m')
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryTotalInviteCash"  resultType="java.math.BigDecimal">
+    select  coalesce(sum(cash),0)
+    from eg_user_recommender_income_log
+    <where>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryMasterThisDayTotal" resultType="java.math.BigDecimal">
+    select coalesce(sum(cash),0)
+    FROM eg_user_recommender_income_log
+    <where>
+      DATE_FORMAT(create_time,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+      AND mechanism_id = 0
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+    <select id="querySelfCashTotal" resultType="java.math.BigDecimal">
+      select coalesce(sum(cash),0)
+      FROM eg_user_recommender_income_log
+      <where>
+        is_settlement = true
+        <if test="param.recommender_id!=null">
+          AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.create_time!=null and param.update_time!=null">
+          AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+          AND #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.user_id!=null">
+          AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_id!=null">
+          AND master_id = #{param.master_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.type!=null">
+          AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.mechanism_id!=null">
+          AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+      </where>
+    </select>
+  <select id="querySelfCashToday" resultType="java.math.BigDecimal">
+    select coalesce(sum(cash),0)
+    FROM eg_user_recommender_income_log
+    <where>
+      is_settlement = true
+      AND DATE_FORMAT(create_time,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="querySettelList" resultType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_income_log
+    <where>
+      create_time > date_sub( now(), INTERVAL duration DAY )
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+    <select id="queryByTimeCash" resultType="java.math.BigDecimal">
+      SELECT
+      coalesce(sum(cash),0)
+      FROM eg_user_recommender_income_log
+      <where>
+        <if test="param.id!=null">
+          AND id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.recommender_id!=null">
+          AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.type!=null">
+          AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.is_settlement!=null">
+          AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+        </if>
+        <if test="param.create_time!=null and param.update_time!=null">
+          AND create_time between #{param.create_time,jdbcType=TIMESTAMP}
+          AND #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.mechanism_id!=null">
+          AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_id!=null">
+          AND master_id = #{param.master_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.appointment_id!=null">
+          AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.mastersetprice_id!=null">
+          AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.cash!=null">
+          AND cash = #{param.cash,jdbcType=DECIMAL}
+        </if>
+        <if test="param.cash_describe!=null">
+          AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+        </if>
+        <if test="param.recommender_type!=null">
+          AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+        </if>
+      </where>
+    </select>
+  <select id="queryByTimeCount" resultType="java.lang.Integer">
+    SELECT
+    coalesce(count(1),0)
+    FROM eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryMechanismListCount" resultType="java.lang.Integer">
+    SELECT
+    coalesce(count(1),0)
+    FROM eg_user_recommender_income_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND create_time between  #{param.create_time,jdbcType=TIMESTAMP}
+        AND #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id==null">
+        AND mechanism_id &lt;&gt; 0 AND recommender_id = 0
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mastersetprice_id!=null">
+        AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.cash_describe!=null">
+        AND cash_describe = #{param.cash_describe,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommender_type!=null">
+        AND recommender_type = #{param.recommender_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryMechanismIdList" resultType="com.huihe.eg.user.model.UserRecommenderIncomeLogEntity">
+    SELECT DISTINCT(mechanism_id) FROM `eg_user_recommender_income_log` WHERE mechanism_id &lt;&gt; 0
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryMechanismIdListCount" resultType="java.lang.Integer">
+    SELECT
+      COUNT( 1 )
+    FROM
+      (
+        SELECT
+          mechanism_id
+        FROM
+          `eg_user_recommender_income_log`
+        WHERE
+          mechanism_id &lt;&gt; 0
+        GROUP BY
+          mechanism_id) t
+  </select>
+  <select id="queryWeekCash" resultType="java.math.BigDecimal">
+    select  coalesce(sum(cash),0)
+    from eg_user_recommender_income_log
+    <where>
+      YEARWEEK(date_format(create_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id==null">
+        AND mechanism_id = 0
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id==null">
+        AND master_id = 0
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.recommender_id==null">
+        AND recommender_id = 0
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_settlement!=null">
+        AND is_settlement = #{param.is_settlement,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+</mapper>

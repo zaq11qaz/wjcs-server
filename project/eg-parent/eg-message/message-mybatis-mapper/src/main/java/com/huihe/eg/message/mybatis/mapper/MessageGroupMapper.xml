@@ -1,0 +1,1445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.MessageGroupMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.MessageGroupEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="owner_id" jdbcType="BIGINT" property="owner_id" />
+    <result column="group_name" jdbcType="VARCHAR" property="group_name" />
+    <result column="group_type" jdbcType="VARCHAR" property="group_type" />
+    <result column="operator_account" jdbcType="VARCHAR" property="operator_account" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="group_id" jdbcType="VARCHAR" property="group_id" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="notification" jdbcType="VARCHAR" property="notification" />
+    <result column="faceUrl" jdbcType="VARCHAR" property="faceUrl" />
+    <result column="advance_group" jdbcType="BIT" property="advance_group" />
+    <result column="is_open" jdbcType="BIT" property="is_open" />
+    <result column="is_charge" jdbcType="BIT" property="is_charge" />
+    <result column="fee_standard" jdbcType="DECIMAL" property="fee_standard" />
+    <result column="entry_password" jdbcType="VARCHAR" property="entry_password" />
+    <result column="people_num" jdbcType="INTEGER" property="people_num" />
+    <result column="show_time" jdbcType="VARCHAR" property="show_time" />
+    <result column="earnings" jdbcType="DECIMAL" property="earnings" />
+    <result column="number_participants" jdbcType="INTEGER" property="number_participants" />
+    <result column="live_push_addr" jdbcType="VARCHAR" property="live_push_addr" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="recommend_type" jdbcType="VARCHAR" property="recommend_type" />
+    <result column="online_num" jdbcType="INTEGER" property="online_num" />
+    <result column="tickets" jdbcType="DECIMAL" property="tickets" />
+    <result column="live_duration" jdbcType="INTEGER" property="live_duration" />
+    <result column="watch_duration" jdbcType="INTEGER" property="watch_duration" />
+    <result column="age_grade" jdbcType="VARCHAR" property="age_grade" />
+    <result column="language_level" jdbcType="VARCHAR" property="language_level" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner_id, group_name, group_type, operator_account, status, create_time, group_id,
+    update_time, introduction, notification, faceUrl, advance_group, is_open, is_charge,
+    fee_standard, entry_password, people_num, show_time, earnings, number_participants,
+    live_push_addr, language, label, type, recommend_type, online_num, tickets, live_duration,
+    watch_duration, age_grade, language_level
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from message_group
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_group
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.MessageGroupEntity" useGeneratedKeys="true" keyProperty="id">
+    insert into message_group (id, owner_id, group_name,
+      group_type, operator_account, status,
+      create_time, group_id, update_time,
+      introduction, notification, faceUrl,
+      advance_group, is_open, is_charge,
+      fee_standard, entry_password, people_num,
+      show_time, earnings, number_participants,
+      live_push_addr, language, label,
+      type, recommend_type, online_num,
+      tickets, live_duration, watch_duration,
+      age_grade, language_level)
+    values (#{id,jdbcType=BIGINT}, #{owner_id,jdbcType=BIGINT}, #{group_name,jdbcType=VARCHAR},
+      #{group_type,jdbcType=VARCHAR}, #{operator_account,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{create_time,jdbcType=TIMESTAMP}, #{group_id,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP},
+      #{introduction,jdbcType=VARCHAR}, #{notification,jdbcType=VARCHAR}, #{faceUrl,jdbcType=VARCHAR},
+      #{advance_group,jdbcType=BIT}, #{is_open,jdbcType=BIT}, #{is_charge,jdbcType=BIT},
+      #{fee_standard,jdbcType=DECIMAL}, #{entry_password,jdbcType=VARCHAR}, #{people_num,jdbcType=INTEGER},
+      #{show_time,jdbcType=VARCHAR}, #{earnings,jdbcType=DECIMAL}, #{number_participants,jdbcType=INTEGER},
+      #{live_push_addr,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR},
+      #{type,jdbcType=VARCHAR}, #{recommend_type,jdbcType=VARCHAR}, #{online_num,jdbcType=INTEGER},
+      #{tickets,jdbcType=DECIMAL}, #{live_duration,jdbcType=INTEGER}, #{watch_duration,jdbcType=INTEGER},
+      #{age_grade,jdbcType=VARCHAR}, #{language_level,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.MessageGroupEntity" useGeneratedKeys="true" keyProperty="id">
+    insert into message_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="owner_id != null">
+        owner_id,
+      </if>
+      <if test="group_name != null">
+        group_name,
+      </if>
+      <if test="group_type != null">
+        group_type,
+      </if>
+      <if test="operator_account != null">
+        operator_account,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="notification != null">
+        notification,
+      </if>
+      <if test="faceUrl != null">
+        faceUrl,
+      </if>
+      <if test="advance_group != null">
+        advance_group,
+      </if>
+      <if test="is_open != null">
+        is_open,
+      </if>
+      <if test="is_charge != null">
+        is_charge,
+      </if>
+      <if test="fee_standard != null">
+        fee_standard,
+      </if>
+      <if test="entry_password != null">
+        entry_password,
+      </if>
+      <if test="people_num != null">
+        people_num,
+      </if>
+      <if test="show_time != null">
+        show_time,
+      </if>
+      <if test="earnings != null">
+        earnings,
+      </if>
+      <if test="number_participants != null">
+        number_participants,
+      </if>
+      <if test="live_push_addr != null">
+        live_push_addr,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="recommend_type != null">
+        recommend_type,
+      </if>
+      <if test="online_num != null">
+        online_num,
+      </if>
+      <if test="tickets != null">
+        tickets,
+      </if>
+      <if test="live_duration != null">
+        live_duration,
+      </if>
+      <if test="watch_duration != null">
+        watch_duration,
+      </if>
+      <if test="age_grade != null">
+        age_grade,
+      </if>
+      <if test="language_level != null">
+        language_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="owner_id != null">
+        #{owner_id,jdbcType=BIGINT},
+      </if>
+      <if test="group_name != null">
+        #{group_name,jdbcType=VARCHAR},
+      </if>
+      <if test="group_type != null">
+        #{group_type,jdbcType=VARCHAR},
+      </if>
+      <if test="operator_account != null">
+        #{operator_account,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="group_id != null">
+        #{group_id,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="notification != null">
+        #{notification,jdbcType=VARCHAR},
+      </if>
+      <if test="faceUrl != null">
+        #{faceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="advance_group != null">
+        #{advance_group,jdbcType=BIT},
+      </if>
+      <if test="is_open != null">
+        #{is_open,jdbcType=BIT},
+      </if>
+      <if test="is_charge != null">
+        #{is_charge,jdbcType=BIT},
+      </if>
+      <if test="fee_standard != null">
+        #{fee_standard,jdbcType=DECIMAL},
+      </if>
+      <if test="entry_password != null">
+        #{entry_password,jdbcType=VARCHAR},
+      </if>
+      <if test="people_num != null">
+        #{people_num,jdbcType=INTEGER},
+      </if>
+      <if test="show_time != null">
+        #{show_time,jdbcType=VARCHAR},
+      </if>
+      <if test="earnings != null">
+        #{earnings,jdbcType=DECIMAL},
+      </if>
+      <if test="number_participants != null">
+        #{number_participants,jdbcType=INTEGER},
+      </if>
+      <if test="live_push_addr != null">
+        #{live_push_addr,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="recommend_type != null">
+        #{recommend_type,jdbcType=VARCHAR},
+      </if>
+      <if test="online_num != null">
+        #{online_num,jdbcType=INTEGER},
+      </if>
+      <if test="tickets != null">
+        #{tickets,jdbcType=DECIMAL},
+      </if>
+      <if test="live_duration != null">
+        #{live_duration,jdbcType=INTEGER},
+      </if>
+      <if test="watch_duration != null">
+        #{watch_duration,jdbcType=INTEGER},
+      </if>
+      <if test="age_grade != null">
+        #{age_grade,jdbcType=VARCHAR},
+      </if>
+      <if test="language_level != null">
+        #{language_level,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.MessageGroupEntity">
+    update message_group
+    <set>
+      <if test="owner_id != null">
+        owner_id = #{owner_id,jdbcType=BIGINT},
+      </if>
+      <if test="group_name != null">
+        group_name = #{group_name,jdbcType=VARCHAR},
+      </if>
+      <if test="group_type != null">
+        group_type = #{group_type,jdbcType=VARCHAR},
+      </if>
+      <if test="operator_account != null">
+        operator_account = #{operator_account,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="group_id != null">
+        group_id = #{group_id,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="notification != null">
+        notification = #{notification,jdbcType=VARCHAR},
+      </if>
+      <if test="faceUrl != null">
+        faceUrl = #{faceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="advance_group != null">
+        advance_group = #{advance_group,jdbcType=BIT},
+      </if>
+      <if test="is_open != null">
+        is_open = #{is_open,jdbcType=BIT},
+      </if>
+      <if test="is_charge != null">
+        is_charge = #{is_charge,jdbcType=BIT},
+      </if>
+      <if test="fee_standard != null">
+        fee_standard = #{fee_standard,jdbcType=DECIMAL},
+      </if>
+      <if test="entry_password != null">
+        entry_password = #{entry_password,jdbcType=VARCHAR},
+      </if>
+      <if test="people_num != null">
+        people_num = #{people_num,jdbcType=INTEGER},
+      </if>
+      <if test="show_time != null">
+        show_time = #{show_time,jdbcType=VARCHAR},
+      </if>
+      <if test="earnings != null">
+        earnings = #{earnings,jdbcType=DECIMAL},
+      </if>
+      <if test="number_participants != null">
+        number_participants = #{number_participants,jdbcType=INTEGER},
+      </if>
+      <if test="live_push_addr != null">
+        live_push_addr = #{live_push_addr,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="recommend_type != null">
+        recommend_type = #{recommend_type,jdbcType=VARCHAR},
+      </if>
+      <if test="online_num != null">
+        online_num = #{online_num,jdbcType=INTEGER},
+      </if>
+      <if test="tickets != null">
+        tickets = #{tickets,jdbcType=DECIMAL},
+      </if>
+      <if test="live_duration != null">
+        live_duration = #{live_duration,jdbcType=INTEGER},
+      </if>
+      <if test="watch_duration != null">
+        watch_duration = #{watch_duration,jdbcType=INTEGER},
+      </if>
+      <if test="age_grade != null">
+        age_grade = #{age_grade,jdbcType=VARCHAR},
+      </if>
+      <if test="language_level != null">
+        language_level = #{language_level,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.MessageGroupEntity">
+    update message_group
+    set owner_id = #{owner_id,jdbcType=BIGINT},
+      group_name = #{group_name,jdbcType=VARCHAR},
+      group_type = #{group_type,jdbcType=VARCHAR},
+      operator_account = #{operator_account,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      group_id = #{group_id,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      notification = #{notification,jdbcType=VARCHAR},
+      faceUrl = #{faceUrl,jdbcType=VARCHAR},
+      advance_group = #{advance_group,jdbcType=BIT},
+      is_open = #{is_open,jdbcType=BIT},
+      is_charge = #{is_charge,jdbcType=BIT},
+      fee_standard = #{fee_standard,jdbcType=DECIMAL},
+      entry_password = #{entry_password,jdbcType=VARCHAR},
+      people_num = #{people_num,jdbcType=INTEGER},
+      show_time = #{show_time,jdbcType=VARCHAR},
+      earnings = #{earnings,jdbcType=DECIMAL},
+      number_participants = #{number_participants,jdbcType=INTEGER},
+      live_push_addr = #{live_push_addr,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      recommend_type = #{recommend_type,jdbcType=VARCHAR},
+      online_num = #{online_num,jdbcType=INTEGER},
+      tickets = #{tickets,jdbcType=DECIMAL},
+      live_duration = #{live_duration,jdbcType=INTEGER},
+      watch_duration = #{watch_duration,jdbcType=INTEGER},
+      age_grade = #{age_grade,jdbcType=VARCHAR},
+      language_level = #{language_level,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.MessageGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null and param.type!=''">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.MessageGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null and param.type!=''">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.MessageGroupEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM message_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null and param.type!=''">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <update id="updateLiveDuration" parameterType="com.huihe.eg.message.model.MessageGroupEntity">
+    UPDATE  message_group SET live_duration =live_duration+1 WHERE id = #{param.id,jdbcType=BIGINT}
+  </update>
+  <update id="updateWatchDuration" parameterType="com.huihe.eg.message.model.MessageGroupEntity">
+    UPDATE  message_group SET watch_duration =watch_duration+1 WHERE id = #{param.id,jdbcType=BIGINT}
+  </update>
+  <!--查询我的直播课堂-->
+  <select id="queryMyListPage" parameterType="com.huihe.eg.message.model.MessageGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      type like 'online%'
+
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name LIKE concat(#{param.group_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <!--查询我的直播课堂-->
+  <select id="queryMyClassCount" parameterType="com.huihe.eg.message.model.MessageGroupEntity" resultType="java.lang.Integer">
+    SELECT
+    count(1)
+    FROM message_group
+    <where>
+      (type = 'online_video' OR type = 'online_voice')
+
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name LIKE concat(#{param.group_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--查询生活娱乐直播-->
+  <select id="queryLifeListPage" parameterType="com.huihe.eg.message.model.MessageGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      type = 'recreation_live'
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+
+    UNION  ALL
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      type = 'life_live'
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+    UNION  ALL
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      type = 'realtime_video'
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+    UNION  ALL
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      type = 'realtime_voice'
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.group_type!=null">
+        AND group_type = #{param.group_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.introduction!=null">
+        AND introduction = #{param.introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="param.notification!=null">
+        AND notification = #{param.notification,jdbcType=VARCHAR}
+      </if>
+      <if test="param.faceUrl!=null">
+        AND faceUrl = #{param.faceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="param.advance_group!=null">
+        AND advance_group = #{param.advance_group,jdbcType=BIT}
+      </if>
+      <if test="param.is_open!=null">
+        AND is_open = #{param.is_open,jdbcType=BIT}
+      </if>
+      <if test="param.is_charge!=null">
+        AND is_charge = #{param.is_charge,jdbcType=BIT}
+      </if>
+      <if test="param.fee_standard!=null">
+        AND fee_standard = #{param.fee_standard,jdbcType=DECIMAL}
+      </if>
+      <if test="param.entry_password!=null">
+        AND entry_password = #{param.entry_password,jdbcType=VARCHAR}
+      </if>
+      <if test="param.people_num!=null">
+        AND people_num = #{param.people_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.show_time!=null">
+        AND show_time = #{param.show_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.earnings!=null">
+        AND earnings = #{param.earnings,jdbcType=DECIMAL}
+      </if>
+      <if test="param.number_participants!=null">
+        AND number_participants = #{param.number_participants,jdbcType=INTEGER}
+      </if>
+      <if test="param.live_push_addr!=null">
+        AND live_push_addr = #{param.live_push_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language!=null and param.language!=''">
+        AND language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.label!=null">
+        AND label = #{param.label,jdbcType=VARCHAR}
+      </if>
+
+      <if test="param.recommend_type!=null">
+        AND recommend_type = #{param.recommend_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.online_num!=null">
+        AND online_num = #{param.online_num,jdbcType=INTEGER}
+      </if>
+      <if test="param.tickets!=null">
+        AND tickets = #{param.tickets,jdbcType=DECIMAL}
+      </if>
+      <if test="param.live_duration!=null">
+        AND live_duration = #{param.live_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_duration!=null">
+        AND watch_duration = #{param.watch_duration,jdbcType=INTEGER}
+      </if>
+      <if test="param.age_grade!=null and param.age_grade!=''">
+        AND age_grade = #{param.age_grade,jdbcType=VARCHAR}
+      </if>
+      <if test="param.language_level!=null and param.language_level!=''">
+        AND language_level = #{param.language_level,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+
+  <select id="queryDayCount" resultType="java.lang.Integer">
+    SELECT
+	count( 1 )
+    FROM `message_group`
+    where
+        show_time
+        between DATE_FORMAT(show_time,'yyyy-MM-dd')
+        and DATE_FORMAT(now(),'yyyy-MM-dd')
+      <if test="param.language!=null">
+       and language = #{param.language,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        and type = #{param.type,jdbcType=VARCHAR}
+      </if>
+
+  </select>
+
+  <select id="queryWeekCount" resultType="java.lang.Integer">
+    SELECT
+	count( 1 )
+    FROM `message_group`
+    where
+     YEARWEEK(date_format(show_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+
+  </select>
+  <select id="queryMonthCount" resultType="java.lang.Integer">
+    SELECT
+	count( 1 )
+    FROM `message_group`
+    where DATE_FORMAT( show_time, '%Y%m' ) = DATE_FORMAT( NOW( ) , '%Y%m' )
+  </select>
+  <select id="queryCountTotal" resultType="java.lang.Integer">
+
+    SELECT
+	count( 1 )
+    FROM `message_group`
+
+  </select>
+
+  <select id="queryEndClassCount" resultType="java.lang.Integer">
+
+    SELECT
+    count( 1 )
+    FROM
+    `message_group`
+    <where>
+      show_time &lt; now()
+      <if test="param.language!=null">
+        and language = #{param.language,jdbcType=VARCHAR}
+      </if>
+    </where>
+
+  </select>
+
+  <select id="querySoonCount" resultType="java.lang.Integer">
+
+     SELECT count( 1 )
+     FROM`message_group`
+      <where>
+        show_time &gt; now()
+        <if test="param.language!=null">
+         and language = #{param.language,jdbcType=VARCHAR}
+        </if>
+      </where>
+
+  </select>
+
+  <select id="queryByMessage" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_group
+    <where>
+      <if test="param.ids!=null">
+        AND owner_id in
+        <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")" >
+          #{item}
+        </foreach>
+      </if>
+       <if test="param.loginIds!=null">
+        AND owner_id in
+        <foreach item="item" index="index" collection="param.loginIds" separator="," open="(" close=")" >
+          #{item}
+        </foreach>
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name like concat('%',#{param.group_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.create_time!=null and param.update_time!=null">
+        AND show_time
+        between DATE_FORMAT(#{param.create_time,jdbcType=TIMESTAMP},'yyyy-MM-dd')
+        and DATE_FORMAT(#{param.update_time,jdbcType=TIMESTAMP},'yyyy-MM-dd')
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.owner_id!=null">
+        AND owner_id = #{param.owner_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+</mapper>

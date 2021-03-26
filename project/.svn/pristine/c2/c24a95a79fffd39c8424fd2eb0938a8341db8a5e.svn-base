@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserIdentityMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserIdentityEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+    <result column="id_card" jdbcType="VARCHAR" property="id_card" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="id_frount" jdbcType="VARCHAR" property="id_frount" />
+    <result column="id_back" jdbcType="VARCHAR" property="id_back" />
+    <result column="id_onhand" jdbcType="VARCHAR" property="id_onhand" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="apply_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="is_pay" jdbcType="BIT" property="is_pay" />
+    <result column="nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nick_name" />
+    <result column="refuse_contect" jdbcType="VARCHAR" property="refuse_contect" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, user_name, id_card, status, id_frount, id_back, id_onhand, apply_time, 
+    update_time, is_pay, nationality,refuse_contect
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_identity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_identity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserIdentityEntity">
+    insert into eg_user_identity (id, user_id, user_name, 
+      id_card, status, id_frount, 
+      id_back, id_onhand, apply_time, 
+      update_time, is_pay, nationality,
+      refuse_contect
+      )
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{user_name,jdbcType=VARCHAR}, 
+      #{id_card,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{id_frount,jdbcType=VARCHAR}, 
+      #{id_back,jdbcType=VARCHAR}, #{id_onhand,jdbcType=VARCHAR}, #{apply_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{is_pay,jdbcType=BIT}, #{nationality,jdbcType=VARCHAR},
+      #{refuse_contect,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserIdentityEntity">
+    insert into eg_user_identity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="user_name != null">
+        user_name,
+      </if>
+      <if test="id_card != null">
+        id_card,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="id_frount != null">
+        id_frount,
+      </if>
+      <if test="id_back != null">
+        id_back,
+      </if>
+      <if test="id_onhand != null">
+        id_onhand,
+      </if>
+      <if test="apply_time != null">
+        apply_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="is_pay != null">
+        is_pay,
+      </if>
+      <if test="nationality != null">
+        nationality,
+      </if>
+      <if test="refuse_contect != null">
+        refuse_contect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_name != null">
+        #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="id_card != null">
+        #{id_card,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="id_frount != null">
+        #{id_frount,jdbcType=VARCHAR},
+      </if>
+      <if test="id_back != null">
+        #{id_back,jdbcType=VARCHAR},
+      </if>
+      <if test="id_onhand != null">
+        #{id_onhand,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_time != null">
+        #{apply_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_pay != null">
+        #{is_pay,jdbcType=BIT},
+      </if>
+      <if test="nationality != null">
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="refuse_contect != null">
+        #{refuse_contect,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserIdentityEntity">
+    update eg_user_identity
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_name != null">
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="id_card != null">
+        id_card = #{id_card,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="id_frount != null">
+        id_frount = #{id_frount,jdbcType=VARCHAR},
+      </if>
+      <if test="id_back != null">
+        id_back = #{id_back,jdbcType=VARCHAR},
+      </if>
+      <if test="id_onhand != null">
+        id_onhand = #{id_onhand,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_time != null">
+        apply_time = #{apply_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_pay != null">
+        is_pay = #{is_pay,jdbcType=BIT},
+      </if>
+      <if test="nationality != null">
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+       <if test="refuse_contect != null">
+         refuse_contect = #{refuse_contect,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserIdentityEntity">
+    update eg_user_identity
+    set user_id = #{user_id,jdbcType=BIGINT},
+      user_name = #{user_name,jdbcType=VARCHAR},
+      id_card = #{id_card,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      id_frount = #{id_frount,jdbcType=VARCHAR},
+      id_back = #{id_back,jdbcType=VARCHAR},
+      id_onhand = #{id_onhand,jdbcType=VARCHAR},
+      apply_time = #{apply_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      is_pay = #{is_pay,jdbcType=BIT},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      refuse_contect = #{refuse_contect,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserIdentityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_identity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_name!=null">
+        AND user_name = #{param.user_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_card!=null">
+        AND id_card = #{param.id_card,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.id_frount!=null">
+        AND id_frount = #{param.id_frount,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_back!=null">
+        AND id_back = #{param.id_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_onhand!=null">
+        AND id_onhand = #{param.id_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.apply_time!=null">
+        AND apply_time = #{param.apply_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_pay!=null">
+        AND is_pay = #{param.is_pay,jdbcType=BIT}
+      </if>
+      <if test="param.nationality!=null">
+        AND nationality = #{param.nationality,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserIdentityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_identity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_name!=null">
+        AND user_name = #{param.user_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_card!=null">
+        AND id_card = #{param.id_card,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.id_frount!=null">
+        AND id_frount = #{param.id_frount,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_back!=null">
+        AND id_back = #{param.id_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_onhand!=null">
+        AND id_onhand = #{param.id_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.apply_time!=null">
+        AND apply_time = #{param.apply_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_pay!=null">
+        AND is_pay = #{param.is_pay,jdbcType=BIT}
+      </if>
+      <if test="param.nationality!=null">
+        AND nationality = #{param.nationality,jdbcType=VARCHAR}
+      </if>
+      <if test="param.nationality!=null">
+        AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY update_time DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserIdentityEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_identity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_name!=null">
+        AND user_name = #{param.user_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_card!=null">
+        AND id_card = #{param.id_card,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.id_frount!=null">
+        AND id_frount = #{param.id_frount,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_back!=null">
+        AND id_back = #{param.id_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_onhand!=null">
+        AND id_onhand = #{param.id_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.apply_time!=null">
+        AND apply_time = #{param.apply_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_pay!=null">
+        AND is_pay = #{param.is_pay,jdbcType=BIT}
+      </if>
+      <if test="param.nationality!=null">
+        AND nationality = #{param.nationality,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryIdentityListPage" parameterType="com.huihe.eg.user.model.UserIdentityEntity" resultMap="BaseResultMap">
+    SELECT
+    i.id, i.user_id, i.user_name, i.id_card, i.status, i.id_frount, i.id_back, i.id_onhand, i.apply_time,
+    i.update_time, i.is_pay, i.nationality
+    FROM eg_user_identity i
+    LEFT JOIN eg_user_info u ON (i.user_id=u.user_id)
+    <where>
+      <if test="param.end_time!=null and param.start_time!=null">
+        AND apply_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP}  AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.id!=null">
+        AND i.id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND i.user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.nick_name!=null">
+        AND u.nick_name  LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.user_name!=null">
+        AND i.user_name = #{param.user_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_card!=null">
+        AND i.id_card = #{param.id_card,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND i.status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.id_frount!=null">
+        AND i.id_frount = #{param.id_frount,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_back!=null">
+        AND i.id_back = #{param.id_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_onhand!=null">
+        AND i.id_onhand = #{param.id_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.apply_time!=null">
+        AND i.apply_time = #{param.apply_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND i.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_pay!=null">
+        AND i.is_pay = #{param.is_pay,jdbcType=BIT}
+      </if>
+      <if test="param.nationality!=null">
+        AND i.nationality LIKE concat(#{param.nationality,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+    ORDER BY i.update_time DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryIdentityListPageCount" parameterType="com.huihe.eg.user.model.UserIdentityEntity" resultType="java.lang.Integer">
+    SELECT
+    coalesce(count(1),0)
+    FROM eg_user_identity i
+    LEFT JOIN eg_user_info u ON (i.user_id=u.user_id)
+    <where>
+      <if test="param.end_time!=null and param.start_time!=null">
+        AND i.apply_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP}  AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.id!=null">
+        AND i.id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND i.user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.nick_name!=null">
+        AND u.nick_name  LIKE concat(#{param.nick_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.user_name!=null">
+        AND i.user_name = #{param.user_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_card!=null">
+        AND i.id_card = #{param.id_card,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND i.status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.id_frount!=null">
+        AND i.id_frount = #{param.id_frount,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_back!=null">
+        AND i.id_back = #{param.id_back,jdbcType=VARCHAR}
+      </if>
+      <if test="param.id_onhand!=null">
+        AND i.id_onhand = #{param.id_onhand,jdbcType=VARCHAR}
+      </if>
+      <if test="param.apply_time!=null">
+        AND i.apply_time = #{param.apply_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND i.update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_pay!=null">
+        AND i.is_pay = #{param.is_pay,jdbcType=BIT}
+      </if>
+      <if test="param.nationality!=null">
+        AND i.nationality = #{param.nationality,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryByMessage" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_identity
+    <where>
+    <if test="param.user_name!=null">
+      AND user_name like concat('%',#{param.user_name,jdbcType=VARCHAR},'%')
+    </if>
+      <if test="param.start_time!=null and param.end_time!=null">
+        AND apply_time between #{param.start_time,jdbcType=TIMESTAMP}
+        AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+    <if test="param.nationality!=null">
+      AND nationality like concat('%',#{param.nationality,jdbcType=VARCHAR},'%')
+    </if>
+      ORDER BY update_time DESC limit #{param.startRow},#{param.pageSize}
+    </where>
+  </select>
+
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+      SELECT
+      coalesce(count(1),0)
+      FROM eg_user_identity
+      <where>
+      <if test="param.user_name!=null">
+        AND user_name like concat('%',#{param.user_name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="param.start_time!=null and param.end_time!=null">
+        AND apply_time between #{param.start_time,jdbcType=TIMESTAMP}
+        AND #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.nationality!=null">
+        AND nationality like concat('%',#{param.nationality,jdbcType=VARCHAR},'%')
+      </if>
+      </where>
+    </select>
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="H:\dev\apache-maven-3.5.4\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"></classPathEntry>
+    <context id="context1">
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator type="org.mybatis.generator.MyCommentGenerator">
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <!-- <property name="suppressAllComments" value="true" /> -->
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/eg_grab?characterEncoding=utf-8"
+                        userId="root" password="123456"/>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 实体类 -->
+        <javaModelGenerator targetPackage="com.huihe.eg.grab.model"
+                            extendsPackage="com.cy.framework.model.PageInfo"
+                            targetProject="G:\project\JavaProject\easy-go\project\eg-parent\eg-grab\grab-model\src\main\java">
+
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- mapperXML存放目录 -->
+        <sqlMapGenerator targetPackage="com.huihe.eg.grab.mybatis.mapper"
+                         targetProject="G:\project\JavaProject\easy-go\project\eg-parent\eg-grab\grab-mybatis-mapper\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置 -->
+        <javaClientGenerator targetPackage="com.huihe.eg.grab.mybatis.dao"
+                             extendsPackage="com.cy.framework.mybaties.dao.BaseFrameworkMapper"
+                             targetProject="G:\project\JavaProject\easy-go\project\eg-parent\eg-grab\grab-mybatis-dao\src\main\java"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- service-->
+     <!--   <javaServiceGenerator targetPackage="com.huihe.eg.grab.service.dao"
+                              extendsPackage="com.cy.framework.service.dao.BaseFrameworkService"
+                              targetProject="G:\project\JavaProject\easy-go\project\eg-parent\eg-grab\grab-service-dao\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaServiceGenerator>
+        &lt;!&ndash; serviceImpl&ndash;&gt;
+        <javaServiceImplGenerator targetPackage="com.huihe.eg.grab.service.impl"
+                                  extendsPackage="com.cy.framework.service.impl.BaseFrameworkServiceImpl"
+                                  targetProject="G:\project\JavaProject\easy-go\project\eg-parent\eg-grab\grab-service-impl\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaServiceImplGenerator>
+        &lt;!&ndash; controller&ndash;&gt;
+        <javaControllerGenerator targetPackage="com.huihe.eg.grab.service.web"
+                                 targetProject="G:\project\JavaProject\easy-go\project\eg-parent\eg-grab\grab-service-web\src\main\java"
+                                 extendsPackage="com.cy.framework.service.web.BaseFrameworkController">
+            <property name="enableSubPackages" value="true"/>
+        </javaControllerGenerator>-->
+        <!--生成对应表及类名 -->
+        <!--<table tableName="grab_filter_rule" domainObjectName="GrabFilterRule"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+        <table tableName="grab_filter_rule_join" domainObjectName="GrabFilterRuleJoin"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <!--<table tableName="grab_task" domainObjectName="GrabTask"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+
+
+
+    </context>
+</generatorConfiguration>

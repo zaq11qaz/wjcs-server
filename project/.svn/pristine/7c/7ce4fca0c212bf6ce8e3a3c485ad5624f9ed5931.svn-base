@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserEarnRoleMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserEarnRoleEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="every_mechanism_earn" jdbcType="DECIMAL" property="every_mechanism_earn" />
+    <result column="every_master_earn" jdbcType="DECIMAL" property="every_master_earn" />
+    <result column="every_master_earn_max" jdbcType="DECIMAL" property="every_master_earn_max" />
+    <result column="every_commodity_earn" jdbcType="DECIMAL" property="every_commodity_earn" />
+    <result column="every_commodity_earn_max" jdbcType="DECIMAL" property="every_commodity_earn_max" />
+    <result column="each_student" jdbcType="INTEGER" property="each_student" />
+    <result column="each_earl" jdbcType="DECIMAL" property="each_earl" />
+    <result column="mechanism_bonus" jdbcType="DOUBLE" property="mechanism_bonus" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="first_course_earln" jdbcType="DOUBLE" property="first_course_earln" />
+    <result column="each_master_usa" jdbcType="DECIMAL" property="each_master_usa" />
+    <result column="each_master_newzealand_canada_australia" jdbcType="DECIMAL" property="each_master_newzealand_canada_australia" />
+    <result column="each_master_britain" jdbcType="DECIMAL" property="each_master_britain" />
+    <result column="each_master_southafrica_europe" jdbcType="DECIMAL" property="each_master_southafrica_europe" />
+    <result column="each_master_else" jdbcType="DECIMAL" property="each_master_else" />
+    <result column="master_bonus" jdbcType="DECIMAL" property="master_bonus" />
+    <result column="duration" jdbcType="BIGINT" property="duration" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, status, create_time, update_time, name, every_mechanism_earn, every_master_earn, 
+    every_master_earn_max, every_commodity_earn, every_commodity_earn_max, each_student, 
+    each_earl, mechanism_bonus, start_time, end_time, type, first_course_earln, each_master_usa, 
+    each_master_newzealand_canada_australia, each_master_britain, each_master_southafrica_europe, 
+    each_master_else, master_bonus,duration
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_earn_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_earn_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserEarnRoleEntity">
+    insert into eg_user_earn_role (id, status, create_time, 
+      update_time, name, every_mechanism_earn, 
+      every_master_earn, every_master_earn_max, 
+      every_commodity_earn, every_commodity_earn_max, 
+      each_student, each_earl, mechanism_bonus, 
+      start_time, end_time, type, 
+      first_course_earln, each_master_usa, each_master_newzealand_canada_australia, 
+      each_master_britain, each_master_southafrica_europe, 
+      each_master_else, master_bonus)
+    values (#{id,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{every_mechanism_earn,jdbcType=DECIMAL}, 
+      #{every_master_earn,jdbcType=DECIMAL}, #{every_master_earn_max,jdbcType=DECIMAL}, 
+      #{every_commodity_earn,jdbcType=DECIMAL}, #{every_commodity_earn_max,jdbcType=DECIMAL}, 
+      #{each_student,jdbcType=INTEGER}, #{each_earl,jdbcType=DECIMAL}, #{mechanism_bonus,jdbcType=DOUBLE}, 
+      #{start_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR}, 
+      #{first_course_earln,jdbcType=DOUBLE}, #{each_master_usa,jdbcType=DECIMAL}, #{each_master_newzealand_canada_australia,jdbcType=DECIMAL}, 
+      #{each_master_britain,jdbcType=DECIMAL}, #{each_master_southafrica_europe,jdbcType=DECIMAL}, 
+      #{each_master_else,jdbcType=DECIMAL}, #{master_bonus,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserEarnRoleEntity">
+    insert into eg_user_earn_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="every_mechanism_earn != null">
+        every_mechanism_earn,
+      </if>
+      <if test="every_master_earn != null">
+        every_master_earn,
+      </if>
+      <if test="every_master_earn_max != null">
+        every_master_earn_max,
+      </if>
+      <if test="every_commodity_earn != null">
+        every_commodity_earn,
+      </if>
+      <if test="every_commodity_earn_max != null">
+        every_commodity_earn_max,
+      </if>
+      <if test="each_student != null">
+        each_student,
+      </if>
+      <if test="each_earl != null">
+        each_earl,
+      </if>
+      <if test="mechanism_bonus != null">
+        mechanism_bonus,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="end_time != null">
+        end_time,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="first_course_earln != null">
+        first_course_earln,
+      </if>
+      <if test="each_master_usa != null">
+        each_master_usa,
+      </if>
+      <if test="each_master_newzealand_canada_australia != null">
+        each_master_newzealand_canada_australia,
+      </if>
+      <if test="each_master_britain != null">
+        each_master_britain,
+      </if>
+      <if test="each_master_southafrica_europe != null">
+        each_master_southafrica_europe,
+      </if>
+      <if test="each_master_else != null">
+        each_master_else,
+      </if>
+      <if test="master_bonus != null">
+        master_bonus,
+      </if>
+        <if test="duration != null">
+          duration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="every_mechanism_earn != null">
+        #{every_mechanism_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="every_master_earn != null">
+        #{every_master_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="every_master_earn_max != null">
+        #{every_master_earn_max,jdbcType=DECIMAL},
+      </if>
+      <if test="every_commodity_earn != null">
+        #{every_commodity_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="every_commodity_earn_max != null">
+        #{every_commodity_earn_max,jdbcType=DECIMAL},
+      </if>
+      <if test="each_student != null">
+        #{each_student,jdbcType=INTEGER},
+      </if>
+      <if test="each_earl != null">
+        #{each_earl,jdbcType=DECIMAL},
+      </if>
+      <if test="mechanism_bonus != null">
+        #{mechanism_bonus,jdbcType=DOUBLE},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="first_course_earln != null">
+        #{first_course_earln,jdbcType=DOUBLE},
+      </if>
+      <if test="each_master_usa != null">
+        #{each_master_usa,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_newzealand_canada_australia != null">
+        #{each_master_newzealand_canada_australia,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_britain != null">
+        #{each_master_britain,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_southafrica_europe != null">
+        #{each_master_southafrica_europe,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_else != null">
+        #{each_master_else,jdbcType=DECIMAL},
+      </if>
+      <if test="master_bonus != null">
+        #{master_bonus,jdbcType=DECIMAL},
+      </if>
+        <if test="duration != null">
+        #{duration,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserEarnRoleEntity">
+    update eg_user_earn_role
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="every_mechanism_earn != null">
+        every_mechanism_earn = #{every_mechanism_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="every_master_earn != null">
+        every_master_earn = #{every_master_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="every_master_earn_max != null">
+        every_master_earn_max = #{every_master_earn_max,jdbcType=DECIMAL},
+      </if>
+      <if test="every_commodity_earn != null">
+        every_commodity_earn = #{every_commodity_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="every_commodity_earn_max != null">
+        every_commodity_earn_max = #{every_commodity_earn_max,jdbcType=DECIMAL},
+      </if>
+      <if test="each_student != null">
+        each_student = #{each_student,jdbcType=INTEGER},
+      </if>
+      <if test="each_earl != null">
+        each_earl = #{each_earl,jdbcType=DECIMAL},
+      </if>
+      <if test="mechanism_bonus != null">
+        mechanism_bonus = #{mechanism_bonus,jdbcType=DOUBLE},
+      </if>
+      <if test="start_time != null">
+        start_time = #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        end_time = #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="first_course_earln != null">
+        first_course_earln = #{first_course_earln,jdbcType=DOUBLE},
+      </if>
+      <if test="each_master_usa != null">
+        each_master_usa = #{each_master_usa,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_newzealand_canada_australia != null">
+        each_master_newzealand_canada_australia = #{each_master_newzealand_canada_australia,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_britain != null">
+        each_master_britain = #{each_master_britain,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_southafrica_europe != null">
+        each_master_southafrica_europe = #{each_master_southafrica_europe,jdbcType=DECIMAL},
+      </if>
+      <if test="each_master_else != null">
+        each_master_else = #{each_master_else,jdbcType=DECIMAL},
+      </if>
+      <if test="master_bonus != null">
+        master_bonus = #{master_bonus,jdbcType=DECIMAL},
+      </if>
+        <if test="duration != null">
+          duration = #{duration,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserEarnRoleEntity">
+    update eg_user_earn_role
+    set status = #{status,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=VARCHAR},
+      every_mechanism_earn = #{every_mechanism_earn,jdbcType=DECIMAL},
+      every_master_earn = #{every_master_earn,jdbcType=DECIMAL},
+      every_master_earn_max = #{every_master_earn_max,jdbcType=DECIMAL},
+      every_commodity_earn = #{every_commodity_earn,jdbcType=DECIMAL},
+      every_commodity_earn_max = #{every_commodity_earn_max,jdbcType=DECIMAL},
+      each_student = #{each_student,jdbcType=INTEGER},
+      each_earl = #{each_earl,jdbcType=DECIMAL},
+      mechanism_bonus = #{mechanism_bonus,jdbcType=DOUBLE},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      end_time = #{end_time,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR},
+      first_course_earln = #{first_course_earln,jdbcType=DOUBLE},
+      each_master_usa = #{each_master_usa,jdbcType=DECIMAL},
+      each_master_newzealand_canada_australia = #{each_master_newzealand_canada_australia,jdbcType=DECIMAL},
+      each_master_britain = #{each_master_britain,jdbcType=DECIMAL},
+      each_master_southafrica_europe = #{each_master_southafrica_europe,jdbcType=DECIMAL},
+      each_master_else = #{each_master_else,jdbcType=DECIMAL},
+      master_bonus = #{master_bonus,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserEarnRoleEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_earn_role
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.every_mechanism_earn!=null">
+        AND every_mechanism_earn = #{param.every_mechanism_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_master_earn!=null">
+        AND every_master_earn = #{param.every_master_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_master_earn_max!=null">
+        AND every_master_earn_max = #{param.every_master_earn_max,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_commodity_earn!=null">
+        AND every_commodity_earn = #{param.every_commodity_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_commodity_earn_max!=null">
+        AND every_commodity_earn_max = #{param.every_commodity_earn_max,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_student!=null">
+        AND each_student = #{param.each_student,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_earl!=null">
+        AND each_earl = #{param.each_earl,jdbcType=DECIMAL}
+      </if>
+      <if test="param.mechanism_bonus!=null">
+        AND mechanism_bonus = #{param.mechanism_bonus,jdbcType=DOUBLE}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.first_course_earln!=null">
+        AND first_course_earln = #{param.first_course_earln,jdbcType=DOUBLE}
+      </if>
+      <if test="param.each_master_usa!=null">
+        AND each_master_usa = #{param.each_master_usa,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_newzealand_canada_australia!=null">
+        AND each_master_newzealand_canada_australia = #{param.each_master_newzealand_canada_australia,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_britain!=null">
+        AND each_master_britain = #{param.each_master_britain,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_southafrica_europe!=null">
+        AND each_master_southafrica_europe = #{param.each_master_southafrica_europe,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_else!=null">
+        AND each_master_else = #{param.each_master_else,jdbcType=DECIMAL}
+      </if>
+      <if test="param.master_bonus!=null">
+        AND master_bonus = #{param.master_bonus,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserEarnRoleEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_earn_role
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.every_mechanism_earn!=null">
+        AND every_mechanism_earn = #{param.every_mechanism_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_master_earn!=null">
+        AND every_master_earn = #{param.every_master_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_master_earn_max!=null">
+        AND every_master_earn_max = #{param.every_master_earn_max,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_commodity_earn!=null">
+        AND every_commodity_earn = #{param.every_commodity_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_commodity_earn_max!=null">
+        AND every_commodity_earn_max = #{param.every_commodity_earn_max,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_student!=null">
+        AND each_student = #{param.each_student,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_earl!=null">
+        AND each_earl = #{param.each_earl,jdbcType=DECIMAL}
+      </if>
+      <if test="param.mechanism_bonus!=null">
+        AND mechanism_bonus = #{param.mechanism_bonus,jdbcType=DOUBLE}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.first_course_earln!=null">
+        AND first_course_earln = #{param.first_course_earln,jdbcType=DOUBLE}
+      </if>
+      <if test="param.each_master_usa!=null">
+        AND each_master_usa = #{param.each_master_usa,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_newzealand_canada_australia!=null">
+        AND each_master_newzealand_canada_australia = #{param.each_master_newzealand_canada_australia,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_britain!=null">
+        AND each_master_britain = #{param.each_master_britain,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_southafrica_europe!=null">
+        AND each_master_southafrica_europe = #{param.each_master_southafrica_europe,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_else!=null">
+        AND each_master_else = #{param.each_master_else,jdbcType=DECIMAL}
+      </if>
+      <if test="param.master_bonus!=null">
+        AND master_bonus = #{param.master_bonus,jdbcType=DECIMAL}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserEarnRoleEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_earn_role
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.every_mechanism_earn!=null">
+        AND every_mechanism_earn = #{param.every_mechanism_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_master_earn!=null">
+        AND every_master_earn = #{param.every_master_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_master_earn_max!=null">
+        AND every_master_earn_max = #{param.every_master_earn_max,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_commodity_earn!=null">
+        AND every_commodity_earn = #{param.every_commodity_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.every_commodity_earn_max!=null">
+        AND every_commodity_earn_max = #{param.every_commodity_earn_max,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_student!=null">
+        AND each_student = #{param.each_student,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_earl!=null">
+        AND each_earl = #{param.each_earl,jdbcType=DECIMAL}
+      </if>
+      <if test="param.mechanism_bonus!=null">
+        AND mechanism_bonus = #{param.mechanism_bonus,jdbcType=DOUBLE}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.first_course_earln!=null">
+        AND first_course_earln = #{param.first_course_earln,jdbcType=DOUBLE}
+      </if>
+      <if test="param.each_master_usa!=null">
+        AND each_master_usa = #{param.each_master_usa,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_newzealand_canada_australia!=null">
+        AND each_master_newzealand_canada_australia = #{param.each_master_newzealand_canada_australia,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_britain!=null">
+        AND each_master_britain = #{param.each_master_britain,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_southafrica_europe!=null">
+        AND each_master_southafrica_europe = #{param.each_master_southafrica_europe,jdbcType=DECIMAL}
+      </if>
+      <if test="param.each_master_else!=null">
+        AND each_master_else = #{param.each_master_else,jdbcType=DECIMAL}
+      </if>
+      <if test="param.master_bonus!=null">
+        AND master_bonus = #{param.master_bonus,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+</mapper>

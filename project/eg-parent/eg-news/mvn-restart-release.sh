@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+mvn clean package  && docker run -d --name news-service-web -v /etc/localtime:/etc/localtime  -v /var/log/:/var/log/ -e params="-Dservice.type=release" -p 1123:1123 localhost:5000/news-service-web:1.0

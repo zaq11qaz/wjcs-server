@@ -1,0 +1,1560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserOrderMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserOrderEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="pay_id" jdbcType="BIGINT" property="pay_id"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="pay_count" jdbcType="DECIMAL" property="pay_count"/>
+        <result column="payment_id" jdbcType="BIGINT" property="payment_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="pay_time" jdbcType="TIMESTAMP" property="pay_time"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="order_no" jdbcType="VARCHAR" property="order_no"/>
+        <result column="category_id" jdbcType="BIGINT" property="category_id"/>
+        <result column="type_id" jdbcType="BIGINT" property="type_id"/>
+        <result column="gift_count" jdbcType="INTEGER" property="gift_count"/>
+        <result column="source" jdbcType="VARCHAR" property="source"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+
+    id, user_id, pay_id, type, pay_count, payment_id, create_time, pay_time, status, 
+    order_no, category_id, type_id, gift_count, source,remarks
+
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+
+        select
+
+        <include refid="Base_Column_List"/>
+
+        from eg_user_order
+        where id = #{id,jdbcType=BIGINT}
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+
+    delete from eg_user_order
+    where id = #{id,jdbcType=BIGINT}
+
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserOrderEntity">
+
+    insert into eg_user_order (id, user_id, pay_id, 
+      type, pay_count, payment_id, 
+      create_time, pay_time, status, 
+      order_no, category_id, type_id, 
+      gift_count, source,remarks)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{pay_id,jdbcType=BIGINT}, 
+      #{type,jdbcType=VARCHAR}, #{pay_count,jdbcType=DECIMAL}, #{payment_id,jdbcType=BIGINT}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{pay_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{order_no,jdbcType=VARCHAR}, #{category_id,jdbcType=BIGINT}, #{type_id,jdbcType=BIGINT}, 
+      #{gift_count,jdbcType=INTEGER}, #{source,jdbcType=VARCHAR},#{remarks,jdbcType=VARCHAR})
+
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserOrderEntity" useGeneratedKeys="true"
+            keyProperty="id">
+
+        insert into eg_user_order
+
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+
+            </if>
+            <if test="user_id != null">
+
+                user_id,
+
+            </if>
+            <if test="pay_id != null">
+
+                pay_id,
+
+            </if>
+            <if test="type != null">
+
+                type,
+
+            </if>
+            <if test="pay_count != null">
+
+                pay_count,
+
+            </if>
+            <if test="payment_id != null">
+
+                payment_id,
+
+            </if>
+            <if test="create_time != null">
+
+                create_time,
+
+            </if>
+            <if test="pay_time != null">
+
+                pay_time,
+
+            </if>
+            <if test="status != null">
+
+                status,
+
+            </if>
+            <if test="order_no != null">
+
+                order_no,
+
+            </if>
+            <if test="category_id != null">
+
+                category_id,
+
+            </if>
+            <if test="type_id != null">
+
+                type_id,
+
+            </if>
+            <if test="gift_count != null">
+
+                gift_count,
+
+            </if>
+            <if test="source != null">
+
+                source,
+
+            </if>
+            <if test="remarks != null">
+
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+
+            </if>
+            <if test="user_id != null">
+
+                #{user_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="pay_id != null">
+
+                #{pay_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="type != null">
+
+                #{type,jdbcType=VARCHAR},
+
+            </if>
+            <if test="pay_count != null">
+
+                #{pay_count,jdbcType=DECIMAL},
+
+            </if>
+            <if test="payment_id != null">
+
+                #{payment_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="create_time != null">
+
+                #{create_time,jdbcType=TIMESTAMP},
+
+            </if>
+            <if test="pay_time != null">
+
+                #{pay_time,jdbcType=TIMESTAMP},
+
+            </if>
+            <if test="status != null">
+
+                #{status,jdbcType=INTEGER},
+
+            </if>
+            <if test="order_no != null">
+
+                #{order_no,jdbcType=VARCHAR},
+
+            </if>
+            <if test="category_id != null">
+
+                #{category_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="type_id != null">
+
+                #{type_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="gift_count != null">
+
+                #{gift_count,jdbcType=INTEGER},
+
+            </if>
+            <if test="source != null">
+
+                #{source,jdbcType=VARCHAR},
+
+            </if>
+            <if test="remarks != null">
+
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserOrderEntity">
+
+        update eg_user_order
+
+        <set>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="pay_id != null">
+
+                pay_id = #{pay_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="type != null">
+
+                type = #{type,jdbcType=VARCHAR},
+
+            </if>
+            <if test="pay_count != null">
+
+                pay_count = #{pay_count,jdbcType=DECIMAL},
+
+            </if>
+            <if test="payment_id != null">
+
+                payment_id = #{payment_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="create_time != null">
+
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+
+            </if>
+            <if test="pay_time != null">
+
+                pay_time = #{pay_time,jdbcType=TIMESTAMP},
+
+            </if>
+            <if test="status != null">
+
+                status = #{status,jdbcType=INTEGER},
+
+            </if>
+            <if test="order_no != null">
+
+                order_no = #{order_no,jdbcType=VARCHAR},
+
+            </if>
+            <if test="category_id != null">
+
+                category_id = #{category_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="type_id != null">
+
+                type_id = #{type_id,jdbcType=BIGINT},
+
+            </if>
+            <if test="gift_count != null">
+
+                gift_count = #{gift_count,jdbcType=INTEGER},
+
+            </if>
+            <if test="source != null">
+
+                source = #{source,jdbcType=VARCHAR},
+
+            </if>
+            <if test="remarks != null">
+
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+
+        where id = #{id,jdbcType=BIGINT}
+
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserOrderEntity">
+
+    update eg_user_order
+    set user_id = #{user_id,jdbcType=BIGINT},
+      pay_id = #{pay_id,jdbcType=BIGINT},
+      type = #{type,jdbcType=VARCHAR},
+      pay_count = #{pay_count,jdbcType=DECIMAL},
+      payment_id = #{payment_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      pay_time = #{pay_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      order_no = #{order_no,jdbcType=VARCHAR},
+      category_id = #{category_id,jdbcType=BIGINT},
+      type_id = #{type_id,jdbcType=BIGINT},
+      gift_count = #{gift_count,jdbcType=INTEGER},
+      source = #{source,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserOrderEntity" resultMap="BaseResultMap">
+
+        SELECT
+
+        <include refid="Base_Column_List"/>
+
+        FROM eg_user_order
+
+        <where>
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserOrderEntity" resultMap="BaseResultMap">
+
+        SELECT
+
+        <include refid="Base_Column_List"/>
+
+        FROM eg_user_order
+
+        <where>
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.screen_start_time != null and param.screen_end_time != null">
+
+                AND create_time BETWEEN #{param.screen_start_time,jdbcType=TIMESTAMP} AND #{param.screen_end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserOrderEntity"
+            resultType="java.lang.Integer">
+
+        SELECT
+        count(0)
+        FROM eg_user_order
+
+        <where>
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryRankingListPage" parameterType="com.huihe.eg.user.model.UserOrderEntity" resultMap="BaseResultMap">
+
+        SELECT
+        payment_id,sum(pay_count) AS pay_count
+        FROM eg_user_order
+
+        <where>
+        user_id &lt;&gt; 0
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = 'gift'
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+        GROUP BY payment_id ORDER BY sum(pay_count) DESC
+        limit #{param.startRow},#{param.pageSize}
+
+    </select>
+    <select id="queryPayRankingListPage" parameterType="com.huihe.eg.user.model.UserOrderEntity"
+            resultMap="BaseResultMap">
+
+        SELECT
+        pay_id,sum(pay_count) AS pay_count
+        FROM eg_user_order
+
+        <where>
+            user_id &lt;&gt; 0
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = 'gift'
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+        GROUP BY pay_id ORDER BY sum(pay_count) DESC
+        limit #{param.startRow},#{param.pageSize}
+
+    </select>
+
+    <select id="queryUserRankingListPage" parameterType="com.huihe.eg.user.model.UserOrderEntity"
+            resultMap="BaseResultMap">
+
+        SELECT
+        user_id,sum(pay_count) AS pay_count
+        FROM eg_user_order
+
+        <where>
+            user_id &lt;&gt; 0
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = 'gift'
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+        GROUP BY user_id ORDER BY sum(pay_count) DESC
+        limit #{param.startRow},#{param.pageSize}
+
+    </select>
+
+    <select id="queryDetailListPage" parameterType="com.huihe.eg.user.model.UserOrderEntity" resultMap="BaseResultMap">
+
+        SELECT
+
+        <include refid="Base_Column_List"/>
+
+        FROM eg_user_order
+
+        <where>
+            <if test="param.oper_id != null">
+                AND (user_id = #{param.oper_id,jdbcType=BIGINT} OR payment_id = #{param.oper_id,jdbcType=BIGINT})
+
+            </if>
+            <if test="param.id != null">
+
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+
+    </select>
+    <select id="queryDayListPage" parameterType="com.huihe.eg.user.model.UserOrderEntity" resultMap="BaseResultMap">
+
+        SELECT
+
+        <include refid="Base_Column_List"/>
+
+        FROM eg_user_order
+
+        <where>
+            date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')
+
+            <if test="param.id != null">
+
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+
+    </select>
+    <select id="queryListPageSum" parameterType="com.huihe.eg.user.model.UserOrderEntity"
+            resultType="java.lang.Integer">
+
+        SELECT
+        coalesce(sum(pay_count),0)
+        FROM eg_user_order
+
+        <where>
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryByTime" resultType="com.huihe.eg.user.model.UserOrderEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_order
+        <where>
+            DATE_ADD( create_time , INTERVAL 3 MONTH ) > now()
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id != null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.pay_id != null">
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type != null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pay_count != null">
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+            </if>
+            <if test="param.payment_id != null">
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time != null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.pay_time != null">
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status != null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.order_no != null">
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+            </if>
+            <if test="param.category_id != null">
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type_id != null">
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.gift_count != null">
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.source != null">
+                AND source = #{param.source,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks != null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY create_time DESC limit 1
+    </select>
+    <select id="queryByMessage" resultType="com.huihe.eg.user.model.UserOrderEntity">
+        SELECT
+
+        <include refid="Base_Column_List"/>
+
+        FROM eg_user_order
+
+        <where>
+            <if test="param.nickNameIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.nickNameIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.screen_start_time != null and param.screen_end_time != null">
+
+                AND create_time BETWEEN #{param.screen_start_time,jdbcType=TIMESTAMP} AND #{param.screen_end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+
+        coalesce(count(1),0)
+
+        FROM eg_user_order
+
+        <where>
+            <if test="param.nickNameIDs!=null">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.nickNameIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.screen_start_time != null and param.screen_end_time != null">
+
+                AND create_time BETWEEN #{param.screen_start_time,jdbcType=TIMESTAMP} AND #{param.screen_end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="query7DayInfo" resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_order
+        <where>
+            DATE_FORMAT( create_time, 'Y%-m%-d%' ) >= date_format( DATE_SUB( NOW(), INTERVAL 7 DAY ), 'Y%-m%-d%' )
+            <if test="param.id != null">
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryDayListPageCount" resultType="java.lang.Integer">
+        SELECT
+
+        coalesce(count(1),0)
+
+        FROM eg_user_order
+
+        <where>
+            date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')
+
+            <if test="param.id != null">
+
+                AND id = #{param.id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.start_time != null and param.end_time != null">
+
+                AND create_time BETWEEN #{param.start_time,jdbcType=TIMESTAMP} AND #{param.end_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.user_id != null">
+
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.pay_id != null">
+
+                AND pay_id = #{param.pay_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type != null">
+
+                AND type = #{param.type,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.pay_count != null">
+
+                AND pay_count = #{param.pay_count,jdbcType=DECIMAL}
+
+            </if>
+            <if test="param.payment_id != null">
+
+                AND payment_id = #{param.payment_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.create_time != null">
+
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.pay_time != null">
+
+                AND pay_time = #{param.pay_time,jdbcType=TIMESTAMP}
+
+            </if>
+            <if test="param.status != null">
+
+                AND status = #{param.status,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.order_no != null">
+
+                AND order_no = #{param.order_no,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.category_id != null">
+
+                AND category_id = #{param.category_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.type_id != null">
+
+                AND type_id = #{param.type_id,jdbcType=BIGINT}
+
+            </if>
+            <if test="param.gift_count != null">
+
+                AND gift_count = #{param.gift_count,jdbcType=INTEGER}
+
+            </if>
+            <if test="param.source != null">
+
+                AND source = #{param.source,jdbcType=VARCHAR}
+
+            </if>
+            <if test="param.remarks != null">
+
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+    </select>
+</mapper>

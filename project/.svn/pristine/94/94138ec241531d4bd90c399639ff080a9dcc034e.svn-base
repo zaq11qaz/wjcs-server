@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.news.mybatis.dao.CuriosityClassfiyMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.news.model.CuriosityClassfiyEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="use_count" jdbcType="INTEGER" property="use_count" />
+    <result column="big_pic" jdbcType="VARCHAR" property="big_pic" />
+    <result column="type_description" jdbcType="VARCHAR" property="type_description" />
+    <result column="little_pic" jdbcType="VARCHAR" property="little_pic" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, create_time, update_time, user_id, status, use_count, big_pic, type_description, 
+    little_pic
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news_curiosity_classfiy
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news_curiosity_classfiy
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.news.model.CuriosityClassfiyEntity">
+    insert into news_curiosity_classfiy (id, type, create_time, 
+      update_time, user_id, status, 
+      use_count, big_pic, type_description, 
+      little_pic)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{user_id,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{use_count,jdbcType=INTEGER}, #{big_pic,jdbcType=VARCHAR}, #{type_description,jdbcType=VARCHAR}, 
+      #{little_pic,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.news.model.CuriosityClassfiyEntity">
+    insert into news_curiosity_classfiy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="use_count != null">
+        use_count,
+      </if>
+      <if test="big_pic != null">
+        big_pic,
+      </if>
+      <if test="type_description != null">
+        type_description,
+      </if>
+      <if test="little_pic != null">
+        little_pic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="use_count != null">
+        #{use_count,jdbcType=INTEGER},
+      </if>
+      <if test="big_pic != null">
+        #{big_pic,jdbcType=VARCHAR},
+      </if>
+      <if test="type_description != null">
+        #{type_description,jdbcType=VARCHAR},
+      </if>
+      <if test="little_pic != null">
+        #{little_pic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.news.model.CuriosityClassfiyEntity">
+    update news_curiosity_classfiy
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="use_count != null">
+        use_count = #{use_count,jdbcType=INTEGER},
+      </if>
+      <if test="big_pic != null">
+        big_pic = #{big_pic,jdbcType=VARCHAR},
+      </if>
+      <if test="type_description != null">
+        type_description = #{type_description,jdbcType=VARCHAR},
+      </if>
+      <if test="little_pic != null">
+        little_pic = #{little_pic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.news.model.CuriosityClassfiyEntity">
+    update news_curiosity_classfiy
+    set type = #{type,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      user_id = #{user_id,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      use_count = #{use_count,jdbcType=INTEGER},
+      big_pic = #{big_pic,jdbcType=VARCHAR},
+      type_description = #{type_description,jdbcType=VARCHAR},
+      little_pic = #{little_pic,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.news.model.CuriosityClassfiyEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM news_curiosity_classfiy
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.use_count!=null">
+        AND use_count = #{param.use_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.big_pic!=null">
+        AND big_pic = #{param.big_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type_description!=null">
+        AND type_description = #{param.type_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.little_pic!=null">
+        AND little_pic = #{param.little_pic,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.news.model.CuriosityClassfiyEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM news_curiosity_classfiy
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.use_count!=null">
+        AND use_count = #{param.use_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.big_pic!=null">
+        AND big_pic = #{param.big_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type_description!=null">
+        AND type_description = #{param.type_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.little_pic!=null">
+        AND little_pic = #{param.little_pic,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.news.model.CuriosityClassfiyEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM news_curiosity_classfiy
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.use_count!=null">
+        AND use_count = #{param.use_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.big_pic!=null">
+        AND big_pic = #{param.big_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type_description!=null">
+        AND type_description = #{param.type_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.little_pic!=null">
+        AND little_pic = #{param.little_pic,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

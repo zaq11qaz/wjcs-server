@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.news.mybatis.dao.BrowesHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.news.model.BrowesHistoryEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="classfiy" jdbcType="BIGINT" property="classfiy" />
+    <result column="browse_count" jdbcType="INTEGER" property="browse_count" />
+    <result column="duration_time" jdbcType="INTEGER" property="duration_time" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, classfiy, browse_count, duration_time, create_time, address, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news_browse_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news_browse_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity">
+    insert into news_browse_history (id, user_id, classfiy, 
+      browse_count, duration_time, create_time, 
+      address, update_time)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{classfiy,jdbcType=BIGINT}, 
+      #{browse_count,jdbcType=INTEGER}, #{duration_time,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{address,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity">
+    insert into news_browse_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="classfiy != null">
+        classfiy,
+      </if>
+      <if test="browse_count != null">
+        browse_count,
+      </if>
+      <if test="duration_time != null">
+        duration_time,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="classfiy != null">
+        #{classfiy,jdbcType=BIGINT},
+      </if>
+      <if test="browse_count != null">
+        #{browse_count,jdbcType=INTEGER},
+      </if>
+      <if test="duration_time != null">
+        #{duration_time,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity">
+    update news_browse_history
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="classfiy != null">
+        classfiy = #{classfiy,jdbcType=BIGINT},
+      </if>
+      <if test="browse_count != null">
+        browse_count = #{browse_count,jdbcType=INTEGER},
+      </if>
+      <if test="duration_time != null">
+        duration_time = #{duration_time,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity">
+    update news_browse_history
+    set user_id = #{user_id,jdbcType=BIGINT},
+      classfiy = #{classfiy,jdbcType=BIGINT},
+      browse_count = #{browse_count,jdbcType=INTEGER},
+      duration_time = #{duration_time,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM news_browse_history
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.browse_count!=null">
+        AND browse_count = #{param.browse_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.duration_time!=null">
+        AND duration_time = #{param.duration_time,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM news_browse_history
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.browse_count!=null">
+        AND browse_count = #{param.browse_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.duration_time!=null">
+        AND duration_time = #{param.duration_time,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM news_browse_history
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.browse_count!=null">
+        AND browse_count = #{param.browse_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.duration_time!=null">
+        AND duration_time = #{param.duration_time,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="getAllDurationTime" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity" resultType="int">
+    SELECT SUM(duration_time) FROM  news_browse_history WHERE  user_id=#{param.user_id}
+  </select>
+  <select id="getAllBrowseCount" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity" resultType="int">
+    SELECT SUM(browse_count) FROM  news_browse_history WHERE user_id=#{param.user_id}
+  </select>
+  <update id="addRecord" parameterType="com.huihe.eg.news.model.BrowesHistoryEntity">
+    UPDATE  news_browse_history
+    SET duration_time=duration_time+#{param.times},
+     browse_count=browse_count+1
+     WHERE user_id=#{param.user_id} AND classfiy=#{param.classfiy}
+  </update>
+
+</mapper>

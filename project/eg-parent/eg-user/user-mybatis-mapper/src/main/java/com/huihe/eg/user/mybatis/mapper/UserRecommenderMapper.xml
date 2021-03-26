@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserRecommenderMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserRecommenderEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="phone" jdbcType="BIGINT" property="phone"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="rule_id" jdbcType="BIGINT" property="rule_id"/>
+        <result column="invate_num" jdbcType="BIGINT" property="invate_num"/>
+        <result column="refuse_contect" jdbcType="VARCHAR" property="refuse_contect"/>
+        <result column="frozen_contect" jdbcType="VARCHAR" property="frozen_contect"/>
+        <result column="invate_code" jdbcType="VARCHAR" property="invate_code"/>
+        <result column="earnings_this_month" jdbcType="DECIMAL" property="earnings_this_month"/>
+        <result column="register_type" jdbcType="INTEGER" property="register_type"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, type, user_id, name, phone, status, create_time, update_time, rule_id, refuse_contect,
+    frozen_contect, earnings_this_month,invate_code,invate_num,register_type,email
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_recommender
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_user_recommender
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserRecommenderEntity">
+        insert into eg_user_recommender (id, type, user_id,
+                                         name, phone, status,
+                                         create_time, update_time, rule_id,
+                                         refuse_contect, frozen_contect, earnings_this_month, invate_code, invate_num)
+        values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{user_id,jdbcType=BIGINT},
+                #{name,jdbcType=VARCHAR}, #{phone,jdbcType=BIGINT}, #{status,jdbcType=INTEGER},
+                #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{rule_id,jdbcType=BIGINT},
+                #{refuse_contect,jdbcType=VARCHAR}, #{frozen_contect,jdbcType=VARCHAR},
+                #{earnings_this_month,jdbcType=DECIMAL},
+                #{frozen_contect,jdbcType=VARCHAR}, #{frozen_contect,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserRecommenderEntity">
+        insert into eg_user_recommender
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="rule_id != null">
+                rule_id,
+            </if>
+            <if test="refuse_contect != null">
+                refuse_contect,
+            </if>
+            <if test="frozen_contect != null">
+                frozen_contect,
+            </if>
+            <if test="earnings_this_month == null">
+                earnings_this_month,
+            </if>
+            <if test="invate_code != null">
+                invate_code,
+            </if>
+            <if test="invate_num != null">
+                invate_num,
+            </if>
+            <if test="register_type != null">
+                register_type,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rule_id != null">
+                #{rule_id,jdbcType=BIGINT},
+            </if>
+            <if test="refuse_contect != null">
+                #{refuse_contect,jdbcType=VARCHAR},
+            </if>
+            <if test="frozen_contect != null">
+                #{frozen_contect,jdbcType=VARCHAR},
+            </if>
+            <if test="earnings_this_month == null">
+                0,
+            </if>
+            <if test="invate_code != null">
+                #{invate_code,jdbcType=VARCHAR},
+            </if>
+            <if test="invate_num != null">
+                #{invate_num,jdbcType=BIGINT},
+            </if>
+            <if test="register_type != null">
+                #{register_type,jdbcType=INTEGER},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserRecommenderEntity">
+        update eg_user_recommender
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rule_id != null">
+                rule_id = #{rule_id,jdbcType=BIGINT},
+            </if>
+            <if test="refuse_contect != null">
+                refuse_contect = #{refuse_contect,jdbcType=VARCHAR},
+            </if>
+            <if test="frozen_contect != null">
+                frozen_contect = #{frozen_contect,jdbcType=VARCHAR},
+            </if>
+            <if test="earnings_this_month != null">
+                earnings_this_month = #{earnings_this_month,jdbcType=DECIMAL},
+            </if>
+            <if test="invate_num != null">
+                invate_num = #{invate_num,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserRecommenderEntity">
+        update eg_user_recommender
+        set type                = #{type,jdbcType=VARCHAR},
+            user_id             = #{user_id,jdbcType=BIGINT},
+            name                = #{name,jdbcType=VARCHAR},
+            phone               = #{phone,jdbcType=BIGINT},
+            status              = #{status,jdbcType=INTEGER},
+            create_time         = #{create_time,jdbcType=TIMESTAMP},
+            update_time         = #{update_time,jdbcType=TIMESTAMP},
+            rule_id             = #{rule_id,jdbcType=BIGINT},
+            refuse_contect      = #{refuse_contect,jdbcType=VARCHAR},
+            frozen_contect      = #{frozen_contect,jdbcType=VARCHAR},
+            earnings_this_month = #{earnings_this_month,jdbcType=DECIMAL},
+            invate_num          = #{invate_num,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserRecommenderEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_recommender
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserRecommenderEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_recommender
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY earnings_this_month DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserRecommenderEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_recommender
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+    <select id="queryInvateCode" resultType="com.huihe.eg.user.model.UserRecommenderEntity">
+        select
+        <include refid="Base_Column_List"/>
+        FROM eg_user_recommender
+        where invate_code = #{invate_code}
+        limit 1
+    </select>
+    <select id="queryByMessage" resultType="com.huihe.eg.user.model.UserRecommenderEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_recommender
+        <where>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.create_time!=null and param.update_time!=null">
+                AND create_time
+                BETWEEN #{param.create_time,jdbcType=TIMESTAMP}
+                AND #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_user_recommender
+        <where>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.create_time!=null and param.update_time!=null">
+                AND create_time
+                BETWEEN #{param.create_time,jdbcType=TIMESTAMP}
+                AND #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryDayCount" resultType="java.lang.Integer">
+        select coalesce(count(1),0)
+        from eg_user_recommender
+        <where>
+            date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryWeekCount" resultType="java.lang.Integer">
+        select coalesce(count(1),0)
+        from eg_user_recommender
+        <where>
+            YEARWEEK(date_format(create_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryMonthCount" resultType="java.lang.Integer">
+        select coalesce(count(1),0)
+        from eg_user_recommender
+        <where>
+            DATE_FORMAT(create_time,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m')
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryTotalCount" resultType="java.lang.Integer">
+        select coalesce(count(1),0)
+        from eg_user_recommender
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.name!=null">
+                AND name = #{param.name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.phone!=null">
+                AND phone = #{param.phone,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.rule_id!=null">
+                AND rule_id = #{param.rule_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.refuse_contect!=null">
+                AND refuse_contect = #{param.refuse_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.frozen_contect!=null">
+                AND frozen_contect = #{param.frozen_contect,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings_this_month!=null">
+                AND earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+            </if>
+            <if test="param.invate_num!=null">
+                AND invate_num = #{param.invate_num,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <update id="updateRoleId">
+        update eg_user_recommender
+        set rule_id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <update id="updateCash">
+        update eg_user_recommender
+        set earnings_this_month = #{param.earnings_this_month,jdbcType=DECIMAL}
+        where id = #{param.id,jdbcType=BIGINT}
+    </update>
+</mapper>

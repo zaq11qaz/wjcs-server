@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+mvn clean package  && docker run -d --name authorization-service-web -v /etc/localtime:/etc/localtime -v /var/log/:/var/log/ -e params="-Dservice.type=release" -p 1160:1160 localhost:5000/authorization-service-web:1.0

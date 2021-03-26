@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.authorization.mybatis.dao.ApiUrlMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.authorization.model.ApiUrlEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="descr" jdbcType="VARCHAR" property="descr"/>
+        <result column="add_user" jdbcType="VARCHAR" property="add_user"/>
+        <result column="update_user" jdbcType="VARCHAR" property="update_user"/>
+        <result column="authorize" jdbcType="BIT" property="authorize"/>
+        <result column="method" jdbcType="VARCHAR" property="method"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="opend" jdbcType="BIT" property="opend"/>
+        <result column="authorize_account" jdbcType="BIT" property="authorize_account"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parent_id"/>
+        <result column="seq" jdbcType="BIGINT" property="seq"/>
+        <result column="types" jdbcType="BIGINT" property="types"/>
+        <result column="menu_id" jdbcType="BIGINT" property="menu_id"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, url, create_time, update_time, descr, add_user, update_user, authorize, method, 
+    amount, opend, authorize_account,parent_id,seq,types,menu_id
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from authorization_api_url
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authorization_api_url
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.authorization.model.ApiUrlEntity">
+    insert into authorization_api_url (id, url, create_time,
+      update_time, descr, add_user, 
+      update_user, authorize, method, 
+      amount, opend, authorize_account,types,menu_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{url,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP},
+      #{update_time,jdbcType=TIMESTAMP}, #{descr,jdbcType=VARCHAR}, #{add_user,jdbcType=VARCHAR}, 
+      #{update_user,jdbcType=VARCHAR}, #{authorize,jdbcType=BIT}, #{method,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{opend,jdbcType=BIT}, #{authorize_account,jdbcType=BIT},
+      #{types,jdbcType=BIGINT}#{menu_id,jdbcType=BIGINT}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.authorization.model.ApiUrlEntity">
+        insert into authorization_api_url
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="descr != null">
+                descr,
+            </if>
+            <if test="add_user != null">
+                add_user,
+            </if>
+            <if test="update_user != null">
+                update_user,
+            </if>
+            <if test="authorize != null">
+                authorize,
+            </if>
+            <if test="method != null">
+                method,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="opend != null">
+                opend,
+            </if>
+            <if test="parent_id != null">
+                parent_id,
+            </if>
+            <if test="seq != null">
+                seq,
+            </if>
+            <if test="authorize_account != null">
+                authorize_account,
+            </if>
+            <if test="types != null">
+                types,
+            </if>
+            <if test="menu_id != null">
+                menu_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="descr != null">
+                #{descr,jdbcType=VARCHAR},
+            </if>
+            <if test="add_user != null">
+                #{add_user,jdbcType=VARCHAR},
+            </if>
+            <if test="update_user != null">
+                #{update_user,jdbcType=VARCHAR},
+            </if>
+            <if test="authorize != null">
+                #{authorize,jdbcType=BIT},
+            </if>
+            <if test="method != null">
+                #{method,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="opend != null">
+                #{opend,jdbcType=BIT},
+            </if>
+            <if test="parent_id != null">
+                #{parent_id,jdbcType=BIGINT},
+            </if>
+            <if test="seq != null">
+                #{seq,jdbcType=BIGINT},
+            </if>
+            <if test="authorize_account != null">
+                #{authorize_account,jdbcType=BIT},
+            </if>
+            <if test="types != null">
+                #{types,jdbcType=BIGINT},
+            </if>
+            <if test="menu_id != null">
+                #{menu_id,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.authorization.model.ApiUrlEntity">
+        update authorization_api_url
+        <set>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="descr != null">
+                descr = #{descr,jdbcType=VARCHAR},
+            </if>
+            <if test="add_user != null">
+                add_user = #{add_user,jdbcType=VARCHAR},
+            </if>
+            <if test="update_user != null">
+                update_user = #{update_user,jdbcType=VARCHAR},
+            </if>
+            <if test="authorize != null">
+                authorize = #{authorize,jdbcType=BIT},
+            </if>
+            <if test="method != null">
+                method = #{method,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="opend != null">
+                opend = #{opend,jdbcType=BIT},
+            </if>
+            <if test="authorize_account != null">
+                authorize_account = #{authorize_account,jdbcType=BIT},
+            </if>
+            <if test="parent_id != null">
+                parent_id = #{parent_id,jdbcType=BIGINT},
+            </if>
+            <if test="seq != null">
+                seq = #{seq,jdbcType=BIGINT},
+            </if>
+            <if test="types != null">
+                types = #{types,jdbcType=INTEGER},
+            </if>
+            <if test="menu_id != null">
+                menu_id = #{menu_id,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.authorization.model.ApiUrlEntity">
+    update authorization_api_url
+    set url = #{url,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      descr = #{descr,jdbcType=VARCHAR},
+      add_user = #{add_user,jdbcType=VARCHAR},
+      update_user = #{update_user,jdbcType=VARCHAR},
+      authorize = #{authorize,jdbcType=BIT},
+      method = #{method,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      opend = #{opend,jdbcType=BIT},
+      authorize_account = #{authorize_account,jdbcType=BIT}
+      types = #{types,jdbcType=BIGINT}
+      menu_id = #{menu_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="query" parameterType="com.huihe.eg.authorization.model.ApiUrlEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM authorization_api_url
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.url!=null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.descr!=null">
+                AND descr = #{param.descr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.add_user!=null">
+                AND add_user = #{param.add_user,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_user!=null">
+                AND update_user = #{param.update_user,jdbcType=VARCHAR}
+            </if>
+            <if test="param.authorize!=null">
+                AND authorize = #{param.authorize,jdbcType=BIT}
+            </if>
+            <if test="param.method!=null">
+                AND method = #{param.method,jdbcType=VARCHAR}
+            </if>
+            <if test="param.amount!=null">
+                AND amount = #{param.amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.opend!=null">
+                AND opend = #{param.opend,jdbcType=BIT}
+            </if>
+            <if test="param.authorize_account!=null">
+                AND authorize_account = #{param.authorize_account,jdbcType=BIT}
+            </if>
+            <if test="param.parent_id != null">
+                AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.seq != null">
+                AND seq = #{param.seq,jdbcType=BIGINT}
+            </if>
+            <if test="param.types != null">
+                AND types = #{param.types,jdbcType=BIGINT}
+            </if>
+            <if test="param.menu_id != null">
+                AND menu_id = #{param.menu_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.authorization.model.ApiUrlEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM authorization_api_url
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.url!=null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.descr!=null">
+                AND descr = #{param.descr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.add_user!=null">
+                AND add_user = #{param.add_user,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_user!=null">
+                AND update_user = #{param.update_user,jdbcType=VARCHAR}
+            </if>
+            <if test="param.authorize!=null">
+                AND authorize = #{param.authorize,jdbcType=BIT}
+            </if>
+            <if test="param.method!=null">
+                AND method = #{param.method,jdbcType=VARCHAR}
+            </if>
+            <if test="param.amount!=null">
+                AND amount = #{param.amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.opend!=null">
+                AND opend = #{param.opend,jdbcType=BIT}
+            </if>
+            <if test="param.authorize_account!=null">
+                AND authorize_account = #{param.authorize_account,jdbcType=BIT}
+            </if>
+            <if test="param.parent_id != null">
+                AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.seq != null">
+                AND seq = #{param.seq,jdbcType=BIGINT}
+            </if>
+            <if test="param.types != null">
+                AND types = #{param.types,jdbcType=BIGINT}
+            </if>
+            <if test="param.menu_id != null">
+                AND menu_id = #{param.menu_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.authorization.model.ApiUrlEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM authorization_api_url
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.url!=null">
+                AND url = #{param.url,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.descr!=null">
+                AND descr = #{param.descr,jdbcType=VARCHAR}
+            </if>
+            <if test="param.add_user!=null">
+                AND add_user = #{param.add_user,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_user!=null">
+                AND update_user = #{param.update_user,jdbcType=VARCHAR}
+            </if>
+            <if test="param.authorize!=null">
+                AND authorize = #{param.authorize,jdbcType=BIT}
+            </if>
+            <if test="param.method!=null">
+                AND method = #{param.method,jdbcType=VARCHAR}
+            </if>
+            <if test="param.amount!=null">
+                AND amount = #{param.amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.opend!=null">
+                AND opend = #{param.opend,jdbcType=BIT}
+            </if>
+            <if test="param.authorize_account!=null">
+                AND authorize_account = #{param.authorize_account,jdbcType=BIT}
+            </if>
+            <if test="param.menu_id!=null">
+                AND menu_id = #{param.menu_id,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryRoleIdentity" resultType="com.huihe.eg.authorization.model.ApiUrlEntity">
+    SELECT aau.* FROM authorization_api_url aau
+     INNER JOIN authorization_manager_identity_url amiu
+     ON aau.`id` = amiu.`url_id`
+     WHERE identity_id = #{id}
+    </select>
+</mapper>

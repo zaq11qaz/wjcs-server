@@ -1,0 +1,151 @@
+ul{
+	margin: 0;
+	padding: 0;
+}
+#body {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* min-width: 1000px; */
+	z-index: -10;
+	zoom: 1;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-position: center 0;
+}
+.bgImg{
+	width: 100%;
+	height: 100%;
+}
+.maskBox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+	z-index: 1888;
+}
+
+.paybox {
+		background: #FFFFFF;
+		width: 100%;
+		height: 8.6rem;
+		border: .01rem solid #E6E6E6;
+		border-radius: .1rem;
+		padding: 0 .24rem;
+		box-sizing: border-box;
+		z-index: 10000;
+		position: fixed;
+		bottom: -.90rem;
+	}
+
+	.paybox_title {
+		text-align: center;
+		font-size: .32rem;
+		padding: .24rem 0 .26rem 0;
+		border-bottom: .01rem solid #E6E6E6;
+	}
+
+	.paybox_num {
+		font-size: .47rem;
+		color: #333333;
+		text-align: center;
+		padding: .30rem 0;
+	}
+
+	.paybox_num span {
+		font-size: .88rem;
+	}
+
+	.pay_mode {
+		font-size: .32rem;
+		color: #000000;
+	}
+
+	.pay_mode_item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: .88rem;
+		border-bottom: .01rem solid #E6E6E6;
+	}
+
+	.pay_mode_title {
+		border-bottom: .01rem solid #E6E6E6;
+		width: 100%;
+		padding-bottom: .20rem;
+	}
+
+	.mode_item_left {
+		display: flex;
+		align-items: center;
+		line-height: .88rem;
+
+	}
+
+	.mode_item_left img {
+		width: .58rem;
+		height: .58rem;
+		margin-right: .20rem;
+	}
+
+	.mode_item_right {
+		width: .40rem;
+		height: .40rem;
+	}
+
+	.check {
+		padding: .30rem 0;
+	}
+
+	.check img {
+		width: .26rem;
+		height: .26rem;
+		margin-right: .10rem;
+	}
+
+	.check span {
+		font-size: .28rem;
+		color: #333333;
+	}
+
+	.shurepay {
+		margin-bottom: .30rem;
+	}
+
+	.mask-btn {
+		width: 7.02rem;
+		height: .88rem;
+		background: rgba(70, 206, 207, .5);
+		border-radius: .10rem;
+		color: #FFFFFF;
+		text-align: center;
+		line-height: .88rem;
+		margin: 0 auto;
+		font-size: .32rem;
+	}
+	.shurepay{
+		width: 7.02rem;
+		height: .88rem;
+		background: rgba(71,206,207,1);
+		border-radius: .10rem;
+		color: #FFFFFF;
+		text-align: center;
+		line-height: .88rem;
+		margin: 0 auto;
+		font-size: .32rem;
+	}
+
+	.toVip {
+		width: 2.26rem;
+		height: .26rem;
+		position: absolute;
+		right: .24rem;
+		padding-top: .40rem;
+	}

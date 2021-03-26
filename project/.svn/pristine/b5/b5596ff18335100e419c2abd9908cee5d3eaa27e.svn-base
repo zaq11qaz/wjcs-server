@@ -1,0 +1,82 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: "'Helvetica Neue',Helvetica,sans-serif";
+	line-height: initial;
+	background: #fff;
+}
+
+p {
+	margin-top: initial;
+	margin-bottom: initial;
+	color: #404a4c;
+	font-size: .3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: normal;
+}
+
+ul,
+li {
+	list-style-type: none;
+}
+
+a {
+	color: initial;
+}
+i{
+	font-style: normal;
+}
+table {
+	width: 100%;
+}
+
+th {
+	font-weight: normal;
+}
+
+th,
+td {
+	font-size: .3rem;
+	width: 1.08rem;
+	height: 1.08rem;
+}
+
+tr {
+	border-bottom: 1px solid #F3F3F3;
+}
+
+input[type=color],
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+select,
+textarea {
+	padding: 0;
+	border: none;
+	margin-bottom: 0;
+}
+b, strong{
+	font-weight: normal;
+}

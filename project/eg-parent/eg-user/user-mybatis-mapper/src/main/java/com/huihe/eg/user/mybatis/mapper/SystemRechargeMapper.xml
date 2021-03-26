@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.SystemRechargeMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.SystemRechargeEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="recharge_count" jdbcType="INTEGER" property="recharge_count"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, create_time, update_time, type, recharge_count, user_id, account
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_system_recharge
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_system_recharge
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.SystemRechargeEntity">
+    insert into eg_system_recharge (id, create_time, update_time, 
+      type, recharge_count, user_id, 
+      account)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=VARCHAR}, #{recharge_count,jdbcType=INTEGER}, #{user_id,jdbcType=BIGINT}, 
+      #{account,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.SystemRechargeEntity">
+        insert into eg_system_recharge
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="recharge_count != null">
+                recharge_count,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="account != null">
+                account,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="recharge_count != null">
+                #{recharge_count,jdbcType=INTEGER},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="account != null">
+                #{account,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.SystemRechargeEntity">
+        update eg_system_recharge
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="recharge_count != null">
+                recharge_count = #{recharge_count,jdbcType=INTEGER},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="account != null">
+                account = #{account,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.SystemRechargeEntity">
+    update eg_system_recharge
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR},
+      recharge_count = #{recharge_count,jdbcType=INTEGER},
+      user_id = #{user_id,jdbcType=BIGINT},
+      account = #{account,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.SystemRechargeEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_system_recharge
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recharge_count!=null">
+                AND recharge_count = #{param.recharge_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.account!=null">
+                AND account = #{param.account,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.SystemRechargeEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_system_recharge
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recharge_count!=null">
+                AND recharge_count = #{param.recharge_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.account!=null">
+                AND account = #{param.account,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_system_recharge
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.recharge_count!=null">
+                AND recharge_count = #{param.recharge_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.account!=null">
+                AND account = #{param.account,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryDayCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(SUM(recharge_count),0)
+        FROM eg_system_recharge
+        where date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')
+        <if test="param.type!=null">
+            AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+  </select>
+    <select id="queryWeekCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+     SELECT
+          COALESCE(SUM(recharge_count),0)
+    FROM
+        eg_system_recharge
+    WHERE
+        YEARWEEK(date_format(create_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+        <if test="param.type!=null">
+            AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+  </select>
+    <select id="queryMonthCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+         COALESCE(SUM(recharge_count),0)
+        FROM eg_system_recharge
+          WHERE  DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(now(), '%Y-%m')
+        <if test="param.type!=null">
+            AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+  </select>
+    <select id="queryPayCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+          COALESCE(SUM(recharge_count),0)
+        FROM eg_system_recharge
+        <where>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+        </where>
+  </select>
+</mapper>

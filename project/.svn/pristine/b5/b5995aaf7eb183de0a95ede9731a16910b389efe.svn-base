@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker stop eg-push && docker rm eg-push && docker rmi localhost:5000/eg-push:1.0 && docker rmi localhost:5000/eg-push:latest && mvn clean package  && docker run -d --name eg-push -v /opt/crt/:/opt/crt/ -v /etc/localtime:/etc/localtime -v /home/img/tripPictstorage/:/home/img/tripPictstorage/ -v /var/log/:/var/log/ -e params="-Dservice.type=release" -p 1140:1140 localhost:5000/eg-push:1.0

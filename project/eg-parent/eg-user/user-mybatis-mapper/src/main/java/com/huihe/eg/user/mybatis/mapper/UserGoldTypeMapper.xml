@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserGoldTypeMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserGoldTypeEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="gold_num" jdbcType="DECIMAL" property="gold_num"/>
+        <result column="pic_path" jdbcType="VARCHAR" property="pic_path"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="introduce" jdbcType="VARCHAR" property="introduce"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="frequency" jdbcType="INTEGER" property="frequency"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="is_teach_paypal" jdbcType="BIT" property="is_teach_paypal"/>
+        <result column="is_daily" jdbcType="BIT" property="is_daily"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, gold_num, pic_path, type, introduce, level, create_time, update_time, frequency,
+    status,is_teach_paypal,is_daily
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_gold_type
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_gold_type
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserGoldTypeEntity">
+    insert into eg_user_gold_type (id, gold_num, pic_path, 
+      type, introduce, level, 
+      create_time, update_time, frequency, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{gold_num,jdbcType=DECIMAL}, #{pic_path,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{frequency,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserGoldTypeEntity">
+        insert into eg_user_gold_type
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="gold_num != null">
+                gold_num,
+            </if>
+            <if test="pic_path != null">
+                pic_path,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="introduce != null">
+                introduce,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="frequency != null">
+                frequency,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="is_teach_paypal != null">
+                is_teach_paypal,
+            </if>
+            <if test="is_daily != null">
+                is_daily,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="gold_num != null">
+                #{gold_num,jdbcType=DECIMAL},
+            </if>
+            <if test="pic_path != null">
+                #{pic_path,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="frequency != null">
+                #{frequency,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="is_teach_paypal != null">
+                #{is_teach_paypal,jdbcType=BIT},
+            </if>
+            <if test="is_daily != null">
+                #{is_daily,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserGoldTypeEntity">
+        update eg_user_gold_type
+        <set>
+            <if test="gold_num != null">
+                gold_num = #{gold_num,jdbcType=DECIMAL},
+            </if>
+            <if test="pic_path != null">
+                pic_path = #{pic_path,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                introduce = #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="frequency != null">
+                frequency = #{frequency,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="is_teach_paypal != null">
+                is_teach_paypal = #{is_teach_paypal,jdbcType=BIT},
+            </if>
+            <if test="is_daily != null">
+                is_daily = #{is_daily,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserGoldTypeEntity">
+    update eg_user_gold_type
+    set gold_num = #{gold_num,jdbcType=DECIMAL},
+      pic_path = #{pic_path,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      frequency = #{frequency,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserGoldTypeEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_gold_type
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.gold_num!=null">
+                AND gold_num = #{param.gold_num,jdbcType=DECIMAL}
+            </if>
+            <if test="param.pic_path!=null">
+                AND pic_path = #{param.pic_path,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduce!=null">
+                AND introduce = #{param.introduce,jdbcType=VARCHAR}
+            </if>
+            <if test="param.level!=null">
+                AND level = #{param.level,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.frequency!=null">
+                AND frequency = #{param.frequency,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_daily!=null">
+                AND is_daily = #{param.is_daily,jdbcType=BIT}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+            order by level asc
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserGoldTypeEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_gold_type
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.gold_num!=null">
+                AND gold_num = #{param.gold_num,jdbcType=DECIMAL}
+            </if>
+            <if test="param.pic_path!=null">
+                AND pic_path = #{param.pic_path,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduce!=null">
+                AND introduce = #{param.introduce,jdbcType=VARCHAR}
+            </if>
+            <if test="param.level!=null">
+                AND level = #{param.level,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.frequency!=null">
+                AND frequency = #{param.frequency,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_daily!=null">
+                AND is_daily = #{param.is_daily,jdbcType=BIT}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY level asc limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserGoldTypeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_gold_type
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.gold_num!=null">
+                AND gold_num = #{param.gold_num,jdbcType=DECIMAL}
+            </if>
+            <if test="param.pic_path!=null">
+                AND pic_path = #{param.pic_path,jdbcType=VARCHAR}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.introduce!=null">
+                AND introduce = #{param.introduce,jdbcType=VARCHAR}
+            </if>
+            <if test="param.level!=null">
+                AND level = #{param.level,jdbcType=INTEGER}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.frequency!=null">
+                AND frequency = #{param.frequency,jdbcType=INTEGER}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_daily!=null">
+                AND is_daily = #{param.is_daily,jdbcType=BIT}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+</mapper>

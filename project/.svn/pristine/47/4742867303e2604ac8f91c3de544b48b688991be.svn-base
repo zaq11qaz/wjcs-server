@@ -1,0 +1,4727 @@
+/*发布要求*/
+
+.publishCenter {
+	padding: .9rem 0 1.5rem 0;
+}
+
+.publishCenter>img {
+	width: 100%;
+	display: block;
+	height: 2.93rem;
+}
+
+.publishBaseInfo {
+	height: 1rem;
+	margin-bottom: 0;
+}
+
+.publishBaseInfo h3 {
+	line-height: 1rem;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.publishTelInput {
+	margin-right: .3rem;
+}
+
+.publishBaseInfo .playDetail-main-li-title-mark {
+	top: 50%;
+	margin-top: -0.16rem;
+}
+
+.playBook-li>img.rf {
+	height: .24rem;
+	margin-top: -0.12rem;
+	position: absolute;
+	right: 0;
+	top: 50%;
+}
+
+.publishCenter .playBook-ul {
+	padding-top: 0;
+}
+
+.publishCenter .playBook-li {
+	padding: .3rem 0;
+}
+
+.publishCenter .playBook-li-select-span {
+	margin-right: .3rem;
+}
+
+.publishCenter .playBook-tel-input {
+	margin-right: .3rem;
+}
+
+.publishTextarea {
+	margin: 0 .4rem .2rem;
+}
+
+.publishTextarea textarea {
+	height: 100%;
+	padding: .2rem .3rem;
+	background: #dbefff;
+	/*color: #9aa9b4;*/
+	font-size: .32rem;
+}
+
+.publishTextarea {
+	position: relative;
+	height: 2.62rem;
+}
+
+.publishTextarea>img {
+	display: block;
+	width: 0.32rem;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.publishWaiting {
+	font-size: .28rem;
+	color: #404a4c;
+	text-align: center;
+	height: .6rem;
+	line-height: .6rem;
+	background: #dae8fd;
+	opacity: 0.8;
+}
+
+.publishlast {
+	padding-bottom: .5rem;
+}
+
+.publishCenter .publishPrice {
+	color: #404a4c;
+	margin-right: 0;
+	margin-left: .1rem;
+}
+
+.publishCenter .playBook-li-lf {
+	color: #404a4c;
+}
+
+
+
+
+
+/*发布要求入口*/
+
+.enterCenter {
+	padding: .9rem .4rem 0;
+}
+
+.enterCenter h2 {
+	font-size: .5rem;
+	height: .95rem;
+	line-height: .95rem;
+	position: relative;
+}
+
+.enterCenter h2 i {
+	display: block;
+	width: .42rem;
+	height: 3px;
+	background: #000;
+	border-radius: 30%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.enterCenter p {
+	color: #858697;
+	font-size: .34rem;
+	margin-top: .3rem;
+	font-size: .34rem;
+}
+
+.enterCenter img {
+	width: 3.03rem;
+	display: block;
+	margin: 1.77rem auto 1.6rem;
+}
+
+.enterGo {
+	width: 5rem;
+	height: .98rem;
+	line-height: .98rem;
+	border: 1px solid transparent;
+	background-image: linear-gradient(90deg, #fff, #fff), linear-gradient(90deg, #4CAFFE, #06EDFF);
+	box-sizing: border-box;
+	background-clip: padding-box, border-box;
+	background-origin: padding-box, border-box;
+	border-radius: .5rem;
+	margin: 0 auto;
+	text-align: center;
+	font-size: .34rem;
+}
+
+.enterGo a {
+	background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(74, 177, 254, 1)), to(rgba(6, 237, 255, 1)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+
+
+
+
+/*发布成功页*/
+
+.pulishSuccAvater {
+	position: relative;
+	width: 1.3rem;
+	height: 1.3rem;
+	margin: 0 auto;
+	margin-top: .3rem;
+}
+
+.pulishSuccAvaterCircle {
+	width: 1.3rem;
+	height: 1.3rem;
+	border-radius: 50%;
+	border: 1px solid transparent;
+	background-image: linear-gradient(90deg, #fff, #fff), linear-gradient(0deg, #33CBCC, #fff);
+	box-sizing: border-box;
+	background-clip: padding-box, border-box;
+	background-origin: padding-box, border-box;
+	transition: transform 1s;
+}
+
+.pulishSuccAvater img {
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-top: .1rem;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: .1rem;
+}
+
+.pulishSuccWating {
+	font-size: .32rem;
+	color: #33CBCC;
+	margin-top: .39rem;
+	text-align: center;
+}
+
+.publishSuccCenter .confirmToPay-left-time {
+	text-align: center;
+	margin-top: .2rem;
+}
+
+.publishSuccTitle {
+	padding: .4rem 0;
+	border-top: 1px solid #F3F3F3;
+	border-bottom: 1px solid #F3F3F3;
+	text-align: center;
+	font-size: .32rem;
+	margin-top: 1.4rem;
+	margin-bottom: 0.88rem;
+}
+
+.publishSuccTitle div {
+	background: #f6f6f6;
+	height: 1rem;
+	line-height: 1rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.publishSuccTitle img {
+	width: 0.3rem;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.publishSuccUl li {
+	width: 100%;
+	padding: .2rem;
+	box-shadow: 0 0 .2rem rgba(0, 0, 0, .4);
+	overflow: hidden;
+	margin-bottom: .4rem;
+}
+
+.publishSuccPic {
+	width: 2.45rem;
+	height: 3.26rem;
+}
+
+.publishSuccUl .rf {
+	margin-left: .1rem;
+}
+
+.publishSuccName {
+	margin-top: .15rem;
+	font-size: .34rem;
+	margin-bottom: .25rem;
+	width: 3.6rem;
+}
+
+.pulishSuccAddress {
+	width: 3.6rem;
+	font-size: .3rem;
+	height: .72rem;
+	line-height: .36rem;
+	color: #404a4c;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.pulishSuccAddress span {
+	color: #858697;
+}
+
+.pulishSuccAddress span b {
+	color: #33CBCC;
+	font-weight: normal;
+}
+
+.publishSuccPingfen {
+	color: #404a4c;
+	font-size: .3rem;
+	line-height: .5rem;
+}
+
+.publishSuccPingfen b {
+	font-weight: bold;
+}
+
+.publishSuccPriceAndJiedai a {
+	width: 1.64rem;
+	text-align: center;
+	display: inline-block;
+	border-radius: .04rem;
+	font-size: .3rem;
+	padding: 0.05rem 0;
+}
+
+.publishSuccPrice {
+	border: 1px solid #404a4c;
+	color: #33CBCC;
+	margin-right: .29rem;
+}
+
+.publishSuccJiedai {
+	color: #fff;
+	background: #33CBCC;
+}
+
+.publishSuccPriceAndJiedai {
+	margin-top: .1rem;
+}
+
+.publishSuccAllTravel {
+	position: absolute;
+	top: 1rem;
+	left: 0;
+	background: rgba(0, 0, 0, .5);
+	right: 0;
+	bottom: 0;
+}
+
+.publishSuccUllist {
+	padding: 0 .4rem .5rem;
+	background: #fff;
+}
+
+.publishSuccAllTravel li {
+	padding: .4rem 0 .2rem;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.publishSuccAllTravel li p {
+	margin-bottom: .1rem;
+	width: 6rem;
+}
+
+.publishSuccAllTravel li span {
+	color: #858697;
+	font-size: .26rem;
+}
+
+.publishSuccUllist a {
+	width: 2.8rem;
+	height: .6rem;
+	line-height: .6rem;
+	text-align: center;
+	border: 1px solid #F3F3F3;
+	border-radius: .3rem;
+	color: #858697;
+	display: block;
+	margin: .4rem auto 0;
+	font-size: .28rem;
+}
+
+.publishSuccAllTravel li.active {
+	background: url(../../images/travel_choose_03.png)no-repeat;
+	background-position: right center;
+	background-size: .5rem .5rem;
+}
+
+
+
+
+
+/*被接待--要求*/
+
+.travelPlayerInfo span {
+	color: #858697;
+	font-size: .24rem;
+	overflow: hidden;
+	display: block;
+}
+
+.travelPlayerAvaterName {
+	margin-top: 0.25rem;
+	overflow: hidden;
+	margin-bottom: .38rem;
+}
+
+.travelPlayerAvaterName>img {
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-right: .23rem;
+	border-radius: 50%;
+}
+
+.travelName {
+	width: 4rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	font-weight: bold;
+	font-size: .34rem;
+	color: #000;
+	margin-bottom: .1rem;
+	margin-top: .1rem;
+}
+
+.travelPlayerName span {
+	color: #858697;
+	font-size: .26rem;
+}
+
+.travelPlayerMessage {
+	padding: 0.05rem 0 0.05rem .6rem;
+	border-left: 1px solid #F3F3F3;
+	margin-top: 0.2rem;
+}
+
+.travelPlayerMessage img {
+	width: .64rem;
+}
+
+.travelPlayerOrder {
+	margin-top: 0.1rem;
+	position: relative;
+}
+
+.travelPlayerOrder p {
+	color: #000;
+	font-weight: bold;
+	font-size: .34rem;
+	line-height: .45rem;
+}
+
+.travelPlayerOrder p b {
+	color: #33CBCC;
+}
+
+.travelPlayerOrder p b i {
+	font-weight: normal;
+	font-size: 80%;
+}
+
+.travelPlayerOrder span {
+	font-size: .28rem;
+	font-weight: bold;
+	color: #858697;
+}
+
+.travelPlayerOrder span img {
+	width: .12rem;
+	margin-left: .1rem;
+}
+
+.travelPlayerOrder .publishSuccJiedai {
+	width: 1.64rem;
+	text-align: center;
+	display: inline-block;
+	border-radius: .04rem;
+	font-size: .3rem;
+	position: absolute;
+	right: 0;
+	bottom: .45rem;
+	padding: 0.05rem 0;
+}
+
+
+
+
+
+/*订单详情*/
+
+.orderInfor {
+	width: 100%;
+	overflow: hidden;
+	padding: .25rem .2rem;
+	box-shadow: 0 0 .2rem rgba(0, 0, 0, .2);
+}
+
+.orderInfor .travelName {
+	width: 3.5rem;
+}
+
+.orderInfor .travelPlayerInfo:first-child {
+	border-bottom: 1px solid #F3F3F3;
+	padding-bottom: .4rem;
+	margin-bottom: .3rem;
+}
+
+.orderInfor .travelPlayerAvaterName {
+	margin-bottom: 0;
+}
+
+.orderInfor .publishSuccJiedai {
+	bottom: 0;
+}
+
+.orderInfor .travelPlayerOrder {
+	margin-top: 0.2rem;
+}
+
+.orderTitle {
+	font-weight: bold;
+	font-size: .28rem;
+	color: #858697;
+	margin-top: .35rem;
+}
+
+.orderTitle>img {
+	width: .29rem;
+	float: left;
+	margin-top: .05rem;
+}
+
+.orderBill li {
+	padding: .1rem 0;
+	font-size: .28rem;
+	overflow: hidden;
+}
+
+.orderBill li span {
+	width: 35%;
+	color: #858697;
+	display: block;
+	float: left;
+}
+
+.orderBill li div {
+	width: 65%;
+	float: left;
+}
+
+.borderBottom {
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.orderBill .borderBottom {
+	padding-bottom: .3rem;
+	margin-bottom: .35rem;
+}
+
+.orderBill .borderBottom div {
+	line-height: .45rem;
+}
+
+
+
+
+
+/**问答首页*****/
+
+.newAskBodyTopBg {
+	width: 100%;
+	height: 3.8rem;
+	display: block;
+}
+
+.newAskCenter {
+	margin: 0.1rem;
+	/*position: relative;
+	top: -0.5rem;*/
+}
+
+.newAskSearchWrapper {
+	width: 100%;
+	padding: 0.35rem 0.38rem 0.25rem;
+	background: #fff;
+	box-shadow: 0 .05rem 0.15rem rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+	overflow: hidden;
+	border-radius: 0.06rem;
+}
+
+.newAskSearchInput {
+	width: 100%;
+	height: 0.65rem;
+	line-height: 0.65rem;
+	background: #F0F0F0;
+	margin-bottom: 0.3rem;
+	border-radius: 0.3rem;
+	position: relative;
+}
+
+.newAskSearchInput img {
+	height: 0.25rem;
+	margin-left: 0.5rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.12rem;
+}
+
+.newAskSearchInput input {
+	width: 80%;
+	height: 100%;
+	background: none;
+	float: right;
+	font-size: 0.28rem;
+}
+
+.newAskUl li {
+	width: 20%;
+	float: left;
+	text-align: center;
+}
+
+.newAskUl li:first-child .newAskMyanswer {
+	background: -webkit-linear-gradient(45deg, #5376fc, #49a9fe);
+}
+
+.newAskUl li:nth-child(2) .newAskMyanswer {
+	background: -webkit-linear-gradient(45deg, #5bcc3d, #7dd865);
+}
+
+.newAskUl li:nth-child(3) .newAskMyanswer {
+	background: -webkit-linear-gradient(45deg, #ff6743, #ff8052);
+}
+
+.newAskUl li:nth-child(4) .newAskMyanswer {
+	background: -webkit-linear-gradient(45deg, #fa9635, #fcaa38);
+}
+
+.newAskUl li:last-child .newAskMyanswer {
+	background: -webkit-linear-gradient(45deg, #61ce43, #78d65f);
+}
+
+.newAskUl li span {
+	font-size: 0.26rem;
+}
+
+.newRanking {
+	border-bottom: 1px solid #F3F3F3;
+	padding: 0.25rem 0.35rem;
+	overflow: hidden;
+	/*margin-top: -0.3rem;*/
+}
+
+.newRanking li {
+	float: left;
+	width: 50%;
+}
+
+.newRankingFirst {
+	position: relative;
+}
+
+.newRankingFirst:after {
+	content: "";
+	width: 1px;
+	height: 100%;
+	display: block;
+	background: -webkit-linear-gradient(90deg, #fff, #33CBCC, #fff);
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.newRankingFirst a {
+	padding: 0.1rem 0.4rem;
+	border-radius: 0.5rem;
+	font-size: 0.3rem;
+	border: 1px solid #33CBCC;
+	float: left;
+}
+
+.newRankingFirst a:last-child {
+	margin-left: 0.15rem;
+}
+
+.newRankingFirst a.active {
+	background: #33CBCC;
+	color: #fff;
+}
+
+.newRankingTwo div {
+	float: right;
+	overflow: hidden;
+	background: #92c8fe;
+	color: #fff;
+	font-size: 0.3rem;
+	min-width: 1.5rem;
+	text-align: center;
+	padding: 0.1rem 0.3rem;
+	border-radius: 0.4rem;
+	padding-right: 0.5rem;
+	position: relative;
+}
+
+.newRankingTwo span {
+	max-width: 2rem;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 0 0.1rem;
+	float: right;
+}
+
+.newRankingTwo img {
+	width: 0.25rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.06rem;
+	right: 0.2rem;
+}
+
+.newAskMyanswer {
+	width: 0.68rem;
+	height: 0.68rem;
+	text-align: center;
+	position: relative;
+	margin: 0 auto 0.2rem;
+	border-radius: 50%;
+}
+
+.newAskMyanswer img {
+	height: 0.33rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.16rem;
+	left: 50%;
+	margin-left: -0.16rem;
+}
+
+.newAskList .newAskListUl {
+	padding: 0 0.45rem;
+}
+
+.newAskList .newAskListUl>li {
+	padding: 0.4rem 0 0.25rem;
+}
+
+.newAskListUl>li {
+	border-bottom: 1px solid #F3F3F3;
+	padding: 0.2rem 0.3rem 0.25rem;
+	overflow: hidden;
+	background: #fff;
+}
+
+.newAskListUl li h3 {
+	font-size: 0.34rem;
+	margin-bottom: 0.25rem;
+	line-height: 0.42rem;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+.newAskListUl li h3 .askSuccessPerson {
+	margin-bottom: 0;
+}
+
+.newAskpeopleAddress {
+	line-height: 0.3rem;
+	font-size: 0.24rem;
+	float: left;
+	color: #868597;
+}
+
+.newAskpeopleAddress img {
+	height: 0.23rem;
+	float: left;
+	margin-top: 0.03rem;
+	margin-right: 0.03rem;
+}
+
+.newAskpeopleBrowse {
+	float: right;
+	line-height: 0.3rem;
+	font-size: 0.24rem;
+	color: #868597;
+	margin-right: 0.1rem;
+}
+
+.newAskpeopleBrowse b {
+	color: #000;
+}
+
+.newAskPeopleAsk .newAskpeopleAddress {
+	font-size: 0.3rem;
+	line-height: 0.4rem;
+	color: #858697;
+}
+
+.newAskPeopleAsk .newAskpeopleAddress img {
+	width: 0.4rem;
+	height: 0.4rem;
+	border-radius: 50%;
+	margin-top: 0;
+	margin-right: 0.1rem;
+}
+
+.newAskPeopleAsk p {
+	line-height: 0.4rem;
+	clear: both;
+	margin-bottom: 0.23rem;
+	overflow: hidden;
+}
+
+.newAskPeopleAsk .newAskpeopleBrowse {
+	line-height: 0.4rem;
+}
+
+.newAskGo {
+	padding: 0.2rem 0.3rem;
+	background: #33CBCC;
+	color: #fff;
+	position: fixed;
+	bottom: 0.6rem;
+	right: 0.4rem;
+	font-size: 0.4rem;
+	border-radius: 0.1rem;
+}
+
+
+
+
+
+/*问答  发布*/
+
+.askPublishHeader .common-top-left-a {
+	width: auto;
+	padding-left: 0.4rem;
+}
+
+.askPublishHeader .common-top-right-a {
+	width: auto;
+	padding-right: 0.4rem;
+	color: #33CBCC;
+}
+
+.askPublishWrapper {
+	padding: 0.9rem 0.4rem 0.3rem;
+}
+
+.askPublishWrapper h2 {
+	font-weight: bold;
+	font-size: 0.34rem;
+	padding: 0.35rem 0 0.2rem;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.askPublishWrapper h2 input {
+	width: 80%;
+	line-height: 0.5rem;
+}
+
+.askPublishWrapper h2 input::-webkit-input-placeholder {
+	font-weight: bold;
+	font-size: 0.34rem;
+	color: #000;
+}
+
+.askPublishWrapper textarea {
+	height: 2.1rem;
+	padding: 0.15rem 0;
+	margin: 0.2rem;
+	font-size: 0.24rem;
+	margin-left: 0;
+}
+
+.askPublishPic {
+	margin-bottom: 0.55rem;
+	/*overflow: hidden;*/
+	clear: right;
+}
+
+.askPublishPic li {
+	width: 33.33%;
+	height: 1.6rem;
+	/*overflow: hidden;*/
+	float: left;
+	padding-right: 0.2rem;
+	padding-bottom: 0.1rem;
+	position: relative;
+}
+
+.askPublishCloseBtn {
+	position: absolute;
+	top: -0.3rem;
+	right: -0.1rem;
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 50%;
+	font-size: 0.893rem;
+	color: #fff;
+	padding: 0.05rem;
+	margin: 0.2rem;
+}
+
+.askPublishCloseBtn img {
+	width: 0.2rem;
+	height: 0.2rem;
+	display: block;
+}
+
+.askPublishPic>li>img {
+	width: 100%;
+	height: 100%;
+}
+
+.askPublishReward li {
+	padding: 0.33rem 0;
+	border-bottom: 1px solid #F3F3F3;
+	line-height: 0.4rem;
+}
+
+.askPublishReward li>span {
+	color: #858697;
+	font-size: 0.32rem;
+}
+
+.askPublishAddressAdd {
+	float: right;
+	padding: 0.15rem 0.25rem 0.1rem 0.6rem;
+	background: #f3f3f3;
+	border-radius: 0.7rem;
+	color: #858697;
+	font-size: 0.32rem;
+	position: relative;
+	/*top: -0.2rem;*/
+}
+
+.askPublishAddressAdd.active {
+	background: #40d0ff;
+	color: #fff;
+	/*margin-right: 0.25rem;*/
+}
+
+.askPublishAddressAdd span {
+	max-width: 1.95rem;
+	white-space: nowrap;
+	display: inline-block;
+	overflow: hidden;
+	padding-top: 0.03rem;
+}
+
+.askPublishAddressAdd>img {
+	height: 0.26rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.13rem;
+	left: 0.3rem;
+}
+
+.askPublishadd {
+	width: 0.3rem;
+	height: 0.3rem;
+	line-height: .3rem;
+	text-align: center;
+	background: #c7c7ce;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.15rem;
+	left: 0.25rem;
+	border-radius: 50%;
+}
+
+.askPublishadd img {
+	width: 0.25rem;
+}
+
+.askPublishReward>p {
+	font-size: 0.24rem;
+	color: #858697;
+	margin-top: 0.1rem;
+}
+
+.orderOragee {
+	text-align: center;
+	margin-top: 1rem;
+	font-size: 0.25rem;
+	padding: 0 1rem;
+}
+
+.orderOragee img {
+	width: 0.25rem;
+	height: 0.25rem;
+	position: relative;
+	top: 0.03rem;
+}
+
+.orderOragee a {
+	color: #33CBCC;
+}
+
+.moneyExplain {
+	width: 100%;
+	text-align: center;
+	font-size: .24rem;
+	color: #858697;
+	margin-top: 0.5rem;
+}
+
+/* .hidden_add {
+	display: none !important;
+} */
+
+.askPublishInputPic {
+	position: fixed;
+	bottom: 0;
+	padding: 0.23rem 0.8rem;
+	background: #fdfdfe;
+	border-top: 1px solid #edeff1;
+	width: 100%;
+	z-index: 2;
+}
+
+.askPublishInputPic {
+	font-size: 0.35rem;
+	color: #858697;
+}
+
+.askPublishInputPic b {
+	font-weight: bold;
+	margin-right: 0.65rem;
+}
+
+.askPublishInputPic a {
+	float: right;
+}
+
+.askPublishInputPic img {
+	width: 0.44rem;
+}
+
+
+
+
+
+/*发布问答成功*/
+
+.askSuccessWrapper {
+	padding: 0.9rem 0 0.7rem;
+}
+
+.askSuccessWrapper>.newAskListUl>li {
+	padding: 0.4rem 0.4rem 0.25rem;
+	border-bottom: none;
+}
+
+.askSuccessWrapper .newAskListUl {
+	/*padding: 0 0.4rem;*/
+	box-shadow: 0 0 0.2rem rgba(0, 0, 0, .15);
+}
+
+.askSuccessPerson {
+	overflow: hidden;
+	margin-bottom: 0.25rem;
+}
+
+.askSuccessWrapper .askPublishPic {
+	margin-bottom: 0.4rem;
+}
+
+.askSuccessPeopleAsk p {
+	margin-bottom: 0;
+}
+
+.askSuccessPeopleAsk .newAskpeopleBrowse {
+	color: #33CBCC;
+}
+
+.askSuccessFlowDiv {
+	padding: 0.6rem 0.4rem 0.67rem;
+}
+
+.askSuccessFlow {
+	overflow: hidden;
+}
+
+.askSuccessFlow li {
+	width: 20%;
+	text-align: center;
+	float: left;
+}
+
+.askSuccessFlow li div {
+	width: 1.23rem;
+	height: 1.23rem;
+	position: relative;
+	margin-bottom: 0.3rem;
+}
+
+.askSuccessFlow li div img {
+	position: absolute;
+	top: 50%;
+}
+
+.askSuccessFlow li span {
+	font-size: 0.32rem;
+}
+
+.askSuccessTopImage {
+	background: #d8d8d8;
+	border-radius: 40%;
+}
+
+.askSuccessTopImage img {
+	height: 0.56rem;
+	margin-top: -0.28rem;
+	margin-left: -0.3rem;
+}
+
+.askSuccessLinkFlow img {
+	height: 0.41rem;
+	margin-top: -0.2rem;
+}
+
+.askSuccessTopImage.active {
+	background: linear-gradient(135deg, #3fe4ec, #51bbf5);
+}
+
+.askSuccessBottom {
+	margin-top: 0.6rem;
+	padding: 0.2rem 0 0.2rem 0.55rem;
+	background: #f1f1f1;
+	border-radius: 0.05rem;
+}
+
+.askSuccessBottom p {
+	position: relative;
+	margin: 0.18rem 0;
+	color: #858697;
+}
+
+.askSuccessBottom p:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 0.1rem;
+	height: 0.1rem;
+	background: #33CBCC;
+	border-radius: 100%;
+	top: 50%;
+	margin-top: -0.05rem;
+	left: -0.2rem;
+}
+
+.askSuccessEdit {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: .3rem 0;
+	text-align: center;
+	width: 100%;
+	box-shadow: 0 0 0.3rem rgba(0, 0, 0, .3);
+	font-size: 0.34rem;
+	background: #fff;
+	z-index: 10;
+}
+
+.askSuccessEdit a {
+	width: 50%;
+	display: block;
+	float: left;
+	color: #858697;
+}
+
+.askSuccessEdit a:first-child {
+	border-right: 1px solid #F3F3F3;
+}
+
+.askSuccessEdit .active {
+	color: #33CBCC;
+}
+
+
+
+
+
+/*我的回答*/
+
+.answerContentBg {
+	width: 100%;
+	height: 2rem;
+}
+
+.answerContent .newAskListUl {
+	box-shadow: none;
+}
+
+.answerContent .newAskListUl li {
+	border-bottom: 1px solid #F3F3F3;
+}
+
+ul li:last-child {
+	/*border-bottom: none !important;*/
+	/*border-bottom: none;*/
+}
+
+.answerContent>.newAskListUl>li {
+	padding: 0.25rem 0.4rem 0 0.4rem;
+	background: #fff;
+	margin-top: 0.3rem;
+}
+
+.mainColor {
+	color: #33CBCC !important;
+}
+
+.putQuestionData {
+	margin-top: 0.06rem;
+}
+
+
+
+
+
+/*邀请回答*/
+
+.inviteContentUl li {
+	margin-left: 0.4rem;
+	padding: 0.33rem 0.4rem 0.33rem 0;
+	overflow: hidden;
+	position: relative;
+	background: #FFF;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.inviteContentUl li img {
+	width: 0.98rem;
+	height: 0.98rem;
+	border-radius: 50%;
+}
+
+.inviteRequestBtn {
+	padding: 0.15rem 0.35rem;
+	display: block;
+	color: #33CBCC;
+	border: 1px solid #33CBCC;
+	border-radius: 0.04rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.32rem;
+	font-size: 0.32rem;
+	right: 0.4rem;
+}
+
+.inviteRequestBtn.active {
+	color: #858697;
+	border: 1px solid #858697;
+}
+
+.inviteNameSign {
+	margin-left: 0.2rem;
+}
+
+.inviteNameSign div,
+.inviteNameSign p {
+	width: 3.95rem;
+}
+
+.inviteNameSign div {
+	font-size: 0.32rem;
+	margin-top: 0.12rem;
+}
+
+.inviteNameSign p {
+	font-size: 0.28rem;
+	color: #858697;
+	line-height: 0.4rem;
+	margin-top: 0.1rem;
+}
+
+
+
+
+
+/*回复*******************/
+
+.replayTextarea {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*opacity: 0;*/
+}
+
+.replayWrapper {
+	width: 100%;
+	height: 2.1rem;
+	color: #858697;
+	position: relative;
+	font-size: 0.28rem;
+}
+
+.replayWrapper input {
+	float: left;
+	width: auto;
+}
+
+.replayWrapper textarea::-webkit-input-placeholder {
+	color: #858697;
+}
+
+.fontWeight {
+	font-weight: bold;
+}
+
+
+
+
+
+/*红色*/
+
+.redColor {
+	color: #ff5a39;
+}
+
+.newAskpeopleAddress.redColor {
+	margin-right: 0.1rem;
+}
+
+.inviteContentUl li .beAnsweredSet {
+	width: 0.38rem;
+	height: auto;
+	margin-top: 0.4rem;
+	opacity: 0.7;
+	border-radius: 0;
+}
+
+.inviteContentUl li .beAnsweredSet.a {
+	width: auto;
+}
+
+.askBePic {
+	overflow: hidden;
+}
+
+.beAnsweredShareThumbLove li {
+	float: left;
+	width: 25%;
+	line-height: 0.4rem;
+	font-size: 0.28rem;
+	color: #858697;
+}
+
+.beAnsweredShareThumbLove li img {
+	width: 0.37rem;
+	float: left;
+	margin-right: 0.05rem;
+}
+
+.beAnsweredPeopleUl {
+	padding: 0.3rem 0.35rem 0.35rem;
+}
+
+.beAnsweredPeopleUl>li {
+	overflow: hidden;
+	margin-bottom: 0.3rem;
+	padding-bottom: 0.3rem;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.beAnsweredPeopleUl .inviteContentUl li {
+	margin-left: 0;
+	padding: 0;
+	padding-bottom: 0.3rem;
+	padding-left: 0.1rem;
+}
+
+.askQuestionAvater {
+	/*box-shadow: 0 0.07rem 0.15rem #ddd;*/
+}
+
+.answeredAdopt {
+	padding: 0.05rem 0;
+	width: 1.35rem;
+	text-align: center;
+	display: block;
+	color: #33CBCC;
+	border: 1px solid #33CBCC;
+	border-radius: 0.08rem;
+	margin-top: -0.05rem;
+	float: right;
+}
+
+.newAskPeopleAnswerPic {
+	width: 100%;
+	max-height: 3.3rem;
+	overflow: hidden;
+	margin-bottom: 0.3rem;
+}
+
+.newAskPeopleAnswerPic img {
+	height: -webkit-fill-available;
+}
+
+.newAskPeopleAnswerPicblurImage img {
+	height: 3rem;
+}
+
+.blurImage {
+	filter: blur(0.12rem);
+}
+
+.newComeAnswer {
+	border: 1px solid #33CBCC;
+	padding: 0.05rem 0.1rem;
+	border-radius: 0.04rem;
+}
+
+.twoColorBorder {
+	border-color: #858697;
+}
+
+.newAskMaxAddress {
+	max-width: 3rem;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.opacityTop {
+	opacity: 0;
+}
+
+.positionTopInput {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 30;
+	margin-top: 0.1rem;
+	width: 95%;
+	margin-left: 2%;
+}
+
+.whiteBgContent {
+	/*background: #f6f6f6;*/
+	overflow: hidden;
+}
+
+.askPublishMoneySet {
+	display: inline-block;
+	margin-left: 0.1rem;
+	color: #858697;
+	font-size: 0.2rem;
+}
+
+.askPublishMoneySet img {
+	width: 0.24rem;
+	position: relative;
+	top: 0.02rem;
+}
+
+.mui-table-view {
+	padding-bottom: 0.2rem;
+}
+
+
+
+
+
+/*各项排行榜*/
+
+.rankingListWrapper .newAskUl {
+	padding-bottom: 0.2rem;
+	border-bottom: 1px solid #F3F3F3;
+	overflow: hidden;
+}
+
+.rankingListWrapper .newAskUl li img {
+	display: block;
+	margin: 0.3rem auto 0.25rem;
+}
+
+.rankingListWrapper .newAskUl li span {
+	color: #858697;
+}
+
+
+
+
+
+/*跑腿服务*/
+
+.runNav img {
+	height: 0.38rem;
+	display: block;
+	margin: 0 auto 0.08rem;
+}
+
+.runNav.mui-bar-tab {
+	height: 0.98rem;
+	background: #fff;
+	border-top: 0;
+	box-shadow: 0 0 0.15rem rgba(0, 0, 0, .1);
+	font-size: 0.22rem;
+}
+
+.runNav.mui-bar-tab a {
+	color: #858697;
+}
+
+.runNav .mui-tab-item {
+	vertical-align: bottom;
+	padding-bottom: 0.13rem;
+}
+
+.runNav.mui-bar-tab .mui-tab-item.mui-active {
+	color: #33CBCC;
+}
+
+.runServerPublish .playBook-ul {
+	background: #fff;
+}
+
+.runServerFirstUl {
+	margin-bottom: 0.3rem;
+	padding-left: 0.86rem;
+}
+
+.runServerFirstUl .playBook-li-lf {
+	display: inline-block;
+	max-width: 5rem;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.runServerFirstUl li:before {
+	content: '';
+	width: 0.16rem;
+	height: 0.16rem;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: -0.5rem;
+	margin-top: -0.08rem;
+	background: #7d8cff;
+}
+
+.runServerFirstUl li:last-child:before {
+	background: #ffa65e;
+}
+
+.runServerTwo .playBook-li-select-span,
+.runServerTwo .playBook-tel-input {
+	margin-right: 0.25rem;
+	font-size: 0.28rem;
+}
+
+.runServerFirstUl .playBook-li {
+	padding: 0.5rem 0;
+}
+
+.runServerTwo .playBook-li {
+	padding: 0.2rem 0;
+}
+
+.commonPriceBottom {
+	overflow: hidden;
+	margin-bottom: 0.3rem;
+	position: relative;
+}
+
+.commonPriceBottom .playBook-li-select-span {
+	color: #fd4b1c;
+	margin-right: 0.35rem;
+}
+
+.commonPriceBottom img {
+	width: 0.25rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.1rem;
+	right: 0;
+	opacity: 0.7;
+}
+
+.smallfontsize {
+	font-size: 0.2rem;
+}
+
+.runServerCommonBottom .playBook-li {
+	padding: 0.2rem 0;
+}
+
+.runServerCommonBottom {
+	padding: .2rem 0;
+}
+
+.runServerCommonBottom li:last-child {
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.runServerCommonBottom .playLiFirst {
+	background: #f2f2f2;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	top: -0.8rem;
+	font-size: 0.32rem;
+	color: #404a4c;
+}
+
+
+
+
+
+/*蒙版*/
+
+.maskBack {
+	position: fixed;
+	top: 0;
+	bottom: 0.98rem;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .25);
+	z-index: 21;
+}
+
+
+
+
+
+/*更多服务*/
+
+.runMoreUL {
+	padding: 0.2rem 0.4rem;
+	overflow: hidden;
+	background: #fff;
+}
+
+.runMoreUL .runMoreList {
+	width: 23%;
+	text-align: center;
+	padding: 0.25rem 0;
+	border: 1px solid #F3F3F3;
+	border-radius: 0.04rem;
+	font-size: 0.32rem;
+	margin: 0 auto;
+	float: left;
+	color: #404A4C;
+	margin-right: 2%;
+}
+
+.runMoreUL li.active {
+	border: 1px solid #33CBCC;
+	color: #33CBCC;
+}
+
+.runMoreUL .runMoreList:nth-child(5),
+.runProductInfo .runMoreUL .runMoreList:last-child {
+	margin-right: 0;
+	width: 25%;
+}
+
+.runMoreUL .runMoreListOther {
+	width: 100%;
+	margin-top: 0.2rem;
+}
+
+.runMoreListOther input {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 0.32rem;
+}
+
+.runMoreUL .playLiFirst {
+	padding: 0 0.4rem;
+}
+
+.runMoreUL .playLiFirst a {
+	color: #404A4C;
+}
+
+.runServiceMoreRemarks {
+	padding: 0.4rem;
+	margin-top: 0.3rem;
+	background: #fff;
+}
+
+.runServiceMoreRemarks textarea {
+	height: 1.45rem;
+	background: #f3f3f3;
+	font-size: 0.28rem;
+	color: #858697;
+	padding: 0.15rem 0.2rem;
+}
+
+.runMoreService,
+.runProductInfo {
+	background: #f3f3f3;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 51;
+}
+
+
+
+
+
+/*蓝色*/
+
+.blueColor {
+	color: #33CBCC;
+}
+
+
+
+
+
+/*商品信息*/
+
+.runProductInfo .playBook-ul {
+	margin: 0.3rem 0 0.5rem;
+	padding: 0 0.4rem;
+}
+
+.runProductInfo .playBook-ul li {
+	padding: 0.2rem 0;
+}
+
+.runProductAdd {
+	padding: 0.4rem;
+	background: #fff;
+}
+
+.runProductAdd div {
+	overflow: hidden;
+	/*box-shadow: 0 0 0.4rem rgba(0,0,0,.15);*/
+}
+
+.runProductAdd a {
+	width: 100%;
+	float: left;
+	text-align: center;
+	font-size: 0.32rem;
+	padding: 0.25rem 0;
+	color: #fff;
+	background: #33CBCC;
+	border-radius: .06rem;
+}
+
+.runProductInfo .runMoreUL .runMoreList {
+	margin-bottom: 0.2rem;
+}
+
+.runServerPublish {
+	padding-bottom: 3rem;
+}
+
+.runServerPublish .runProductInfo,
+.runServerPublish .runMoreService,
+.runServerPublish .common-bottom {
+	/*bottom: 0.98rem;*/
+}
+
+.servicePrice .playBook-tel-input {
+	margin-right: 0;
+}
+
+
+
+
+
+/*跑腿订单*/
+
+.runOrderContent {
+	background: #F3F3F3;
+}
+
+.runOrderContent .visaOrder-visa-and-txt p {
+	margin-left: 0;
+}
+
+.runOrderContent .visaOrder-person {
+	padding-left: 0;
+	line-height: 0.4rem;
+}
+
+.runOrderContent .visaOrder-orderNum {
+	width: 6rem;
+}
+
+.runOrderContent .visaOrder-person img {
+	width: 0.4rem;
+	height: 0.4rem;
+	border-radius: 50%;
+	float: left;
+}
+
+.runOrderContent .visaOrder-person span {
+	margin-left: 0.1rem;
+}
+
+.runOrderContent .visaOrder-li {
+	margin-bottom: 0;
+	margin-top: 0.3rem;
+}
+
+
+
+
+
+/*助游端跑腿*/
+
+.runList {
+	background: #fff;
+	padding: 0 0.3rem 0.35rem;
+	margin-top: 0.2rem;
+}
+
+.runServerListName {
+	padding: 0.26rem 0;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.runWhereGo {
+	font-size: .4rem;
+	overflow: hidden;
+}
+
+.runWhereGo .lf,
+.runWhereGo .rf {
+	width: 40%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.runWhereGo .rf {
+	text-align: right;
+}
+
+.centerImg {
+	width: 20%;
+	float: left;
+	text-align: center;
+}
+
+.centerImg img {
+	width: 0.8rem !important;
+}
+
+.fontSmall {
+	font-size: 0.22rem;
+	color: #858697;
+	margin-bottom: 0.05rem;
+	display: block;
+}
+
+.runProducts {
+	margin-top: 0.25rem;
+}
+
+.runProducts li {
+	line-height: .3rem;
+	font-size: 0.34rem;
+}
+
+.runRanking {
+	width: .3rem;
+	height: .3rem;
+	background: #33CBCC;
+	color: #fff;
+	text-align: center;
+	display: block;
+	float: left;
+	margin-right: 0.05rem;
+	font-size: 0.26rem;
+}
+
+.runCompany {
+	font-size: 0.2rem;
+}
+
+.runPriceSpan {
+	float: right;
+}
+
+.runServiceMoney {
+	overflow: hidden;
+	margin-top: 0.3rem;
+}
+
+.runServiceMoney div span {
+	font-size: 0.2rem;
+	color: #ff3c16;
+}
+
+.runServiceMoney div .runFontBig {
+	font-size: 0.3rem;
+}
+
+.runServiceMoney .runServiceALL {
+	margin-bottom: 0.3rem;
+}
+
+.runServiceMoney .runServiceALL span {
+	color: #404A4C;
+}
+
+.runDetailTextarea textarea {
+	min-height: 1.9rem;
+	padding: 0.2rem;
+	font-size: 0.3rem;
+	color: #404A4C;
+	background: #f3f3f3;
+	margin-top: 0.3rem;
+}
+
+.runPlayerPublish {
+	padding-bottom: 0.1rem;
+}
+
+.runPlayerPublish .runServerTwo {
+	margin-top: 0.3rem;
+}
+
+.runPublishPlayPersonCount {
+	position: relative;
+	width: 2.4rem;
+	bottom: -0.5rem;
+	right: 0.6rem;
+}
+
+.runPublishPlayPersonCount input,
+.runPublishPlayPersonCount span {
+	position: absolute;
+	bottom: 0;
+}
+
+.runPublishPlayPersonCount span {
+	left: 1.2rem;
+	font-size: 0.5rem;
+	color: #858697;
+}
+
+.runPublishPlayPersonCount input {
+	border-bottom: 0.05rem solid #f5f5f5;
+	width: 1rem;
+	background: transparent;
+	height: auto;
+	text-align: center;
+	font-size: 0.3rem;
+}
+
+.runPublishPlayPersonCount input:first-child {
+	left: 0;
+}
+
+.runPublishPlayPersonCount input:last-child {
+	left: 1.8rem;
+}
+
+.detailContact {
+	margin-top: 0.1rem;
+	font-size: 0.3rem;
+	color: #858697;
+}
+
+.masterDetail-brief-and>div {
+	width: 1.1rem;
+	text-align: left;
+	float: left;
+	color: #F0F0F0;
+}
+
+.masterDetail-brief-and {
+	width: auto;
+}
+
+.common-top-center .masterDetail-brief-border {
+	width: 50%;
+	border-bottom-color: #fff;
+}
+
+
+
+
+
+/*民宅*/
+
+
+/*.minsuLi {
+	overflow: hidden;
+	position: relative;
+	margin-top: 0.3rem;
+}
+
+.nearby2HomeStayList>li {
+	padding: 0.2rem;
+	font-size: 0.26rem;
+	color: #7B7B7B;
+	background: #fff;
+	overflow: hidden;
+}
+
+.hotelImgCenterDiv,
+.nearby2HomeStayListMainPic {
+	width: 1.87rem;
+	height: 1.87rem;
+	border-radius: 0.04rem;
+}
+
+.nearby2HomeStayListMain {
+	margin-left: 2rem;
+}
+
+.nearby2HomeStayListTitle {
+	font-weight: bold;
+	margin-top: 0.05rem;
+	margin-bottom: 0;
+	line-height: 0.35rem;
+	font-size: 0.3rem;
+	color: #000;
+}
+
+.lookForGuideRightGrade {
+	margin: 0.1rem 0;
+	font-size: 0.25rem;
+}
+
+.lastScore {
+	font-size: 0.3rem;
+	color: #ff9901;
+	margin-right: 0.1rem;
+}
+
+.nearby2HomeStayListPriceAnd {
+	overflow: hidden;
+	line-height: initial;
+	height: 0.4rem;
+	width: 5rem;
+	position: absolute;
+	bottom: 0.2rem;
+	margin-top: 0.1rem;
+}
+
+.guestNewHouseType {
+	padding: 0.05rem 0.07rem;
+	background: -webkit-linear-gradient(0deg, #ff7800 10%, #ffaf00 100%);
+	color: #fff;
+	border-radius: 0.04rem;
+	font-size: 0.25rem;
+}
+
+.nearby2HomeStayListPrice {
+	color: #EF5A39;
+	font-size: 0.25rem;
+}
+
+.nearby2HomeStayListPrice .nearby2HomeStayListPriceNum {
+	font-size: 0.3rem;
+}*/
+
+.minsuList {
+	overflow: hidden;
+	position: relative;
+	margin-top: 0.2rem;
+	background: #fff;
+	padding: 0.3rem;
+}
+
+.minsuList h2 {
+	font-size: 0.33rem;
+	font-weight: bold;
+	line-height: .35rem;
+}
+
+.minsuList p {
+	font-size: 0.25rem;
+	margin-top: 0.2rem;
+	color: #000;
+	line-height: initial;
+}
+
+.masterNewMinsuAvaterNicknameAgeGengerPrice {
+	height: 0.47rem;
+	line-height: 0.47rem;
+	position: absolute;
+	right: 0.3rem;
+	bottom: 0.28rem;
+}
+
+.masterNewMinsuAgeSex {
+	font-size: 0.23rem;
+	color: #9d9d9d;
+}
+
+.masterNewMinsuAgeSex img {
+	height: 0.17rem;
+}
+
+.masterNewMinsuNickname {
+	font-size: 0.25rem;
+	margin-right: 0.1rem;
+}
+
+.masterNewMinsuAvaterNicknameAgeGengerPrice>img {
+	width: 0.47rem;
+	height: 0.47rem;
+	border-radius: 50%;
+	float: right;
+}
+
+.masterNewMinsuPrice {
+	font-size: 0.25rem;
+	float: right;
+	color: #fc5346;
+	position: absolute;
+	top: 0.3rem;
+	right: 0.3rem;
+}
+
+.masterTop .common-top-center {
+	margin: 0;
+	width: auto;
+	padding-left: 0.4rem;
+	font-size: 0.3rem;
+}
+
+.masterDetail-content-li .newAskListUl>li,
+.mui-scroll-wrapper .newAskListUl>li {
+	margin-top: 0.1rem;
+	background: #fff;
+}
+
+.common-top {
+	background: #33CBCC;
+	color: #fff;
+}
+
+.masterDetail-brief-and .active {
+	font-size: 0.34rem;
+	color: #fff;
+}
+
+.common-top .newAskSearchInput.positionTopInput {
+	background: #FFF;
+}
+
+.common-top-right-a-span,
+.common-top-left-a-span {
+	color: #fff;
+}
+
+.common-top-left-img {
+	width: auto;
+}
+
+.dataBack {
+	height: 0.43rem;
+	padding: 0 0.5rem 0 0.1rem;
+}
+
+.mui-btn-blue,
+.mui-btn-primary,
+input[type=submit] {
+	border: 1px solid #33CBCC;
+	background-color: #33CBCC;
+}
+
+.rankBottom {
+	box-shadow: 4px -1px 0.2rem #eee;
+}
+
+.rankBottom>li {
+	margin-top: 0;
+	padding: 0.2rem;
+	height: auto;
+	overflow: hidden;
+}
+
+.askJINBimg {
+	margin-right: 0.1rem;
+}
+
+.masterDetail-content-li .newAskSearchWrapper,
+.mui-scroll-wrapper .newAskSearchWrapper {
+	width: auto;
+	margin: 0.1rem;
+	padding: 0.3rem 0.1rem;
+}
+
+
+
+
+/*抢单页修改*/
+
+.playerWrapper .mui-segmented-control.mui-scroll-wrapper {
+	height: .9rem;
+	line-height: .9rem;
+	background: #33CBCC;
+	box-sizing: content-box;
+}
+
+.playerWrapper.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+	top: .9rem;
+}
+
+.playerWrapper .mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+	height: 0.9rem;
+}
+
+.playerWrapper .mui-segmented-control .mui-control-item {
+	line-height: 0.9rem;
+}
+
+.playerWrapper .mui-segmented-control {
+	font-size: .3rem;
+	color: #F0F0F0;
+}
+
+.playerWrapper.mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	color: #fff;
+	font-weight: bold;
+	font-size: .34rem;
+	position: relative;
+	display: inline-block;
+}
+
+.playerWrapper.mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active:before {
+	position: absolute;
+	border-bottom: 2px solid #fff;
+	border-left: 2px solid transparent;
+	border-right: 2px solid transparent;
+	position: absolute;
+	bottom: 0;
+	left: 25%;
+	width: 50%;
+	content: '';
+}
+
+.mui-slider .mui-slider-group .mui-slider-item img {
+	width: auto;
+}
+
+
+
+
+/*新手大礼包*/
+
+.BiggiftBag {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .5);
+	z-index: 9999;
+}
+
+.BiggiftBag>img {
+	width: 6.4rem;
+	margin: 2.7rem auto 0;
+	display: block;
+}
+
+.BiggiftBag a {
+	width: 100%;
+	margin-top: 0.5rem;
+	text-align: center;
+	display: block;
+}
+
+.BiggiftBag a img {
+	width: 0.7rem;
+}
+
+.noBorder {
+	border-bottom: none;
+}
+
+.publishPlayPrice {
+	line-height: 0.5rem;
+	font-size: 0.26rem;
+	color: #858697;
+	border-top: 1px solid #F3F3F3;
+	padding-top: 0.1rem;
+}
+
+.publishPlayPrice img {
+	height: 0.25rem;
+	float: left;
+	margin-left: 0.1rem;
+	margin-top: 0.12rem;
+}
+
+.publishSwitch {
+	overflow: hidden;
+	line-height: 30px !important;
+}
+
+.publishSwitch .mui-switch {
+	float: right;
+}
+
+.publishSpecial {
+	position: relative;
+	top: 0.2rem;
+}
+
+.mui-switch.mui-active {
+	border-color: #33CBCC;
+	background-color: #33CBCC;
+}
+
+.common-master-distance {
+	top: .25rem;
+	color: #404A4C;
+}
+
+.mui-scroll-wrapper {
+	background: #FFF;
+}
+
+
+
+
+/*我的收益*/
+
+.profitContent {
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0.9rem;
+}
+
+.profitUL {
+	background: #33CBCC;
+	overflow: hidden;
+	padding: 0.3rem 0;
+}
+
+.profitLi {
+	float: left;
+	width: 49%;
+	text-align: center;
+	color: #fff;
+}
+
+.profitLi h3 {
+	font-size: 0.8rem;
+}
+
+.profitLi span {
+	font-size: 0.26rem;
+}
+
+.profitLine {
+	float: left;
+	height: 0.7rem;
+	width: 1%;
+	margin-top: 0.15rem;
+	background: -webkit-linear-gradient(90deg, #33CBCC, #26f9fa, #33CBCC);
+	border-radius: 30%;
+}
+
+.profitCostDetail {
+	background: #fff;
+	font-size: 0.34rem;
+	overflow: hidden;
+}
+
+.profitCostDetail a {
+	width: 50% !important;
+	color: #404A4C;
+	display: block !important;
+}
+
+.backf3 {
+	background: #f3fafa;
+}
+
+.runServiceList {
+	background: #fff;
+	margin-top: 0.1rem;
+}
+
+.profitSliderContent {
+	top: 2.65rem;
+}
+
+.profitSliderContent .mui-segmented-control.mui-scroll-wrapper,
+.profitSliderContent .mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+	height: 1rem;
+	line-height: 1rem;
+}
+
+.profitSliderContent.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+	top: 1rem;
+}
+
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+	border: none;
+	margin-top: 0.3rem;
+}
+
+.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+	width: 100%;
+}
+
+.profitSliderContent .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	position: relative;
+	color: #000;
+	background: url(../../images/bottomLineMain_03.png)no-repeat bottom;
+	background-size: 0.65rem auto;
+}
+
+
+
+
+/*.profitSliderContent .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active:before{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -0.3rem;
+	content: '';
+	width: 0.65rem;
+	height: 0;
+	border: 3px solid transparent;
+	border-bottom-color: #33CBCC;
+	background: url(../../images/bottomLineMain_03.png)no-repeat bottom;
+}*/
+
+.mui-segmented-control .mui-control-item {
+	line-height: inherit;
+}
+
+
+
+
+/*指南*/
+
+.guideCommon {
+	padding: .9rem .2rem 0rem;
+}
+
+.guideCommon ul {
+	background: #fff;
+	padding: .3rem .25rem;
+	margin-top: .2rem;
+}
+
+.guideCommonList {
+	overflow: hidden;
+	margin-bottom: .68rem;
+}
+
+.guideTitle {
+	font-size: .38rem;
+}
+
+.guideWrapper {
+	margin-top: .3rem;
+}
+
+.guideLeft {
+	width: 1rem;
+	height: 1rem;
+	background: #33CBCC;
+	line-height: 1rem;
+	text-align: center;
+}
+
+.guideLeft>img {
+	width: .76rem;
+	height: auto;
+	margin-top: .15rem;
+}
+
+.guideRight {
+	color: #858697;
+	font-size: .32rem;
+	line-height: .4rem;
+	width: 5.1rem;
+	margin-left: 1.1rem;
+}
+
+
+
+
+/*发布助游和寻助*/
+
+.publishToTravePlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(250, 244, 244, .94);
+	z-index: 999;
+}
+
+.publishTop {
+	height: 1.26rem;
+	width: 100%;
+	background: #fdfdfd;
+	position: absolute;
+	opacity: .6;
+	top: 0;
+}
+
+.publishTopTwo {
+	height: 2.8rem;
+	width: 100%;
+	background: #f1ecf3;
+	position: absolute;
+	top: 1.26rem;
+	opacity: .9;
+}
+
+.publishPlayTravelTitle {
+	font-size: .5rem;
+	padding-bottom: .2rem;
+	margin-bottom: .25rem;
+	position: relative;
+}
+
+.publishPlayTravelTitle:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: .45rem;
+	height: 2px;
+	border-radius: 2px;
+	background: #404A4C;
+	display: block;
+}
+
+.publishWrapper {
+	padding: 1.26rem .44rem 0;
+	position: absolute;
+}
+
+.publishPlayTravel {
+	margin-bottom: .8rem;
+}
+
+.publishPlayTravel>p {
+	font-size: .34rem;
+	color: #858697;
+}
+
+.pubishBottom {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding: .3rem 0;
+	background: #fff;
+}
+
+.pubishBottom>img {
+	width: .3rem;
+}
+
+.publishButton {
+	width: 100%;
+	margin-top: 2.7rem;
+}
+
+.publishPlayBtn {
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+
+.publishPlayBtn>div {
+	width: 1.42rem;
+	height: 1.42rem;
+	border-radius: 50%;
+	border: 0.08rem solid #fff;
+	box-shadow: 0 0 0.4rem rgba(255, 129, 6, .3);
+	text-align: center;
+	margin: 0 auto;
+}
+
+.publishPlayBtn>p {
+	font-size: .34rem;
+	color: #858697;
+	margin-top: .48rem;
+}
+
+.publishPlayBtn>div>img {
+	width: .7rem;
+	margin-top: .3rem;
+}
+
+.pulbishPlayColor>div {
+	background: #ff7e00;
+}
+
+.pulbishTravelColor>div {
+	background: #01c700;
+}
+
+.userlistCity {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0 0.2rem;
+	box-sizing: border-box;
+	background: rgba(255, 255, 255, .8);
+	height: .4rem;
+	line-height: .4rem;
+	color: #858697;
+	font-size: .24rem;
+}
+
+.userlistNew {
+	height: 3.48rem;
+	box-sizing: content-box;
+	position: relative;
+}
+
+.userlistNew .userList-list-background {
+	position: relative;
+}
+
+.userList-list-sex-age {
+	display: inline-block;
+	font-size: .18rem;
+	height: .3rem;
+	line-height: .3rem;
+	margin-left: 0.1rem;
+}
+
+.userList-list-sex-age img {
+	width: .2rem;
+	float: left;
+	margin-top: .02rem;
+}
+
+.userlistNew .userList-list-name {
+	float: left;
+}
+
+.userList-list-approve {
+	height: .25rem;
+	line-height: .25rem;
+	font-size: .2rem;
+}
+
+.userList-list-approve>i {
+	float: left;
+	margin-right: 0.1rem;
+}
+
+.userGrade {
+	height: 100%;
+	padding: 0 2px;
+	background: #33CBCC;
+	color: #fff;
+	font-size: 70%;
+}
+
+.messageDistanceTip {
+	height: 100%;
+	padding: 0 2px;
+	font-size: 70%;
+	color: #33CBCC;
+	border: 1px solid #33CBCC;
+	box-sizing: border-box;
+}
+
+.userListApprove {
+	color: #858697;
+}
+
+.userList-list-approve>span {
+	font-size: .26rem;
+	color: #33CBCC;
+}
+
+.userlistNew .userList-list-name-and {
+	margin-bottom: 0;
+}
+
+.userlistNew .userList-list-main-text {
+	margin-top: .2rem;
+}
+
+.userList-list-main-text li {
+	font-size: .26rem;
+}
+
+.userApproveList {
+	position: absolute;
+	bottom: .3rem;
+	left: 2.9rem;
+	padding-top: .1rem;
+	border-top: 1px solid #F3F3F3;
+}
+
+.userApproveList img {
+	display: block;
+	float: left;
+	width: .38rem;
+	margin-right: .35rem;
+}
+
+.profitNo {
+	text-align: center;
+	width: 100%;
+	margin-top: .5rem;
+}
+
+.relationshipLi span {
+	padding-right: 0.1rem;
+}
+
+
+
+
+/*问答-跑腿-职业互助*/
+
+.interaction-common {
+	width: 100%;
+	padding-left: .4rem;
+}
+
+.discoverMessageTab {
+	float: left;
+	width: .85rem;
+	/*display: inline-block;*/
+	position: relative;
+	/*margin-right: .56rem;*/
+	font-size: .35rem;
+	line-height: .85rem;
+	word-break: break-word;
+	color: rgba(255, 255, 255, .8);
+}
+
+.dynamic-top .discoverMessageTab {
+	display: inline-block;
+	float: initial;
+}
+
+.discoverMessageTab:last-child {
+	margin-right: 0;
+}
+
+.discoverMessageTabBorder {
+	position: absolute;
+	border-bottom: 3px solid #fff;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	width: 100%;
+	left: 0;
+	bottom: 0.05rem;
+	display: none;
+}
+
+.discoverMessageTab.active {
+	font-weight: bold;
+	position: relative;
+	background: url(../../images/bottomLine_03.png)no-repeat bottom;
+	background-size: .67rem auto;
+	color: #fff;
+}
+
+.discoverMessageTab.active .discoverMessageTabBorder {
+	display: block;
+}
+
+.askContent {
+	padding: .9rem 0 0 0;
+}
+
+.whiteBgContent {
+	display: none;
+}
+
+.whiteBgContent.active {
+	display: block;
+}
+
+.contentOccupation {
+	padding: .15rem 0.44rem;
+	border-bottom: 1px solid #F3F3F3;
+	background: #fff;
+}
+
+.contentOccupation .newAskSearchInput {
+	margin-bottom: 0;
+}
+
+.askOccupationDiv {
+	overflow: hidden;
+	border-bottom: 1px solid #F3F3F3;
+	position: relative;
+	background: #fff;
+}
+
+.ocuupationUL {
+	margin-left: 0.44rem;
+	width: 77%;
+	height: .95rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.occupationScrollUl {
+	padding: .18rem 0;
+	white-space: nowrap;
+}
+
+.ocuupationList {
+	background: #f6f6f6;
+	padding: 0 .2rem;
+	height: .58rem;
+	line-height: .58rem;
+	font-size: .34rem;
+	color: #858697;
+	margin-right: .2rem;
+	display: inline-block;
+	border-radius: 0.06rem;
+}
+
+.ocuupationList.active {
+	color: #33cbcc;
+}
+
+.occupationMore {
+	box-shadow: -0.05rem 0 0.15rem rgba(51, 203, 204, .35);
+	width: 15%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.occupationMore img {
+	width: .3rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -.09rem;
+	margin-left: -.15rem;
+}
+
+.ocuupationAddressUl {
+	background: #fff;
+	padding: .25rem 0;
+	overflow: hidden;
+}
+
+.ocuupationAddressUl li {
+	width: 33.33%;
+	text-align: center;
+	font-size: .28rem;
+	float: left;
+	color: #404A4C;
+	position: relative;
+}
+
+.occupationLine:before {
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 100%;
+	background: #F3F3F3;
+	right: 0;
+	top: 0;
+}
+
+.ocuupationAddressUl li img {
+	width: .16rem;
+	height: 0.09rem;
+	position: absolute;
+	top: 50%;
+	margin-left: 0.05rem;
+	margin-top: -.045rem;
+}
+
+.occupationWrapperList {
+	padding: .35rem .5rem;
+	background: #fff;
+	position: relative;
+	margin-top: .2rem;
+}
+
+.occupationWrapperList h3 {
+	color: #404A4C;
+	font-size: .34rem;
+	max-width: 5.4rem;
+}
+
+.occupationWrapperList p {
+	color: #858697;
+	font-size: .28rem;
+	line-height: .5rem;
+	margin-top: 0.1rem;
+}
+
+.occupationAddressAge {
+	margin-top: 0.1rem;
+	margin-bottom: .15rem;
+}
+
+.occupationAddressAge span,
+.recruitTip {
+	padding: .05rem 0.1rem;
+	background: #eafafa;
+	color: #858697;
+	font-size: .22rem;
+	margin-right: .2rem;
+}
+
+.occupationAvaterName {
+	height: .5rem;
+	line-height: .5rem;
+}
+
+.occupationAvaterName img {
+	height: .5rem;
+	width: .5rem;
+	float: left;
+	border-radius: 50%;
+}
+
+.occupationAvaterName span {
+	font-size: .26rem;
+	color: #858697;
+	margin-left: .14rem;
+}
+
+.occupationPrice {
+	position: absolute;
+	right: .5rem;
+	top: 0.3rem;
+	font-size: .34rem;
+	color: #33cbcc;
+	font-weight: bold;
+}
+
+
+
+
+/*职业互助无选择之前*/
+
+.occupationInitialization {
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	background: #FFF;
+	top: .9rem;
+	bottom: 0;
+}
+
+.occupationJobwantedImg {
+	width: auto;
+	height: 1.75rem;
+	padding-top: 1.32rem;
+	display: block;
+	margin: 0 auto;
+	box-sizing: content-box;
+}
+
+.occupationJobwantedA {
+	width: 2.5rem;
+	height: .72rem;
+	line-height: .72rem;
+	color: #fff;
+	background: #33cbcc;
+	border-radius: .4rem;
+	margin: .6rem auto 1rem;
+	display: block;
+}
+
+.occupationOr {
+	width: .82rem;
+	height: .4rem;
+	background: #fff;
+	font-size: .28rem;
+	color: #858697;
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.occupationOr:after {
+	content: '';
+	width: 2.65rem;
+	height: 1px;
+	background: #F3F3F3;
+	position: absolute;
+	top: 50%;
+	left: -.952rem;
+	z-index: -5;
+}
+
+.occupationJobTip {
+	position: absolute;
+	bottom: .54rem;
+	font-size: .24rem;
+	color: #858697;
+	text-align: center;
+	width: 100%;
+}
+
+
+
+
+/*背景白色*/
+
+.backWhite {
+	background: #fff;
+}
+
+.bossFindList {
+	padding: 0.35rem 0.5rem;
+	background: #fff;
+	margin-top: 0.2rem;
+}
+
+.bossFindAvaterName>img {
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 50%;
+	float: left;
+}
+
+.bossFindNameMoney {
+	height: 1.2rem;
+	padding: .15rem 0 .25rem;
+	margin-left: 1.5rem;
+}
+
+.bossFindName a {
+	color: #404a4c;
+	font-size: .34rem;
+}
+
+.bossFindName span,
+.bossFindNameMoney>p {
+	color: #858697;
+	font-size: .28rem;
+	line-height: .4rem;
+}
+
+.bossFindDescr {
+	font-size: .28rem;
+	color: #858697;
+	margin-top: .3rem;
+}
+
+.occupationAllUl {
+	background: #fff;
+	text-align: initial;
+	background: rgba(0, 0, 0, .3);
+}
+
+.occupationAllContent {
+	background: #fff;
+	max-height: 9rem;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.occupationAllList {
+	margin: 0 .4rem;
+	padding: .25rem 0;
+	border-bottom: 1px solid #F3F3F3;
+	position: relative;
+	font-size: .34rem;
+}
+
+.occupationAllEdit {
+	color: #33cbcc;
+}
+
+.occupationNo {
+	position: absolute;
+	top: 50%;
+	margin-top: -.17rem;
+	width: .38rem;
+	right: 0;
+}
+
+.occupationAllList>p {
+	margin-top: .1rem;
+}
+
+.occupationAllAdd img {
+	float: left;
+	width: .32rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -.16rem;
+}
+
+.occupationAllAdd {
+	color: #33cbcc;
+}
+
+.occupationAllAdd span {
+	margin-left: 0.4rem;
+}
+
+.occupationEditDelete {
+	position: absolute;
+	top: 50%;
+	margin-top: -.17rem;
+	right: 0;
+}
+
+.occupationEditDelete a {
+	padding: .1rem .35rem;
+	border-radius: 0.06rem;
+	color: #fff;
+	font-size: .3rem;
+	margin-left: .2rem;
+}
+
+.occupationEdit {
+	background: #33cbcc;
+}
+
+.occupationDelete {
+	background: #ff6243;
+}
+
+.switchPosition {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, .3);
+	z-index: 999;
+}
+
+.switchPositionTop {
+	width: 1rem;
+	padding: .1rem 0;
+	text-align: center;
+	background: #448cf6;
+	border-radius: 0.8rem;
+	margin-top: .1rem;
+}
+
+.switchPositionTop img {
+	width: .45rem;
+}
+
+.switchContent {
+	padding: 0.1rem .35rem;
+	background: #33cbcc;
+	color: #fff;
+	font-size: .3rem;
+	position: relative;
+	margin-top: .2rem;
+	border-radius: .5rem;
+}
+
+.switchContent:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border: .13rem solid transparent;
+	border-bottom-color: #33cbcc;
+	display: block;
+	right: .4rem;
+	top: -.26rem;
+}
+
+.switchKnow {
+	width: 2rem;
+	padding: 0.15rem 0;
+	border: 1px solid #fff;
+	border-radius: .5rem;
+	color: #fff;
+	font-size: .3rem;
+	text-align: center;
+	margin: 4.3rem auto 0;
+}
+
+
+
+
+/*招人详情*/
+
+.recruitTopRight .common-top-left-img {
+	margin-left: 0.1rem;
+}
+
+.recruitWrapper {
+	padding-bottom: 1.5rem;
+}
+
+.recruitWrapper .bossFindList {
+	padding: 0;
+	padding-bottom: .55rem;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.recruitWrapper .bossFindNameMoney {
+	position: relative;
+}
+
+.bossFindNameMoney .occupationPrice {
+	right: 0;
+	top: .15rem;
+}
+
+.recruitBaisc {
+	padding: .3rem 0;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.recruitBaiscTitle {
+	font-size: .34rem;
+	margin-bottom: .2rem;
+}
+
+.recruitBaiscDetail {
+	color: #858697;
+	font-size: .3rem;
+}
+
+.recruitWorkDate {
+	font-size: .3rem;
+	color: #858697;
+}
+
+.recruitWrapper .occupationWrapperList {
+	padding: 0;
+}
+
+.recruitPrice {
+	top: -.1rem;
+	right: 0;
+}
+
+.workedCompany {
+	margin-top: .75rem;
+}
+
+.workedCompany img {
+	border-radius: 0.06rem;
+	width: 1rem;
+	height: 1rem;
+}
+
+.workedCompany .bossFindNameMoney {
+	height: 1rem;
+	padding: .05rem 0;
+	margin-left: 1.3rem;
+}
+
+.recruitMap {
+	width: 100%;
+	height: 3.32rem;
+}
+
+.recruitWork .occupationAllEdit {
+	font-size: .3rem;
+}
+
+.workedCompany .bossFindName {
+	max-width: 5.4rem;
+}
+
+.runServiceUl {
+	margin-bottom: 0.2rem;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.whiteBgContent .runServerList-list>li:first-child {
+	margin-top: 0;
+}
+
+.whiteBgContent .runList:first-child {
+	margin-top: 0;
+}
+
+
+
+
+/*求职*/
+
+.addJobContent {
+	padding: .9rem 0 1.6rem;
+}
+
+.addJobContent .playBook-ul {
+	background: #fff;
+}
+
+.addJobContent .publishCenter {
+	padding: 0 .4rem;
+}
+
+.jobResumeDetail {
+	line-height: .54rem;
+	padding: .2rem .4rem;
+	box-sizing: content-box;
+	font-size: .25rem;
+}
+
+.playBook-li .jobResumeAvatar {
+	width: 1.05rem;
+	height: 1.05rem;
+	border-radius: 50%;
+	float: left;
+}
+
+.playBook-li-avatar {
+	height: auto;
+	line-height: 1.05rem;
+}
+
+.playBook-div {
+	text-align: center;
+	color: #33CBCC;
+}
+
+.playBook-div>img {
+	height: .26rem;
+	top: 0.03rem;
+}
+
+.playBook-li {
+	font-size: .34rem;
+}
+
+
+
+
+/*公司介绍*/
+
+.myPositionEmail {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #F3F3F3;
+	z-index: 999;
+}
+
+.addJobContent .commpanyInput {
+	background: #FFF;
+	line-height: .45rem;
+	margin-top: .1rem;
+	border-radius: 0;
+	padding: 0 .4rem;
+	font-size: .28rem;
+}
+
+.addJobContent .companyTextarea {
+	padding: .2rem .4rem;
+}
+
+.commpanyPositionSpan {
+	width: 100%;
+	display: block;
+	text-align: right;
+	padding-top: 0.2rem;
+	padding-right: .2rem;
+	box-sizing: border-box;
+	font-size: .28rem;
+}
+
+.addPositionBottom {
+	/*width: 100%;*/
+	margin: 0 .2rem;
+	line-height: 1rem;
+	z-index: 50;
+	background: #33CBCC;
+	text-align: center;
+	border-radius: 0.06rem;
+}
+
+.addPositionBottom>a {
+	color: #fff;
+}
+
+
+
+
+/*职业类型选择*/
+
+.careerAside {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 80%;
+	bottom: 0;
+	z-index: 1;
+	padding-bottom: 0;
+	box-shadow: -1px -1px .2rem rgba(0, 0, 0, .5);
+	text-align: center;
+	overflow-y: scroll;
+	background: #fff;
+}
+
+.careerAside .addJobCareer {
+	width: 50%;
+	float: left;
+	padding-bottom: 0;
+	min-height: 100%;
+	/*position: absolute;
+	top: .9rem;
+	bottom: 0;*/
+}
+
+.careerAside .playBook-li {
+	border-bottom: none;
+}
+
+.careerAside .addJobCareer li {
+	text-align: center;
+}
+
+.careerAsideTwo {
+	background: #fff;
+	left: 0;
+}
+
+.careerAsideThree {
+	background: #33CBCC;
+	right: 0;
+}
+
+.career-off-canvas-backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .5);
+}
+
+.grayBack {
+	background: #ddd !important;
+}
+
+
+
+
+/*供需*/
+
+.common-content-textarea-ul {
+	background: #fff;
+	padding-bottom: .3rem;
+}
+
+.supply-textarea {
+	width: 100%;
+	padding: .2rem .4rem;
+}
+
+.supply-textarea>textarea {
+	line-height: .35rem;
+	font-size: .3rem;
+}
+
+.supply-uploadImg {
+	padding: .3rem .4rem 0;
+	overflow: hidden;
+}
+
+.supply-upload-li {
+	width: 2.2rem;
+	height: 2.2rem;
+	background: #eaf7f7;
+	position: relative;
+	margin-right: .05rem;
+	float: left;
+	margin-bottom: .05rem;
+}
+
+.supply-upload-li1 {
+	width: auto;
+	height: 3rem;
+	max-width: 6.6rem;
+	background: #eaf7f7;
+	position: relative;
+	margin-right: .05rem;
+	float: left;
+	margin-bottom: .05rem;
+	overflow: hidden;
+	background-size: containcover;
+
+}
+
+.supply-upload-li:nth-child(3n) {
+	float: right;
+	margin-right: 0;
+}
+
+.supply-upload-li-addimg {
+	width: .85rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -.43rem;
+	left: 50%;
+	margin-left: -.43rem;
+}
+
+.supply-upload-li-img {
+	width: 100%;
+	height: 100%;
+	/* min-width:2.2rem;
+    min-height: 2.2rem;
+    width:auto !important;
+    height:100% !important;
+     margin:0 auto; */
+	/*background-size: contain|cover;*/
+}
+
+.common-bottom-img {
+	width: .4rem;
+	position: absolute;
+	right: 50%;
+	margin-right: 0.8rem;
+	top: .5rem;
+}
+
+.supply-address {
+	padding: 1px .15rem 1px .5rem;
+	/*background: #d6f5f5;*/
+	font-size: .26rem;
+	color: #858697;
+	margin-left: .4rem;
+	border-radius: .3rem;
+	background: #d6f5f5 url('../../images/gongxu_jia_03.png')no-repeat .1rem center;
+	background-size: .35rem;
+}
+
+.supply-classification-p {
+	line-height: .53rem;
+	font-size: .26rem;
+	padding-left: .4rem;
+}
+
+.supplay-classification-up {
+	padding: .3rem .4rem;
+	background: #fff;
+	overflow: hidden;
+}
+
+.supplay-classification-li {
+	padding: .05rem .25rem;
+	border: 1px solid #F3F3F3;
+	border-radius: .3rem;
+	float: left;
+	margin-right: .25rem;
+	margin-bottom: .25rem;
+	font-size: .26rem;
+	color: #858697;
+}
+
+.supplay-classification-li.active {
+	color: #33CBCC;
+	border-color: #33CBCC;
+}
+
+.askContent .myPositionEmail {
+	background: rgba(250, 244, 244, .94);
+}
+
+.myPositionEmail .pubishBottom {
+	position: absolute;
+}
+
+
+
+
+/*供需列表*/
+
+.supply-share-li {
+	padding: .3rem .4rem;
+	background: #fff;
+	margin-top: .2rem;
+	overflow: hidden;
+}
+
+.supply-share-div {
+	overflow: hidden;
+	height: .6rem;
+	position: relative;
+}
+
+.supply-share-li-avatar {
+	width: .6rem;
+	height: .6rem;
+	border-radius: 50%;
+}
+
+.supply-li-operation-img {
+	height: .3rem;
+	width: auto;
+	position: absolute;
+	top: 50%;
+	margin-top: -.15rem;
+	right: 0;
+}
+
+.commonChannelMainPersonalMsgNicknameAnd {
+	margin-left: .25rem;
+	/*padding: 0.1rem 0;*/
+	height: .6rem;
+	font-size: .22rem;
+	color: #858697;
+}
+
+.commonChannelMainPersonalMsgNickname {
+	font-size: .26rem;
+	line-height: .35rem;
+}
+
+.supply-li-timer {
+	font-size: .22rem;
+	line-height: .25rem;
+}
+
+.shareLiImgs {
+	overflow: hidden;
+	/*padding-top: .25rem;*/
+	padding-bottom: .2rem;
+}
+
+.shareLiImgs .supply-upload-li {
+	margin-bottom: .05rem;
+}
+
+/*.DJqueen{
+width: 2.2rem !important;
+height: auto !important;
+	
+}*/
+.shareLiText {
+	margin: .3rem 0;
+	line-height: .55rem;
+	font-weight: bold;
+	font-size: .32rem;
+	/*margin-bottom: 0;*/
+}
+
+.shareLiOperate {
+	overflow: hidden;
+}
+
+.supply-address-type {
+	overflow: hidden;
+	padding: .3rem 0;
+}
+
+.supply-address-type .supply-address {
+	background-image: none;
+	padding-left: .15rem;
+	margin-left: 0;
+	padding: 1px .25rem;
+}
+
+.supply-shareli-span {
+	height: .32rem;
+	line-height: .32rem;
+	font-size: .26rem;
+	width: 1.1rem;
+	float: left;
+	text-align: right;
+	color: #858697;
+}
+
+.supply-shareli-span.center {
+	position: absolute;
+	left: 50%;
+	margin-left: -.55rem;
+}
+
+.supply-shareli-span.rf {
+	float: right;
+}
+
+.supply-shareli-span>img {
+	height: .32rem;
+	float: left;
+}
+
+.supply-log,
+.demend-log {
+	color: #fff;
+	margin-right: 0.1rem;
+	font-size: 90%;
+	padding: 0 .05rem;
+	font-weight: normal;
+}
+
+.supply-log {
+	background: #33cbcc;
+}
+
+.demend-log {
+	background: #33cc7f;
+}
+
+.supply-add-btn-a {
+	background: none;
+}
+
+.supply-add-btn-img {
+	border-radius: 50%;
+	box-shadow: 0 0 .5rem rgba(51, 203, 204, .7);
+	width: 1.02rem;
+	height: 1.02rem;
+}
+
+.supply-ul {
+	white-space: nowrap;
+	overflow: hidden;
+	line-height: 1rem;
+	height: 1rem;
+	position: relative;
+	bottom: -2px;
+	background: #fff;
+}
+
+.supply-li {
+	display: inline-block;
+	margin-right: .35rem;
+	font-size: .32rem;
+	color: #858697;
+	height: 1rem;
+}
+
+.supply-li.active {
+	color: #33CBCC;
+	position: relative;
+}
+
+.supply-li.active:before {
+	content: '';
+	width: 100%;
+	height: .08rem;
+	background: url(../../images/bottomLineMain_03.png)no-repeat center;
+	background-size: 100% .08rem;
+	position: absolute;
+	bottom: 1px;
+	left: 0;
+}
+
+.common-top-center .supply-input {
+	border-radius: .6rem;
+	padding-left: .3rem;
+	height: .6rem;
+	font-size: .28rem;
+	color: #404A4C;
+}
+
+.interesting-top {
+	padding-left: 0.2rem;
+	position: relative;
+}
+
+.intersting-triangle {
+	width: 0;
+	height: 0;
+	border: .15rem solid transparent;
+	border-top-color: #fff;
+	position: absolute;
+	top: 50%;
+	margin-top: -.07rem;
+	margin-left: .08rem;
+	border-radius: .05rem;
+}
+
+.supply-guanzhu {
+	float: right;
+	width: 1.25rem;
+	height: .52rem;
+	line-height: .52rem;
+	text-align: center;
+	border: 1px solid #33CBCC;
+	color: #33CBCC;
+	border-radius: .06rem;
+	font-size: .32rem;
+}
+
+
+
+
+/*资讯详情*/
+
+.interesting-detail-content {
+	padding: .3rem 0;
+	overflow: hidden;
+}
+
+.interesting-report {
+	line-height: .31rem;
+	padding-top: .3rem;
+}
+
+.interesting-report>img {
+	margin-top: 0;
+}
+
+.interesting-pinglun {
+	padding: .3rem .4rem 0;
+}
+
+.interesting-pinglun .commonChannelMainPersonalMsgNicknameAnd {
+	margin-left: .8rem;
+}
+
+.interesting-point {
+	width: .6rem;
+	line-height: .3rem;
+	font-size: .22rem;
+}
+
+.interesting-point>img {
+	height: .3rem;
+}
+
+.content2_say_ul {
+	padding-top: .28rem;
+}
+
+.renzheng-span {
+	line-height: .7rem;
+	font-size: .34rem;
+}
+
+.renzheng-img-right {
+	height: .23rem;
+}
+
+.gerenauthenticationList {
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	width: 100%;
+}
+
+.renzheng-img-right {
+	margin-left: 3.5rem;
+}
+
+.gerenauthenticationPadd {
+	padding-bottom: .2rem;
+}
+
+
+
+
+/*发布资讯*/
+
+.temp-choose {
+	width: 25%;
+	padding-left: .7rem;
+	display: block;
+	float: left;
+	background: url(../../images/chooseNo_06.png)no-repeat .2rem center;
+	background-size: .3rem;
+}
+
+.temp-choose.active {
+	background-image: url(../../images/chooseYes_03.png);
+}
+
+.interesting-publish-add-img .Inter-temp_addimg2_p1 {
+	color: #33CBCC;
+	/*margin-top: .2rem;*/
+}
+
+.interesting-img-3 {
+	overflow: hidden;
+	width: 100%;
+	margin-top: .3rem;
+}
+
+.interesting-img-1 {
+	margin-top: .3rem;
+}
+
+.interesting-img-3 li {
+	width: 2.2rem;
+	height: 2.2rem;
+	margin-right: .03rem;
+	float: left;
+	margin-top: 0.05rem;
+	overflow: hidden;
+}
+
+.interesting-img-3>li:nth-child(3n) {
+	/*margin-right: 0;*/
+}
+
+.interesting-img-3 .Inter-temp_addimg2 img {
+	margin-top: .3rem;
+}
+
+.interesting-img-3 .interesting-img {
+	/*width: 100%;*/
+	height: 100%;
+	margin-top: 0;
+}
+
+.interesting-texteara-ul {
+	width: 100%;
+	padding: .3rem .5rem;
+	overflow: hidden;
+}
+
+.interesting-texteara-ul>li {
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+
+.interesting-texteara-ul>li>img {
+	width: .58rem;
+}
+
+.interesting-edit {
+	color: #33CBCC;
+	font-size: .3rem;
+	text-align: right;
+	width: 100%;
+}
+
+.interesting-texteara-div {
+	width: 100%;
+	padding: 0.1rem .4rem;
+	border-top: 1px solid #F3F3F3;
+	border-bottom: 1px solid #F3F3F3;
+	overflow: hidden;
+}
+
+.interesting_textarea-text {
+	width: 100%;
+	height: 1.5rem;
+	line-height: .5rem;
+	font-size: .32rem;
+	color: #858697;
+	padding: 0.1rem;
+}
+
+.interesting-pics-div {
+	width: 100%;
+	max-height: 5.25rem;
+	overflow: hidden;
+	position: relative;
+}
+
+.interesting-pics-div img {
+	width: 100%;
+}
+
+.interesting-pics-div .inter-close {
+	position: absolute;
+	bottom: .1rem;
+	right: .1rem;
+	width: .5rem;
+	margin: .2rem 0 0 .2rem;
+}
+
+.interesting-pics {
+	width: 100%;
+}
+
+.interesting-content {
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom: .5rem;
+	overflow: hidden;
+}
+
+.release_tit,
+.Inter-temp,
+.interesting-first {
+	margin: 0 .4rem;
+}
+
+.addTextarea {
+	padding: 0 .4rem;
+	display: flex;
+	align-items: center;
+	height: 1rem;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.addTextarea p {
+	font-size: .36rem;
+	color: #33cbcb;
+	margin-left: .15rem;
+}
+
+.addTextarea img {
+	width: .35rem;
+	height: .35rem;
+}
+
+.release_tit {
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.interesting-first {
+	overflow: hidden;
+}
+
+.InterFabu-chose {
+	padding: 1.4rem 0 1.7rem;
+}
+
+.InterFabu-chose .interesting-texteara-ul img {
+	width: .8rem;
+}
+
+.InterFabu-chose .interesting-texteara-ul p {
+	width: 100%;
+}
+
+.Inter_reminder p {
+	color: #858697;
+	font-size: .28rem;
+}
+
+.release_tit input {
+	font-size: .3rem;
+}
+
+.intere-edit-content .interesting_textarea-text {
+	height: 3rem;
+}
+
+.intere-one-img img {
+	width: 100%;
+	margin-top: 0;
+	height: auto;
+}
+
+.Inter-tempUl {
+	margin-bottom: 0.2rem;
+}
+
+.intere-publish .interesting_textarea-text {
+	padding-left: .4rem;
+	padding-right: .4rem;
+}
+
+.intere-text-left {
+	width: 60%;
+	margin-right: 5%;
+}
+
+.interesting-img-3 .intere-img-right {
+	/*width: 35%;*/
+	margin-top: 0;
+}
+
+.curious-content {
+	padding: .9rem 0 1.5rem;
+}
+
+
+
+
+/*我的关注*/
+
+.follow-ul {
+	margin-top: .2rem;
+}
+
+.follow-content {
+	padding: .9rem 0;
+}
+
+.follow-li {
+	padding: .3rem .4rem;
+	border-bottom: 1px solid #F3F3F3;
+	line-height: .9rem;
+	overflow: hidden;
+	background: #fff;
+}
+
+.follow-li>img {
+	width: .9rem;
+	height: .9rem;
+	border-radius: 50%;
+}
+
+.follow-li-name {
+	margin-left: .2rem;
+}
+
+.follow-li-right-follow {
+	padding: .1rem .25rem;
+	border: 1px solid #F3F3F3;
+	border-radius: .1rem;
+	font-size: .32rem;
+	color: #858697;
+	line-height: initial;
+}
+
+.follow-li-right-follow.active {
+	border-color: #33CBCC;
+	color: #33CBCC;
+}
+
+.state-top {
+	width: 100%;
+}
+
+.noneClass {
+	text-align: center;
+	margin-top: .4rem;
+	color: #858697;
+	font-size: .32rem;
+}
+
+.curious-respon {
+	overflow: hidden;
+	margin-bottom: .2rem;
+}
+
+.curious-respon .curious-hotUl {
+	overflow: hidden;
+	clear: both;
+	background: #f5f5f7;
+	border-top-right-radius: 0;
+}
+
+.curious-hotUl {
+	font-size: .26rem;
+}
+
+.curious-respon .shareLiImgs {
+	margin-top: .2rem;
+}
+
+.curious-respon .hotUl-li1 {
+	display: flex;
+	align-items: center;
+	width: auto;
+	padding: .1rem .3rem;
+	margin-right: 0;
+}
+
+/*我的互助-筛选-新*/
+
+.guestNewSearchWrapper {
+	box-shadow: 1px 0px .3rem #8a8e93;
+	background: #fff;
+	position: absolute;
+	bottom: 0.1rem;
+	left: 0.1rem;
+	right: 0.1rem;
+	border-radius: 0.1rem;
+	z-index: 9999;
+	position: fixed;
+}
+
+.guestNewFilterAndDitu {
+	position: absolute;
+	top: -.78rem;
+	left: 0;
+	width: 100%;
+}
+
+.guestNewFilterAndDitu li {
+	box-sizing: border-box;
+	height: .64rem;
+	line-height: .64rem;
+	background: #fff;
+	overflow: hidden;
+	margin-right: .15rem;
+	box-shadow: 0 0 .3rem #c8c7cc;
+	float: right;
+	border-radius: .84rem;
+	width: 1.4rem;
+	text-align: center;
+}
+
+.guestNewFilterAndDitu img {
+	width: .28rem;
+}
+
+.guestNewFilterAndDitu b {
+	/*margin-left: .15rem;*/
+	font-size: .28rem;
+}
+
+.guestNewSearchWrapper>img {
+	position: absolute;
+	top: -.3rem;
+	left: 50%;
+	margin-left: -.75rem;
+	width: 1.5rem;
+	z-index: 10;
+}
+
+.guestNewSearchWrapper>li {
+	margin-left: .67rem;
+	border-bottom: 1px solid #F3F3F3;
+	position: relative;
+	height: .95rem;
+	line-height: .95rem;
+	font-size: 0.26rem;
+	/*padding: 0.14rem 0;*/
+}
+
+.guestNewLooked {
+	text-align: center;
+	color: #33CBCC;
+	font-size: 0.26rem;
+	padding: 0.25rem 0 .28rem;
+	display: block;
+	position: relative;
+}
+
+.guestNewLooked:before {
+	content: '';
+	display: block;
+	width: .36rem;
+	height: 2px;
+	background-color: #F3F3F3;
+	position: absolute;
+	left: 50%;
+	margin-left: -0.18rem;
+	top: 0;
+}
+
+.guestNewSearchWrapper>li:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 0.12rem;
+	height: 0.12rem;
+	border-radius: 50%;
+	left: -.35rem;
+	top: 50%;
+	margin-top: -0.06rem;
+}
+
+.guestNewNeed:before {
+	background-color: #33CBCC;
+}
+
+.guestNewPublish:before {
+	background-color: #ff6d00;
+}
+
+
+
+
+/*助游列表-新*/
+
+.guestIndexBodyLi,
+.minsuLi,
+.guestGuideList {
+	position: relative;
+	padding: 0.1rem;
+	margin-top: .2rem;
+	box-shadow: 0 0 0.535rem #ddd;
+	overflow: hidden;
+	background: #fff;
+}
+
+.nearby2MainPicDiv {
+	position: relative;
+}
+
+.guestIndexBodyLi .commonChannelMainPic {
+	width: 2rem;
+	height: 2rem;
+	display: block;
+}
+
+.securedTransaction {
+	position: absolute;
+	bottom: 0rem;
+	right: 0rem;
+	background: #000;
+	font-size: 0.24rem;
+	color: #fff;
+	padding: 0.03rem 0.04rem;
+	opacity: .6;
+	border-radius: 0.04rem;
+}
+
+.commonChannelMain {
+	margin-left: 2.33rem;
+}
+
+.commonChannelMainAddressAnd {
+	height: .4rem;
+	line-height: .4rem;
+	font-size: .22rem;
+	overflow: hidden;
+	color: #8f8f8f;
+}
+
+.commonChannelMainAddressPic {
+	height: 0.21rem;
+}
+
+.masterline {
+	width: 1px;
+	height: 0.25rem;
+	background: #898989;
+	display: inline-block;
+	margin: 0 0.2rem;
+	position: relative;
+	top: 0.03rem;
+}
+
+.guestIndexBodyLi .commonChannelMainPersonalMsgAnd {
+	position: absolute;
+	bottom: 0.1rem;
+}
+
+.guestIndexBodyLi .commonChannelMainPersonalMsgAvatar {
+	width: .67rem;
+	height: .67rem;
+	border-radius: 50%;
+}
+
+.commonChannelMainPersonalMsgNicknameAnd {
+	margin-left: .2rem;
+}
+
+.commonChannelMain .commonChannelMainPersonalMsgNickname {
+	height: .34rem;
+	line-height: .34rem;
+	color: #000;
+	margin-top: 2px;
+	font-size: 0.24rem;
+}
+
+.commonChannelMainPrice {
+	font-size: 0.24rem;
+	display: inline-block;
+	color: #fc5346;
+	text-align: right;
+	margin-bottom: 0.05rem;
+}
+
+.guestIndexBodyLi .guestNewPlayPrice {
+	position: absolute;
+	right: 0.1rem;
+	bottom: 0.15rem;
+	line-height: 0.2rem;
+}
+
+.guestNewOnePrice {
+	width: 0.24rem;
+}
+
+.commonChannelListHouse {
+	padding: 0 .1rem;
+}
+
+.minsuLi .nearby2HomeStayListMainPic {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 0.08rem;
+	display: block;
+}
+
+.nearby2HomeStayListMain {
+	margin-left: 2.33rem;
+}
+
+.lastScore {
+	font-size: .28rem;
+	color: #ff9901;
+	margin-right: 0.1rem;
+}
+
+.nearby2HomeStayList .lookForGuideRightGrade {
+	margin: 0.1rem 0;
+	font-size: 0.24rem;
+}
+
+.hotelDestination {
+	overflow: hidden;
+	font-size: .24rem;
+}
+
+.nearby2HomeStayListPriceAnd {
+	overflow: hidden;
+	line-height: initial;
+	height: .4rem;
+	width: 4.5rem;
+	position: absolute;
+	bottom: 0.15rem;
+	margin-top: .1rem;
+}
+
+.guestNewHouseType {
+	padding: 0.05rem 0.07rem;
+	background: -webkit-linear-gradient(0deg, #ff7800 10%, #ffaf00 100%);
+	color: #fff;
+	border-radius: 0.08rem;
+	font-size: 0.2rem;
+}
+
+.nearby2HomeStayListPrice {
+	font-size: .24rem;
+}
+
+.nearby2HomeStayListPriceAnd .nearby2HomeStayListPrice {
+	color: #EF5A39;
+	font-size: .24rem;
+}
+
+.nearby2HomeStayListTitle {
+	margin-top: 0.05rem;
+	margin-bottom: 0;
+	line-height: .35rem;
+	font-size: .3rem;
+	color: #000;
+}
+
+
+/*导游列表*/
+
+.lookForGuideLeft {
+	position: relative;
+}
+
+.guestGuideList .lookForGuideLeftImg {
+
+	height: 2.27rem;
+}
+
+.guestGuideList .lookForGuideRight {
+	margin-left: 1.96rem;
+}
+
+.lookForGuideRightNameAnd {
+	position: absolute;
+	height: .4rem;
+	margin-bottom: 0.1rem;
+	top: 0.2rem;
+}
+
+.lookForGuideRightName {
+	font-size: .3rem;
+	max-width: 2.8rem;
+	display: inline-block;
+	line-height: .4rem;
+}
+
+.lookForGuideRightGenderAnd {
+	display: inline-block;
+	position: relative;
+	/*bottom: 0.11rem;*/
+	height: 0.22rem;
+	line-height: 0.22rem;
+	padding-left: 0.2rem;
+}
+
+.lookForGuideRightGoodScenery {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	color: #858697;
+	line-height: .34rem;
+	height: 1rem;
+	font-size: 0.24rem;
+}
+
+.lookForGuideRightGoodScenery b {
+	color: #404A4C;
+}
+
+.guestGuideList .lookForGuideRightGrade {
+	font-size: 0.24rem;
+	position: absolute;
+	bottom: 0.2rem;
+}
+
+.guestGuideList .lookForGuideRightServerTimesAnd {
+	color: #858697;
+	margin-bottom: 0.1rem;
+	font-size: .24rem;
+}
+
+.lookForGuideRightGradeImgs {
+	display: inline-block;
+}
+
+.guestGuideList .lookForGuideRightServerTimesAnd b {
+	color: #33CBCC;
+}
+
+.lookForGuideRightGradeText {
+	color: #fc5c5b;
+	position: relative;
+	top: 0rem;
+	left: 0.1rem;
+}
+
+.guestNewGuidePrice {
+	font-size: 0.22rem;
+	color: #ff4a26;
+	position: absolute;
+	right: 0.1rem;
+	bottom: 0.2rem;
+}
+
+.lookForGuideRightGradeImgs img {
+	width: 0.23rem;
+	height: 0.23rem;
+}
+
+.guestNewPublish span {
+	width: 1.3rem;
+	height: .34rem;
+	line-height: .34rem;
+	float: right;
+	display: inline-block;
+	border-left: 1px solid #F3F3F3;
+	text-align: center;
+	margin-top: .3rem;
+}
+
+.guestNewPublish img {
+	width: 0.24rem;
+	vertical-align: middle;
+}
+
+.commonChannelMainPersonalMsgPic {
+	width: 0.2rem;
+}
+
+.commonChannelMainPersonalMsgAge {
+	font-size: 0.2rem;
+}
+
+.nearby2MainPicDivType {
+	font-size: 0.2rem;
+	top: auto;
+	left: auto;
+	right: 0.1rem;
+	bottom: 0.1rem;
+	position: absolute;
+	line-height: .34rem;
+	background: #33CBCC;
+	color: #fff;
+	padding: 0rem 0.02rem 0;
+	opacity: .6;
+	border-radius: 0.01rem;
+	border-top-left-radius: 0rem;
+}
+
+.commonChannelTopPlay {
+	margin-bottom: .1rem;
+}
+
+.commonChannelTopPlay>h2 {
+	font-size: .3rem;
+}
+
+/*好奇*/
+.interesting-funny-div {
+	line-height: .52rem;
+	overflow: hidden;
+}
+
+.assignment-close-img {
+	width: 1rem;
+	float: left;
+	height: 1rem;
+}
+
+.interUl_06,
+.interUl_05 {
+	width: 100%;
+	height: auto;
+	padding: 0 .4rem;
+	margin-top: .3rem;
+}
+
+.interUl_06>img {
+	width: 100%;
+	height: auto;
+}
+
+.interUl_08,
+.interUl_01,
+.interUl_02,
+.interUl_04 {
+	margin: 0 .4rem;
+}
+
+.interUl_05 {
+	margin-bottom: .3rem;
+}
+
+.addzhifubao-img {
+	background: url(../../images/iphonenumber.png)no-repeat center right;
+	background-size: .3rem .3rem;
+}
+
+.assignment-hid-container-top-title {
+	margin: 0 1rem;
+}
+
+/*仿键盘输入*/
+.assignment-input-ul {
+	width: 100%;
+	overflow: hidden;
+}
+
+.assignment-input-li {
+	width: 33.33%;
+	float: left;
+	border-bottom: 1px solid #F3F3F3;
+	border-left: 1px solid #F3F3F3;
+	background: #fff;
+	font-size: .45rem;
+	text-align: center;
+	height: .9rem;
+	line-height: .9rem;
+}
+
+.assignment-none {
+	background: #ddd;
+}
+
+.border-n {
+	border: none;
+}
+
+.assignment-input-li>img {
+	width: .5rem;
+	height: .35rem;
+	text-align: center;
+}
+
+/*蒙版*/
+.assignmentMast {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .5);
+	z-index: 100;
+}
+
+.assignment-hid-bank-logo.assignment-alipay {
+	box-shadow: none;
+}
+
+/*充值中心*/
+.recharge-ul {
+	padding: 0 .24rem;
+	overflow: hidden;
+}
+
+.recharge-li {
+	width: 30.33%;
+	border-radius: .2rem;
+	border: 1px solid #33CBCC;
+	text-align: center;
+	padding: .3rem 0;
+	float: left;
+	font-size: .28rem;
+	margin-bottom: .3rem;
+}
+
+.recharge-li.active {
+	background: #d6f5f5;
+	color: #33CBCC;
+	border-color: #d6f5f5;
+}
+
+.recharge-li:nth-child(3n) {
+	float: right;
+}
+
+.recharge-margin {
+	margin-left: 4%;
+}
+
+.recharge-p {
+	width: 33.33%;
+	float: right;
+	border-radius: .2rem;
+	background: #d6f5f5;
+	overflow: hidden;
+	padding: .3rem .1rem;
+	font-size: .28rem;
+	color: #33CBCC;
+}
+
+.recharge-p input {
+	height: 100%;
+	width: 80%;
+	background: #d6f5f5;
+}
+
+/*我的草稿*/
+#newPutDraft{
+	width: 100%;
+}
+#newPutDraft li {
+	width: 100%;
+	height: 1.9rem;
+	background: #FFFFFF;
+	padding: 0.25rem 0.2rem;
+	position: relative;
+	margin-bottom: 0.2rem;
+}
+#newPutDraft h4{
+	font-size: 0.35rem;
+}
+#newPutDraft p {
+	font-size: 0.28rem;
+	width: 6.5rem;
+	padding: 0.2rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.deleteDraft{
+	position: absolute;
+	right:0.2rem
+}
+

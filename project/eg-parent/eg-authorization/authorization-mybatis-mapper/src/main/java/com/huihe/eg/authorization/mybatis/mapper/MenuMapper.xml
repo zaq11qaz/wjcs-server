@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.authorization.mybatis.dao.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.authorization.model.MenuEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="add_user" jdbcType="VARCHAR" property="add_user" />
+    <result column="update_user" jdbcType="VARCHAR" property="update_user" />
+    <result column="image_url" jdbcType="VARCHAR" property="image_url" />
+    <result column="parent_id" jdbcType="BIGINT" property="parent_id" />
+    <result column="seq" jdbcType="INTEGER" property="seq" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, create_time, update_time, descr, add_user, update_user, parent_id, seq,image_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authorization_menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authorization_menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.authorization.model.MenuEntity">
+    insert into authorization_menu (id, name, create_time, 
+      update_time, descr, add_user, 
+      update_user,image_url, parent_id, seq
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{descr,jdbcType=VARCHAR}, #{add_user,jdbcType=VARCHAR}, 
+      #{update_user,jdbcType=VARCHAR},#{image_url,jdbcType=VARCHAR}, #{parent_id,jdbcType=BIGINT}, #{seq,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.authorization.model.MenuEntity" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into authorization_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="descr != null">
+        descr,
+      </if>
+      <if test="add_user != null">
+        add_user,
+      </if>
+      <if test="update_user != null">
+        update_user,
+      </if>
+        <if test="image_url != null">
+          image_url,
+      </if>
+      <if test="parent_id != null">
+        parent_id,
+      </if>
+      <if test="seq != null">
+        seq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="descr != null">
+        #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="add_user != null">
+        #{add_user,jdbcType=VARCHAR},
+      </if>
+      <if test="update_user != null">
+        #{update_user,jdbcType=VARCHAR},
+      </if>
+        <if test="image_url != null">
+        #{image_url,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_id != null">
+        #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="seq != null">
+        #{seq,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.authorization.model.MenuEntity">
+    update authorization_menu
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="descr != null">
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="add_user != null">
+        add_user = #{add_user,jdbcType=VARCHAR},
+      </if>
+      <if test="update_user != null">
+        update_user = #{update_user,jdbcType=VARCHAR},
+      </if>
+        <if test="image_url != null">
+          image_url = #{image_url,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_id != null">
+        parent_id = #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="seq != null">
+        seq = #{seq,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.authorization.model.MenuEntity">
+    update authorization_menu
+    set name = #{name,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      descr = #{descr,jdbcType=VARCHAR},
+      add_user = #{add_user,jdbcType=VARCHAR},
+      update_user = #{update_user,jdbcType=VARCHAR},
+        image_url = #{image_url,jdbcType=VARCHAR},
+      parent_id = #{parent_id,jdbcType=BIGINT},
+      seq = #{seq,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.authorization.model.MenuEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_menu
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.descr!=null">
+        AND descr = #{param.descr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.seq!=null">
+        AND seq = #{param.seq,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.authorization.model.MenuEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_menu
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.descr!=null">
+        AND descr = #{param.descr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+            <if test="param.image_url!=null">
+        AND image_url = #{param.image_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.seq!=null">
+        AND seq = #{param.seq,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.authorization.model.MenuEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM authorization_menu
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.descr!=null">
+        AND descr = #{param.descr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_user!=null">
+        AND add_user = #{param.add_user,jdbcType=VARCHAR}
+      </if>
+      <if test="param.update_user!=null">
+        AND update_user = #{param.update_user,jdbcType=VARCHAR}
+      </if>
+            <if test="param.image_url!=null">
+        AND image_url = #{param.image_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.seq!=null">
+        AND seq = #{param.seq,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+    <select id="queryRoleMenu" resultType="com.huihe.eg.authorization.model.MenuEntity">
+      SELECT am.*
+      FROM authorization_api_url aau
+      INNER JOIN authorization_manager_identity_url amiu
+      ON aau.`id` = amiu.`url_id`
+      INNER JOIN authorization_menu am
+      ON am.`id` = aau.`menu_id`
+      WHERE amiu.`identity_id` = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.mall.mybatis.dao.RechargeRecordMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.mall.model.RechargeRecordEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="rcharge_abstract" jdbcType="VARCHAR" property="rcharge_abstract" />
+    <result column="rcharge_account" jdbcType="VARCHAR" property="rcharge_account" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="rcharge_valid" jdbcType="VARCHAR" property="rcharge_valid" />
+    <result column="rcharge_time" jdbcType="TIMESTAMP" property="rcharge_time" />
+    <result column="flowing_no" jdbcType="VARCHAR" property="flowing_no" />
+    <result column="trans_no" jdbcType="VARCHAR" property="trans_no" />
+    <result column="finished_time" jdbcType="TIMESTAMP" property="finished_time" />
+    <result column="rcharge_type" jdbcType="VARCHAR" property="rcharge_type" />
+    <result column="finished" jdbcType="BIT" property="finished" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, rcharge_abstract, rcharge_account, source, amount, rcharge_valid, rcharge_time, 
+    flowing_no, trans_no, finished_time, rcharge_type, finished, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from recharge_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from recharge_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.mall.model.RechargeRecordEntity">
+    insert into recharge_record (id, user_id, rcharge_abstract, 
+      rcharge_account, source, amount, 
+      rcharge_valid, rcharge_time, flowing_no, 
+      trans_no, finished_time, rcharge_type, 
+      finished, status)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{rcharge_abstract,jdbcType=VARCHAR}, 
+      #{rcharge_account,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{rcharge_valid,jdbcType=VARCHAR}, #{rcharge_time,jdbcType=TIMESTAMP}, #{flowing_no,jdbcType=VARCHAR}, 
+      #{trans_no,jdbcType=VARCHAR}, #{finished_time,jdbcType=TIMESTAMP}, #{rcharge_type,jdbcType=VARCHAR}, 
+      #{finished,jdbcType=BIT}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.mall.model.RechargeRecordEntity">
+    insert into recharge_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="rcharge_abstract != null">
+        rcharge_abstract,
+      </if>
+      <if test="rcharge_account != null">
+        rcharge_account,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="rcharge_valid != null">
+        rcharge_valid,
+      </if>
+      <if test="rcharge_time != null">
+        rcharge_time,
+      </if>
+      <if test="flowing_no != null">
+        flowing_no,
+      </if>
+      <if test="trans_no != null">
+        trans_no,
+      </if>
+      <if test="finished_time != null">
+        finished_time,
+      </if>
+      <if test="rcharge_type != null">
+        rcharge_type,
+      </if>
+      <if test="finished != null">
+        finished,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="rcharge_abstract != null">
+        #{rcharge_abstract,jdbcType=VARCHAR},
+      </if>
+      <if test="rcharge_account != null">
+        #{rcharge_account,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="rcharge_valid != null">
+        #{rcharge_valid,jdbcType=VARCHAR},
+      </if>
+      <if test="rcharge_time != null">
+        #{rcharge_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flowing_no != null">
+        #{flowing_no,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_no != null">
+        #{trans_no,jdbcType=VARCHAR},
+      </if>
+      <if test="finished_time != null">
+        #{finished_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rcharge_type != null">
+        #{rcharge_type,jdbcType=VARCHAR},
+      </if>
+      <if test="finished != null">
+        #{finished,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.mall.model.RechargeRecordEntity">
+    update recharge_record
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="rcharge_abstract != null">
+        rcharge_abstract = #{rcharge_abstract,jdbcType=VARCHAR},
+      </if>
+      <if test="rcharge_account != null">
+        rcharge_account = #{rcharge_account,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="rcharge_valid != null">
+        rcharge_valid = #{rcharge_valid,jdbcType=VARCHAR},
+      </if>
+      <if test="rcharge_time != null">
+        rcharge_time = #{rcharge_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flowing_no != null">
+        flowing_no = #{flowing_no,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_no != null">
+        trans_no = #{trans_no,jdbcType=VARCHAR},
+      </if>
+      <if test="finished_time != null">
+        finished_time = #{finished_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rcharge_type != null">
+        rcharge_type = #{rcharge_type,jdbcType=VARCHAR},
+      </if>
+      <if test="finished != null">
+        finished = #{finished,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.mall.model.RechargeRecordEntity">
+    update recharge_record
+    set user_id = #{user_id,jdbcType=BIGINT},
+      rcharge_abstract = #{rcharge_abstract,jdbcType=VARCHAR},
+      rcharge_account = #{rcharge_account,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      rcharge_valid = #{rcharge_valid,jdbcType=VARCHAR},
+      rcharge_time = #{rcharge_time,jdbcType=TIMESTAMP},
+      flowing_no = #{flowing_no,jdbcType=VARCHAR},
+      trans_no = #{trans_no,jdbcType=VARCHAR},
+      finished_time = #{finished_time,jdbcType=TIMESTAMP},
+      rcharge_type = #{rcharge_type,jdbcType=VARCHAR},
+      finished = #{finished,jdbcType=BIT},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.mall.model.RechargeRecordEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM recharge_record
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.rcharge_abstract!=null">
+        AND rcharge_abstract = #{param.rcharge_abstract,jdbcType=VARCHAR}
+      </if>
+      <if test="param.rcharge_account!=null">
+        AND rcharge_account = #{param.rcharge_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.amount!=null">
+        AND amount = #{param.amount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.rcharge_valid!=null">
+        AND rcharge_valid = #{param.rcharge_valid,jdbcType=VARCHAR}
+      </if>
+      <if test="param.rcharge_time!=null">
+        AND rcharge_time = #{param.rcharge_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.flowing_no!=null">
+        AND flowing_no = #{param.flowing_no,jdbcType=VARCHAR}
+      </if>
+      <if test="param.trans_no!=null">
+        AND trans_no = #{param.trans_no,jdbcType=VARCHAR}
+      </if>
+      <if test="param.finished_time!=null">
+        AND finished_time = #{param.finished_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.rcharge_type!=null">
+        AND rcharge_type = #{param.rcharge_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.finished!=null">
+        AND finished = #{param.finished,jdbcType=BIT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.mall.model.RechargeRecordEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM recharge_record
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.rcharge_abstract!=null">
+        AND rcharge_abstract = #{param.rcharge_abstract,jdbcType=VARCHAR}
+      </if>
+      <if test="param.rcharge_account!=null">
+        AND rcharge_account = #{param.rcharge_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.amount!=null">
+        AND amount = #{param.amount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.rcharge_valid!=null">
+        AND rcharge_valid = #{param.rcharge_valid,jdbcType=VARCHAR}
+      </if>
+      <if test="param.rcharge_time!=null">
+        AND rcharge_time = #{param.rcharge_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.flowing_no!=null">
+        AND flowing_no = #{param.flowing_no,jdbcType=VARCHAR}
+      </if>
+      <if test="param.trans_no!=null">
+        AND trans_no = #{param.trans_no,jdbcType=VARCHAR}
+      </if>
+      <if test="param.finished_time!=null">
+        AND finished_time = #{param.finished_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.rcharge_type!=null">
+        AND rcharge_type = #{param.rcharge_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.finished!=null">
+        AND finished = #{param.finished,jdbcType=BIT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.mall.model.RechargeRecordEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM recharge_record
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.rcharge_abstract!=null">
+        AND rcharge_abstract = #{param.rcharge_abstract,jdbcType=VARCHAR}
+      </if>
+      <if test="param.rcharge_account!=null">
+        AND rcharge_account = #{param.rcharge_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.amount!=null">
+        AND amount = #{param.amount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.rcharge_valid!=null">
+        AND rcharge_valid = #{param.rcharge_valid,jdbcType=VARCHAR}
+      </if>
+      <if test="param.rcharge_time!=null">
+        AND rcharge_time = #{param.rcharge_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.flowing_no!=null">
+        AND flowing_no = #{param.flowing_no,jdbcType=VARCHAR}
+      </if>
+      <if test="param.trans_no!=null">
+        AND trans_no = #{param.trans_no,jdbcType=VARCHAR}
+      </if>
+      <if test="param.finished_time!=null">
+        AND finished_time = #{param.finished_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.rcharge_type!=null">
+        AND rcharge_type = #{param.rcharge_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.finished!=null">
+        AND finished = #{param.finished,jdbcType=BIT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

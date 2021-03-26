@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker stop cloud-eureka && docker rm cloud-eureka && docker rmi localhost:5000/cloud-eureka:1.0 && docker rmi localhost:5000/cloud-eureka:latest && mvn clean package  && docker run -d --name cloud-eureka -v /etc/localtime:/etc/localtime -v /var/log/:/var/log/ -e params="-Dservice.type=release" -p 8761:8761 localhost:5000/cloud-eureka:1.0

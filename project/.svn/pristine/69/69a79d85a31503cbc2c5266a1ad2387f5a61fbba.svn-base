@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.SignInMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.SignInEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="cat_coin" jdbcType="DECIMAL" property="cat_coin" />
+    <result column="point" jdbcType="INTEGER" property="point" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, create_time, cat_coin,point
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_sign_in
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_sign_in
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.SignInEntity">
+    insert into eg_sign_in (id, user_id, create_time, 
+      cat_coin)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{cat_coin,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.SignInEntity"
+          useGeneratedKeys="true" keyProperty="id">
+    insert into eg_sign_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="cat_coin != null">
+        cat_coin,
+      </if>
+        <if test="cat_coin != null">
+        point,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cat_coin != null">
+        #{cat_coin,jdbcType=DECIMAL},
+      </if>
+        <if test="point != null">
+        #{point,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.SignInEntity">
+    update eg_sign_in
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cat_coin != null">
+        cat_coin = #{cat_coin,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.SignInEntity">
+    update eg_sign_in
+    set user_id = #{user_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      cat_coin = #{cat_coin,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.SignInEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_sign_in
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.cat_coin!=null">
+        AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.SignInEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_sign_in
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.cat_coin!=null">
+        AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.SignInEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_sign_in
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.cat_coin!=null">
+        AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+
+  <select id="countSevenDay" parameterType="com.huihe.eg.user.model.SignInEntity" resultType="com.huihe.eg.user.model.SignInDayEntiy">
+    SELECT
+        coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d') THEN
+              1
+          ELSE
+              0
+          END
+      ),0) one_day,
+                 coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(
+              date_sub(now(), INTERVAL 1 DAY),
+              '%Y-%m-%d'
+          ) THEN
+              1
+          ELSE
+              0
+          END
+      ),0) two_day,
+                          coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(
+              date_sub(now(), INTERVAL 2 DAY),
+              '%Y-%m-%d'
+          ) THEN
+              1
+          ELSE
+              0
+          END
+      ),0) three_day,
+                                   coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(
+              date_sub(now(), INTERVAL 3 DAY),
+              '%Y-%m-%d'
+          ) THEN
+              1
+          ELSE
+              0
+          END
+      ),0) four_day,
+                                            coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(
+              date_sub(now(), INTERVAL 4 DAY),
+              '%Y-%m-%d'
+          ) THEN
+              1
+          ELSE
+              0
+          END
+      ),0) five_day,
+                                                     coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(
+              date_sub(now(), INTERVAL 5 DAY),
+              '%Y-%m-%d'
+          ) THEN
+              1
+          ELSE
+              0
+          END
+      ),0) six_day,
+                                                              coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(
+              date_sub(now(), INTERVAL 6 DAY),
+              '%Y-%m-%d'
+          ) THEN
+              1
+          ELSE
+              0
+          END
+      ),0) seven_day
+  FROM
+      eg_sign_in
+  WHERE
+      user_id = #{user_id}
+  </select>
+
+  <select id="queryToday" resultType="java.lang.Integer">
+    SELECT
+      coalesce(sum(
+          CASE
+          WHEN DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d') THEN
+              1
+          ELSE
+              0
+          END
+      ),0) count_today
+      FROM
+      eg_sign_in
+  WHERE
+      user_id = #{user_id}
+  </select>
+    <select id="query7DayInfo" resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_sign_in
+        <where>
+            DATE_FORMAT( create_time, 'Y%-m%-d%' ) >= date_format( DATE_SUB( NOW(), INTERVAL 7 DAY ), 'Y%-m%-d%' )
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.cat_coin!=null">
+                AND cat_coin = #{param.cat_coin,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+</mapper>

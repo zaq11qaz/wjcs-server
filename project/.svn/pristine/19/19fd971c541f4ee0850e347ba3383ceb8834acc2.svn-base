@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.mall.mybatis.dao.DeliveryAddressMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.mall.model.DeliveryAddressEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="receipt_name" jdbcType="VARCHAR" property="receipt_name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="alipay_account" jdbcType="VARCHAR" property="alipay_account" />
+    <result column="alipay_name" jdbcType="VARCHAR" property="alipay_name" />
+    <result column="specific_address" jdbcType="VARCHAR" property="specific_address" />
+    <result column="other_remarks" jdbcType="VARCHAR" property="other_remarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, user_id, receipt_name, mobile, alipay_account, alipay_name, 
+    specific_address, other_remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from delivery_address
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from delivery_address
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.mall.model.DeliveryAddressEntity">
+    insert into delivery_address (id, create_time, update_time, 
+      user_id, receipt_name, mobile, 
+      alipay_account, alipay_name, specific_address, 
+      other_remarks)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{user_id,jdbcType=BIGINT}, #{receipt_name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{alipay_account,jdbcType=VARCHAR}, #{alipay_name,jdbcType=VARCHAR}, #{specific_address,jdbcType=VARCHAR}, 
+      #{other_remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.mall.model.DeliveryAddressEntity">
+    insert into delivery_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="receipt_name != null">
+        receipt_name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="alipay_account != null">
+        alipay_account,
+      </if>
+      <if test="alipay_name != null">
+        alipay_name,
+      </if>
+      <if test="specific_address != null">
+        specific_address,
+      </if>
+      <if test="other_remarks != null">
+        other_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="receipt_name != null">
+        #{receipt_name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_account != null">
+        #{alipay_account,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_name != null">
+        #{alipay_name,jdbcType=VARCHAR},
+      </if>
+      <if test="specific_address != null">
+        #{specific_address,jdbcType=VARCHAR},
+      </if>
+      <if test="other_remarks != null">
+        #{other_remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.mall.model.DeliveryAddressEntity">
+    update delivery_address
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="receipt_name != null">
+        receipt_name = #{receipt_name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_account != null">
+        alipay_account = #{alipay_account,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_name != null">
+        alipay_name = #{alipay_name,jdbcType=VARCHAR},
+      </if>
+      <if test="specific_address != null">
+        specific_address = #{specific_address,jdbcType=VARCHAR},
+      </if>
+      <if test="other_remarks != null">
+        other_remarks = #{other_remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.mall.model.DeliveryAddressEntity">
+    update delivery_address
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      user_id = #{user_id,jdbcType=BIGINT},
+      receipt_name = #{receipt_name,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      alipay_account = #{alipay_account,jdbcType=VARCHAR},
+      alipay_name = #{alipay_name,jdbcType=VARCHAR},
+      specific_address = #{specific_address,jdbcType=VARCHAR},
+      other_remarks = #{other_remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.mall.model.DeliveryAddressEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM delivery_address
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.receipt_name!=null">
+        AND receipt_name = #{param.receipt_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.alipay_account!=null">
+        AND alipay_account = #{param.alipay_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.alipay_name!=null">
+        AND alipay_name = #{param.alipay_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specific_address!=null">
+        AND specific_address = #{param.specific_address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.other_remarks!=null">
+        AND other_remarks = #{param.other_remarks,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.mall.model.DeliveryAddressEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM delivery_address
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.receipt_name!=null">
+        AND receipt_name = #{param.receipt_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.alipay_account!=null">
+        AND alipay_account = #{param.alipay_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.alipay_name!=null">
+        AND alipay_name = #{param.alipay_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specific_address!=null">
+        AND specific_address = #{param.specific_address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.other_remarks!=null">
+        AND other_remarks = #{param.other_remarks,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.mall.model.DeliveryAddressEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM delivery_address
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.receipt_name!=null">
+        AND receipt_name = #{param.receipt_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.alipay_account!=null">
+        AND alipay_account = #{param.alipay_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.alipay_name!=null">
+        AND alipay_name = #{param.alipay_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.specific_address!=null">
+        AND specific_address = #{param.specific_address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.other_remarks!=null">
+        AND other_remarks = #{param.other_remarks,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

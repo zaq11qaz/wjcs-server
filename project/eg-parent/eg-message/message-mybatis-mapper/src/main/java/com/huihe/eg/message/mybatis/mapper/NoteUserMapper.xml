@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.NoteUserMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.NoteUserEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="picts" jdbcType="VARCHAR" property="picts" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="like_count" jdbcType="INTEGER" property="like_count" />
+    <result column="comment_count" jdbcType="INTEGER" property="comment_count" />
+    <result column="share_count" jdbcType="INTEGER" property="share_count" />
+    <result column="watch_count" jdbcType="INTEGER" property="watch_count" />
+    <result column="style" jdbcType="INTEGER" property="style" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="img_height" jdbcType="INTEGER" property="img_height" />
+    <result column="img_width" jdbcType="INTEGER" property="img_width" />
+    <result column="video_duration" jdbcType="VARCHAR" property="video_duration" />
+    <result column="classfiy" jdbcType="VARCHAR" property="classfiy" />
+    <result column="collect_count" jdbcType="INTEGER" property="collect_count" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="is_teach_paypal" jdbcType="BIT" property="is_teach_paypal" />
+    <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, content, picts, location, create_time, status, like_count, comment_count, 
+    share_count, watch_count, style, cover, img_height, img_width, video_duration, classfiy, 
+    collect_count, url,is_teach_paypal,master_set_price_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_note_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_note_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.NoteUserEntity">
+    insert into message_note_user (id, user_id, content, 
+      picts, location, create_time, 
+      status, like_count, comment_count, 
+      share_count, watch_count, style, 
+      cover, img_height, img_width, 
+      video_duration, classfiy, collect_count, 
+      url)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, 
+      #{picts,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{like_count,jdbcType=INTEGER}, #{comment_count,jdbcType=INTEGER}, 
+      #{share_count,jdbcType=INTEGER}, #{watch_count,jdbcType=INTEGER}, #{style,jdbcType=INTEGER}, 
+      #{cover,jdbcType=VARCHAR}, #{img_height,jdbcType=INTEGER}, #{img_width,jdbcType=INTEGER}, 
+      #{video_duration,jdbcType=VARCHAR}, #{classfiy,jdbcType=VARCHAR}, #{collect_count,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.NoteUserEntity" useGeneratedKeys="true" keyProperty="id">
+    insert into message_note_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="picts != null">
+        picts,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="like_count != null">
+        like_count,
+      </if>
+      <if test="comment_count != null">
+        comment_count,
+      </if>
+      <if test="share_count != null">
+        share_count,
+      </if>
+      <if test="watch_count != null">
+        watch_count,
+      </if>
+      <if test="style != null">
+        style,
+      </if>
+      <if test="cover != null">
+        cover,
+      </if>
+      <if test="img_height != null">
+        img_height,
+      </if>
+      <if test="img_width != null">
+        img_width,
+      </if>
+      <if test="video_duration != null">
+        video_duration,
+      </if>
+      <if test="classfiy != null">
+        classfiy,
+      </if>
+      <if test="collect_count != null">
+        collect_count,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+        <if test="is_teach_paypal != null">
+          is_teach_paypal,
+      </if>
+        <if test="master_set_price_id != null">
+          master_set_price_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="picts != null">
+        #{picts,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="like_count != null">
+        #{like_count,jdbcType=INTEGER},
+      </if>
+      <if test="comment_count != null">
+        #{comment_count,jdbcType=INTEGER},
+      </if>
+      <if test="share_count != null">
+        #{share_count,jdbcType=INTEGER},
+      </if>
+      <if test="watch_count != null">
+        #{watch_count,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        #{style,jdbcType=INTEGER},
+      </if>
+      <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="img_height != null">
+        #{img_height,jdbcType=INTEGER},
+      </if>
+      <if test="img_width != null">
+        #{img_width,jdbcType=INTEGER},
+      </if>
+      <if test="video_duration != null">
+        #{video_duration,jdbcType=VARCHAR},
+      </if>
+      <if test="classfiy != null">
+        #{classfiy,jdbcType=VARCHAR},
+      </if>
+      <if test="collect_count != null">
+        #{collect_count,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+        <if test="is_teach_paypal != null">
+        #{is_teach_paypal,jdbcType=BIT},
+      </if>
+        <if test="master_set_price_id != null">
+        #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.NoteUserEntity">
+    update message_note_user
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="picts != null">
+        picts = #{picts,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="like_count != null">
+        like_count = #{like_count,jdbcType=INTEGER},
+      </if>
+      <if test="comment_count != null">
+        comment_count = #{comment_count,jdbcType=INTEGER},
+      </if>
+      <if test="share_count != null">
+        share_count = #{share_count,jdbcType=INTEGER},
+      </if>
+      <if test="watch_count != null">
+        watch_count = #{watch_count,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        style = #{style,jdbcType=INTEGER},
+      </if>
+      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="img_height != null">
+        img_height = #{img_height,jdbcType=INTEGER},
+      </if>
+      <if test="img_width != null">
+        img_width = #{img_width,jdbcType=INTEGER},
+      </if>
+      <if test="video_duration != null">
+        video_duration = #{video_duration,jdbcType=VARCHAR},
+      </if>
+      <if test="classfiy != null">
+        classfiy = #{classfiy,jdbcType=VARCHAR},
+      </if>
+      <if test="collect_count != null">
+        collect_count = #{collect_count,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+        <if test="is_teach_paypal != null">
+          is_teach_paypal = #{is_teach_paypal,jdbcType=BIT},
+      </if>
+        <if test="master_set_price_id != null">
+          master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.NoteUserEntity">
+    update message_note_user
+    set user_id = #{user_id,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      picts = #{picts,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      like_count = #{like_count,jdbcType=INTEGER},
+      comment_count = #{comment_count,jdbcType=INTEGER},
+      share_count = #{share_count,jdbcType=INTEGER},
+      watch_count = #{watch_count,jdbcType=INTEGER},
+      style = #{style,jdbcType=INTEGER},
+      cover = #{cover,jdbcType=VARCHAR},
+      img_height = #{img_height,jdbcType=INTEGER},
+      img_width = #{img_width,jdbcType=INTEGER},
+      video_duration = #{video_duration,jdbcType=VARCHAR},
+      classfiy = #{classfiy,jdbcType=VARCHAR},
+      collect_count = #{collect_count,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.NoteUserEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_note_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.picts!=null">
+        AND picts = #{param.picts,jdbcType=VARCHAR}
+      </if>
+      <if test="param.location!=null">
+        AND location = #{param.location,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.like_count!=null">
+        AND like_count = #{param.like_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.comment_count!=null">
+        AND comment_count = #{param.comment_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.share_count!=null">
+        AND share_count = #{param.share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_count!=null">
+        AND watch_count = #{param.watch_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.style!=null">
+        AND style = #{param.style,jdbcType=INTEGER}
+      </if>
+      <if test="param.cover!=null">
+        AND cover = #{param.cover,jdbcType=VARCHAR}
+      </if>
+      <if test="param.img_height!=null">
+        AND img_height = #{param.img_height,jdbcType=INTEGER}
+      </if>
+      <if test="param.img_width!=null">
+        AND img_width = #{param.img_width,jdbcType=INTEGER}
+      </if>
+      <if test="param.video_duration!=null">
+        AND video_duration = #{param.video_duration,jdbcType=VARCHAR}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=VARCHAR}
+      </if>
+      <if test="param.collect_count!=null">
+        AND collect_count = #{param.collect_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_teach_paypal!=null">
+        AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.NoteUserEntity" resultMap="BaseResultMap">
+    SELECT
+    u.id, u.user_id, u.content, u.picts, u.location, u.create_time,u. status, u.like_count, u.comment_count,
+    u.share_count, u.watch_count, u.style, u.cover, u.img_height, u.img_width, u.video_duration, u.classfiy,u.collect_count,u.url,
+           u.is_teach_paypal,u.master_set_price_id
+    FROM message_note_user u
+    <where>
+    <if test="param.oper_id!=null">
+      (select count(1) from
+      message_history h where h.status=1 and  h.user_id=#{param.oper_id,jdbcType=BIGINT}  AND  h.operation_type='user' AND h.history_type='shield' and u.user_id=h.history_id) = 0
+    </if>
+      <if test="param.id!=null">
+        AND u.id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND u.user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND u.content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.picts!=null">
+        AND u.picts = #{param.picts,jdbcType=VARCHAR}
+      </if>
+      <if test="param.location!=null">
+        AND u.location = #{param.location,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND u.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND u.status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.like_count!=null">
+        AND u.like_count = #{param.like_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.comment_count!=null">
+        AND u.comment_count = #{param.comment_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.share_count!=null">
+        AND u.share_count = #{param.share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_count!=null">
+        AND u.watch_count = #{param.watch_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.style!=null">
+        AND u.style = #{param.style,jdbcType=INTEGER}
+      </if>
+      <if test="param.cover!=null">
+        AND u.cover = #{param.cover,jdbcType=VARCHAR}
+      </if>
+      <if test="param.img_height!=null">
+        AND u.img_height = #{param.img_height,jdbcType=INTEGER}
+      </if>
+      <if test="param.img_width!=null">
+        AND u.img_width = #{param.img_width,jdbcType=INTEGER}
+      </if>
+      <if test="param.video_duration!=null">
+        AND u.video_duration = #{param.video_duration,jdbcType=VARCHAR}
+      </if>
+      <if test="param.classfiy!=null">
+        AND u.classfiy = #{param.classfiy,jdbcType=VARCHAR}
+      </if>
+      <if test="param.collect_count!=null">
+        AND u.collect_count = #{param.collect_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.url!=null">
+        AND u.url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_teach_paypal!=null">
+        AND u.is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND u.master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY u.id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.NoteUserEntity" resultType="java.lang.Integer">
+    SELECT
+    coalesce(count(0),0)
+    FROM message_note_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.picts!=null">
+        AND picts = #{param.picts,jdbcType=VARCHAR}
+      </if>
+      <if test="param.location!=null">
+        AND location = #{param.location,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.like_count!=null">
+        AND like_count = #{param.like_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.comment_count!=null">
+        AND comment_count = #{param.comment_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.share_count!=null">
+        AND share_count = #{param.share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_count!=null">
+        AND watch_count = #{param.watch_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.style!=null">
+        AND style = #{param.style,jdbcType=INTEGER}
+      </if>
+      <if test="param.cover!=null">
+        AND cover = #{param.cover,jdbcType=VARCHAR}
+      </if>
+      <if test="param.img_height!=null">
+        AND img_height = #{param.img_height,jdbcType=INTEGER}
+      </if>
+      <if test="param.img_width!=null">
+        AND img_width = #{param.img_width,jdbcType=INTEGER}
+      </if>
+      <if test="param.video_duration!=null">
+        AND video_duration = #{param.video_duration,jdbcType=VARCHAR}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=VARCHAR}
+      </if>
+      <if test="param.collect_count!=null">
+        AND collect_count = #{param.collect_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.is_teach_paypal!=null">
+        AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+      </if>
+      <if test="param.is_teach_paypal!=null">
+        AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  <update id="updateClick" parameterType="java.lang.Long">
+    UPDATE message_note_user SET watch_count =watch_count+1 WHERE ID=#{id}
+  </update>
+  <select id="queryNoteAddCount" resultType="Integer" parameterType="com.huihe.eg.message.model.NoteUserEntity">
+    select COUNT(1) from message_note_user where date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d') AND user_id= #{param.user_id,jdbcType=BIGINT}
+    <if test="param.is_teach_paypal!=null">
+      AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+    </if>
+    <if test="param.is_teach_paypal!=null">
+      AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+    </if>
+  </select>
+  <select id="queryCollectListPage" parameterType="com.huihe.eg.message.model.NoteUserEntity" resultMap="BaseResultMap">
+    SELECT
+    u.id, u.user_id, u.content, u.picts, u.location, u.create_time,u. status, u.like_count, u.comment_count,
+    u.share_count, u.watch_count, u.style, u.cover, u.img_height, u.img_width, u.video_duration, u.classfiy,u.collect_count,u.url,u.is_teach_paypal,u.master_set_price_id
+    FROM message_note_user u,
+    message_history h
+    <where>
+      u.id=h.history_id
+      AND h.operation_type='collect'
+      AND h.history_type='note'
+      AND h.status=1
+      <if test="param.id!=null">
+        AND u.id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND h.user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND u.content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.picts!=null">
+        AND u.picts = #{param.picts,jdbcType=VARCHAR}
+      </if>
+      <if test="param.location!=null">
+        AND u.location = #{param.location,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND u.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND u.status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.like_count!=null">
+        AND u.like_count = #{param.like_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.comment_count!=null">
+        AND u.comment_count = #{param.comment_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.share_count!=null">
+        AND u.share_count = #{param.share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.watch_count!=null">
+        AND u.watch_count = #{param.watch_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.style!=null">
+        AND u.style = #{param.style,jdbcType=INTEGER}
+      </if>
+      <if test="param.cover!=null">
+        AND u.cover = #{param.cover,jdbcType=VARCHAR}
+      </if>
+      <if test="param.img_height!=null">
+        AND u.img_height = #{param.img_height,jdbcType=INTEGER}
+      </if>
+      <if test="param.img_width!=null">
+        AND u.img_width = #{param.img_width,jdbcType=INTEGER}
+      </if>
+      <if test="param.video_duration!=null">
+        AND u.video_duration = #{param.video_duration,jdbcType=VARCHAR}
+      </if>
+      <if test="param.classfiy!=null">
+        AND u.classfiy = #{param.classfiy,jdbcType=VARCHAR}
+      </if>
+      <if test="param.collect_count!=null">
+        AND u.collect_count = #{param.collect_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.url!=null">
+        AND u.url = #{param.url,jdbcType=INTEGER}
+      </if>
+      <if test="param.is_teach_paypal!=null">
+        AND u.is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND u.master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY u.id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+</mapper>

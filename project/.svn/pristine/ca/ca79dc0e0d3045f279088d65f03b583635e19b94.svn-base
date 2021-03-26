@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\admin\.m2\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+    <context id="context1">
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator type="org.mybatis.generator.MyCommentGenerator">
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <!-- <property name="suppressAllComments" value="true" /> -->
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://101.37.66.151:3306/eg_user?characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root" password="123456"/>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 实体类 -->
+        <javaModelGenerator targetPackage="com.huihe.eg.user.model"
+                            extendsPackage="com.cy.framework.model.PageInfo"
+                            targetProject="C:\Users\admin\Desktop\project\eg-parent\eg-user\user-model\src\main\java">
+
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- mapperXML存放目录 -->
+        <sqlMapGenerator targetPackage="com.huihe.eg.user.mybatis.mapper"
+                         targetProject="C:\Users\admin\Desktop\project\eg-parent\eg-user\user-mybatis-mapper\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator targetPackage="com.huihe.eg.user.mybatis.dao"
+                             extendsPackage="com.cy.framework.mybaties.dao.BaseFrameworkMapper"
+                             targetProject="C:\Users\admin\Desktop\project\eg-parent\eg-user\user-mybatis-dao\src\main\java"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--生成service,serviceImpl-->
+        <javaServiceGenerator targetPackage="com.huihe.eg.user.service.dao"
+                              extendsPackage="com.cy.framework.service.dao.BaseFrameworkService"
+                              targetProject="C:\Users\admin\Desktop\project\eg-parent\eg-user\user-service-dao\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaServiceGenerator>
+
+        <!--imp-->
+        <javaServiceImplGenerator targetPackage="com.huihe.eg.user.service.impl"
+                                  extendsPackage="com.cy.framework.service.impl.BaseFrameworkServiceImpl"
+                                  targetProject="C:\Users\admin\Desktop\project\eg-parent\eg-user\user-service-impl\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaServiceImplGenerator>
+
+        <!--生成controller-->
+        <javaControllerGenerator targetPackage="com.huihe.eg.user.service.web"
+                                 targetProject="C:\Users\admin\Desktop\project\eg-parent\eg-user\user-service-web\src\main\java"
+                                 extendsPackage="com.cy.framework.service.web.BaseFrameworkController">
+            <property name="enableSubPackages" value="true"/>
+        </javaControllerGenerator>
+
+
+
+        <!--生成对应表及类名-->
+
+        <!--<table tableName="user_blacklist" domainObjectName="userBlacklist"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="user_content" domainObjectName="userContent"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="user_friend" domainObjectName="userFriend"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="user_group" domainObjectName="userGroup"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="user_join_group" domainObjectName="userJoinGroup"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+
+        <table tableName="eg_master_set_price_display" domainObjectName="MasterSetPriceDisplay"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+
+    </context>
+
+</generatorConfiguration>

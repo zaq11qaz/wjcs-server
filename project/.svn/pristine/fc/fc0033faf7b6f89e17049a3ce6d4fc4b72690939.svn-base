@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.StudyCardMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.StudyCardEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="card_name" jdbcType="VARCHAR" property="card_name" />
+    <result column="equity_explain" jdbcType="VARCHAR" property="equity_explain" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="is_discount" jdbcType="BIT" property="is_discount" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, card_name, equity_explain, discount, is_discount, type, 
+    status, level
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_study_card
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_study_card
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.StudyCardEntity">
+    insert into eg_study_card (id, create_time, update_time, 
+      card_name, equity_explain, discount, 
+      is_discount, type, status, 
+      level)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{card_name,jdbcType=VARCHAR}, #{equity_explain,jdbcType=VARCHAR}, #{discount,jdbcType=DECIMAL}, 
+      #{is_discount,jdbcType=BIT}, #{type,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{level,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.StudyCardEntity">
+    insert into eg_study_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="card_name != null">
+        card_name,
+      </if>
+      <if test="equity_explain != null">
+        equity_explain,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="is_discount != null">
+        is_discount,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="card_name != null">
+        #{card_name,jdbcType=VARCHAR},
+      </if>
+      <if test="equity_explain != null">
+        #{equity_explain,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="is_discount != null">
+        #{is_discount,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.StudyCardEntity">
+    update eg_study_card
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="card_name != null">
+        card_name = #{card_name,jdbcType=VARCHAR},
+      </if>
+      <if test="equity_explain != null">
+        equity_explain = #{equity_explain,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="is_discount != null">
+        is_discount = #{is_discount,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.StudyCardEntity">
+    update eg_study_card
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      card_name = #{card_name,jdbcType=VARCHAR},
+      equity_explain = #{equity_explain,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=DECIMAL},
+      is_discount = #{is_discount,jdbcType=BIT},
+      type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.StudyCardEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_study_card
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.card_name!=null">
+        AND card_name = #{param.card_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.equity_explain!=null">
+        AND equity_explain = #{param.equity_explain,jdbcType=VARCHAR}
+      </if>
+      <if test="param.discount!=null">
+        AND discount = #{param.discount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.is_discount!=null">
+        AND is_discount = #{param.is_discount,jdbcType=BIT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.level!=null">
+        AND level = #{param.level,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.StudyCardEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_study_card
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.card_name!=null">
+        AND card_name = #{param.card_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.equity_explain!=null">
+        AND equity_explain = #{param.equity_explain,jdbcType=VARCHAR}
+      </if>
+      <if test="param.discount!=null">
+        AND discount = #{param.discount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.is_discount!=null">
+        AND is_discount = #{param.is_discount,jdbcType=BIT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.level!=null">
+        AND level = #{param.level,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.StudyCardEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_study_card
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.card_name!=null">
+        AND card_name = #{param.card_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.equity_explain!=null">
+        AND equity_explain = #{param.equity_explain,jdbcType=VARCHAR}
+      </if>
+      <if test="param.discount!=null">
+        AND discount = #{param.discount,jdbcType=DECIMAL}
+      </if>
+      <if test="param.is_discount!=null">
+        AND is_discount = #{param.is_discount,jdbcType=BIT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.level!=null">
+        AND level = #{param.level,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

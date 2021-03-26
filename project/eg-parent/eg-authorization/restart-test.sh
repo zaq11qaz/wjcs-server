@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker stop authorization-service-web && docker rm authorization-service-web && docker rmi localhost:5000/authorization-service-web:1.0 && docker rmi localhost:5000/authorization-service-web:latest && mvn clean package  && docker run -d --name authorization-service-web -v /etc/localtime:/etc/localtime -v /var/log/:/var/log/ -e params="-Dservice.type=test" -p 1160:1160 localhost:5000/authorization-service-web:1.0

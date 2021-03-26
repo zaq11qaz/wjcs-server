@@ -1,0 +1,90 @@
+spring:
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 8MB
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  redis:
+    port: 6379
+    password: 123456
+    host: localhost
+    timeout: 3000
+    pool:
+      maxActice: 300
+      maxWait: -1
+      maxIdle: 8
+      minIdle: 0
+zuul:
+  max:
+    host:
+      connections: 500
+  host:
+    socket-timeout-millis: 5000
+    connect-timeout-millis: 5000
+  routes:
+    eg-authorization:
+      path: /eg-api/authorization/**
+      serviceId: eg-authorization
+    eg-grab:
+      path: /eg-api/grab/**
+      serviceId: eg-grab
+    eg-user:
+      path: /eg-api/user/**
+      serviceId: eg-user
+    eg-order:
+      path: /risk-api/order/**
+      serviceId: risk-order
+    eg-message:
+      path: /eg-api/message/**
+      serviceId: eg-message
+    eg-news:
+      path: /eg-api/news/**
+      serviceId: eg-news
+    eg-push:
+      path: /eg-api/push/**
+      serviceId: eg-push
+    eg-mall:
+      path: /eg-api/mall/**
+      serviceId: eg-mall
+    eg-schedule:
+      path: /eg-api/schedule/**
+      serviceId: eg-schedule
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            ##断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试
+            timeoutInMilliseconds: 80000
+  threadpool:
+    default:
+      coreSize: 20
+ribbon:
+  ##请求处理的超时时间
+  ReadTimeout: 30000
+  ##请求连接的超时时间
+  ConnectTimeout: 2000
+  ##对当前实例的重试次数
+  MaxAutoRetries: 0
+  ##对所有操作请求都进行重试
+  OkToRetryOnAllOperations: true
+  ##切换实例的重试次数
+  MaxAutoRetriesNextServer: 1
+
+#security:
+#  basic:
+  #  enabled: true
+ #   path: /swagger-ui.html
+ # user:
+ #   name: admin
+  #  password: admin1

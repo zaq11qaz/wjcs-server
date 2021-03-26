@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="./css/zhifu.css" />
+	</head>
+
+
+	<script type="text/javascript" src="./js/rem.js"></script>
+	<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="./js/SystemUtil.js"></script>
+	<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+
+	<body>
+		<div id="body">
+			<img class="bgImg" src="./img/zhifubg.jpg">
+			<div class="maskBox">
+
+			</div>
+
+			<div class="paybox">
+				<div class="paybox_title">确认付款</div>
+				<div class="paybox_num">
+					￥<span class="money">20.00</span>
+				</div>
+				<div class="pay_mode">
+					<div class="pay_mode_title">支付方式</div>
+					<ul id="rechargeUl">
+						<li class="pay_mode_item">
+							<div class="mode_item_left">
+								<img src="./img/zhifu.png" mode=""></img>
+								<span>支付宝支付</span>
+							</div>
+							<!-- <img  class="mode_item_right" src="../../../static/wode/xuanze1.png" mode=""></img> -->
+							<img class="mode_item_right" src="./img/xuanze1.png" mode=""></img>
+						</li>
+						<li class="pay_mode_item">
+							<div class="mode_item_left">
+								<img src="./img/weixin.png" mode=""></img>
+								<span>微信支付</span>
+							</div>
+							<img class="mode_item_right" src="./img/xuanze.png" mode=""></img>
+							<!-- <img  class="mode_item_right" src="../../../static/wode/xuanze.png" mode=""></img> -->
+						</li>
+					</ul>
+
+					<div class="check">
+						<img class="checkImg" src="./img/xuanze.png" mode=""></img>
+						<!-- <img v-else src="img.xuanze.png" mode=""></img> -->
+						<span>我已经阅读并同意《充值协议》</span>
+					</div>
+					<div class="btn shurepay">
+						确认充值
+					</div>
+					<div class="btn mask-btn">
+						确认充值
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <script src="js/mui.js"></script> -->
+		<script type="text/javascript">
+			// mui.init()
+
+
+
+			var search = window.location.search;
+			var amount = getSearchString('amount', search);
+			// var amount=1;
+			var user_id = getSearchString('user_id', search);
+			var rcharge_type = getSearchString('rcharge_type', search); 
+			// var rcharge_type = 'account';
+			var source = getSearchString('source', search);
+			var rcharge_account = getSearchString('rcharge_account', search);
+			var data = {}
+			if (rcharge_type == 'member') {
+				var member_level = getSearchString('member_level', search);
+				var member_duration = getSearchString('member_duration', search);
+				data = {
+					amount: amount,
+					user_id: user_id,
+					rcharge_type: rcharge_type,
+					source: 'ios',
+					rcharge_account: rcharge_account,
+					member_level: member_level,
+					member_duration: member_duration
+				}
+				// data = {
+				// 	amount: 0.01,
+				// 	user_id: 1011,
+				// 	rcharge_type: 'member',
+				// 	source: 'ios',
+				// 	rcharge_account: 13750655315,
+				// 	member_level:1,
+				// 	member_duration:1
+				// }
+			} else if (rcharge_type == 'account') {
+				data = {
+					amount: amount,
+					user_id: user_id,
+					rcharge_type: rcharge_type,
+					source: 'ios',
+					rcharge_account: rcharge_account,
+				}
+				// var data = {
+				// 	amount: 0.01,
+				// 	user_id: 1011,
+				// 	rcharge_type: 'account',
+				// 	source: 'ios',
+				// 	rcharge_account: 13750655315,
+				// }
+			}
+			//key(需要检索的键） url（传入的需要分割的url地址，例：?id=2&age=18）
+			function getSearchString(key, Url) {
+				var str = Url;
+				str = str.substring(1, str.length); // 获取URL中?之后的字符（去掉第一位的问号）
+				// 以&分隔字符串，获得类似name=xiaoli这样的元素数组
+				var arr = str.split("&");
+				var obj = new Object();
+
+				// 将每一个数组元素以=分隔并赋给obj对象 
+				for (var i = 0; i < arr.length; i++) {
+					var tmp_arr = arr[i].split("=");
+					obj[decodeURIComponent(tmp_arr[0])] = decodeURIComponent(tmp_arr[1]);
+				}
+				return obj[key];
+			}
+
+			$(function() {
+				var isCheck = false;
+				var iszhifu = true;
+				var isweixin = false;
+				$('.mask-btn').show()
+				$('.shurepay').hide()
+				if (rcharge_type == 'member') {
+					$('.bgImg').attr('src', './img/huiyuanbg.jpg');
+				} else if (rcharge_type == 'account') {
+					$('.bgImg').attr('src', './img/maobibg.jpg');
+				}
+				$('.money').html(amount + '.00')
+				$('#rechargeUl').on('click', 'li', function() {
+					$('.mode_item_right').attr('src', './img/xuanze.png');
+					$(this).find('.mode_item_right').attr('src', './img/xuanze1.png');
+					if ($(this).index() == 0) {
+						iszhifu = true
+						weixin = false
+					} else {
+						weixin = true
+						iszhifu = false
+					}
+					console.log($(this).index())
+				})
+				$('.checkImg').on('click', function() {
+					if (isCheck == true) {
+						$('.checkImg').attr('src', './img/xuanze.png')
+						$('.mask-btn').show()
+						$('.shurepay').hide()
+						console.log(2)
+						isCheck = false
+					} else if (isCheck == false) {
+						$('.checkImg').attr('src', './img/theselected.png')
+						$('.mask-btn').hide()
+						$('.shurepay').show()
+						isCheck = true
+					}
+				})
+
+
+				$('.shurepay').on('click', function() {
+					let that = this;
+					// console.log(iszhifu,'支付')
+					// console.log(isweixin,'微信')
+					console.log(data)
+					if (iszhifu == true) {
+						$.ajax({
+							type: 'POST',
+							contentType: "application/json;charset=UTF-8",
+							// url: 'http://192.168.6.12:8768/eg-api/user/pay/aliPay',
+							url: 'http://101.37.66.151:8768/eg-api/user/pay/aliPay',
+							data: JSON.stringify(data),
+							success: function(res) {
+								console.log(res.data)
+								// var zfbURL = 'https://excashier.alipay.com/standard/auth.htm?'+res.data;
+								// window.location.href = zfbURL;
+								console.log(res.data)
+								this.html = res.data
+								var form = res.data;
+
+								const div = document.createElement('div')
+								div.innerHTML = form //此处form就是后台返回接收到的数据
+								document.body.appendChild(div)
+								document.forms[0].submit()
+							},
+						});
+					} else {
+						$.ajax({
+							type: 'POST',
+							contentType: "application/json;charset=UTF-8",
+							url: 'http://101.37.66.151:8768/eg-api/user/pay/wxH5Pay',
+							data: JSON.stringify(data),
+							success: function(res) {
+								console.log(res.data)
+								var url = res.data.mweb_url
+								window.location.href = url
+								// var zfbURL = 'https://excashier.alipay.com/standard/auth.htm?'+res.data;
+								// window.location.href = zfbURL;
+
+
+							},
+						});
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

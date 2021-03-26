@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker stop cloud-config && docker rm cloud-config && docker rmi localhost:5000/cloud-config:1.0 && docker rmi localhost:5000/cloud-config:latest && mvn clean package  && docker run -d --name cloud-config -v /etc/localtime:/etc/localtime -v /var/log/:/var/log/ -e params="-Dservice.type=release" -p 6868:6868 localhost:5000/cloud-config:1.0

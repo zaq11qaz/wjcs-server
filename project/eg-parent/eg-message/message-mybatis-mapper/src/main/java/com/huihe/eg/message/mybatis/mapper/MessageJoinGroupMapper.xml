@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.MessageJoinGroupMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.MessageJoinGroupEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="group_id" jdbcType="BIGINT" property="group_id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remark_name" jdbcType="VARCHAR" property="remark_name" />
+    <result column="join_type" jdbcType="VARCHAR" property="join_type" />
+    <result column="operator_account" jdbcType="VARCHAR" property="operator_account" />
+    <result column="exit_type" jdbcType="VARCHAR" property="exit_type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, group_id, user_id, create_time, status, remark_name, join_type, operator_account, 
+    exit_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_join_group
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_join_group
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity">
+    insert into message_join_group (id, group_id, user_id, 
+      create_time, status, remark_name, 
+      join_type, operator_account, exit_type
+      )
+    values (#{id,jdbcType=BIGINT}, #{group_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{remark_name,jdbcType=VARCHAR}, 
+      #{join_type,jdbcType=VARCHAR}, #{operator_account,jdbcType=VARCHAR}, #{exit_type,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity">
+    insert into message_join_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark_name != null">
+        remark_name,
+      </if>
+      <if test="join_type != null">
+        join_type,
+      </if>
+      <if test="operator_account != null">
+        operator_account,
+      </if>
+      <if test="exit_type != null">
+        exit_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="group_id != null">
+        #{group_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark_name != null">
+        #{remark_name,jdbcType=VARCHAR},
+      </if>
+      <if test="join_type != null">
+        #{join_type,jdbcType=VARCHAR},
+      </if>
+      <if test="operator_account != null">
+        #{operator_account,jdbcType=VARCHAR},
+      </if>
+      <if test="exit_type != null">
+        #{exit_type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity">
+    update message_join_group
+    <set>
+      <if test="group_id != null">
+        group_id = #{group_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark_name != null">
+        remark_name = #{remark_name,jdbcType=VARCHAR},
+      </if>
+      <if test="join_type != null">
+        join_type = #{join_type,jdbcType=VARCHAR},
+      </if>
+      <if test="operator_account != null">
+        operator_account = #{operator_account,jdbcType=VARCHAR},
+      </if>
+      <if test="exit_type != null">
+        exit_type = #{exit_type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity">
+    update message_join_group
+    set group_id = #{group_id,jdbcType=BIGINT},
+      user_id = #{user_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      remark_name = #{remark_name,jdbcType=VARCHAR},
+      join_type = #{join_type,jdbcType=VARCHAR},
+      operator_account = #{operator_account,jdbcType=VARCHAR},
+      exit_type = #{exit_type,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_join_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_join_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id  limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM message_join_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryGroupUserInfos" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity" resultType="java.lang.Long">
+    SELECT
+    DISTINCT user_id
+    FROM message_join_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <update id="updateStatus" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity" >
+    update message_join_group
+    SET status = #{param.status,jdbcType=INTEGER}
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </update>
+  <select id="queryMyListPage" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    j.id, j.group_id, j.user_id, j.create_time, j.status, j.remark_name, j.join_type, j.operator_account,
+    j.exit_type
+    FROM
+    message_group g
+    LEFT JOIN message_join_group j ON g.id = j.group_id
+    <where>
+      <if test="param.id!=null">
+        AND j.id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND  j.group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND j.user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND j.create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND j.status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.remark_name!=null">
+        AND j.remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND j.join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND j.operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND j.exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY j.id  limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryGroupListPage" parameterType="com.huihe.eg.message.model.MessageJoinGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_join_group
+    <where>
+      status=3
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+    UNION
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_join_group
+    <where>
+      status=1
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+    UNION
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_join_group
+    <where>
+      status=4
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_id!=null">
+        AND group_id = #{param.group_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="param.remark_name!=null">
+        AND remark_name = #{param.remark_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.join_type!=null">
+        AND join_type = #{param.join_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.operator_account!=null">
+        AND operator_account = #{param.operator_account,jdbcType=VARCHAR}
+      </if>
+      <if test="param.exit_type!=null">
+        AND exit_type = #{param.exit_type,jdbcType=VARCHAR}
+      </if>
+    </where>
+     limit #{param.startRow},#{param.pageSize}
+  </select>
+</mapper>

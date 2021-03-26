@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterCommentMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterCommentEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="share_count" jdbcType="INTEGER" property="share_count"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parent_id"/>
+        <result column="is_reply" jdbcType="BIT" property="is_reply"/>
+        <result column="oneself" jdbcType="BIT" property="oneself"/>
+        <result column="reply_id" jdbcType="BIGINT" property="reply_id"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="score" jdbcType="DECIMAL" property="score"/>
+        <result column="like_count" jdbcType="INTEGER" property="like_count"/>
+        <result column="master_id" jdbcType="BIGINT" property="master_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="appointment_id" jdbcType="BIGINT" property="appointment_id"/>
+        <result column="group_id" jdbcType="BIGINT" property="group_id"/>
+        <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id"/>
+        <result column="user_appointment_id" jdbcType="BIGINT" property="user_appointment_id"/>
+        <result column="mastersetprice_id" jdbcType="BIGINT" property="mastersetprice_id"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="photo_url" jdbcType="VARCHAR" property="photo_url"/>
+        <result column="course_quality" jdbcType="DOUBLE" property="course_quality"/>
+        <result column="environment" jdbcType="DOUBLE" property="environment"/>
+        <result column="faculty" jdbcType="DOUBLE" property="faculty"/>
+        <result column="cost_effectiveness" jdbcType="DOUBLE" property="cost_effectiveness"/>
+        <result column="attitude" jdbcType="DOUBLE" property="attitude"/>
+        <result column="average_score" jdbcType="DOUBLE" property="average_score"/>
+        <result column="anonymous" jdbcType="BIT" property="anonymous"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user_id, status, parent_id, is_reply, oneself, reply_id, content, score, like_count,
+    master_id, create_time, update_time, appointment_id, group_id, mechanism_id, user_appointment_id,mastersetprice_id,share_count,
+    type,photo_url,course_quality,environment,faculty,cost_effectiveness,attitude,average_score,anonymous
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_comment
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_master_comment
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.MasterCommentEntity">
+        insert into eg_master_comment (id, user_id, status,
+                                       parent_id, is_reply, oneself,
+                                       reply_id, content, score,
+                                       like_count, master_id, create_time,
+                                       update_time, appointment_id, group_id,
+                                       mechanism_id, user_appointment_id, mastersetprice_id)
+        values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{status,jdbcType=INTEGER},
+                #{parent_id,jdbcType=BIGINT}, #{is_reply,jdbcType=BIT}, #{oneself,jdbcType=BIT},
+                #{reply_id,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{score,jdbcType=DECIMAL},
+                #{like_count,jdbcType=INTEGER}, #{master_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP},
+                #{update_time,jdbcType=TIMESTAMP}, #{appointment_id,jdbcType=BIGINT}, #{group_id,jdbcType=BIGINT},
+                #{mechanism_id,jdbcType=BIGINT}, #{user_appointment_id,jdbcType=BIGINT},
+                #{mastersetprice_id,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterCommentEntity">
+        insert into eg_master_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="parent_id != null">
+                parent_id,
+            </if>
+            <if test="is_reply != null">
+                is_reply,
+            </if>
+            <if test="oneself != null">
+                oneself,
+            </if>
+            <if test="reply_id != null">
+                reply_id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="score != null">
+                score,
+            </if>
+            <if test="like_count != null">
+                like_count,
+            </if>
+            <if test="master_id != null">
+                master_id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="appointment_id != null">
+                appointment_id,
+            </if>
+            <if test="group_id != null">
+                group_id,
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id,
+            </if>
+            <if test="user_appointment_id != null">
+                user_appointment_id,
+            </if>
+            <if test="mastersetprice_id != null">
+                mastersetprice_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="photo_url != null">
+                photo_url,
+            </if>
+            <if test="course_quality != null">
+                course_quality,
+            </if>
+            <if test="environment != null">
+                environment,
+            </if>
+            <if test="faculty != null">
+                faculty,
+            </if>
+            <if test="cost_effectiveness != null">
+                cost_effectiveness,
+            </if>
+            <if test="attitude != null">
+                attitude,
+            </if>
+            <if test="average_score != null">
+                average_score,
+            </if>
+            <if test="anonymous != null">
+                anonymous,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="parent_id != null">
+                #{parent_id,jdbcType=BIGINT},
+            </if>
+            <if test="is_reply != null">
+                #{is_reply,jdbcType=BIT},
+            </if>
+            <if test="oneself != null">
+                #{oneself,jdbcType=BIT},
+            </if>
+            <if test="reply_id != null">
+                #{reply_id,jdbcType=BIGINT},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=DECIMAL},
+            </if>
+            <if test="like_count != null">
+                #{like_count,jdbcType=INTEGER},
+            </if>
+            <if test="master_id != null">
+                #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="group_id != null">
+                #{group_id,jdbcType=BIGINT},
+            </if>
+            <if test="mechanism_id != null">
+                #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_appointment_id != null">
+                #{user_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="mastersetprice_id != null">
+                #{mastersetprice_id,jdbcType=BIGINT},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="photo_url != null">
+                #{photo_url,jdbcType=VARCHAR},
+            </if>
+            <if test="course_quality != null">
+                #{course_quality,jdbcType=DOUBLE},
+            </if>
+            <if test="environment != null">
+                #{environment,jdbcType=DOUBLE},
+            </if>
+            <if test="faculty != null">
+                #{faculty,jdbcType=DOUBLE},
+            </if>
+            <if test="cost_effectiveness != null">
+                #{cost_effectiveness,jdbcType=DOUBLE},
+            </if>
+            <if test="attitude != null">
+                #{attitude,jdbcType=DOUBLE},
+            </if>
+            <if test="average_score != null">
+                #{average_score,jdbcType=DOUBLE},
+            </if>
+            <if test="anonymous != null">
+                #{anonymous,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterCommentEntity">
+        update eg_master_comment
+        <set>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="parent_id != null">
+                parent_id = #{parent_id,jdbcType=BIGINT},
+            </if>
+            <if test="is_reply != null">
+                is_reply = #{is_reply,jdbcType=BIT},
+            </if>
+            <if test="oneself != null">
+                oneself = #{oneself,jdbcType=BIT},
+            </if>
+            <if test="reply_id != null">
+                reply_id = #{reply_id,jdbcType=BIGINT},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="score != null">
+                score = #{score,jdbcType=DECIMAL},
+            </if>
+            <if test="like_count != null">
+                like_count = #{like_count,jdbcType=INTEGER},
+            </if>
+            <if test="master_id != null">
+                master_id = #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                appointment_id = #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="group_id != null">
+                group_id = #{group_id,jdbcType=BIGINT},
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_appointment_id != null">
+                user_appointment_id = #{user_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="mastersetprice_id != null">
+                mastersetprice_id = #{mastersetprice_id,jdbcType=BIGINT},
+            </if>
+            <if test="photo_url != null">
+                photo_url = #{photo_url,jdbcType=VARCHAR},
+            </if>
+            <if test="course_quality != null">
+                course_quality = #{course_quality,jdbcType=DOUBLE},
+            </if>
+            <if test="environment != null">
+                environment = #{environment,jdbcType=DOUBLE},
+            </if>
+            <if test="faculty != null">
+                faculty = #{faculty,jdbcType=DOUBLE},
+            </if>
+            <if test="cost_effectiveness != null">
+                cost_effectiveness = #{cost_effectiveness,jdbcType=DOUBLE},
+            </if>
+            <if test="attitude != null">
+                attitude = #{attitude,jdbcType=DOUBLE},
+            </if>
+            <if test="average_score != null">
+                average_score = #{average_score,jdbcType=DOUBLE},
+            </if>
+            <if test="anonymous != null">
+                anonymous = #{anonymous,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterCommentEntity">
+        update eg_master_comment
+        set user_id             = #{user_id,jdbcType=BIGINT},
+            status              = #{status,jdbcType=INTEGER},
+            parent_id           = #{parent_id,jdbcType=BIGINT},
+            is_reply            = #{is_reply,jdbcType=BIT},
+            oneself             = #{oneself,jdbcType=BIT},
+            reply_id            = #{reply_id,jdbcType=BIGINT},
+            content             = #{content,jdbcType=VARCHAR},
+            score               = #{score,jdbcType=DECIMAL},
+            like_count          = #{like_count,jdbcType=INTEGER},
+            master_id           = #{master_id,jdbcType=BIGINT},
+            create_time         = #{create_time,jdbcType=TIMESTAMP},
+            update_time         = #{update_time,jdbcType=TIMESTAMP},
+            appointment_id      = #{appointment_id,jdbcType=BIGINT},
+            group_id            = #{group_id,jdbcType=BIGINT},
+            mechanism_id        = #{mechanism_id,jdbcType=BIGINT},
+            user_appointment_id = #{user_appointment_id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateCommentLikeCount">
+        update eg_master_comment
+        set like_count=like_count + 1
+        where BINARY id = #{id}
+    </update>
+    <update id="updateCommentLikeCountCancel">
+        update eg_master_comment
+        set like_count=like_count - 1
+        where BINARY id = #{id}
+    </update>
+    <update id="updateCommentShareCount">
+        update eg_master_comment
+        set share_count=share_count + 1
+        where BINARY id = #{id}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.MasterCommentEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_comment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.parent_id!=null">
+                AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_reply!=null">
+                AND is_reply = #{param.is_reply,jdbcType=BIT}
+            </if>
+            <if test="param.oneself!=null">
+                AND oneself = #{param.oneself,jdbcType=BIT}
+            </if>
+            <if test="param.reply_id!=null">
+                AND reply_id = #{param.reply_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.content!=null">
+                AND content = #{param.content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.like_count!=null">
+                AND like_count = #{param.like_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_appointment_id!=null">
+                AND user_appointment_id = #{param.user_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mastersetprice_id!=null">
+                AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterCommentEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_comment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.parent_id!=null">
+                AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_reply!=null">
+                AND is_reply = #{param.is_reply,jdbcType=BIT}
+            </if>
+            <if test="param.oneself!=null">
+                AND oneself = #{param.oneself,jdbcType=BIT}
+            </if>
+            <if test="param.reply_id!=null">
+                AND reply_id = #{param.reply_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.content!=null">
+                AND content = #{param.content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.like_count!=null">
+                AND like_count = #{param.like_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_appointment_id!=null">
+                AND user_appointment_id = #{param.user_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mastersetprice_id!=null">
+                AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterCommentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(0),0)
+        FROM eg_master_comment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.parent_id!=null">
+                AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_reply!=null">
+                AND is_reply = #{param.is_reply,jdbcType=BIT}
+            </if>
+            <if test="param.oneself!=null">
+                AND oneself = #{param.oneself,jdbcType=BIT}
+            </if>
+            <if test="param.reply_id!=null">
+                AND reply_id = #{param.reply_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.content!=null">
+                AND content = #{param.content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.like_count!=null">
+                AND like_count = #{param.like_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_appointment_id!=null">
+                AND user_appointment_id = #{param.user_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mastersetprice_id!=null">
+                AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryAvgScore" resultType="com.huihe.eg.user.model.MasterCommentEntity">
+        SELECT
+        coalesce(AVG( course_quality ),0)  AS course_quality,
+        coalesce(AVG( environment ),0)  AS environment,
+        coalesce(AVG( faculty ),0)  AS faculty,
+        coalesce(AVG( cost_effectiveness ),0)  AS cost_effectiveness,
+        coalesce(AVG( attitude ),0)  AS attitude,
+        coalesce(AVG( average_score ),0)  AS average_score
+        FROM
+        eg_master_comment
+        <where>
+            AND course_quality != 0
+            AND environment != 0
+            AND faculty != 0
+            AND cost_effectiveness != 0
+            AND attitude != 0
+            AND average_score != 0
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.parent_id!=null">
+                AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.is_reply!=null">
+                AND is_reply = #{param.is_reply,jdbcType=BIT}
+            </if>
+            <if test="param.oneself!=null">
+                AND oneself = #{param.oneself,jdbcType=BIT}
+            </if>
+            <if test="param.reply_id!=null">
+                AND reply_id = #{param.reply_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.content!=null">
+                AND content = #{param.content,jdbcType=VARCHAR}
+            </if>
+            <if test="param.score!=null">
+                AND score = #{param.score,jdbcType=DECIMAL}
+            </if>
+            <if test="param.like_count!=null">
+                AND like_count = #{param.like_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.group_id!=null">
+                AND group_id = #{param.group_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_appointment_id!=null">
+                AND user_appointment_id = #{param.user_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mastersetprice_id!=null">
+                AND mastersetprice_id = #{param.mastersetprice_id,jdbcType=BIGINT}
+            </if>
+        </where>
+
+
+    </select>
+</mapper>

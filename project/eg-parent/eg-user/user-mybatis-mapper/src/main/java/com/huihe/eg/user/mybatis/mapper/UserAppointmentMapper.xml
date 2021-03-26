@@ -1,0 +1,4704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserAppointmentMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserAppointmentEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="master_id" jdbcType="BIGINT" property="master_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="appointment_id" jdbcType="BIGINT" property="appointment_id"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="start_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="update_identity" jdbcType="VARCHAR" property="update_identity"/>
+        <result column="offset" jdbcType="DECIMAL" property="offset"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="timezone_id" jdbcType="BIGINT" property="timezone_id"/>
+        <result column="update_appointment_id" jdbcType="BIGINT" property="update_appointment_id"/>
+        <result column="master_type" jdbcType="VARCHAR" property="master_type"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="earnings" jdbcType="DECIMAL" property="earnings"/>
+        <result column="earnings_status" jdbcType="INTEGER" property="earnings_status"/>
+        <result column="update_title" jdbcType="VARCHAR" property="update_title"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="pipeline_num" jdbcType="VARCHAR" property="pipeline_num"/>
+        <result column="service_type" jdbcType="VARCHAR" property="service_type"/>
+        <result column="offline_count" jdbcType="INTEGER" property="offline_count"/>
+        <result column="offline_mobile" jdbcType="VARCHAR" property="offline_mobile"/>
+        <result column="student_count" jdbcType="INTEGER" property="student_count"/>
+        <result column="offline_address" jdbcType="VARCHAR" property="offline_address"/>
+        <result column="statistics_time" jdbcType="TIMESTAMP" property="statistics_time"/>
+        <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id"/>
+        <result column="study_card_id" jdbcType="BIGINT" property="study_card_id"/>
+        <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+        <result column="is_exclusive" jdbcType="BIT" property="is_exclusive"/>
+        <result column="is_pay" jdbcType="BIT" property="is_pay"/>
+        <result column="is_comment" jdbcType="BIT" property="is_comment"/>
+        <result column="number_of_lessons" jdbcType="INTEGER" property="number_of_lessons"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user_id, master_id, create_time, update_time, appointment_id, status, start_time,
+    end_time, update_identity, offset, title, timezone_id, update_appointment_id, master_type, 
+    language, earnings, earnings_status, update_title, remarks, pipeline_num, service_type, 
+    offline_count, offline_mobile, student_count, offline_address,mechanism_id,latitude, longitude,
+    is_exclusive,study_card_id,master_set_price_id,is_pay,is_comment,number_of_lessons
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_appointment
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_user_appointment
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteByStudyCardId">
+        delete
+        from eg_user_appointment
+        where study_card_id = #{id,jdbcType=BIGINT}
+        AND status = 2
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserAppointmentEntity">
+        insert into eg_user_appointment (id, user_id, master_id,
+                                         create_time, update_time, appointment_id,
+                                         status, start_time, end_time,
+                                         update_identity, offset, title,
+                                         timezone_id, update_appointment_id, master_type,
+                                         language, earnings, earnings_status,
+                                         update_title, remarks, pipeline_num,
+                                         service_type, offline_count, offline_mobile,
+                                         student_count, offline_address, mechanism_id,
+                                         latitude, longitude, is_exclusive, study_card_id)
+        values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{master_id,jdbcType=BIGINT},
+                #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{appointment_id,jdbcType=BIGINT},
+                #{status,jdbcType=INTEGER}, #{start_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP},
+                #{update_identity,jdbcType=VARCHAR}, #{offset,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR},
+                #{timezone_id,jdbcType=BIGINT}, #{update_appointment_id,jdbcType=BIGINT},
+                #{master_type,jdbcType=VARCHAR},
+                #{language,jdbcType=VARCHAR}, #{earnings,jdbcType=DECIMAL}, #{earnings_status,jdbcType=INTEGER},
+                #{update_title,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{pipeline_num,jdbcType=VARCHAR},
+                #{service_type,jdbcType=VARCHAR}, #{offline_count,jdbcType=INTEGER}, #{offline_mobile,jdbcType=VARCHAR},
+                #{student_count,jdbcType=INTEGER}, #{offline_address,jdbcType=VARCHAR},
+                (#{mechanism_id,jdbcType=BIGINT},
+                 #{latitude,jdbcType=DECIMAL}, #{longitude,jdbcType=DECIMAL}, #{is_exclusive,jdbcType=BIGINT},
+                 #{study_card_id,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        insert into eg_user_appointment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="master_id != null">
+                master_id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="appointment_id != null">
+                appointment_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="start_time != null">
+                start_time,
+            </if>
+            <if test="end_time != null">
+                end_time,
+            </if>
+            <if test="update_identity != null">
+                update_identity,
+            </if>
+            <if test="offset != null">
+                offset,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="timezone_id != null">
+                timezone_id,
+            </if>
+            <if test="update_appointment_id != null">
+                update_appointment_id,
+            </if>
+            <if test="master_type != null">
+                master_type,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            earnings,
+            <if test="earnings_status != null">
+                earnings_status,
+            </if>
+            <if test="update_title != null">
+                update_title,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="pipeline_num != null">
+                pipeline_num,
+            </if>
+            <if test="service_type != null">
+                service_type,
+            </if>
+            <if test="offline_count != null">
+                offline_count,
+            </if>
+            <if test="offline_mobile != null">
+                offline_mobile,
+            </if>
+            <if test="student_count != null">
+                student_count,
+            </if>
+            <if test="offline_address != null">
+                offline_address,
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="is_exclusive != null">
+                is_exclusive,
+            </if>
+            <if test="study_card_id != null">
+                study_card_id,
+            </if>
+            <if test="master_set_price_id != null">
+                master_set_price_id,
+            </if>
+            <if test="is_pay != null">
+                is_pay,
+            </if>
+            <if test="is_comment != null">
+                is_comment,
+            </if>
+            <if test="number_of_lessons != null">
+                number_of_lessons,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_id != null">
+                #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="start_time != null">
+                #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_identity != null">
+                #{update_identity,jdbcType=VARCHAR},
+            </if>
+            <if test="offset != null">
+                #{offset,jdbcType=DECIMAL},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="timezone_id != null">
+                #{timezone_id,jdbcType=BIGINT},
+            </if>
+            <if test="update_appointment_id != null">
+                #{update_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_type != null">
+                #{master_type,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="earnings != null">
+                #{earnings,jdbcType=DECIMAL},
+            </if>
+            <if test="earnings == null">
+                0,
+            </if>
+            <if test="earnings_status != null">
+                #{earnings_status,jdbcType=INTEGER},
+            </if>
+            <if test="update_title != null">
+                #{update_title,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="pipeline_num != null">
+                #{pipeline_num,jdbcType=VARCHAR},
+            </if>
+            <if test="service_type != null">
+                #{service_type,jdbcType=VARCHAR},
+            </if>
+            <if test="offline_count != null">
+                #{offline_count,jdbcType=INTEGER},
+            </if>
+            <if test="offline_mobile != null">
+                #{offline_mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="student_count != null">
+                #{student_count,jdbcType=INTEGER},
+            </if>
+            <if test="offline_address != null">
+                #{offline_address,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_id != null">
+                #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="is_exclusive != null">
+                #{is_exclusive,jdbcType=BIT},
+            </if>
+            <if test="study_card_id != null">
+                #{study_card_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_set_price_id != null">
+                #{master_set_price_id,jdbcType=BIGINT},
+            </if>
+            <if test="is_pay != null">
+                #{is_pay,jdbcType=BIT},
+            </if>
+            <if test="is_comment != null">
+                #{is_comment,jdbcType=BIT},
+            </if>
+            <if test="number_of_lessons != null">
+                #{number_of_lessons,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserAppointmentEntity">
+        update eg_user_appointment
+        <set>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_id != null">
+                master_id = #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                appointment_id = #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="start_time != null">
+                start_time = #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                end_time = #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_identity != null">
+                update_identity = #{update_identity,jdbcType=VARCHAR},
+            </if>
+            <if test="offset != null">
+                offset = #{offset,jdbcType=DECIMAL},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="timezone_id != null">
+                timezone_id = #{timezone_id,jdbcType=BIGINT},
+            </if>
+            <if test="update_appointment_id != null">
+                update_appointment_id = #{update_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_type != null">
+                master_type = #{master_type,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="earnings != null">
+                earnings = #{earnings,jdbcType=DECIMAL},
+            </if>
+            <if test="earnings_status != null">
+                earnings_status = #{earnings_status,jdbcType=INTEGER},
+            </if>
+            <if test="update_title != null">
+                update_title = #{update_title,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="pipeline_num != null">
+                pipeline_num = #{pipeline_num,jdbcType=VARCHAR},
+            </if>
+            <if test="service_type != null">
+                service_type = #{service_type,jdbcType=VARCHAR},
+            </if>
+            <if test="offline_count != null">
+                offline_count = #{offline_count,jdbcType=INTEGER},
+            </if>
+            <if test="offline_mobile != null">
+                offline_mobile = #{offline_mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="student_count != null">
+                student_count = #{student_count,jdbcType=INTEGER},
+            </if>
+            <if test="offline_address != null">
+                offline_address = #{offline_address,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="study_card_id != null">
+                study_card_id = #{study_card_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_set_price_id != null">
+                master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+            </if>
+            <if test="is_pay != null">
+                is_pay = #{is_pay,jdbcType=BIT},
+            </if>
+            <if test="is_comment != null">
+                is_comment = #{is_comment,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserAppointmentEntity">
+        update eg_user_appointment
+        set user_id               = #{user_id,jdbcType=BIGINT},
+            master_id             = #{master_id,jdbcType=BIGINT},
+            create_time           = #{create_time,jdbcType=TIMESTAMP},
+            update_time           = #{update_time,jdbcType=TIMESTAMP},
+            appointment_id        = #{appointment_id,jdbcType=BIGINT},
+            status                = #{status,jdbcType=INTEGER},
+            start_time            = #{start_time,jdbcType=TIMESTAMP},
+            end_time              = #{end_time,jdbcType=TIMESTAMP},
+            update_identity       = #{update_identity,jdbcType=VARCHAR},
+            offset                = #{offset,jdbcType=DECIMAL},
+            title                 = #{title,jdbcType=VARCHAR},
+            timezone_id           = #{timezone_id,jdbcType=BIGINT},
+            update_appointment_id = #{update_appointment_id,jdbcType=BIGINT},
+            master_type           = #{master_type,jdbcType=VARCHAR},
+            language              = #{language,jdbcType=VARCHAR},
+            earnings              = #{earnings,jdbcType=DECIMAL},
+            earnings_status       = #{earnings_status,jdbcType=INTEGER},
+            update_title          = #{update_title,jdbcType=VARCHAR},
+            remarks               = #{remarks,jdbcType=VARCHAR},
+            pipeline_num          = #{pipeline_num,jdbcType=VARCHAR},
+            service_type          = #{service_type,jdbcType=VARCHAR},
+            offline_count         = #{offline_count,jdbcType=INTEGER},
+            offline_mobile        = #{offline_mobile,jdbcType=VARCHAR},
+            student_count         = #{student_count,jdbcType=INTEGER},
+            offline_address       = #{offline_address,jdbcType=VARCHAR},
+            mechanism_id          = #{mechanism_id,jdbcType=BIGINT},
+            latitude              = #{latitude,jdbcType=DECIMAL},
+            longitude             = #{longitude,jdbcType=DECIMAL}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByAppointMentId">
+        update eg_user_appointment
+        <set>
+            <if test="param.user_id != null">
+                user_id = #{param.user_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.master_id != null">
+                master_id = #{param.param.master_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.create_time != null">
+                create_time = #{param.create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="param.update_time != null">
+                update_time = #{param.update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="param.appointment_id != null">
+                appointment_id = #{param.appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.status != null">
+                status = #{param.status,jdbcType=INTEGER},
+            </if>
+            <if test="param.start_time != null">
+                start_time = #{param.start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="param.end_time != null">
+                end_time = #{param.end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="param.update_identity != null">
+                update_identity = #{param.update_identity,jdbcType=VARCHAR},
+            </if>
+            <if test="param.offset != null">
+                offset = #{param.offset,jdbcType=DECIMAL},
+            </if>
+            <if test="param.title != null">
+                title = #{param.title,jdbcType=VARCHAR},
+            </if>
+            <if test="param.timezone_id != null">
+                timezone_id = #{param.timezone_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.update_appointment_id != null">
+                update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.master_type != null">
+                master_type = #{param.master_type,jdbcType=VARCHAR},
+            </if>
+            <if test="param.language != null">
+                language = #{param.language,jdbcType=VARCHAR},
+            </if>
+            <if test="param.earnings != null">
+                earnings = #{param.earnings,jdbcType=DECIMAL},
+            </if>
+            <if test="param.earnings_status != null">
+                earnings_status = #{param.earnings_status,jdbcType=INTEGER},
+            </if>
+            <if test="param.update_title != null">
+                update_title = #{param.update_title,jdbcType=VARCHAR},
+            </if>
+            <if test="param.remarks != null">
+                remarks = #{param.remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="param.pipeline_num != null">
+                pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR},
+            </if>
+            <if test="param.service_type != null">
+                service_type = #{param.service_type,jdbcType=VARCHAR},
+            </if>
+            <if test="param.offline_count != null">
+                offline_count = #{param.offline_count,jdbcType=INTEGER},
+            </if>
+            <if test="param.offline_mobile != null">
+                offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="param.student_count != null">
+                student_count = #{param.student_count,jdbcType=INTEGER},
+            </if>
+            <if test="param.offline_address != null">
+                offline_address = #{param.offline_address,jdbcType=VARCHAR},
+            </if>
+            <if test="param.mechanism_id != null">
+                mechanism_id = #{param.mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.latitude != null">
+                latitude = #{param.latitude,jdbcType=DECIMAL},
+            </if>
+            <if test="param.longitude != null">
+                longitude = #{param.longitude,jdbcType=DECIMAL},
+            </if>
+            <if test="param.study_card_id != null">
+                study_card_id = #{param.study_card_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.master_set_price_id != null">
+                master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.is_pay != null">
+                is_pay = #{is_pay,jdbcType=BIT},
+            </if>
+            <if test="param.is_comment != null">
+                is_comment = #{param.is_comment,jdbcType=BIT},
+            </if>
+        </set>
+        where appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserAppointmentEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_pay!=null">
+                AND is_pay = #{param.is_pay,jdbcType=BIT}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(0),0)
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_pay!=null">
+                AND is_pay = #{param.is_pay,jdbcType=BIT}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryClass" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>unix_timestamp(now()) BETWEEN unix_timestamp(start_time)+(offset-8)*60*60 AND
+            unix_timestamp(end_time)+(offset-8)*60*60
+            AND ((user_id=#{param.user_id,jdbcType=BIGINT} AND master_id =#{param.master_id,jdbcType=BIGINT}) OR
+            (user_id=#{param.master_id,jdbcType=BIGINT} AND master_id =#{param.user_id,jdbcType=BIGINT}))
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <!--查询某个时间段是否需要上课-->
+    <select id="queryIsAppointmentClass" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            (status =2 OR status=4 OR status=5 OR status=6 oR status=8)
+            <if test="param.start_time!=null and param.end_time!=null  and param.offset!=null">
+                <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                    AND unix_timestamp(start_time) &gt;=
+                    unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                    AND unix_timestamp(end_time) &lt;=
+                    unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                </if>
+            </if>
+            <if test="param.user_id!=null">
+                AND (user_id=#{param.user_id,jdbcType=BIGINT} OR master_id =#{param.user_id,jdbcType=BIGINT})
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit 1
+    </select>
+    <select id="queryStudentCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT count( DISTINCT user_id) FROM eg_user_appointment
+        <where>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!-- 查询本月数量-->
+    <select id="queryCourseCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT COUNT(0) FROM eg_user_appointment
+        <where>
+            MONTH(start_time) =
+            MONTH(CURDATE()) AND YEAR(start_time) = YEAR(CURDATE())
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryTeacherListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT DISTINCT master_id,master_type FROM eg_user_appointment
+        <where>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryLatelyCourse" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            start_time > now()
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+
+    <select id="queryStudentListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT DISTINCT user_id FROM eg_user_appointment
+        <where>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryUserSchedule" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            unix_timestamp(NOW()) &lt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60 and status !=1 and status !=7
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_type==null">
+                AND (master_type = 'major' or master_type = 'cross_border' or master_type = 'mother_tongue' or
+                master_type = 'exclusive_courses')
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) limit #{param.startRow},#{param.pageSize}
+    </select>
+    <!--查询本月课时-->
+    <select id="queryTypeCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        select
+        COALESCE(count(1),0)
+        from
+        eg_user_appointment a,
+        eg_master_info i,
+        eg_user_studycard s
+        where
+        MONTH(a.create_time) =
+        MONTH(CURDATE()) AND YEAR(a.create_time) = YEAR(CURDATE())
+        AND a.appointment_id = i.id
+        and s.type = i.type
+        <if test="param.user_id!=null">
+            AND s.user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_type!=null">
+            AND s.type = #{param.master_type,jdbcType=BIGINT}
+        </if>
+        <if test="param.service_type!=null">
+            AND service_type = #{param.service_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.study_card_id!=null">
+            AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+        </if>
+    </select>
+    <!-- 查询半个小时内将要开始的课程-->
+    <select id="querySoonClass" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        WHERE (master_type = 'major' or master_type = 'cross_border' or master_type = 'mother_tongue' or master_type =
+        'exclusive_courses')
+        and unix_timestamp(start_time)+(8-offset)*60*60 >= unix_timestamp(now()) AND status=2 AND
+        unix_timestamp(start_time)+(8-offset)*60*60-unix_timestamp(now()) &lt;= 1800
+    </select>
+    <select id="queryEarningsListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!--累计收益-->
+    <select id="queryCumulativeEarnings" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Double">
+        SELECT
+        COALESCE(sum(earnings),0.0)
+        FROM eg_user_appointment
+        <where>
+            status =3
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!--未到账收益-->
+    <select id="queryNotEarnings" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(sum(earnings),0)
+        FROM eg_user_appointment
+        <where>
+            (status =2 OR status =4 OR status =5) AND unix_timestamp(start_time)>unix_timestamp(now())+(offset-8)*60*60
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryAppointmentListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            status &lt;&gt; 1
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!--助学师收益统计-->
+    <select id="queryEarningsStatistics" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.count.ChartParam">
+        SELECT
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(now(), '%Y-%m') THEN
+        earnings
+        ELSE
+        0
+        END
+        ) december,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 1 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) november,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 2 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) october,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 3 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) september,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 4 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) august,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 5 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) july,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 6 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) june,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 7 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) may,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 8 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) april,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 9 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) march,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 10 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) february,
+        sum(
+        CASE
+        WHEN DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(
+        date_sub(now(), INTERVAL 11 MONTH),
+        '%Y-%m'
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) january,
+        sum(
+        CASE
+        WHEN create_time > now() THEN
+        earnings
+        ELSE
+        0
+        END
+        ) yiwNum,
+        sum(
+        CASE
+        WHEN now() > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 1 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) erNum,
+        sum(
+        CASE
+        WHEN (now() + - 1) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 2 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) saNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 2 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 3 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) siNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 3 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 4 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) wuNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 4 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 5 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) liuNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 5 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 6 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) sevenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 6 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 7 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) eightNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 7 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 8 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) nineNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 8 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 9 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) tenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 9 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 10 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) elevenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 10 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 11 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twelveNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 11 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 12 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) thirteenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 12 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 13 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) forteenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 13 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 14 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) fifteenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 14 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 15 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) sixteenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 15 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 16 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) seventeenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 16 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 17 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) eighteenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 17 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 18 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) nineteenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 18 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 19 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 19 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 20 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyOneNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 20 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 21 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyTwoNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 21 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 22 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyThreeNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 22 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 23 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyFourNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 23 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 24 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyFiveNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 24 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 25 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentySixNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 25 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 26 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentySevenNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 26 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 27 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyEightNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 27 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 28 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) twentyNineNum,
+        sum(
+        CASE
+        WHEN (
+        date_sub(now(), INTERVAL 28 DAY)
+        ) > create_time
+        AND create_time > (
+        date_sub(now(), INTERVAL 29 DAY)
+        ) THEN
+        earnings
+        ELSE
+        0
+        END
+        ) thirtyNum,
+        now() yi,
+        date_sub(now(), INTERVAL 1 DAY) er,
+        date_sub(now(), INTERVAL 2 DAY) sa,
+        date_sub(now(), INTERVAL 3 DAY) si,
+        date_sub(now(), INTERVAL 4 DAY) wu,
+        date_sub(now(), INTERVAL 5 DAY) liu,
+        date_sub(now(), INTERVAL 6 DAY) qi,
+        date_sub(now(), INTERVAL 7 DAY) eight,
+        date_sub(now(), INTERVAL 8 DAY) nine,
+        date_sub(now(), INTERVAL 9 DAY) ten,
+        date_sub(now(), INTERVAL 10 DAY) eleven,
+        date_sub(now(), INTERVAL 11 DAY) twelve,
+        date_sub(now(), INTERVAL 12 DAY) thirteen,
+        date_sub(now(), INTERVAL 13 DAY) forteen,
+        date_sub(now(), INTERVAL 14 DAY) fifteen,
+        date_sub(now(), INTERVAL 15 DAY) sixteen,
+        date_sub(now(), INTERVAL 16 DAY) seventeen,
+        date_sub(now(), INTERVAL 17 DAY) eighteen,
+        date_sub(now(), INTERVAL 18 DAY) nineteen,
+        date_sub(now(), INTERVAL 19 DAY) twenty,
+        date_sub(now(), INTERVAL 20 DAY) twentyOne,
+        date_sub(now(), INTERVAL 21 DAY) twentyTwo,
+        date_sub(now(), INTERVAL 22 DAY) twentyThree,
+        date_sub(now(), INTERVAL 23 DAY) twentyFour,
+        date_sub(now(), INTERVAL 24 DAY) twentyFive,
+        date_sub(now(), INTERVAL 25 DAY) twentySix,
+        date_sub(now(), INTERVAL 26 DAY) twentySeven,
+        date_sub(now(), INTERVAL 27 DAY) twentyEight,
+        date_sub(now(), INTERVAL 28 DAY) twentyNine,
+        date_sub(now(), INTERVAL 29 DAY) thirty
+        FROM
+        eg_user_appointment
+        <where>
+            status = 3 and earnings_status=2
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryAppointmentTimeStatistics" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.count.AppointmentParam">
+        SELECT
+        '00:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '0'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '00:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '0'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '01:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '1'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '01:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '1'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '02:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '2'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '02:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '2'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '03:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '3'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '03:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '3'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '04:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '4'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '04:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '4'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '05:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '5'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '05:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '5'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '06:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '6'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '06:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '6'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '07:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '7'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '07:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '7'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '08:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '8'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '08:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '8'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '09:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '9'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '09:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '9'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '10:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '10'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '10:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '10'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '11:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '11'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '11:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '11'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '12:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '12'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '12:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '12'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '13:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '13'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+        UNION all
+        SELECT
+        '13:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '13'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '14:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '14'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '14:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '14'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '15:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '15'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '15:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '15'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '16:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '16'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '16:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '16'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '17:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '17'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '17:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '17'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '18:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '18'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '18:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '18'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '19:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '19'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '19:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '19'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '20:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '20'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '20:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '20'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '21:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '21'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '21:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '21'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '22:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '22'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '22:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '22'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '23:00' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '23'
+        AND MINUTE (start_time) = '0'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+        UNION all
+        SELECT
+        '23:30' AS appointment_time,
+        count(DISTINCT master_id) master_count,
+        count(1) AS appointment_count,
+        sum(earnings) AS earnings_sum
+        FROM
+        eg_user_appointment
+        WHERE
+        HOUR (start_time) = '23'
+        AND MINUTE (start_time) = '30'
+        <if test="param.statistics_time!=null">
+            AND year(start_time) = year(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND month(start_time) = month(#{param.statistics_time,jdbcType=TIMESTAMP})
+            AND day(start_time) = day(#{param.statistics_time,jdbcType=TIMESTAMP})
+        </if>
+
+    </select>
+    <select id="queryHistoryListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            unix_timestamp(NOW()) &gt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60 and status!=7 and status!=1
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryHistoryListPageCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_user_appointment
+        <where>
+            unix_timestamp(NOW()) &gt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!--今日累计收益-->
+    <select id="queryDayCumulativeEarnings" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        sum(earnings)
+        FROM eg_user_appointment
+        <where>
+            DAY(now())=DAY(start_time) and
+            WEEK(now()) = WEEK(start_time)
+            and MONTH(now()) =
+            MONTH(start_time) AND YEAR(now()) = YEAR(start_time)
+            and status =3
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!-- 今日待上课数-->
+    <select id="queryDayBeginCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_user_appointment
+        where
+        DAY(now())=DAY(start_time) and
+        WEEK(now()) = WEEK(start_time)
+        and MONTH(now()) =
+        MONTH(start_time) AND YEAR(now()) = YEAR(start_time)
+        and status =2 and
+        unix_timestamp(NOW()) &lt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.study_card_id!=null">
+            AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+        </if>
+
+
+    </select>
+    <!-- 今日上课数-->
+    <select id="queryDayCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_user_appointment
+        where
+        date_format(start_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.status!=null">
+            AND status = #{param.status,jdbcType=BIGINT}
+        </if>
+        <if test="param.study_card_id!=null">
+            AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_type!=null">
+            AND master_type = #{param.master_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.service_type!=null">
+            AND service_type = #{param.service_type,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <!-- 待上课数-->
+    <select id="queryBeginCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_user_appointment
+        where
+        status =2 and
+        unix_timestamp(NOW()) &lt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_type!=null">
+            AND master_type = #{param.master_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.study_card_id!=null">
+            AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.service_type!=null">
+            AND service_type = #{param.service_type,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+    <!-- 历史上课数-->
+    <select id="queryHistoryCount" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_user_appointment
+        where
+        status =3 and
+        unix_timestamp(NOW()) &gt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_type!=null">
+            AND master_type = #{param.master_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.study_card_id!=null">
+            AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.service_type!=null">
+            AND service_type = #{param.service_type,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryMyOrderListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            master_type='mechanism_offline'
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+        </where>
+        UNION
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            master_type='jointly_class'
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(create_time)+(8-OFFSET*60*60) DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMechanismAppointment" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            status !=1 and status !=7
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterEarningsListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            (master_type ='major' or master_type ='cross_border' or master_type ='mother_tongue')
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryMasterHistoryListPage" parameterType="com.huihe.eg.user.model.UserAppointmentEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            unix_timestamp(NOW()) &gt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60 and status!=7 and status!=1 and
+            (master_type ='major' or master_type ='cross_border' or master_type ='mother_tongue')
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryNearCourse" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        order by start_time asc
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryWeekCount" resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_user_appointment
+        where
+        YEARWEEK(date_format(start_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.status!=null">
+            AND status = #{param.status,jdbcType=BIGINT}
+        </if>
+        <if test="param.study_card_id!=null">
+            AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_type!=null">
+            AND master_type = #{param.master_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.service_type!=null">
+            AND service_type = #{param.service_type,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryMonthCount" resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(1),0)
+        FROM eg_user_appointment
+        where
+        start_time > date_sub(NOW(), interval 1 MONTH )
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.status!=null">
+            AND status = #{param.status,jdbcType=BIGINT}
+        </if>
+        <if test="param.study_card_id!=null">
+            AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_type!=null">
+            AND master_type = #{param.master_type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.service_type!=null">
+            AND service_type = #{param.service_type,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryByMessage" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_user_appointment
+        <where>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+    <select id="queryUserScheduleCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_user_appointment
+        <where>
+            unix_timestamp(NOW()) &lt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60 and status !=1 and status !=7
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.master_type==null">
+                AND (master_type = 'major' or master_type = 'cross_border' or master_type = 'mother_tongue' )
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.start_time!=null and param.start_time!=null and param.offset!=null">
+                <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                    AND unix_timestamp(start_time) &gt;=
+                    unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                    AND unix_timestamp(end_time) &lt;=
+                    unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                </if>
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_mobile!=null">
+                AND offline_mobile = #{param.offline_mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryOfflineSchedule" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null and param.end_time!=null and param.offset!=null">
+                AND DATE_ADD( start_time, INTERVAL 480- OFFSET*60 MINUTE )
+                BETWEEN DATE_ADD( #{param.start_time,jdbcType=TIMESTAMP}, INTERVAL 480-
+                #{param.offset,jdbcType=DECIMAL}*60 MINUTE )
+                AND DATE_ADD( #{param.end_time,jdbcType=TIMESTAMP}, INTERVAL 480- #{param.offset,jdbcType=DECIMAL}*60
+                MINUTE )
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time == null">
+                AND DATE_ADD( start_time, INTERVAL 480- OFFSET*60 MINUTE ) &gt;
+                DATE_ADD(#{param.start_time ,jdbcType=TIMESTAMP}, INTERVAL 480- #{param.offset,jdbcType=DECIMAL}*60
+                MINUTE )
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.master_set_price_id!=null">
+                AND master_set_price_id = #{param.master_set_price_id,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="query2and3" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (2,3)
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_pay!=null">
+                AND is_pay = #{param.is_pay,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryEndCourse" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status &lt;&gt; 1
+            </if>
+            <if test="param.start_time!=null and param.end_time!=null and param.offset!=null">
+                AND DATE_ADD( start_time, INTERVAL 480- OFFSET*60 MINUTE )
+                BETWEEN DATE_ADD( #{param.start_time,jdbcType=TIMESTAMP}, INTERVAL 480-
+                #{param.offset,jdbcType=DECIMAL}*60 MINUTE )
+                AND DATE_ADD( #{param.end_time,jdbcType=TIMESTAMP}, INTERVAL 480- #{param.offset,jdbcType=DECIMAL}*60
+                MINUTE )
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time == null">
+                AND DATE_ADD( start_time, INTERVAL 480- OFFSET*60 MINUTE ) &gt;
+                DATE_ADD(#{param.start_time ,jdbcType=TIMESTAMP}, INTERVAL 480- #{param.offset,jdbcType=DECIMAL}*60
+                MINUTE )
+                AND DATE_ADD( start_time, INTERVAL 480- OFFSET*60 MINUTE ) &lt; now()
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.master_set_price_id!=null">
+                AND master_set_price_id = #{param.master_set_price_id,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPage8or9" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.status==null">
+                AND status in (8,9)
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_pay!=null">
+                AND is_pay = #{param.is_pay,jdbcType=BIT}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="querySoonMechanismCourse" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            start_time BETWEEN DATE_SUB( NOW(), INTERVAL 1 HOUR )
+            AND DATE_SUB(
+            NOW(),
+            INTERVAL 2 HOUR)
+            AND status = 2
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_pay!=null">
+                AND is_pay = #{param.is_pay,jdbcType=BIT}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryEndMechanismCourse" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            DATE_SUB( NOW(), INTERVAL 3 DAY ) > end_time
+            AND status = 9
+            AND earnings_status = 1
+            AND master_type = 'mechanism_offline'
+            AND is_pay = true
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_pay!=null">
+                AND is_pay = #{param.is_pay,jdbcType=BIT}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPageAsc" resultType="com.huihe.eg.user.model.UserAppointmentEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_appointment
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_identity!=null">
+                AND update_identity = #{param.update_identity,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_type!=null">
+                AND master_type = #{param.master_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.earnings_status!=null">
+                AND earnings_status = #{param.earnings_status,jdbcType=INTEGER}
+            </if>
+            <if test="param.update_title!=null">
+                AND update_title = #{param.update_title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.remarks!=null">
+                AND remarks = #{param.remarks,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pipeline_num!=null">
+                AND pipeline_num = #{param.pipeline_num,jdbcType=VARCHAR}
+            </if>
+            <if test="param.service_type!=null">
+                AND service_type = #{param.service_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offline_count!=null">
+                AND offline_count = #{param.offline_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.student_count!=null">
+                AND student_count = #{param.student_count,jdbcType=INTEGER}
+            </if>
+            <if test="param.offline_address!=null">
+                AND offline_address = #{param.offline_address,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.study_card_id!=null">
+                AND study_card_id = #{param.study_card_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.latitude!=null">
+                AND latitude = #{param.latitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.longitude!=null">
+                AND longitude = #{param.longitude,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_pay!=null">
+                AND is_pay = #{param.is_pay,jdbcType=BIT}
+            </if>
+            <if test="param.is_comment!=null">
+                AND is_comment = #{param.is_comment,jdbcType=BIT}
+            </if>
+        </where>
+        ORDER BY id ASC limit #{param.startRow},#{param.pageSize}
+    </select>
+</mapper>

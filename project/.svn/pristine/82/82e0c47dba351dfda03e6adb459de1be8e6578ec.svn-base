@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MechanismClassesMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MechanismClassesEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="classroom_name" jdbcType="VARCHAR" property="classroom_name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="merger_id" jdbcType="BIGINT" property="merger_id" />
+    <result column="student_count" jdbcType="INTEGER" property="student_count" />
+    <result column="student_count_max" jdbcType="INTEGER" property="student_count_max" />
+    <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id" />
+    <result column="is_scheduling_over" jdbcType="BIT" property="is_scheduling_over" />
+    <result column="is_all" jdbcType="BIT" property="is_all" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, mechanism_id, name, status, merger_id, student_count, 
+    student_count_max, master_set_price_id,is_scheduling_over,classroom_name,is_all
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_mechanism_classes
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_mechanism_classes
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MechanismClassesEntity">
+    insert into eg_mechanism_classes (id, create_time, update_time, 
+      mechanism_id, name, status, 
+      merger_id, student_count, student_count_max, 
+      master_set_price_id)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{mechanism_id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{merger_id,jdbcType=BIGINT}, #{student_count,jdbcType=INTEGER}, #{student_count_max,jdbcType=INTEGER}, 
+      #{master_set_price_id,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MechanismClassesEntity"
+          useGeneratedKeys="true" keyProperty="id"
+  >
+    insert into eg_mechanism_classes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="merger_id != null">
+        merger_id,
+      </if>
+      <if test="student_count != null">
+        student_count,
+      </if>
+      <if test="student_count_max != null">
+        student_count_max,
+      </if>
+      <if test="master_set_price_id != null">
+        master_set_price_id,
+      </if>
+        <if test="classroom_name != null">
+          classroom_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechanism_id != null">
+        #{mechanism_id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="merger_id != null">
+        #{merger_id,jdbcType=BIGINT},
+      </if>
+      <if test="student_count != null">
+        #{student_count,jdbcType=INTEGER},
+      </if>
+      <if test="student_count_max != null">
+        #{student_count_max,jdbcType=INTEGER},
+      </if>
+      <if test="master_set_price_id != null">
+        #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+        <if test="classroom_name != null">
+        #{classroom_name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MechanismClassesEntity">
+    update eg_mechanism_classes
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="merger_id != null">
+        merger_id = #{merger_id,jdbcType=BIGINT},
+      </if>
+      <if test="student_count != null">
+        student_count = #{student_count,jdbcType=INTEGER},
+      </if>
+      <if test="student_count_max != null">
+        student_count_max = #{student_count_max,jdbcType=INTEGER},
+      </if>
+      <if test="master_set_price_id != null">
+        master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+        <if test="is_scheduling_over != null">
+          is_scheduling_over = #{is_scheduling_over,jdbcType=BIT},
+      </if>
+        <if test="is_all != null">
+          is_all = #{is_all,jdbcType=BIT},
+      </if>
+        <if test="classroom_name != null">
+          classroom_name = #{classroom_name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MechanismClassesEntity">
+    update eg_mechanism_classes
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      merger_id = #{merger_id,jdbcType=BIGINT},
+      student_count = #{student_count,jdbcType=INTEGER},
+      student_count_max = #{student_count_max,jdbcType=INTEGER},
+      master_set_price_id = #{master_set_price_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateStudentCount">
+    update     eg_mechanism_classes set student_count=student_count+1 where id = #{param.id,jdbcType=BIGINT}
+
+  </update>
+    <update id="updateIsAllTrue">
+      update eg_mechanism_classes set is_all=true where id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <update id="updateMergerClass">
+      update eg_mechanism_classes
+      set merger_id=#{param.id,jdbcType=BIGINT},
+          status=3
+          where id = #{param.merger_id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.MechanismClassesEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_classes
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.merger_id!=null">
+        AND merger_id = #{param.merger_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.student_count!=null">
+        AND student_count = #{param.student_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.student_count_max!=null">
+        AND student_count_max = #{param.student_count_max,jdbcType=INTEGER}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.classroom_name!=null">
+        AND classroom_name = #{param.classroom_name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MechanismClassesEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_classes
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.merger_id!=null">
+        AND merger_id = #{param.merger_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.student_count!=null">
+        AND student_count = #{param.student_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.student_count_max!=null">
+        AND student_count_max = #{param.student_count_max,jdbcType=INTEGER}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_scheduling_over!=null">
+        AND is_scheduling_over = #{param.is_scheduling_over,jdbcType=BIT}
+      </if>
+      <if test="param.is_all!=null">
+        AND is_all = #{param.is_all,jdbcType=BIT}
+      </if>
+      <if test="param.classroom_name!=null">
+        AND classroom_name = #{param.classroom_name,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MechanismClassesEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_mechanism_classes
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.merger_id!=null">
+        AND merger_id = #{param.merger_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.student_count!=null">
+        AND student_count = #{param.student_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.student_count_max!=null">
+        AND student_count_max = #{param.student_count_max,jdbcType=INTEGER}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_scheduling_over!=null">
+        AND is_scheduling_over = #{param.is_scheduling_over,jdbcType=BIT}
+      </if>
+      <if test="param.is_all!=null">
+        AND is_all = #{param.is_all,jdbcType=BIT}
+      </if>
+      <if test="param.classroom_name!=null">
+        AND classroom_name = #{param.classroom_name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPageAsc" resultType="com.huihe.eg.user.model.MechanismClassesEntity">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_classes
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.merger_id!=null">
+        AND merger_id = #{param.merger_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.student_count!=null">
+        AND student_count = #{param.student_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.student_count_max!=null">
+        AND student_count_max = #{param.student_count_max,jdbcType=INTEGER}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_scheduling_over!=null">
+        AND is_scheduling_over = #{param.is_scheduling_over,jdbcType=BIT}
+      </if>
+      <if test="param.is_all!=null">
+        AND is_all = #{param.is_all,jdbcType=BIT}
+      </if>
+      <if test="param.classroom_name!=null">
+        AND classroom_name = #{param.classroom_name,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id ASC limit #{param.startRow},#{param.pageSize}
+  </select>
+</mapper>

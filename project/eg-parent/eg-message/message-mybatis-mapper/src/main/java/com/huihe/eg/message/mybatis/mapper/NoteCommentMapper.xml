@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.NoteCommentMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.NoteCommentEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="note_id" jdbcType="BIGINT" property="note_id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="like_count" jdbcType="INTEGER" property="like_count" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="parent_id" jdbcType="BIGINT" property="parent_id" />
+    <result column="is_reply" jdbcType="BIT" property="is_reply" />
+    <result column="reply_id" jdbcType="BIGINT" property="reply_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, note_id, user_id, content, create_time, like_count, status, update_time, parent_id, 
+    is_reply, reply_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_note_comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_note_comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.NoteCommentEntity">
+    insert into message_note_comment (id, note_id, user_id, 
+      content, create_time, like_count, 
+      status, update_time, parent_id, 
+      is_reply, reply_id)
+    values (#{id,jdbcType=BIGINT}, #{note_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, 
+      #{content,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{like_count,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{update_time,jdbcType=TIMESTAMP}, #{parent_id,jdbcType=BIGINT}, 
+      #{is_reply,jdbcType=BIT}, #{reply_id,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.NoteCommentEntity">
+    insert into message_note_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="note_id != null">
+        note_id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="like_count != null">
+        like_count,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="parent_id != null">
+        parent_id,
+      </if>
+      <if test="is_reply != null">
+        is_reply,
+      </if>
+      <if test="reply_id != null">
+        reply_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="note_id != null">
+        #{note_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="like_count != null">
+        #{like_count,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parent_id != null">
+        #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_reply != null">
+        #{is_reply,jdbcType=BIT},
+      </if>
+      <if test="reply_id != null">
+        #{reply_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.NoteCommentEntity">
+    update message_note_comment
+    <set>
+      <if test="note_id != null">
+        note_id = #{note_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="like_count != null">
+        like_count = #{like_count,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parent_id != null">
+        parent_id = #{parent_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_reply != null">
+        is_reply = #{is_reply,jdbcType=BIT},
+      </if>
+      <if test="reply_id != null">
+        reply_id = #{reply_id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.NoteCommentEntity">
+    update message_note_comment
+    set note_id = #{note_id,jdbcType=BIGINT},
+      user_id = #{user_id,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      like_count = #{like_count,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      parent_id = #{parent_id,jdbcType=BIGINT},
+      is_reply = #{is_reply,jdbcType=BIT},
+      reply_id = #{reply_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.NoteCommentEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_note_comment
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.note_id!=null">
+        AND note_id = #{param.note_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.like_count!=null">
+        AND like_count = #{param.like_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reply!=null">
+        AND is_reply = #{param.is_reply,jdbcType=BIT}
+      </if>
+      <if test="param.reply_id!=null">
+        AND reply_id = #{param.reply_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.NoteCommentEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_note_comment
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.note_id!=null">
+        AND note_id = #{param.note_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.like_count!=null">
+        AND like_count = #{param.like_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reply!=null">
+        AND is_reply = #{param.is_reply,jdbcType=BIT}
+      </if>
+      <if test="param.reply_id!=null">
+        AND reply_id = #{param.reply_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.NoteCommentEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM message_note_comment
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.note_id!=null">
+        AND note_id = #{param.note_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.like_count!=null">
+        AND like_count = #{param.like_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.parent_id!=null">
+        AND parent_id = #{param.parent_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reply!=null">
+        AND is_reply = #{param.is_reply,jdbcType=BIT}
+      </if>
+      <if test="param.reply_id!=null">
+        AND reply_id = #{param.reply_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryCommentAddCount" resultType="Integer" parameterType="com.huihe.eg.message.model.NoteCommentEntity">
+    select COUNT(1) from message_note_comment where date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d') AND user_id=  #{param.user_id,jdbcType=BIGINT}
+  </select>
+</mapper>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.message.mybatis.dao.MessageUserMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.message.model.MessageUserEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="send_id" jdbcType="BIGINT" property="send_id" />
+    <result column="target_id" jdbcType="BIGINT" property="target_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="message_type" jdbcType="VARCHAR" property="message_type" />
+    <result column="message_key" jdbcType="VARCHAR" property="message_key" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, send_id, target_id, create_time, message_type, message_key, status, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from message_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.message.model.MessageUserEntity" useGeneratedKeys="true" keyProperty="id">
+    insert into message_user (id, send_id, target_id, 
+      create_time, message_type, message_key, 
+      status, update_time)
+    values (#{id,jdbcType=BIGINT}, #{send_id,jdbcType=BIGINT}, #{target_id,jdbcType=BIGINT}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{message_type,jdbcType=VARCHAR}, #{message_key,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.message.model.MessageUserEntity" useGeneratedKeys="true" keyProperty="id">
+    insert into message_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="send_id != null">
+        send_id,
+      </if>
+      <if test="target_id != null">
+        target_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="message_type != null">
+        message_type,
+      </if>
+      <if test="message_key != null">
+        message_key,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="send_id != null">
+        #{send_id,jdbcType=BIGINT},
+      </if>
+      <if test="target_id != null">
+        #{target_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="message_type != null">
+        #{message_type,jdbcType=VARCHAR},
+      </if>
+      <if test="message_key != null">
+        #{message_key,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.message.model.MessageUserEntity">
+    update message_user
+    <set>
+      <if test="send_id != null">
+        send_id = #{send_id,jdbcType=BIGINT},
+      </if>
+      <if test="target_id != null">
+        target_id = #{target_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="message_type != null">
+        message_type = #{message_type,jdbcType=VARCHAR},
+      </if>
+      <if test="message_key != null">
+        message_key = #{message_key,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.message.model.MessageUserEntity">
+    update message_user
+    set send_id = #{send_id,jdbcType=BIGINT},
+      target_id = #{target_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      message_type = #{message_type,jdbcType=VARCHAR},
+      message_key = #{message_key,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.message.model.MessageUserEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.send_id!=null">
+        AND send_id = #{param.send_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.target_id!=null">
+        AND target_id = #{param.target_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.message_type!=null">
+        AND message_type = #{param.message_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.message_key!=null">
+        AND message_key = #{param.message_key,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.message.model.MessageUserEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM message_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.send_id!=null">
+        AND send_id = #{param.send_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.target_id!=null">
+        AND target_id = #{param.target_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.message_type!=null">
+        AND message_type = #{param.message_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.message_key!=null">
+        AND message_key = #{param.message_key,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.message.model.MessageUserEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM message_user
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.send_id!=null">
+        AND send_id = #{param.send_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.target_id!=null">
+        AND target_id = #{param.target_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.message_type!=null">
+        AND message_type = #{param.message_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.message_key!=null">
+        AND message_key = #{param.message_key,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>

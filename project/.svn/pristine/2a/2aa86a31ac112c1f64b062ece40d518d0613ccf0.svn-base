@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.ExhibitionPicMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.ExhibitionPicEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="source_url" jdbcType="VARCHAR" property="source_url" />
+    <result column="source_type" jdbcType="VARCHAR" property="source_type" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="type_id" jdbcType="BIGINT" property="type_id" />
+    <result column="theme" jdbcType="VARCHAR" property="theme" />
+    <result column="viewing_times" jdbcType="VARCHAR" property="viewing_times" />
+    <result column="click_times" jdbcType="VARCHAR" property="click_times" />
+    <result column="banner_name" jdbcType="VARCHAR" property="banner_name" />
+    <result column="banner_position" jdbcType="VARCHAR" property="banner_position" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, pic, source_url, source_type, create_time, update_time, state, type_id, 
+    theme,viewing_times,click_times,banner_name,banner_position,start_time,end_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_exhibition_pic
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_exhibition_pic
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.ExhibitionPicEntity">
+    insert into eg_exhibition_pic (id, type, pic, 
+      source_url, source_type, create_time, 
+      update_time, state, type_id, 
+      theme,banner_name,banner_position,start_time,end_time)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
+      #{source_url,jdbcType=VARCHAR}, #{source_type,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{type_id,jdbcType=BIGINT}, 
+      #{theme,jdbcType=VARCHAR},#{banner_name,jdbcType=VARCHAR},#{banner_position,jdbcType=VARCHAR},
+       #{start_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.ExhibitionPicEntity">
+    insert into eg_exhibition_pic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="source_url != null">
+        source_url,
+      </if>
+      <if test="source_type != null">
+        source_type,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="type_id != null">
+        type_id,
+      </if>
+      <if test="theme != null">
+        theme,
+      </if>
+      <if test="banner_name != null">
+        banner_name,
+      </if>
+      <if test="banner_position != null">
+        banner_position,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="end_time != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="source_url != null">
+        #{source_url,jdbcType=VARCHAR},
+      </if>
+      <if test="source_type != null">
+        #{source_type,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="type_id != null">
+        #{type_id,jdbcType=BIGINT},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="banner_name != null">
+        #{banner_name,jdbcType=VARCHAR},
+      </if>
+      <if test="banner_position != null">
+        #{banner_position,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        #{end_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.ExhibitionPicEntity">
+    update eg_exhibition_pic
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="source_url != null">
+        source_url = #{source_url,jdbcType=VARCHAR},
+      </if>
+      <if test="source_type != null">
+        source_type = #{source_type,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="type_id != null">
+        type_id = #{type_id,jdbcType=BIGINT},
+      </if>
+      <if test="theme != null">
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="viewing_times != null">
+        viewing_times = #{viewing_times,jdbcType=BIGINT},
+      </if>
+      <if test="click_times != null">
+        click_times = #{click_times,jdbcType=BIGINT},
+      </if>
+      <if test="banner_name != null">
+        banner_name = #{banner_name,jdbcType=VARCHAR},
+      </if>
+      <if test="banner_position != null">
+        banner_position = #{banner_position,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null">
+        start_time = #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        end_time = #{end_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.ExhibitionPicEntity">
+    update eg_exhibition_pic
+    set type = #{type,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      source_url = #{source_url,jdbcType=VARCHAR},
+      source_type = #{source_type,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      type_id = #{type_id,jdbcType=BIGINT},
+      theme = #{theme,jdbcType=VARCHAR}
+      viewing_times = #{viewing_times,jdbcType=BIGINT}
+      click_times = #{click_times,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.ExhibitionPicEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_exhibition_pic
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source_url!=null">
+        AND source_url = #{param.source_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source_type!=null">
+        AND source_type = #{param.source_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.state!=null">
+        AND state = #{param.state,jdbcType=INTEGER}
+      </if>
+      <if test="param.type_id!=null">
+        AND type_id = #{param.type_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.theme!=null">
+        AND theme = #{param.theme,jdbcType=VARCHAR}
+      </if>
+      <if test="param.banner_name!=null">
+        AND banner_name = #{param.banner_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.banner_position!=null">
+        AND banner_position = #{param.banner_position,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.ExhibitionPicEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_exhibition_pic
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source_url!=null">
+        AND source_url = #{param.source_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source_type!=null">
+        AND source_type = #{param.source_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.state!=null">
+        AND state = #{param.state,jdbcType=INTEGER}
+      </if>
+      <if test="param.type_id!=null">
+        AND type_id = #{param.type_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.viewing_times!=null">
+        AND viewing_times = #{param.viewing_times,jdbcType=BIGINT}
+      </if>
+      <if test="param.click_times!=null">
+        AND click_times = #{param.click_times,jdbcType=BIGINT}
+      </if>
+      <if test="param.theme!=null">
+        AND theme = #{param.theme,jdbcType=VARCHAR}
+      </if>
+      <if test="param.banner_name!=null">
+        AND banner_name = #{param.banner_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.banner_position!=null">
+        AND banner_position = #{param.banner_position,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.ExhibitionPicEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_exhibition_pic
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source_url!=null">
+        AND source_url = #{param.source_url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source_type!=null">
+        AND source_type = #{param.source_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.state!=null">
+        AND state = #{param.state,jdbcType=INTEGER}
+      </if>
+      <if test="param.type_id!=null">
+        AND type_id = #{param.type_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.theme!=null">
+        AND theme = #{param.theme,jdbcType=VARCHAR}
+      </if>
+      <if test="param.banner_name!=null">
+        AND banner_name = #{param.banner_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.banner_position!=null">
+        AND banner_position = #{param.banner_position,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserGiftMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserGiftEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="gift_name" jdbcType="VARCHAR" property="gift_name"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="discount_amout" jdbcType="DECIMAL" property="discount_amout"/>
+        <result column="is_discount" jdbcType="BIT" property="is_discount"/>
+        <result column="Introduction" jdbcType="VARCHAR" property="Introduction"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="pic" jdbcType="VARCHAR" property="pic"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, gift_name, create_time, update_time, type, amount, discount_amout, is_discount, 
+    Introduction, status, pic
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_gift
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_gift
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserGiftEntity">
+    insert into eg_user_gift (id, gift_name, create_time, 
+      update_time, type, amount, 
+      discount_amout, is_discount, Introduction, 
+      status, pic)
+    values (#{id,jdbcType=BIGINT}, #{gift_name,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{discount_amout,jdbcType=DECIMAL}, #{is_discount,jdbcType=BIT}, #{Introduction,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserGiftEntity">
+        insert into eg_user_gift
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="gift_name != null">
+                gift_name,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="discount_amout != null">
+                discount_amout,
+            </if>
+            <if test="is_discount != null">
+                is_discount,
+            </if>
+            <if test="Introduction != null">
+                Introduction,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="pic != null">
+                pic,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="gift_name != null">
+                #{gift_name,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="discount_amout != null">
+                #{discount_amout,jdbcType=DECIMAL},
+            </if>
+            <if test="is_discount != null">
+                #{is_discount,jdbcType=BIT},
+            </if>
+            <if test="Introduction != null">
+                #{Introduction,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="pic != null">
+                #{pic,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserGiftEntity">
+        update eg_user_gift
+        <set>
+            <if test="gift_name != null">
+                gift_name = #{gift_name,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="discount_amout != null">
+                discount_amout = #{discount_amout,jdbcType=DECIMAL},
+            </if>
+            <if test="is_discount != null">
+                is_discount = #{is_discount,jdbcType=BIT},
+            </if>
+            <if test="Introduction != null">
+                Introduction = #{Introduction,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="pic != null">
+                pic = #{pic,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserGiftEntity">
+    update eg_user_gift
+    set gift_name = #{gift_name,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      discount_amout = #{discount_amout,jdbcType=DECIMAL},
+      is_discount = #{is_discount,jdbcType=BIT},
+      Introduction = #{Introduction,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      pic = #{pic,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserGiftEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_gift
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.gift_name!=null">
+                AND gift_name = #{param.gift_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.amount!=null">
+                AND amount = #{param.amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_discount!=null">
+                AND is_discount = #{param.is_discount,jdbcType=BIT}
+            </if>
+            <if test="param.Introduction!=null">
+                AND Introduction = #{param.Introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.pic!=null">
+                AND pic = #{param.pic,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserGiftEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_gift
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.gift_name!=null">
+                AND gift_name = #{param.gift_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.amount!=null">
+                AND amount = #{param.amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_discount!=null">
+                AND is_discount = #{param.is_discount,jdbcType=BIT}
+            </if>
+            <if test="param.Introduction!=null">
+                AND Introduction = #{param.Introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.pic!=null">
+                AND pic = #{param.pic,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserGiftEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_gift
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.gift_name!=null">
+                AND gift_name = #{param.gift_name,jdbcType=VARCHAR}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.amount!=null">
+                AND amount = #{param.amount,jdbcType=DECIMAL}
+            </if>
+            <if test="param.discount_amout!=null">
+                AND discount_amout = #{param.discount_amout,jdbcType=DECIMAL}
+            </if>
+            <if test="param.is_discount!=null">
+                AND is_discount = #{param.is_discount,jdbcType=BIT}
+            </if>
+            <if test="param.Introduction!=null">
+                AND Introduction = #{param.Introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.pic!=null">
+                AND pic = #{param.pic,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

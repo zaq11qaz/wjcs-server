@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+mvn clean package  && docker run -d --name cloud-config -v /etc/localtime:/etc/localtime -v /var/log/:/var/log/ -e params="-Dservice.type=release" -p 6868:6868 localhost:5000/cloud-config:1.0

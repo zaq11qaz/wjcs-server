@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.grab.mybatis.dao.GrabFilterRuleMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.grab.model.GrabFilterRuleEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="querySelector" jdbcType="VARCHAR" property="querySelector" />
+    <result column="value_rule" jdbcType="VARCHAR" property="value_rule" />
+    <result column="remove_querySelector" jdbcType="VARCHAR" property="remove_querySelector" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, create_time, update_time, querySelector, value_rule, remove_querySelector
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from grab_filter_rule
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from grab_filter_rule
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.grab.model.GrabFilterRuleEntity">
+    insert into grab_filter_rule (id, name, create_time, 
+      update_time, querySelector, value_rule, 
+      remove_querySelector)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{querySelector,jdbcType=VARCHAR}, #{value_rule,jdbcType=VARCHAR}, 
+      #{remove_querySelector,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.grab.model.GrabFilterRuleEntity">
+    insert into grab_filter_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="querySelector != null">
+        querySelector,
+      </if>
+      <if test="value_rule != null">
+        value_rule,
+      </if>
+      <if test="remove_querySelector != null">
+        remove_querySelector,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="querySelector != null">
+        #{querySelector,jdbcType=VARCHAR},
+      </if>
+      <if test="value_rule != null">
+        #{value_rule,jdbcType=VARCHAR},
+      </if>
+      <if test="remove_querySelector != null">
+        #{remove_querySelector,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.grab.model.GrabFilterRuleEntity">
+    update grab_filter_rule
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="querySelector != null">
+        querySelector = #{querySelector,jdbcType=VARCHAR},
+      </if>
+      <if test="value_rule != null">
+        value_rule = #{value_rule,jdbcType=VARCHAR},
+      </if>
+      <if test="remove_querySelector != null">
+        remove_querySelector = #{remove_querySelector,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.grab.model.GrabFilterRuleEntity">
+    update grab_filter_rule
+    set name = #{name,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      querySelector = #{querySelector,jdbcType=VARCHAR},
+      value_rule = #{value_rule,jdbcType=VARCHAR},
+      remove_querySelector = #{remove_querySelector,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.grab.model.GrabFilterRuleEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM grab_filter_rule
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.querySelector!=null">
+        AND querySelector = #{param.querySelector,jdbcType=VARCHAR}
+      </if>
+      <if test="param.value_rule!=null">
+        AND value_rule = #{param.value_rule,jdbcType=VARCHAR}
+      </if>
+      <if test="param.remove_querySelector!=null">
+        AND remove_querySelector = #{param.remove_querySelector,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.grab.model.GrabFilterRuleEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM grab_filter_rule
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.querySelector!=null">
+        AND querySelector = #{param.querySelector,jdbcType=VARCHAR}
+      </if>
+      <if test="param.value_rule!=null">
+        AND value_rule = #{param.value_rule,jdbcType=VARCHAR}
+      </if>
+      <if test="param.remove_querySelector!=null">
+        AND remove_querySelector = #{param.remove_querySelector,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.grab.model.GrabFilterRuleEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM grab_filter_rule
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.querySelector!=null">
+        AND querySelector = #{param.querySelector,jdbcType=VARCHAR}
+      </if>
+      <if test="param.value_rule!=null">
+        AND value_rule = #{param.value_rule,jdbcType=VARCHAR}
+      </if>
+      <if test="param.remove_querySelector!=null">
+        AND remove_querySelector = #{param.remove_querySelector,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

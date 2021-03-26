@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.news.mybatis.dao.CuriosityMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.news.model.CuriosityEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="curiosity_count" jdbcType="INTEGER" property="curiosity_count" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="classfiy" jdbcType="BIGINT" property="classfiy" />
+    <result column="is_reward" jdbcType="BIT" property="is_reward" />
+    <result column="viewpoint_count" jdbcType="INTEGER" property="viewpoint_count" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="more_count" jdbcType="DECIMAL" property="more_count" />
+    <result column="share_count" jdbcType="INTEGER" property="share_count" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, create_time, content, curiosity_count, status, update_time, classfiy, 
+    is_reward, viewpoint_count, address, more_count, share_count, url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news_curiosity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news_curiosity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.news.model.CuriosityEntity">
+    insert into news_curiosity (id, user_id, create_time, 
+      content, curiosity_count, status, 
+      update_time, classfiy, is_reward, 
+      viewpoint_count, address, more_count, 
+      share_count, url)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=VARCHAR}, #{curiosity_count,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{classfiy,jdbcType=BIGINT}, #{is_reward,jdbcType=BIT}, 
+      #{viewpoint_count,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{more_count,jdbcType=DECIMAL}, 
+      #{share_count,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.news.model.CuriosityEntity">
+    insert into news_curiosity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="curiosity_count != null">
+        curiosity_count,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="classfiy != null">
+        classfiy,
+      </if>
+      <if test="is_reward != null">
+        is_reward,
+      </if>
+      <if test="viewpoint_count != null">
+        viewpoint_count,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="more_count != null">
+        more_count,
+      </if>
+      <if test="share_count != null">
+        share_count,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="curiosity_count != null">
+        #{curiosity_count,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classfiy != null">
+        #{classfiy,jdbcType=BIGINT},
+      </if>
+      <if test="is_reward != null">
+        #{is_reward,jdbcType=BIT},
+      </if>
+      <if test="viewpoint_count != null">
+        #{viewpoint_count,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="more_count != null">
+        #{more_count,jdbcType=DECIMAL},
+      </if>
+      <if test="share_count != null">
+        #{share_count,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.news.model.CuriosityEntity">
+    update news_curiosity
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="curiosity_count != null">
+        curiosity_count = #{curiosity_count,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classfiy != null">
+        classfiy = #{classfiy,jdbcType=BIGINT},
+      </if>
+      <if test="is_reward != null">
+        is_reward = #{is_reward,jdbcType=BIT},
+      </if>
+      <if test="viewpoint_count != null">
+        viewpoint_count = #{viewpoint_count,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="more_count != null">
+        more_count = #{more_count,jdbcType=DECIMAL},
+      </if>
+      <if test="share_count != null">
+        share_count = #{share_count,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.news.model.CuriosityEntity">
+    update news_curiosity
+    set user_id = #{user_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=VARCHAR},
+      curiosity_count = #{curiosity_count,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      classfiy = #{classfiy,jdbcType=BIGINT},
+      is_reward = #{is_reward,jdbcType=BIT},
+      viewpoint_count = #{viewpoint_count,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      more_count = #{more_count,jdbcType=DECIMAL},
+      share_count = #{share_count,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM news_curiosity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.curiosity_count!=null">
+        AND curiosity_count = #{param.curiosity_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reward!=null">
+        AND is_reward = #{param.is_reward,jdbcType=BIT}
+      </if>
+      <if test="param.viewpoint_count!=null">
+        AND viewpoint_count = #{param.viewpoint_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.more_count!=null">
+        AND more_count = #{param.more_count,jdbcType=DECIMAL}
+      </if>
+      <if test="param.share_count!=null">
+        AND share_count = #{param.share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM news_curiosity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.curiosity_count!=null">
+        AND curiosity_count = #{param.curiosity_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reward!=null">
+        AND is_reward = #{param.is_reward,jdbcType=BIT}
+      </if>
+      <if test="param.viewpoint_count!=null">
+        AND viewpoint_count = #{param.viewpoint_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.more_count!=null">
+        AND more_count = #{param.more_count,jdbcType=DECIMAL}
+      </if>
+      <if test="param.share_count!=null">
+        AND share_count = #{param.share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM news_curiosity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.curiosity_count!=null">
+        AND curiosity_count = #{param.curiosity_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reward!=null">
+        AND is_reward = #{param.is_reward,jdbcType=BIT}
+      </if>
+      <if test="param.viewpoint_count!=null">
+        AND viewpoint_count = #{param.viewpoint_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.more_count!=null">
+        AND more_count = #{param.more_count,jdbcType=DECIMAL}
+      </if>
+      <if test="param.share_count!=null">
+        AND share_count = #{param.share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--查询关注内容-->
+  <select id="queryCuriosityListPage" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultMap="BaseResultMap">
+    SELECT
+    c.id, c.user_id, c.create_time, c.content, c.curiosity_count, c.status, c.update_time, c.classfiy,
+    c.is_reward, c.viewpoint_count, c.address, c.more_count, c.share_count
+    FROM
+    news_curiosity c,news_history h
+    WHERE
+    c.id=h.history_id
+    AND  c.status=1 AND h.status=1
+    AND h.operation_type='curiosity' AND h.history_type='curiosity' AND h.user_id = #{param.user_id,jdbcType=BIGINT}
+    ORDER BY c.curiosity_count DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <!--查询好奇内容-->
+  <select id="queryRecommendCuriosityListPage" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    news_curiosity
+    WHERE
+    classfiy IN (
+    SELECT
+    classfiy
+    FROM
+    news_curiosity c,
+    news_history h
+    WHERE
+    c.id = h.history_id
+    AND h.user_id = #{param.user_id,jdbcType=BIGINT})
+    ORDER BY viewpoint_count DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <!-- 周榜-->
+  <select id="queryWeekRankingListPage" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    news_curiosity
+    <where>
+      YEARWEEK(date_format(show_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.curiosity_count!=null">
+        AND curiosity_count = #{param.curiosity_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reward!=null">
+        AND is_reward = #{param.is_reward,jdbcType=TINYINT}
+      </if>
+      <if test="param.viewpoint_count!=null">
+        AND viewpoint_count = #{param.viewpoint_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY viewpoint_count DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <!-- 月榜-->
+  <select id="queryMonthRankingListPage" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    news_curiosity
+    <where>
+      MONTH(create_time) =
+      MONTH(CURDATE()) AND YEAR(create_time) = YEAR(CURDATE())
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.curiosity_count!=null">
+        AND curiosity_count = #{param.curiosity_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reward!=null">
+        AND is_reward = #{param.is_reward,jdbcType=TINYINT}
+      </if>
+      <if test="param.viewpoint_count!=null">
+        AND viewpoint_count = #{param.viewpoint_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY viewpoint_count DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <!-- 热门榜-->
+  <select id="queryHotRankingListPage" parameterType="com.huihe.eg.news.model.CuriosityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    news_curiosity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.curiosity_count!=null">
+        AND curiosity_count = #{param.curiosity_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.classfiy!=null">
+        AND classfiy = #{param.classfiy,jdbcType=BIGINT}
+      </if>
+      <if test="param.is_reward!=null">
+        AND is_reward = #{param.is_reward,jdbcType=TINYINT}
+      </if>
+      <if test="param.viewpoint_count!=null">
+        AND viewpoint_count = #{param.viewpoint_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY viewpoint_count DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+
+  <select id="queryGatherCount" resultType="Integer" parameterType="com.huihe.eg.news.model.CuriosityEntity">
+    SELECT sum(curiosity_count) FROM news_curiosity WHERE classfiy=#{param.classfiy}
+  </select>
+  <select id="queryAddCount" resultType="Integer" parameterType="com.huihe.eg.news.model.CuriosityEntity">
+    select COUNT(1) from news_curiosity where date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d') AND user_id= #{param.user_id,jdbcType=BIGINT}
+  </select>
+
+
+</mapper>

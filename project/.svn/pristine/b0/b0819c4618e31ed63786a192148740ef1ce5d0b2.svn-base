@@ -1,0 +1,638 @@
+package com.huihe.eg.message.service.impl;
+
+import com.alibaba.fastjson.JSONObject;
+import com.cy.framework.service.dao.RedisService;
+import com.cy.framework.service.impl.BaseFrameworkServiceImpl;
+import com.cy.framework.util.StringUtil;
+import com.cy.framework.util.http.HttpsClientRequest;
+import com.cy.framework.util.json.JSONUtils;
+import com.cy.framework.util.result.ResultEnum;
+import com.cy.framework.util.result.ResultParam;
+import com.cy.framework.util.result.ResultUtil;
+import com.cy.framework.util.thread.ThreadPool;
+import com.google.common.collect.Maps;
+import com.huihe.eg.cloud.feign.NewsApiService;
+import com.huihe.eg.cloud.feign.UserApiService;
+import com.huihe.eg.comm.MasterEum;
+import com.huihe.eg.comm.UserEum;
+import com.huihe.eg.comm.aop.WebLog;
+import com.huihe.eg.comm.push.PushMessageParam;
+import com.huihe.eg.message.model.GroupRecordingEntity;
+import com.huihe.eg.message.model.MessageGroupEntity;
+import com.huihe.eg.message.model.MessageJoinGroupEntity;
+import com.huihe.eg.message.mybatis.dao.GroupRecordingMapper;
+import com.huihe.eg.message.mybatis.dao.MessageGroupFlowMapper;
+import com.huihe.eg.message.mybatis.dao.MessageGroupMapper;
+import com.huihe.eg.message.mybatis.dao.MessageJoinGroupMapper;
+import com.huihe.eg.message.service.dao.GroupRecordingService;
+import com.huihe.eg.message.service.dao.MessageGroupFlowService;
+import com.huihe.eg.message.service.dao.MessageGroupService;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.huihe.eg.message.service.dao.callback.MessageCallbackFactoryBean;
+import com.huihe.eg.message.service.impl.Thread.EstablishRecordThread;
+import com.huihe.eg.message.service.impl.Thread.MixedFlowThread;
+
+import io.swagger.models.auth.In;
+import org.apache.catalina.Server;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
+import com.huihe.eg.message.service.impl.tim.TimConfig;
+import com.tencentyun.TLSSigAPIv2;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
+
+import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+@Service
+public class MessageGroupServiceImpl extends BaseFrameworkServiceImpl<MessageGroupEntity, Long> implements MessageGroupService {
+
+    @Resource
+    private MessageGroupMapper mapper;
+    @Resource
+    private TimConfig timConfig;
+    @Resource
+    private RedisService redisService;
+    @Resource
+    private UserApiService userApiService;
+    @Resource
+    private MessageJoinGroupMapper messageJoinGroupMapper;
+    @Resource
+    private RabbitTemplate rabbitTemplate;
+    @Resource
+    private MessageCallbackFactoryBean bean;
+    @Resource
+    private MessageGroupFlowService messageGroupFlowService;
+    @Resource
+    private GroupRecordingMapper groupRecordingMapper;
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Override
+    public void init() {
+        setMapper(mapper);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    @WebLog(description = "群创建")
+    public ResultParam insert(MessageGroupEntity messageGroupEntity, HttpServletRequest request, HttpServletResponse response) {
+        init();
+        try {
+            System.out.println(JSONUtils.obj2Map(messageGroupEntity, null).toString());
+            //参数
+            Map<String, Object> map = new HashMap<>();
+            //不考虑大小写比较  '类别  voice_chat普通语音  online_video在线视频   online_voice在线语音   realtime_video实时视频 realtime_voice实时语音,life_live生活直播,recreation_live娱乐直播',
+            if (!"realtime_video".equalsIgnoreCase(messageGroupEntity.getType()) && !"realtime_voice".equalsIgnoreCase(messageGroupEntity.getType())) {
+                map.put("Owner_Account", messageGroupEntity.getOwner_id().toString());//助学师id
+            }
+            if (messageGroupEntity.getOwner_id() != null && "online".equalsIgnoreCase(messageGroupEntity.getType())) {//如果线上
+                if (!userApiService.queryIsEstablishGroupClass(messageGroupEntity.getOwner_id())) {
+                    return ResultUtil.error(UserEum.user_10030.getCode(), UserEum.user_10030.getDesc());
+                }
+            }
+            map.put("Type", "Public");//公开
+            messageGroupEntity.setGroup_type("Public");
+            if (messageGroupEntity.getId() != null && messageGroupEntity.getId() != 0) {
+                map.put("GroupId", messageGroupEntity.getGroup_id());
+            }
+            map.put("Name", messageGroupEntity.getGroup_name());
+            map.put("Introduction", messageGroupEntity.getIntroduction());
+            map.put("Notification", messageGroupEntity.getNotification());
+            map.put("FaceUrl", messageGroupEntity.getFaceUrl());
+            map.put("ApplyJoinOption", "FreeAccess");
+            map.put("GroupId", String.valueOf(System.currentTimeMillis() / 1000));
+            TLSSigAPIv2 tlsSigAPIv2 = new TLSSigAPIv2(timConfig.getSdkAppId(), timConfig.getSecretKey());//生成密钥api
+            String adminSign = tlsSigAPIv2.genSig(timConfig.getAdminName(), timConfig.getExpire());//TIM签名
+            UUID uuid = UUID.randomUUID();
+            String url = timConfig.getUrl() + "/group_open_http_svc/create_group?sdkappid=" + timConfig.getSdkAppId() + "&identifier=" +
+                    timConfig.getAdminName() + "&usersig=" + adminSign + "&random=" + uuid + "&contenttype=json";
+            net.sf.json.JSONObject json = net.sf.json.JSONObject.fromObject(map);//map转为json
+            url = url.replaceAll("\r|\n", "");//替换url中\r\n
+            String str = HttpsClientRequest.post(url, json.toString(), null, null);//客户端请求对象 api
+            Map<String, Object> resultMap = JSONUtils.obj2Map(str, null);
+            logger.info(JSONUtils.obj2Json(resultMap).toString());
+            //是否有状态码 是否ok
+            if (resultMap != null && resultMap.containsKey("ActionStatus") && "OK".equals(resultMap.get("ActionStatus"))) {//结果
+                Map<String, Object> mapResult = new HashMap<>();
+                messageGroupEntity.setGroup_id(resultMap.get("GroupId").toString());//设置 服务器返回groupid
+                if (messageGroupEntity.getId() == null || messageGroupEntity.getId() == 0) {//如果有id
+                    int ret = mapper.insertSelective(messageGroupEntity);//查询是否有
+                    if (ret > 0) {
+                        MessageJoinGroupEntity entity = new MessageJoinGroupEntity();
+                        entity.setGroup_id(messageGroupEntity.getId());
+                        entity.setUser_id(messageGroupEntity.getOwner_id());
+                        //  入群方式Apply（申请入群）；Invited（邀请入群）',
+                        entity.setJoin_type("Apply");
+                        ret = messageJoinGroupMapper.insertSelective(entity);//插入群主信息
+                        if (ret > 0) {
+                            //mapResult.put("push_addr",push_addr);
+                            mapResult.put("groupId", map.get("GroupId"));
+                            mapResult.put("id", messageGroupEntity.getId());
+                            mapResult.put("result", "创建成功");
+                            return ResultUtil.success(mapResult);
+                        } else {
+                            return ResultUtil.error(ResultEnum.result_1.getCode(), ResultEnum.result_1.getDesc());
+                        }
+                    } else {
+                        return ResultUtil.error(ResultEnum.result_1.getCode(), ResultEnum.result_1.getDesc());
+                    }
+                } else {
+                    mapper.updateByPrimaryKeySelective(messageGroupEntity);
+                }
+            } else {
+                return ResultUtil.error(ResultEnum.result_1.getCode(), ResultEnum.result_1.getDesc());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("MessageGroupServiceImpl   insert");
+        }
+        return ResultUtil.error(ResultEnum.result_1.getCode(), ResultEnum.result_1.getDesc());
+    }
+
+    @Override
+    //@WebLog(description = "群直播分页查询")
+    public List<MessageGroupEntity> queryListPage(MessageGroupEntity param, HttpServletRequest request, HttpServletResponse response) {
+        List<MessageGroupEntity> entities = null;
+        try {
+            if (param.getIs_life() != null && param.getIs_life()) {
+                //查询生活娱乐直播
+                entities = mapper.queryLifeListPage(param);
+            } else {
+                entities = mapper.queryListPage(param);
+            }
+            for (MessageGroupEntity entity : entities) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("userinfo", JSONUtils.obj2Json(redisService.getStr(entity.getOwner_id() + "userinfo")));//设置userinfo
+//                /*String class_info=userApiService.queryNewAppointment(entity.getId());
+//                String class_infos=userApiService.queryNewAppointments(entity.getId());*/
+               /* map.put("class_info",JSONUtils.obj2Json(userApiService.queryNewAppointment(entity.getId())));
+                map.put("class_infos",JSONUtils.obj2Json(userApiService.queryNewAppointments(entity.getId())));*/
+                map.put("comment_infos", new ArrayList<>());//评论列表
+                map.put("appointmentCount", userApiService.queryAppointmentCount(entity.getId()));//课程数量
+                String result = userApiService.queryIsShow(entity.getOwner_id(), entity.getId());//查询是否在直播
+                Map<String, Object> stringObjectMap = new HashMap<>();
+                if (StringUtil.isNotEmpty(result)) {
+                    stringObjectMap = JSONUtils.json2Map(result);
+                }
+                map.put("appointmentInfo", stringObjectMap == null ? Maps.newHashMap() : stringObjectMap);//课程信息
+                entity.setMap(map);
+                //群内人数
+                MessageJoinGroupEntity messageJoinGroupEntity = new MessageJoinGroupEntity();
+                messageJoinGroupEntity.setGroup_id(entity.getId());
+                messageJoinGroupEntity.setStatus(1);
+                Integer integer = messageJoinGroupMapper.queryListPageCount(messageJoinGroupEntity);
+                entity.setOnline_num(integer);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("MessageGroupServiceImpl    queryListPage");
+        }
+        return entities;
+    }
+
+    @Override
+    public List<MessageGroupEntity> query(MessageGroupEntity param, HttpServletRequest request, HttpServletResponse response) {
+        List<MessageGroupEntity> entities = null;
+        try {
+            entities = mapper.queryListPage(param);
+            for (MessageGroupEntity entity : entities) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("userinfo", JSONUtils.obj2Json(redisService.getStr(entity.getOwner_id() + "userinfo")));
+                entity.setMap(map);
+                MessageJoinGroupEntity messageJoinGroupEntity = new MessageJoinGroupEntity();
+                messageJoinGroupEntity.setGroup_id(entity.getId());
+                messageJoinGroupEntity.setStatus(1);
+                Integer integer = messageJoinGroupMapper.queryListPageCount(messageJoinGroupEntity);
+                entity.setOnline_num(integer);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("MessageGroupServiceImpl    queryListPage");
+        }
+        return entities;
+    }
+
+    @Override
+    public ResultParam update(MessageGroupEntity param, HttpServletRequest request, HttpServletResponse response) {
+        try {
+            if (param.getIdList() != null && param.getIdList().size() > 0) {
+                for (Long aLong : param.getIdList()) {
+                    param.setId(aLong);
+                    mapper.updateByPrimaryKeySelective(param);
+                }
+            } else {
+                return super.update(param, request, response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("MessageGroupServiceImpl   update");
+        }
+        return ResultUtil.success();
+    }
+
+    @Override
+    public void updateGroupDuration(Long group_id, String type) throws Exception {
+        try {
+            MessageGroupEntity messageGroupEntity = new MessageGroupEntity();
+            messageGroupEntity.setId(group_id);
+            if (("live_connection".equalsIgnoreCase(type)) || ("video_connection".equalsIgnoreCase(type))) {
+                synchronized (messageGroupEntity) {
+                    mapper.updateLiveDuration(messageGroupEntity);
+                }
+            } else if (("live_broadcast".equalsIgnoreCase(type)) || ("video_broadcast".equalsIgnoreCase(type))) {
+                synchronized (messageGroupEntity) {
+                    mapper.updateWatchDuration(messageGroupEntity);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 更新开课状态
+     *
+     * @Description: 更新开课状态
+     * @author zwx
+     * @Date : 2019年9月5日10:04:09
+     */
+    @Override
+    public synchronized ResultParam updateClassBeginsStatus(MessageGroupEntity param, HttpServletRequest request, HttpServletResponse response) {
+        try {
+            MessageGroupEntity messageGroupEntity = super.findById(param.getId(), request, response);
+            if (messageGroupEntity.getOwner_id() == 36) {
+                mapper.updateByPrimaryKeySelective(param);
+                return ResultUtil.success();
+            }
+            if (param.getStatus() != null && param.getStatus() == 1) {//如果开播
+                if (messageGroupEntity.getType() != null) {//类型不为空
+                    if ("online_video".equalsIgnoreCase(messageGroupEntity.getType()) ||//线上视频 音频 线上
+                            "online_voice".equalsIgnoreCase(messageGroupEntity.getType()) || "online".equalsIgnoreCase(messageGroupEntity.getType())) {
+                        //查询老师是否有公开直播课程
+                        String result = userApiService.queryIsShow(messageGroupEntity.getOwner_id(), messageGroupEntity.getId());
+                        if (StringUtil.isNotEmpty(result)) {
+                            Map<String, Object> stringObjectMap = JSONUtils.json2Map(result);
+                            int ret = mapper.updateByPrimaryKeySelective(param);//更新现存状态
+                            if (ret > 0) {
+                                MessageJoinGroupEntity messageJoinGroupEntity = new MessageJoinGroupEntity();
+                                messageJoinGroupEntity.setGroup_id(messageGroupEntity.getId());//设置课堂id
+                                messageJoinGroupEntity.setStatus(4);//离开
+                                List<MessageJoinGroupEntity> list = messageJoinGroupMapper.query(messageJoinGroupEntity);//查询离开用户
+                                for (MessageJoinGroupEntity entity : list) {//推送所有人
+                                    if (messageGroupEntity.getOwner_id().intValue() != entity.getUser_id().intValue()) {
+                                        PushMessageParam pushMessageParam = new PushMessageParam();
+                                        pushMessageParam.setTarget_id(entity.getUser_id());
+                                        pushMessageParam.setPush_type("live_class_start");
+                                        Map<String, String> mapPush = new HashMap<>();
+                                        mapPush.put("type", param.getType());
+                                        mapPush.put("id", param.getId().toString());
+                                        mapPush.put("group_id", param.getGroup_id());
+                                        pushMessageParam.setOpera_type("live_class_start");
+                                        pushMessageParam.setMap(mapPush);
+                                        pushMessageParam.setContent("您有课程开播了，点击前往");
+                                        pushMessageParam.setType("groupClassNotice");
+                                        pushMessageParam.setType_id(param.getId());
+                                        //延时队列
+                                        pushMessageParam.setIs_teach_paypal(param.getIs_teach_paypal());
+                                        rabbitTemplate.convertAndSend(DelayedConfig.EXCHANGE_NAME, DelayedConfig.QUEUE_NAME, pushMessageParam, new MessagePostProcessor() {//推送
+                                            @Override
+                                            public Message postProcessMessage(Message message) throws AmqpException {
+                                                message.getMessageProperties().setHeader("x-delay", 180000);//延迟3分钟
+                                                return message;
+                                            }
+                                        });
+                                    }
+                                }
+                                //新增录制任务记录
+                                //System.out.println(stringObjectMap.get("start_time").toString());
+                                GroupRecordingEntity groupRecordingEntity = new GroupRecordingEntity();//群课堂录制记录对象
+                                groupRecordingEntity.setGroup_id(messageGroupEntity.getId());//设置课堂id
+                                groupRecordingEntity.setUser_id(messageGroupEntity.getOwner_id());//设置群主id
+                                groupRecordingEntity.setAppointment_id(Long.parseLong(stringObjectMap.get("id").toString()));//设置课节id
+                                SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//时间格式
+                                Date start_time = simpleFormat.parse(stringObjectMap.get("start_time").toString());//开始时间格式化
+//                                BigDecimal offset = BigDecimal.valueOf(Long.parseLong(stringObjectMap.get("offset").toString()));//时区
+                                BigDecimal offset = new BigDecimal(stringObjectMap.get("offset").toString());//时区
+                                BigDecimal bigDecimal = offset.subtract(new BigDecimal(8)).multiply(new BigDecimal(3600000));//60分钟
+                                long start_longs = start_time.getTime() - bigDecimal.longValue();//计算开始时间
+                                groupRecordingEntity.setStart_time(new Date(start_longs));//设置开始时间
+                                Date end_time = simpleFormat.parse(stringObjectMap.get("end_time").toString());//结束时间
+                                long end_longs = end_time.getTime() - bigDecimal.longValue();//计算结束时间
+                                groupRecordingEntity.setEnd_time(new Date(end_longs));//群录制对象 设置结束时间
+                                groupRecordingEntity.setStream_id("1400255047_" + messageGroupEntity.getOwner_id());//设置流id
+                                EstablishRecordThread messageServive = new EstablishRecordThread();//new 线程对象
+                                messageServive.init(groupRecordingEntity, groupRecordingEntity.getStream_id(), groupRecordingMapper);//初始化
+                                ThreadPool pool = ThreadPool.getInstance();//获取线程池对象
+                                pool.execute(messageServive);//加锁执行 开启录制
+                            }
+                            return ResultUtil.success(stringObjectMap);
+                        } else {
+                            return ResultUtil.error(MasterEum.master_40010.getCode(), MasterEum.master_40010.getDesc());
+                        }
+                    } else {
+                        return super.update(param, request, response);
+                    }
+                }
+            } else {
+                int ret = mapper.updateByPrimaryKeySelective(param);
+                if (ret > 0) {
+                    /*MixedFlowThread messageServive = new MixedFlowThread();
+                    messageServive.init(messageGroupEntity.getGroup_id(),messageGroupEntity.getType(),"app",messageGroupFlowService);
+                    ThreadPool pool = ThreadPool.getInstance();
+                    pool.execute(messageServive);*/
+                    /*MixedFlowThread mixedFlowThread = new MixedFlowThread();
+                    mixedFlowThread.init(messageGroupEntity.getGroup_id(),messageGroupEntity.getType(),"ipad","Cancel",messageGroupFlowService);
+                    pool.execute(mixedFlowThread);*/
+                    userApiService.queryIsShowClose(messageGroupEntity.getOwner_id(), messageGroupEntity.getId());
+                    return ResultUtil.success();
+                }
+                    /*bean.mixedFlow(messageGroupEntity.getGroup_id(),messageGroupEntity.getType(),"app","Cancel");//断播取消混流
+                    bean.mixedFlow(messageGroupEntity.getGroup_id(),messageGroupEntity.getType(),"ipad","Cancel");*/
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("MessageJoinGroupServiceImpl    queryListPage");
+        }
+        return ResultUtil.error(ResultEnum.result_3.getCode(), ResultEnum.result_3.getDesc());
+    }
+
+    @Override
+    public synchronized ResultParam updateLivingBeginsStatus(MessageGroupEntity param, HttpServletRequest request, HttpServletResponse response) {
+        //// TODO: 2021/2/25
+        try {
+
+            String result = userApiService.queryIsLiveStream(param.getOwner_id(), param.getId());
+            if (result != null) {
+                Map<String, Object> stringObjectMap = JSONUtils.json2Map(result);
+                if (!"2".equals(stringObjectMap.get("status"))) {
+                    //新增录制任务记录
+                    //System.out.println(stringObjectMap.get("start_time").toString());
+                    GroupRecordingEntity groupRecordingEntity = new GroupRecordingEntity();//群课堂录制记录对象
+//                            SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//时间格式
+                    Calendar c = Calendar.getInstance();
+                    c.add(Calendar.HOUR_OF_DAY, 2);
+                    Date start_time = c.getTime();//开始时间格式化
+                    Date end_time = c.getTime();
+//                            Date start_time = simpleFormat.parse(stringObjectMap.get("start_time").toString());//结束时间
+//                                BigDecimal offset = BigDecimal.valueOf(Long.parseLong(stringObjectMap.get("offset").toString()));//时区
+//                            BigDecimal offset = new BigDecimal(stringObjectMap.get("offset").toString());//时区
+                    BigDecimal offset = new BigDecimal("8");//时区
+                    BigDecimal bigDecimal = offset.subtract(new BigDecimal(8)).multiply(new BigDecimal(3600000));//60分钟
+                    long start_longs = start_time.getTime() - bigDecimal.longValue();//计算开始时间
+                    groupRecordingEntity.setStart_time(new Date(start_longs));//设置开始时间
+//                            Date end_time = simpleFormat.parse(stringObjectMap.get("end_time").toString());//结束时间
+                    long end_longs = end_time.getTime() - bigDecimal.longValue();//计算结束时间
+                    groupRecordingEntity.setEnd_time(new Date(end_longs));//群录制对象 设置结束时间
+                    groupRecordingEntity.setStream_id(stringObjectMap.get("room_id").toString());//设置流id
+                    groupRecordingEntity.setIs_teach_paypal(true);
+                    groupRecordingEntity.setAppointment_id(Long.parseLong(stringObjectMap.get("id").toString()));
+                    groupRecordingEntity.setUser_id(Long.parseLong(stringObjectMap.get("master_id").toString()));
+                    EstablishRecordThread messageServive = new EstablishRecordThread();//new 线程对象
+                    messageServive.init(groupRecordingEntity, groupRecordingEntity.getStream_id(), groupRecordingMapper);//初始化
+                    ThreadPool pool = ThreadPool.getInstance();//获取线程池对象
+                    pool.execute(messageServive);//加锁执行 开启录制
+                    return ResultUtil.success(stringObjectMap);
+                }
+
+            } else {
+                return ResultUtil.error(MasterEum.master_40029.getCode(), MasterEum.master_40029.getDesc());
+            }
+            /*
+            String s = userApiService.queryIsLiveStreamClose(param.getId());
+            if ("success".equalsIgnoreCase(s)) {
+
+                return ResultUtil.success();
+            }
+
+             */
+        }catch(Exception e){
+                e.printStackTrace();
+            }
+            return ResultUtil.error(ResultEnum.result_3.getCode(), ResultEnum.result_3.getDesc());
+        }
+
+//查询我的直播课堂
+        @Override
+        public List<MessageGroupEntity> queryMyListPage (MessageGroupEntity param, HttpServletRequest
+        request, HttpServletResponse response){
+            List<MessageGroupEntity> entities = null;
+            try {
+                entities = mapper.queryMyListPage(param);
+                for (MessageGroupEntity entity : entities) {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("userinfo", JSONUtils.obj2Json(redisService.getStr(entity.getOwner_id() + "userinfo")));
+                    entity.setMap(map);
+                    MessageJoinGroupEntity messageJoinGroupEntity = new MessageJoinGroupEntity();
+                    messageJoinGroupEntity.setGroup_id(entity.getId());
+                    messageJoinGroupEntity.setStatus(1);
+                    Integer integer = messageJoinGroupMapper.queryListPageCount(messageJoinGroupEntity);
+                    entity.setOnline_num(integer);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.info("MessageGroupServiceImpl    queryListPage");
+            }
+            return entities;
+        }
+
+//查询我的直播课堂数量
+        @Override
+        public Integer queryMyClassCount (MessageGroupEntity param, HttpServletRequest request, HttpServletResponse
+        response){
+            Integer integer = 0;
+            try {
+                integer = mapper.queryMyClassCount(param);
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.info("MessageGroupServiceImpl    queryListPage");
+            }
+            return integer;
+        }
+
+        @Override
+        public Map<String, Object> queryClassCount (MessageGroupEntity param, HttpServletRequest
+        request, HttpServletResponse response){
+            Map<String, Object> map = Maps.newHashMap();
+            try {
+                Integer LanguageClassCount = queryListPageCount(param, request, response);
+                map.put(param.getLanguage() + "ClassCount", LanguageClassCount);
+
+                param.setLanguage(null);
+                Integer classTotal = queryListPageCount(param, request, response);
+                map.put("classTotal", classTotal);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return map;
+        }
+
+        @Override
+        public Map<String, Object> queryCourseCount (MessageGroupEntity param, HttpServletRequest
+        request, HttpServletResponse response){
+            Map<String, Object> map = Maps.newHashMap();
+
+            try {
+                Integer dayCount = mapper.queryDayCount(param);
+                map.put("dayCount", dayCount);//日总计
+
+                Integer weekCount = mapper.queryWeekCount(param);
+                map.put("weekCount", weekCount);//周总计
+
+                Integer monthCount = mapper.queryMonthCount(param);
+                map.put("monthCount", monthCount);//月总计
+
+                Integer CountTotal = mapper.queryCountTotal(param);
+                map.put("CountTotal", CountTotal);//总计
+
+
+                Integer havingClassCount = mapper.queryListPageCount(param);
+                map.put(param.getLanguage() + "HavingClassCount", havingClassCount);//英语语言正在上课中
+
+                Integer endClassCount = mapper.queryEndClassCount(param);
+                map.put(param.getLanguage() + "EndClassCount", endClassCount);//英语回放课堂课堂
+
+                Integer soonClassCount = mapper.querySoonCount(param);
+                map.put(param.getLanguage() + "SoonClassCount", soonClassCount);//英语即将上课课堂
+
+                param.setStatus(null);//直播状态
+                Integer englishClassCount = mapper.queryDayCount(param);
+                map.put(param.getLanguage() + "ClassCount", englishClassCount);//英语班级课程数
+
+                param.setType("online_video");
+                Integer englishVideoCount = mapper.queryDayCount(param);
+                map.put(param.getLanguage() + "VideoCount", englishVideoCount);//英语视频数
+
+                param.setType("online_voice");
+                Integer englishVoiceCount = mapper.queryDayCount(param);
+                map.put(param.getLanguage() + "VoiceCount", englishVoiceCount);//英语音频数
+
+                param.setType("");//todo
+                Integer englishCount = mapper.queryDayCount(param);
+                map.put(param.getLanguage() + "", englishCount);//英语多媒体数
+
+
+                param.setLanguage("French");//法语课程
+                Integer FrenchClassCount = mapper.queryListPageCount(param);
+                map.put(param.getLanguage() + "ClassCount", FrenchClassCount);//法语班级课程
+
+                param.setLanguage("Japanese");//日语课程
+                Integer JapaneseClassCount = mapper.queryListPageCount(param);
+                map.put(param.getLanguage() + "ClassCount", JapaneseClassCount);//法语班级课程
+
+                map.put("otherClassCount", dayCount - FrenchClassCount - JapaneseClassCount - englishClassCount);//其他班级课程
+
+
+                param.setLanguage(null);
+                Integer havingClassCountAll = mapper.queryListPageCount(param);
+                map.put("havingClassCountAll", havingClassCountAll);//正在上课上课中
+
+                Integer endClassCountAll = mapper.queryEndClassCount(param);
+                map.put("endClassCountAll", endClassCountAll);//回放课堂课堂
+
+                Integer soonClassCountAll = mapper.querySoonCount(param);
+                map.put("soonClassCountAll", soonClassCountAll);//即将上课课堂
+
+
+                param.setLanguage(null);
+                param.setType("online_video");
+                Integer videoCount = mapper.queryDayCount(param);
+                map.put("videoCount", videoCount);//视频数
+
+                param.setType("online_voice");
+                Integer voiceCount = mapper.queryDayCount(param);
+                map.put("voiceCount", voiceCount);//音频数
+
+                param.setType("");//todo
+                Integer Count = mapper.queryDayCount(param);
+                map.put("", Count);//多媒体数
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return map;
+        }
+
+        @Override
+        public List<MessageGroupEntity> queryByMessage (MessageGroupEntity param, HttpServletRequest
+        request, HttpServletResponse response){
+            List<MessageGroupEntity> list = null;
+            try {
+                list = new ArrayList<>();
+                if (StringUtil.isEmpty(param.getFull_name())) {
+                    list = mapper.queryByMessage(param);
+                    setAppointmentInfo(list);
+                } else {
+                    String ip = request.getHeader("x-forwarded-for");
+//                HashMap map = this.restTemplate.getForObject("http://localhost:8768/eg-api/user/userInfo/queryByNickName?nick_name="+param.getOperator_account(), HashMap.class);
+                    HashMap<String, ArrayList> map = this.restTemplate.getForObject("http://EG-USER/masterInfo/queryByFullName?full_name=" + param.getFull_name(), HashMap.class);
+                    HashMap<String, ArrayList> map1 = this.restTemplate.getForObject("http://EG-USER/user/queryByLoginName?login_name=" + param.getLogin_name(), HashMap.class);
+                    ArrayList<Long> list1 = map.get("userIds"); //获得list
+                    ArrayList<Long> list2 = map1.get("userIds"); //获得list
+                    if (list1 != null) {
+                        param.setIds(list1);
+                    }
+                    if (list2 != null) {
+                        param.setLoginIds(list2);
+                    }
+                    list = mapper.queryByMessage(param);
+                    if (list != null && list.size() > 0) {
+                        setAppointmentInfo(list);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return list;
+        }
+
+
+        private void setAppointmentInfo (List < MessageGroupEntity > list) {
+            for (MessageGroupEntity entity : list) {
+                HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+                stringObjectHashMap.put("masterInfo", JSONUtils.obj2Json(redisService.getStr(entity.getOwner_id() + "masterInfo")));//设置masterInfo
+                stringObjectHashMap.put("comment_infos", new ArrayList<>());//评论列表
+                stringObjectHashMap.put("appointmentCount", userApiService.queryAppointmentCount(entity.getId()));//课程数量
+                String result = userApiService.queryIsShow(entity.getOwner_id(), entity.getId());//查询是否在直播
+                Map<String, Object> stringObjectMap = new HashMap<>();
+                if (StringUtil.isNotEmpty(result)) {
+                    stringObjectMap = JSONUtils.json2Map(result);
+                }
+                stringObjectHashMap.put("appointmentInfo", stringObjectMap);//课程信息
+                entity.setMap(stringObjectHashMap);
+                //群内人数
+                MessageJoinGroupEntity messageJoinGroupEntity = new MessageJoinGroupEntity();
+                messageJoinGroupEntity.setGroup_id(entity.getId());
+                messageJoinGroupEntity.setStatus(1);
+                Integer integer = messageJoinGroupMapper.queryListPageCount(messageJoinGroupEntity);
+                entity.setOnline_num(integer);
+            }
+        }
+
+        public static Date parse (String str, String pattern, Locale locale){
+            if (str == null || pattern == null) {
+                return null;
+            }
+            try {
+                return new SimpleDateFormat(pattern, locale).parse(str);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+    }

@@ -1,0 +1,199 @@
+spring:
+  datasource:
+    url: jdbc:mysql://139.186.169.185:3306/eg_user?autoReconnect=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    #数据库连接池
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 8000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+   #管理页面配置
+    registration:
+      url: /druid/*
+      addUrlPatterns: /*
+      addInitParameter:
+        #白名单，如果不配置或value为空，则允许所有
+        allow: 127.0.0.1,192.0.0.1
+        #黑名单，与白名单存在相同IP时，优先于白名单
+        deny: 192.0.0.1
+        #用户名
+        loginUsername: root
+        #密码
+        loginPassword: yangchengfu
+        ##禁用页面上的“Reset All”功能
+        resetEnable: false
+        urlPatternsu: /*
+  rabbitmq:
+    username: admin
+    password: admin
+    host: 139.186.169.185
+  redis:
+    port: 6379
+    password: 123456
+    host: 139.186.169.185
+    timeout: 3000
+    pool:
+      maxActice: 300
+      maxWait: -1
+      maxIdle: 8
+      minIdle: 0
+  session:
+    store-type: redis
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 8MB
+  jps:
+    showsql: true
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            ##断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试
+            timeoutInMilliseconds: 50000
+ribbon:
+  ##请求处理的超时时间
+  ReadTimeout: 50000
+  ##请求连接的超时时间
+  ConnectTimeout: 5000
+  ##对当前实例的重试次数
+  MaxAutoRetries: 2
+  ##对所有操作请求都进行重试
+  OkToRetryOnAllOperations: true
+  ##切换实例的重试次数
+  MaxAutoRetriesNextServer: 2
+management:
+  security:
+    enabled: false
+service:
+  shuli:
+    access_id: sl2018071116062101
+    access_key: 7AxuyGFNiTGnGCjnbmaoKHuGDSjwctthMqZDDp2PvCKb
+    url: https://bds-openapi.shulidata.com
+##短信
+  sms:
+    account: N1510277
+    password: UYBZV3lI7Tf162
+    url: http://smssh1.253.com/msg/send/json
+    msg: 【253云通讯】你好,你的验证码是:{code}
+    seconds: 60
+##权限控制的资源
+  security:
+    resourceId: user_api
+    oauthToken: http://localhost:8768/oauth/token
+    filters: {userInfo:[author,login]}
+    oauth: false
+##swagger api接口配置
+  swagger:
+    basePackage: com.wxd.risk.user
+    title: 用户接口
+    contactName: 张三
+    contactUrl: https://www.baidu.com
+    email: 772395012@qq.com
+    description: 所有关于用户的基本接口信息
+    ##七牛云
+  qiniu:
+    accessKey: TWFaq_2E4MtUynhwSYMP7dtoR3toGZEPv9aHnjTk
+    secretKey: GOowm1jNDEQPt_FW8YjlbngbtGljn1awGsdx54mc
+    url: http://pp0ebjziu.bkt.clouddn.com/
+    bucket: qmore
+    expires: 72000
+  mapper:
+    location: classpath*:com/huihe/eg/push/mapper/*Mapper.xml
+    config:
+      location: mybatis-config.xml
+  ftp:
+    host: 47.99.122.225
+    port: 21
+    userName: test
+    password: test
+    home: /home/vsftpd/test
+    url: http://47.99.122.225/
+  pay:
+    wx:
+      machId: 1404934402
+      certPath:
+      notify_url: http://47.99.122.225:8768/auction-api/order/notifyWxpay
+      key: YtTZRcCM33M7GBh4YalPI3G1gIS6LqOt
+      ## app
+      appId: wx14b338568cdac533
+      appSecret: 6bc2b65948c3779619ca1582be38e081
+      ## 公众号
+      gAppId:
+      gAppSecret:
+      ##小程序
+      xAppid: wxa184be9eef2be20e
+      xAppSecret: d37d15f9b8f128fb13ecb81b2ced1569
+    ali:
+      ##请求的url
+      url: https://openapi.alipay.com/gateway.do
+      ##授权的回调链接
+      redirect_url:
+      ## 授权认证的URL
+      auth_url:
+      ##异步通知的url
+      notify_url: http://47.99.122.225:8768/auction-api/order/notifyAlipay
+      #pc/h5支付完成 返回的url
+      return_url: http://47.99.122.225:8768/auction-api/order/returnss
+      ##支付宝的商户APPID
+      app_id: 2017072707920163
+      ## 商户的私钥
+      app_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCOhmNMZr4vVR8JPdWzYmM66593pFEqWBTJWazOeY28Dt1IR3gQZNwoMrvZ+2k2OOoekOkYrFNT+Lcu45aitJLqZyxaGptRdStyJUB6x/tOsq40YF47kj2XCdR291ki/QOGATW4lHGrVChJIVY+7zr8YtTSiOrgC8nIKbSoQeV+FOoXVb2mKg6LJsOKxjYTkwlDN2CNkSVPdZyaKbMwYSwj8qIcFPz30qvnqd0yXCCIh3k4fJVz8T4J+2FABGUoeq7n0fpRdsUTOhJuAMu85MDc541Dk/1E7/h3Btb5XHHjiRnTSgxE3BvkTtPvdRYyjl8n01KiKv+iLU7HId6HaZYdAgMBAAECggEAGAP3CXGqjEk4kJMVxkNG2y/G0B8k+hCbeA4fOy9qPYz3pm08gu6r1i4uTx247cULVhku3dRzuguHumPpBwOMWekGpSwkjcZDitlSEx5Nb0ZWakbuufT7Yc7rORyWrXmatWLQzYhd2vO0UhZG9RXUh6CToeImSZhS6OJ2KX/pDqRw/GYnkJELQy+PaS4ubEn8Sm4jcVXycfWaR3UJF8C44kJTGJDRXSvRT5qqjIOtaL/p6fdEEhEEuv6pI7zIecifGABNE4KgDbs8SRhh/1BsoaUX8g0OxgguWGmsttWBjcRl7hljlSS2+l1iDyHa5XSbnkRSkRbQ1RmwweS5XicMlQKBgQDNxOkoEp55TSO33fIRnRv8WG+FrA59f5qUfa16/yQFSaEq7HPmF/dbSi8ptKfEo8CAVGyRS1u1K8BFRlc2qIGs20Oswz8MvCiAyB+yMnrYRxzK/ki9OnRat033f7yURG6zovJnVChskga18XXhSIa6dGm65Uuvh00ym5o9+R2AhwKBgQCxUStH+BhZQ8nRfnlS+nRZD4mdLqywk7JpPi9J3KzCRB3UrpmCq+bBdLPXa0rtsv9tr2N+gYgj3QQwEKDp0kRUWrGPpu/LzghRom7PUY+4RaJ6VVANjFmfW58RfYOTFa5C/KOMxatEVYrBgb4oNAP0qKhH73hRDrFU8+GvAEwROwKBgHr/BvdjGcMcLwuK6VVJ+h5+pjrau9acXcQA05+/vsJCXsoPiL+y97Jjx4lAaUALOdf7nuHCj9DdlBJUl3EejFTMw8kS9C8ikXtZJEkaD4AUEcvs74Hc3QwUodAdVJWzyhAqiIbnMTqklspOyM2e0pnFWCXVRcZoM+baR/pfXBklAoGAYGXdXtH9AsJ8vLzCXp80k5qD2QUf8xtIujiJYuFqtm5rvU1yvXyRBglZIDr/UDyo6suYDpWDGuQ0O6E+qf+bEDUCJTO/WBBZq2/gSCtyM97/lvw8ejEcJCueTdbrqhH2XAqXK5fnJU5QEiVj6N1mbSMn4XvJ8F9JfwLbZdWGhTMCgYEAutf0cqCros6gf+kazX1BjSU11ASdr7fIlalyTQ2g/C1U+/D8we+5e1aTCPDc2BIDrdksyshSq4iSSSP4G13D+V0dsc+bq7zmFpnW6GF1jhmQYHJoFB1zZ9j7DqnP+1r6vixpYEe+diOYTYRc66J+sYrJT/JeFBK7c/OYDEO+WFE=
+      ##商户的公钥
+      app_public_key:
+      ## 支付宝的公钥
+      alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxKfDbmXK/GrZwmxQYujjVSXa8NS3fuooVG7HfhI3n+/Edav/ueHNRJWzQIsfGmjqVXQoPt3N4y8vnPfCTXlspuS+42H55yV6d/uyCK5PDIVltfp6NSOj4n03OxyQ0f0z83YctEvLTwoiPvoorNBiep6j7gsx3uj4mVgG31RUIHjI++9Q6h2pChy2sdWk3QA0tmHzsIYPWW+H2QxO23MXdrW9USJp42zz7XKTzQ+A572Le+7v114iSgdvdT6VN+RYeoYUzFEHww6mDHWw1NPFKY8pV1dQHzavvsOtD82hqnDr/9OVdA2/z0KydTTfr3FQeqBimW+vcrwMpZx7cu9IewIDAQAB
+      ## 签名的类型
+      sign_type: RSA2
+      ##数据格式化的类型
+      format: JSON
+      ##编码的类型
+      charset: UTF-8
+  push :
+      AppID: USTd5b3BcH66rdVGr2RKo
+      AppSecret: yeTZVE5yGU7XPWT0xd0we9
+      TechpayAppID: 31bf832473abc
+      TechpayAppSecret: fe9719c1e197caa5d6b7716006410414
+      AppKey: 6OREyKai3K9lWVFuQhUTp6
+      MasterSecret: bZfrrPeF7wANklFJoHXbwA
+      url: http://sdk.open.api.igexin.com/apiex.htm
+      pushSecret: /opt/crt/voiptuisong.p12
+      passWord: 199566
+      SandBoxApnsHost: api.push.apple.com
+      Topic: com.huihejituan.curiousearth.voip
+  mob :
+      appKey: 31bf832473abc
+      appSecret: fe9719c1e197caa5d6b7716006410414
+      baseUrl: http://api.push.mob.com/v3/push/createPush
+  mobteachpay :
+      appKey: 2b227db58ea50
+      appSecret: c1bd0ed8bebe7c9cf6444187467284c9
+      baseUrl: http://api.push.mob.com/v3/push/createPush

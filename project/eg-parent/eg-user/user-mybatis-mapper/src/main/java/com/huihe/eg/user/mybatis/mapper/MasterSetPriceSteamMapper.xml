@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterSetPriceStreamMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterSetPriceStreamEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="pay_num" jdbcType="INTEGER" property="pay_num"/>
+        <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="start_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="room_id" jdbcType="VARCHAR" property="room_id"/>
+        <result column="earnings" jdbcType="DECIMAL" property="earnings"/>
+        <result column="living_single_session_price" jdbcType="DECIMAL" property="living_single_session_price"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id"/>
+        <result column="click_num" jdbcType="BIGINT" property="click_num"/>
+        <result column="master_id" jdbcType="BIGINT" property="master_id"/>
+        <result column="live_stream_price" jdbcType="DECIMAL" property="live_stream_price"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time, update_time, status, master_set_price_id, start_time, end_time,
+    room_id, earnings, title, mechanism_id, live_stream_price,master_id,pic,click_num,pay_num
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_master_set_price_stream
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_master_set_price_stream
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.MasterSetPriceStreamEntity"
+            useGeneratedKeys="true" keyProperty="id"
+    >
+        insert into eg_master_set_price_stream (id, create_time, update_time,
+                                                status, master_set_price_id, start_time,
+                                                end_time, room_id, earnings,
+                                                title, mechanism_id, live_stream_price)
+        values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP},
+                #{status,jdbcType=INTEGER}, #{master_set_price_id,jdbcType=BIGINT}, #{start_time,jdbcType=TIMESTAMP},
+                #{end_time,jdbcType=TIMESTAMP}, #{room_id,jdbcType=VARCHAR}, #{earnings,jdbcType=DECIMAL},
+                #{title,jdbcType=VARCHAR}, #{mechanism_id,jdbcType=BIGINT}, #{live_stream_price,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterSetPriceStreamEntity"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into eg_master_set_price_stream
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="pay_num != null">
+                pay_num,
+            </if>
+            <if test="master_set_price_id != null">
+                master_set_price_id,
+            </if>
+            <if test="start_time != null">
+                start_time,
+            </if>
+            <if test="end_time != null">
+                end_time,
+            </if>
+            <if test="room_id != null">
+                room_id,
+            </if>
+            <if test="pic != null">
+                pic,
+            </if>
+            <if test="earnings != null">
+                earnings,
+            </if>
+            <if test="living_single_session_price != null">
+                living_single_session_price,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id,
+            </if>
+            <if test="master_id != null">
+                master_id,
+            </if>
+            <if test="live_stream_price != null">
+                live_stream_price,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="pay_num != null">
+                #{pay_num,jdbcType=INTEGER},
+            </if>
+            <if test="master_set_price_id != null">
+                #{master_set_price_id,jdbcType=BIGINT},
+            </if>
+            <if test="start_time != null">
+                #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="room_id != null">
+                #{room_id,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null">
+                #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="earnings != null">
+                #{earnings,jdbcType=DECIMAL},
+            </if>
+            <if test="living_single_session_price != null">
+                #{living_single_session_price,jdbcType=DECIMAL},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_id != null">
+                #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_id != null">
+                #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="live_stream_price != null">
+                #{live_stream_price,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterSetPriceStreamEntity">
+        update eg_master_set_price_stream
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="pay_num != null">
+                pay_num = #{pay_num,jdbcType=INTEGER},
+            </if>
+            <if test="master_set_price_id != null">
+                master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+            </if>
+            <if test="start_time != null">
+                start_time = #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                end_time = #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="room_id != null">
+                room_id = #{room_id,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null">
+                pic = #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="earnings != null">
+                earnings = #{earnings,jdbcType=DECIMAL},
+            </if>
+            <if test="living_single_session_price != null">
+                living_single_session_price = #{living_single_session_price,jdbcType=DECIMAL},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="click_num != null">
+                click_num = #{click_num,jdbcType=BIGINT},
+            </if>
+            <if test="master_id != null">
+                master_id = #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="live_stream_price != null">
+                live_stream_price = #{live_stream_price,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterSetPriceStreamEntity">
+        update eg_master_set_price_stream
+        set create_time         = #{create_time,jdbcType=TIMESTAMP},
+            update_time         = #{update_time,jdbcType=TIMESTAMP},
+            status              = #{status,jdbcType=INTEGER},
+            master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+            start_time          = #{start_time,jdbcType=TIMESTAMP},
+            end_time            = #{end_time,jdbcType=TIMESTAMP},
+            room_id             = #{room_id,jdbcType=VARCHAR},
+            earnings            = #{earnings,jdbcType=DECIMAL},
+            title               = #{title,jdbcType=VARCHAR},
+            mechanism_id        = #{mechanism_id,jdbcType=BIGINT},
+            live_stream_price   = #{live_stream_price,jdbcType=DECIMAL}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateAddClick">
+        update eg_master_set_price_stream
+        set click_num=click_num + 1
+        where id = #{param.id,jdbcType=BIGINT}
+    </update>
+    <update id="updateAddEarnings">
+        update eg_master_set_price_stream
+        set earnings =earnings + #{amount}
+        where id = #{live_streaming_id,jdbcType=BIGINT}
+    </update>
+    <update id="updatePayNum">
+        update eg_master_set_price_stream
+        set pay_num =pay_num + 1
+        where id = #{live_streaming_id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.MasterSetPriceStreamEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price_stream
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_set_price_id!=null">
+                AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.room_id!=null">
+                AND room_id = #{param.room_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pic!=null">
+                AND pic = #{param.pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.living_single_session_price!=null">
+                AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_stream_price!=null">
+                AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterSetPriceStreamEntity"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price_stream
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_set_price_id!=null">
+                AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.room_id!=null">
+                AND room_id = #{param.room_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pic!=null">
+                AND pic = #{param.pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.living_single_session_price!=null">
+                AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_stream_price!=null">
+                AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterSetPriceStreamEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_master_set_price_stream
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_set_price_id!=null">
+                AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.room_id!=null">
+                AND room_id = #{param.room_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pic!=null">
+                AND pic = #{param.pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.living_single_session_price!=null">
+                AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_stream_price!=null">
+                AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+    <select id="queryMasterSetPriceListPage" resultType="com.huihe.eg.user.model.MasterSetPriceStreamEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_master_set_price_stream
+        <where>
+            end_time > now()
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.master_set_price_id!=null">
+                AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.room_id!=null">
+                AND room_id = #{param.room_id,jdbcType=VARCHAR}
+            </if>
+            <if test="param.pic!=null">
+                AND pic = #{param.pic,jdbcType=VARCHAR}
+            </if>
+            <if test="param.earnings!=null">
+                AND earnings = #{param.earnings,jdbcType=DECIMAL}
+            </if>
+            <if test="param.living_single_session_price!=null">
+                AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.live_stream_price!=null">
+                AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryHomeListPage" resultType="com.huihe.eg.user.model.MasterSetPriceStreamEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        (
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        eg_master_set_price_stream
+        WHERE
+        `status` = 2
+        <if test="param.id!=null">
+            AND id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.create_time!=null">
+            AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.update_time!=null">
+            AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.master_set_price_id!=null">
+            AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.start_time!=null">
+            AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.end_time!=null">
+            AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.room_id!=null">
+            AND room_id = #{param.room_id,jdbcType=VARCHAR}
+        </if>
+        <if test="param.pic!=null">
+            AND pic = #{param.pic,jdbcType=VARCHAR}
+        </if>
+        <if test="param.earnings!=null">
+            AND earnings = #{param.earnings,jdbcType=DECIMAL}
+        </if>
+        <if test="param.living_single_session_price!=null">
+            AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+        </if>
+        <if test="param.title!=null">
+            AND title = #{param.title,jdbcType=VARCHAR}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_id!=null">
+            AND master_id = #{param.master_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.live_stream_price!=null">
+            AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+        </if>
+        <if test="param.id!=null">
+            AND id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.create_time!=null">
+            AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.update_time!=null">
+            AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.master_set_price_id!=null">
+            AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.start_time!=null">
+            AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.end_time!=null">
+            AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.room_id!=null">
+            AND room_id = #{param.room_id,jdbcType=VARCHAR}
+        </if>
+        <if test="param.pic!=null">
+            AND pic = #{param.pic,jdbcType=VARCHAR}
+        </if>
+        <if test="param.earnings!=null">
+            AND earnings = #{param.earnings,jdbcType=DECIMAL}
+        </if>
+        <if test="param.living_single_session_price!=null">
+            AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+        </if>
+        <if test="param.title!=null">
+            AND title = #{param.title,jdbcType=VARCHAR}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_id!=null">
+            AND master_id = #{param.master_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.live_stream_price!=null">
+            AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+        </if>
+        UNION ALL
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        ( SELECT * FROM eg_master_set_price_stream WHERE `status` = 1
+        <if test="param.id!=null">
+            AND id = #{param.id,jdbcType=BIGINT}
+        </if>
+        <if test="param.create_time!=null">
+            AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.update_time!=null">
+            AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.master_set_price_id!=null">
+            AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.start_time!=null">
+            AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.end_time!=null">
+            AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.room_id!=null">
+            AND room_id = #{param.room_id,jdbcType=VARCHAR}
+        </if>
+        <if test="param.pic!=null">
+            AND pic = #{param.pic,jdbcType=VARCHAR}
+        </if>
+        <if test="param.earnings!=null">
+            AND earnings = #{param.earnings,jdbcType=DECIMAL}
+        </if>
+        <if test="param.living_single_session_price!=null">
+            AND living_single_session_price = #{param.living_single_session_price,jdbcType=DECIMAL}
+        </if>
+        <if test="param.title!=null">
+            AND title = #{param.title,jdbcType=VARCHAR}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.master_id!=null">
+            AND master_id = #{param.master_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.live_stream_price!=null">
+            AND live_stream_price = #{param.live_stream_price,jdbcType=DECIMAL}
+        </if>
+        GROUP BY mechanism_id ) a UNION ALL
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        eg_master_set_price_stream
+        WHERE
+        `status` = 3
+        ) b
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+</mapper>

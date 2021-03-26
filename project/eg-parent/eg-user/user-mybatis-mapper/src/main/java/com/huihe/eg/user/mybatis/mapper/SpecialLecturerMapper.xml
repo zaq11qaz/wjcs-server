@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.SpecialLecturerMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.SpecialLecturerEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="each_student" jdbcType="INTEGER" property="each_student" />
+    <result column="each_money" jdbcType="DECIMAL" property="each_money" />
+    <result column="start_class_time" jdbcType="VARCHAR" property="start_class_time" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="start_frequency" jdbcType="INTEGER" property="start_frequency" />
+    <result column="disregard_peopleNum" jdbcType="INTEGER" property="disregard_peopleNum" />
+    <result column="usa_least_earn" jdbcType="DECIMAL" property="usa_least_earn" />
+    <result column="newzealand_canada_australia_least_earn" jdbcType="DECIMAL" property="newzealand_canada_australia_least_earn" />
+    <result column="britain_least_earn" jdbcType="DECIMAL" property="britain_least_earn" />
+    <result column="southafrica_europe_least_earn" jdbcType="DECIMAL" property="southafrica_europe_least_earn" />
+    <result column="else_least_earn" jdbcType="DECIMAL" property="else_least_earn" />
+    <result column="income_coefficient" jdbcType="DECIMAL" property="income_coefficient" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, user_id, each_student, each_money, start_class_time, start_frequency,
+    disregard_peopleNum, usa_least_earn, newzealand_canada_australia_least_earn, britain_least_earn,
+    southafrica_europe_least_earn, else_least_earn,income_coefficient,type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from eg_special_lecturer
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_special_lecturer
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.SpecialLecturerEntity">
+    insert into eg_special_lecturer (id, create_time, user_id,
+                                     each_student, each_money, start_class_time,
+                                     start_frequency, disregard_peopleNum, usa_least_earn,
+                                     newzealand_canada_australia_least_earn, britain_least_earn,
+                                     southafrica_europe_least_earn, else_least_earn,income_coefficient
+    )
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{user_id,jdbcType=BIGINT},
+            #{each_student,jdbcType=INTEGER}, #{each_money,jdbcType=DECIMAL}, #{start_class_time,jdbcType=VARCHAR},
+            #{start_frequency,jdbcType=INTEGER}, #{disregard_peopleNum,jdbcType=INTEGER}, #{usa_least_earn,jdbcType=DECIMAL},
+            #{newzealand_canada_australia_least_earn,jdbcType=DECIMAL}, #{britain_least_earn,jdbcType=DECIMAL},
+            #{southafrica_europe_least_earn,jdbcType=DECIMAL},#{else_least_earn,jdbcType=DECIMAL}, #{income_coefficient,jdbcType=DECIMAL}
+           )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.SpecialLecturerEntity">
+    insert into eg_special_lecturer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="each_student != null">
+        each_student,
+      </if>
+      <if test="each_money != null">
+        each_money,
+      </if>
+      <if test="start_class_time != null">
+        start_class_time,
+      </if>
+      <if test="start_frequency != null">
+        start_frequency,
+      </if>
+      <if test="disregard_peopleNum != null">
+        disregard_peopleNum,
+      </if>
+      <if test="usa_least_earn != null">
+        usa_least_earn,
+      </if>
+      <if test="newzealand_canada_australia_least_earn != null">
+        newzealand_canada_australia_least_earn,
+      </if>
+      <if test="britain_least_earn != null">
+        britain_least_earn,
+      </if>
+      <if test="southafrica_europe_least_earn != null">
+        southafrica_europe_least_earn,
+      </if>
+      <if test="else_least_earn != null">
+        else_least_earn,
+      </if>
+        <if test="income_coefficient != null">
+          income_coefficient,
+      </if>
+        <if test="type != null">
+          type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="each_student != null">
+        #{each_student,jdbcType=INTEGER},
+      </if>
+      <if test="each_money != null">
+        #{each_money,jdbcType=DECIMAL},
+      </if>
+      <if test="start_class_time != null">
+        #{start_class_time,jdbcType=VARCHAR},
+      </if>
+      <if test="start_frequency != null">
+        #{start_frequency,jdbcType=INTEGER},
+      </if>
+      <if test="disregard_peopleNum != null">
+        #{disregard_peopleNum,jdbcType=INTEGER},
+      </if>
+      <if test="usa_least_earn != null">
+        #{usa_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="newzealand_canada_australia_least_earn != null">
+        #{newzealand_canada_australia_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="britain_least_earn != null">
+        #{britain_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="southafrica_europe_least_earn != null">
+        #{southafrica_europe_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="else_least_earn != null">
+        #{else_least_earn,jdbcType=DECIMAL},
+      </if>
+        <if test="income_coefficient != null">
+        #{income_coefficient,jdbcType=DECIMAL},
+      </if>
+        <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.SpecialLecturerEntity">
+    update eg_special_lecturer
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="each_student != null">
+        each_student = #{each_student,jdbcType=INTEGER},
+      </if>
+      <if test="each_money != null">
+        each_money = #{each_money,jdbcType=DECIMAL},
+      </if>
+      <if test="start_class_time != null">
+        start_class_time = #{start_class_time,jdbcType=VARCHAR},
+      </if>
+      <if test="start_frequency != null">
+        start_frequency = #{start_frequency,jdbcType=INTEGER},
+      </if>
+      <if test="disregard_peopleNum != null">
+        disregard_peopleNum = #{disregard_peopleNum,jdbcType=INTEGER},
+      </if>
+      <if test="usa_least_earn != null">
+        usa_least_earn = #{usa_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="newzealand_canada_australia_least_earn != null">
+        newzealand_canada_australia_least_earn = #{newzealand_canada_australia_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="britain_least_earn != null">
+        britain_least_earn = #{britain_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="southafrica_europe_least_earn != null">
+        southafrica_europe_least_earn = #{southafrica_europe_least_earn,jdbcType=DECIMAL},
+      </if>
+      <if test="else_least_earn != null">
+        else_least_earn = #{else_least_earn,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.SpecialLecturerEntity">
+    update eg_special_lecturer
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+        user_id = #{user_id,jdbcType=BIGINT},
+        each_student = #{each_student,jdbcType=INTEGER},
+        each_money = #{each_money,jdbcType=DECIMAL},
+        start_class_time = #{start_class_time,jdbcType=VARCHAR},
+        start_frequency = #{start_frequency,jdbcType=INTEGER},
+        disregard_peopleNum = #{disregard_peopleNum,jdbcType=INTEGER},
+        usa_least_earn = #{usa_least_earn,jdbcType=DECIMAL},
+        newzealand_canada_australia_least_earn = #{newzealand_canada_australia_least_earn,jdbcType=DECIMAL},
+        britain_least_earn = #{britain_least_earn,jdbcType=DECIMAL},
+        southafrica_europe_least_earn = #{southafrica_europe_least_earn,jdbcType=DECIMAL},
+        else_least_earn = #{else_least_earn,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.SpecialLecturerEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_special_lecturer
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.each_student!=null">
+        AND each_student = #{param.each_student,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_money!=null">
+        AND each_money = #{param.each_money,jdbcType=DECIMAL}
+      </if>
+      <if test="param.start_class_time!=null">
+        AND start_class_time = #{param.start_class_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_frequency!=null">
+        AND start_frequency = #{param.start_frequency,jdbcType=INTEGER}
+      </if>
+      <if test="param.disregard_peopleNum!=null">
+        AND disregard_peopleNum = #{param.disregard_peopleNum,jdbcType=INTEGER}
+      </if>
+      <if test="param.usa_least_earn!=null">
+        AND usa_least_earn = #{param.usa_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.newzealand_canada_australia_least_earn!=null">
+        AND newzealand_canada_australia_least_earn = #{param.newzealand_canada_australia_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.britain_least_earn!=null">
+        AND britain_least_earn = #{param.britain_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.southafrica_europe_least_earn!=null">
+        AND southafrica_europe_least_earn = #{param.southafrica_europe_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.else_least_earn!=null">
+        AND else_least_earn = #{param.else_least_earn,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.SpecialLecturerEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_special_lecturer
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.each_student!=null">
+        AND each_student = #{param.each_student,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_money!=null">
+        AND each_money = #{param.each_money,jdbcType=DECIMAL}
+      </if>
+      <if test="param.start_class_time!=null">
+        AND start_class_time = #{param.start_class_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_frequency!=null">
+        AND start_frequency = #{param.start_frequency,jdbcType=INTEGER}
+      </if>
+      <if test="param.disregard_peopleNum!=null">
+        AND disregard_peopleNum = #{param.disregard_peopleNum,jdbcType=INTEGER}
+      </if>
+      <if test="param.usa_least_earn!=null">
+        AND usa_least_earn = #{param.usa_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.newzealand_canada_australia_least_earn!=null">
+        AND newzealand_canada_australia_least_earn = #{param.newzealand_canada_australia_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.britain_least_earn!=null">
+        AND britain_least_earn = #{param.britain_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.southafrica_europe_least_earn!=null">
+        AND southafrica_europe_least_earn = #{param.southafrica_europe_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.else_least_earn!=null">
+        AND else_least_earn = #{param.else_least_earn,jdbcType=DECIMAL}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.SpecialLecturerEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_special_lecturer
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.each_student!=null">
+        AND each_student = #{param.each_student,jdbcType=INTEGER}
+      </if>
+      <if test="param.each_money!=null">
+        AND each_money = #{param.each_money,jdbcType=DECIMAL}
+      </if>
+      <if test="param.start_class_time!=null">
+        AND start_class_time = #{param.start_class_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_frequency!=null">
+        AND start_frequency = #{param.start_frequency,jdbcType=INTEGER}
+      </if>
+      <if test="param.disregard_peopleNum!=null">
+        AND disregard_peopleNum = #{param.disregard_peopleNum,jdbcType=INTEGER}
+      </if>
+      <if test="param.usa_least_earn!=null">
+        AND usa_least_earn = #{param.usa_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.newzealand_canada_australia_least_earn!=null">
+        AND newzealand_canada_australia_least_earn = #{param.newzealand_canada_australia_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.britain_least_earn!=null">
+        AND britain_least_earn = #{param.britain_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.southafrica_europe_least_earn!=null">
+        AND southafrica_europe_least_earn = #{param.southafrica_europe_least_earn,jdbcType=DECIMAL}
+      </if>
+      <if test="param.else_least_earn!=null">
+        AND else_least_earn = #{param.else_least_earn,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryUserId0each_money" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM eg_special_lecturer
+    where user_id = 0
+    limit 1
+  </select>
+</mapper>

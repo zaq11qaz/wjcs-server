@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserPointsMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserPointsEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="usre_id" jdbcType="BIGINT" property="usre_id" />
+    <result column="point" jdbcType="DECIMAL" property="point" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, usre_id, point, type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_points
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eg_user_points
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserPointsEntity">
+    insert into eg_user_points (id, create_time, usre_id,
+      point, type)
+    values (#{id,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{usre_id,jdbcType=BIGINT}, 
+      #{point,jdbcType=DECIMAL}, #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserPointsEntity">
+    insert into eg_user_points
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="usre_id != null">
+        usre_id,
+      </if>
+      <if test="point != null">
+        point,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usre_id != null">
+        #{usre_id,jdbcType=BIGINT},
+      </if>
+      <if test="point != null">
+        #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserPointsEntity">
+    update eg_user_points
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usre_id != null">
+        usre_id = #{usre_id,jdbcType=BIGINT},
+      </if>
+      <if test="point != null">
+        point = #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserPointsEntity">
+    update eg_user_points
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      usre_id = #{usre_id,jdbcType=BIGINT},
+      point = #{point,jdbcType=DECIMAL},
+      type = #{type,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserPointsEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_points
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.usre_id!=null">
+        AND usre_id = #{param.usre_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.point!=null">
+        AND point = #{param.point,jdbcType=DECIMAL}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserPointsEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_points
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.usre_id!=null">
+        AND usre_id = #{param.usre_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.point!=null">
+        AND point = #{param.point,jdbcType=DECIMAL}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND DATE_FORMAT(create_time,'yyyy-MM') = DATE_FORMAT(#{param.start_time,jdbcType=TIMESTAMP},'yyyy-MM')
+      </if>
+      <if test="param.is_earnings!=null and param.is_earnings==true">
+        AND point > 0
+      </if>
+      <if test="param.is_earnings!=null and param.is_earnings==false">
+        AND point &lt; 0
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserPointsEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_points
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.usre_id!=null">
+        AND usre_id = #{param.usre_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.point!=null">
+        AND point = #{param.point,jdbcType=DECIMAL}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

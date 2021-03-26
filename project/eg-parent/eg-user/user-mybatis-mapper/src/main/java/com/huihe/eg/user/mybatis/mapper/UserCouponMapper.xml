@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserCouponMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserCouponEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="coupon_id" jdbcType="BIGINT" property="coupon_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="overdue_time" jdbcType="TIMESTAMP" property="overdue_time"/>
+        <result column="course_num" jdbcType="INTEGER" property="course_num"/>
+        <result column="coupon_list_id" jdbcType="BIGINT" property="coupon_list_id"/>
+        <result column="appointment_id" jdbcType="BIGINT" property="appointment_id"/>
+        <result column="recharge_id" jdbcType="BIGINT" property="recharge_id"/>
+        <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id"/>
+        <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id"/>
+        <result column="user_study_card_id" jdbcType="BIGINT" property="user_study_card_id"/>
+        <result column="coup_name" jdbcType="VARCHAR" property="coup_name"/>
+        <result column="discount" jdbcType="DECIMAL" property="discount"/>
+        <result column="cash" jdbcType="DECIMAL" property="cash"/>
+        <result column="is_teach_paypal" jdbcType="BIT" property="is_teach_paypal"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user_id, coupon_id, create_time, status, type, overdue_time, course_num,coupon_list_id,appointment_id,recharge_id,mechanism_id,
+        coup_name,discount,master_set_price_id,user_study_card_id,is_teach_paypal,cash
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_coupon
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_user_coupon
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserCouponEntity">
+        insert into eg_user_coupon (id, user_id, coupon_id,
+                                    create_time, status, type,
+                                    overdue_time, course_num)
+        values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{coupon_id,jdbcType=BIGINT},
+                #{create_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR},
+                #{overdue_time,jdbcType=TIMESTAMP}, #{course_num,jdbcType=INTEGER}, #{coupon_list_id,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserCouponEntity" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into eg_user_coupon
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="coupon_id != null">
+                coupon_id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="overdue_time != null">
+                overdue_time,
+            </if>
+            <if test="course_num != null">
+                course_num,
+            </if>
+            <if test="coupon_list_id != null">
+                coupon_list_id,
+            </if>
+            <if test="appointment_id != null">
+                appointment_id,
+            </if>
+            <if test="recharge_id != null">
+                recharge_id,
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id,
+            </if>
+            <if test="master_set_price_id != null">
+                master_set_price_id,
+            </if>
+            <if test="user_study_card_id != null">
+                user_study_card_id,
+            </if>
+            <if test="coup_name != null">
+                coup_name,
+            </if>
+            <if test="is_teach_paypal != null">
+                is_teach_paypal,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="cash != null">
+                cash,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="coupon_id != null">
+                #{coupon_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="overdue_time != null">
+                #{overdue_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="course_num != null">
+                #{course_num,jdbcType=INTEGER},
+            </if>
+            <if test="coupon_list_id != null">
+                #{coupon_list_id,jdbcType=BIGINT},
+            </if>
+            <if test=" appointment_id!= null">
+                #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="recharge_id != null">
+                #{recharge_id,jdbcType=BIGINT},
+            </if>
+            <if test="mechanism_id != null">
+                #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_set_price_id != null">
+                #{master_set_price_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_study_card_id != null">
+                #{user_study_card_id,jdbcType=BIGINT},
+            </if>
+            <if test="coup_name != null">
+                #{coup_name,jdbcType=VARCHAR},
+            </if>
+            <if test="is_teach_paypal != null">
+                #{is_teach_paypal,jdbcType=BIT},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=DECIMAL},
+            </if>
+            <if test="cash != null">
+                #{cash,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserCouponEntity">
+        update eg_user_coupon
+        <set>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="coupon_id != null">
+                coupon_id = #{coupon_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="overdue_time != null">
+                overdue_time = #{overdue_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="course_num != null">
+                course_num = #{course_num,jdbcType=INTEGER},
+            </if>
+            <if test="coupon_list_id != null">
+                coupon_list_id = #{coupon_list_id,jdbcType=BIGINT},
+            </if>
+            <if test="mechanism_id != null">
+                mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_study_card_id != null">
+                user_study_card_id = #{user_study_card_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_set_price_id != null">
+                master_set_price_id = #{master_set_price_id,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserCouponEntity">
+        update eg_user_coupon
+        set user_id        = #{user_id,jdbcType=BIGINT},
+            coupon_id      = #{coupon_id,jdbcType=BIGINT},
+            create_time    = #{create_time,jdbcType=TIMESTAMP},
+            status         = #{status,jdbcType=INTEGER},
+            type           = #{type,jdbcType=VARCHAR},
+            overdue_time   = #{overdue_time,jdbcType=TIMESTAMP},
+            course_num     = #{course_num,jdbcType=INTEGER},
+            coupon_list_id = #{coupon_list_id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateStatusUsed">
+        update eg_user_coupon set
+            mechanism_id=#{mechanism_id,jdbcType=BIGINT},
+            status=3
+        where id=#{coupon_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateStatusUnUsed">
+        update eg_user_coupon set status=1
+        where id=#{coupon_id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserCouponEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_coupon
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.coupon_id!=null">
+                AND coupon_id = #{param.coupon_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overdue_time!=null">
+                AND overdue_time = #{param.overdue_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.coupon_list_id!=null">
+                AND coupon_list_id = #{param.coupon_list_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserCouponEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_coupon
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.coupon_id!=null">
+                AND coupon_id = #{param.coupon_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overdue_time!=null">
+                AND overdue_time = #{param.overdue_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.coupon_list_id!=null">
+                AND coupon_list_id = #{param.coupon_list_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY discount DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserCouponEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_coupon
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.coupon_id!=null">
+                AND coupon_id = #{param.coupon_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overdue_time!=null">
+                AND overdue_time = #{param.overdue_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.coupon_list_id!=null">
+                AND coupon_list_id = #{param.coupon_list_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_study_card_id != null">
+                user_study_card_id = #{param.user_study_card_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.master_set_price_id != null">
+                master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT},
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="queryByMessage" resultType="com.huihe.eg.user.model.UserCouponEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_coupon
+        <where>
+            <if test="param.name_ids!=null and param.name_ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.name_ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.start_time!=null and param.end_time!=null">
+                AND end_time
+                BETWEEN #{param.start_time,jdbcType=TIMESTAMP}
+                AND #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.coupon_id!=null">
+                AND coupon_id = #{param.coupon_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overdue_time!=null">
+                AND overdue_time = #{param.overdue_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.coupon_list_id!=null">
+                AND coupon_list_id = #{param.coupon_list_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        ORDER BY overdue_time asc limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryByMessageCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_user_coupon
+        <where>
+            <if test="param.name_ids!=null and param.name_ids.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.name_ids" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.loginIDs!=null and param.loginIDs.size()>0">
+                AND user_id in
+                <foreach item="item" index="index" collection="param.loginIDs" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param.start_time!=null and param.end_time!=null">
+                AND end_time
+                BETWEEN #{param.start_time,jdbcType=TIMESTAMP}
+                AND #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.coupon_id!=null">
+                AND coupon_id = #{param.coupon_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overdue_time!=null">
+                AND overdue_time = #{param.overdue_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.coupon_list_id!=null">
+                AND coupon_list_id = #{param.coupon_list_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+            ORDER BY overdue_time asc limit #{param.startRow},#{param.pageSize}
+        </where>
+    </select>
+    <select id="queryDayCount" resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(recharge_count),0)
+        FROM eg_user_coupon
+        where date_format(create_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')
+        <if test="param.type!=null">
+            AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+    </select>
+    <select id="queryWeekCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(recharge_count),0)
+        FROM
+        eg_user_coupon
+        WHERE
+        YEARWEEK(date_format(create_time,'%Y-%m-%d'),1) = YEARWEEK(now(),1)
+        <if test="param.type!=null">
+            AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.status!=null">
+            AND status = #{param.status,jdbcType=INTEGER}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+    </select>
+    <select id="queryMonthCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(recharge_count),0)
+        FROM eg_user_coupon
+        WHERE DATE_FORMAT(create_time, '%Y-%m') = DATE_FORMAT(now(), '%Y-%m')
+        <if test="param.type!=null">
+            AND type = #{param.type,jdbcType=VARCHAR}
+        </if>
+        <if test="param.user_id!=null">
+            AND user_id = #{param.user_id,jdbcType=BIGINT}
+        </if>
+        <if test="param.status!=null">
+            AND status = #{param.status,jdbcType=INTEGER}
+        </if>
+        <if test="param.mechanism_id!=null">
+            AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+        </if>
+    </select>
+    <select id="queryTotalCount" parameterType="com.huihe.eg.user.model.SystemRechargeEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        COALESCE(count(recharge_count),0)
+        FROM eg_user_coupon
+        <where>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <select id="queryDetailListPage" resultType="com.huihe.eg.user.model.UserCouponEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_coupon
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.coupon_id!=null">
+                AND coupon_id = #{param.coupon_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.type!=null">
+                AND type = #{param.type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.overdue_time!=null">
+                AND overdue_time = #{param.overdue_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.course_num!=null">
+                AND course_num = #{param.course_num,jdbcType=INTEGER}
+            </if>
+            <if test="param.is_teach_paypal!=null">
+                AND is_teach_paypal = #{param.is_teach_paypal,jdbcType=BIT}
+            </if>
+            <if test="param.coupon_list_id!=null">
+                AND coupon_list_id = #{param.coupon_list_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.mechanism_id!=null">
+                AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+            </if>
+        </where>
+        GROUP BY type
+        ORDER BY overdue_time asc
+    </select>
+</mapper>

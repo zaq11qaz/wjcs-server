@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserSchoolMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserSchoolEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="school_name" jdbcType="VARCHAR" property="school_name" />
+    <result column="start_time" jdbcType="VARCHAR" property="start_time" />
+    <result column="end_time" jdbcType="VARCHAR" property="end_time" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="is_visible" jdbcType="BIT" property="is_visible" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, school_name, start_time, end_time, create_time, update_time, is_visible
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_school
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_school
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserSchoolEntity">
+    insert into eg_user_school (id, user_id, school_name, 
+      start_time, end_time, create_time, 
+      update_time, is_visible)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{school_name,jdbcType=VARCHAR}, 
+      #{start_time,jdbcType=VARCHAR}, #{end_time,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{is_visible,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserSchoolEntity">
+    insert into eg_user_school
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="school_name != null">
+        school_name,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="end_time != null">
+        end_time,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="is_visible != null">
+        is_visible,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="school_name != null">
+        #{school_name,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=VARCHAR},
+      </if>
+      <if test="end_time != null">
+        #{end_time,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_visible != null">
+        #{is_visible,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserSchoolEntity">
+    update eg_user_school
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="school_name != null">
+        school_name = #{school_name,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null">
+        start_time = #{start_time,jdbcType=VARCHAR},
+      </if>
+      <if test="end_time != null">
+        end_time = #{end_time,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_visible != null">
+        is_visible = #{is_visible,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserSchoolEntity">
+    update eg_user_school
+    set user_id = #{user_id,jdbcType=BIGINT},
+      school_name = #{school_name,jdbcType=VARCHAR},
+      start_time = #{start_time,jdbcType=VARCHAR},
+      end_time = #{end_time,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      is_visible = #{is_visible,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserSchoolEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_school
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_visible!=null">
+        AND is_visible = #{param.is_visible,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserSchoolEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_school
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_visible!=null">
+        AND is_visible = #{param.is_visible,jdbcType=BIT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserSchoolEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_school
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.school_name!=null">
+        AND school_name = #{param.school_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.is_visible!=null">
+        AND is_visible = #{param.is_visible,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  <select id="queryIsClassmate" parameterType="com.huihe.eg.user.model.UserSchoolEntity" resultType="com.huihe.eg.user.model.UserSchoolEntity">
+    SELECT
+    *
+    FROM
+    (
+    SELECT
+    *
+    FROM
+    eg_user_school
+    WHERE
+    user_id = #{param.user_id,jdbcType=BIGINT}
+    )  a
+    LEFT JOIN (
+    SELECT
+    *
+    FROM
+    eg_user_school
+    WHERE
+    user_id = #{param.oper_id,jdbcType=BIGINT}
+    )  b
+    on a.school_name = b.school_name  LIMIT 1
+  </select>
+
+</mapper>

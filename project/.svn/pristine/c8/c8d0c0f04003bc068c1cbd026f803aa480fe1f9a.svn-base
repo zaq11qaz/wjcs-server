@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>eg-mall</artifactId>
+        <groupId>com.huihe.eg.mall</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.huihe.eg.mall.service.dao</groupId>
+    <artifactId>mall-service-dao</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.cy.framework.service.dao</groupId>
+            <artifactId>cy-framework-service-dao</artifactId>
+            <version>${cy.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huihe.eg.mall.mybatis.mapper</groupId>
+            <artifactId>mall-mybatis-mapper</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.RechargeInfoMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.RechargeInfoEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="aliPay" jdbcType="VARCHAR" property="aliPay" />
+    <result column="wxPay" jdbcType="VARCHAR" property="wxPay" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="identity_type" jdbcType="VARCHAR" property="identity_type" />
+    <result column="cash" jdbcType="DECIMAL" property="cash" />
+    <result column="auth_code" jdbcType="VARCHAR" property="auth_code" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="access_token" jdbcType="VARCHAR" property="access_token" />
+    <result column="scope" jdbcType="VARCHAR" property="scope" />
+    <result column="refresh_token" jdbcType="VARCHAR" property="refresh_token" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, create_time, aliPay, wxPay, name, identity_type, cash, auth_code, state, 
+    access_token, scope, refresh_token
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_recharge_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_recharge_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.RechargeInfoEntity">
+    insert into eg_recharge_info (id, user_id, create_time, 
+      aliPay, wxPay, name, 
+      identity_type, cash, auth_code, 
+      state, access_token, scope, 
+      refresh_token)
+    values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{aliPay,jdbcType=VARCHAR}, #{wxPay,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{identity_type,jdbcType=VARCHAR}, #{cash,jdbcType=DECIMAL}, #{auth_code,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{access_token,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR}, 
+      #{refresh_token,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.RechargeInfoEntity">
+    insert into eg_recharge_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="aliPay != null">
+        aliPay,
+      </if>
+      <if test="wxPay != null">
+        wxPay,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="identity_type != null">
+        identity_type,
+      </if>
+      <if test="cash == null">
+        cash,
+      </if>
+      <if test="auth_code != null">
+        auth_code,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="access_token != null">
+        access_token,
+      </if>
+      <if test="scope != null">
+        scope,
+      </if>
+      <if test="refresh_token != null">
+        refresh_token,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aliPay != null">
+        #{aliPay,jdbcType=VARCHAR},
+      </if>
+      <if test="wxPay != null">
+        #{wxPay,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_type != null">
+        #{identity_type,jdbcType=VARCHAR},
+      </if>
+      <if test="cash == null">
+        0,
+      </if>
+      <if test="auth_code != null">
+        #{auth_code,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="access_token != null">
+        #{access_token,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="refresh_token != null">
+        #{refresh_token,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.RechargeInfoEntity">
+    update eg_recharge_info
+    <set>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aliPay != null">
+        aliPay = #{aliPay,jdbcType=VARCHAR},
+      </if>
+      <if test="wxPay != null">
+        wxPay = #{wxPay,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_type != null">
+        identity_type = #{identity_type,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        cash = #{cash,jdbcType=DECIMAL},
+      </if>
+      <if test="auth_code != null">
+        auth_code = #{auth_code,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="access_token != null">
+        access_token = #{access_token,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        scope = #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="refresh_token != null">
+        refresh_token = #{refresh_token,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.RechargeInfoEntity">
+    update eg_recharge_info
+    set user_id = #{user_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      aliPay = #{aliPay,jdbcType=VARCHAR},
+      wxPay = #{wxPay,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      identity_type = #{identity_type,jdbcType=VARCHAR},
+      cash = #{cash,jdbcType=DECIMAL},
+      auth_code = #{auth_code,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      access_token = #{access_token,jdbcType=VARCHAR},
+      scope = #{scope,jdbcType=VARCHAR},
+      refresh_token = #{refresh_token,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.RechargeInfoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_recharge_info
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.aliPay!=null">
+        AND aliPay = #{param.aliPay,jdbcType=VARCHAR}
+      </if>
+      <if test="param.wxPay!=null">
+        AND wxPay = #{param.wxPay,jdbcType=VARCHAR}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.auth_code!=null">
+        AND auth_code = #{param.auth_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.state!=null">
+        AND state = #{param.state,jdbcType=VARCHAR}
+      </if>
+      <if test="param.access_token!=null">
+        AND access_token = #{param.access_token,jdbcType=VARCHAR}
+      </if>
+      <if test="param.scope!=null">
+        AND scope = #{param.scope,jdbcType=VARCHAR}
+      </if>
+      <if test="param.refresh_token!=null">
+        AND refresh_token = #{param.refresh_token,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.RechargeInfoEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_recharge_info
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.aliPay!=null">
+        AND aliPay = #{param.aliPay,jdbcType=VARCHAR}
+      </if>
+      <if test="param.wxPay!=null">
+        AND wxPay = #{param.wxPay,jdbcType=VARCHAR}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.auth_code!=null">
+        AND auth_code = #{param.auth_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.state!=null">
+        AND state = #{param.state,jdbcType=VARCHAR}
+      </if>
+      <if test="param.access_token!=null">
+        AND access_token = #{param.access_token,jdbcType=VARCHAR}
+      </if>
+      <if test="param.scope!=null">
+        AND scope = #{param.scope,jdbcType=VARCHAR}
+      </if>
+      <if test="param.refresh_token!=null">
+        AND refresh_token = #{param.refresh_token,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.RechargeInfoEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_recharge_info
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.aliPay!=null">
+        AND aliPay = #{param.aliPay,jdbcType=VARCHAR}
+      </if>
+      <if test="param.wxPay!=null">
+        AND wxPay = #{param.wxPay,jdbcType=VARCHAR}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.identity_type!=null">
+        AND identity_type = #{param.identity_type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.cash!=null">
+        AND cash = #{param.cash,jdbcType=DECIMAL}
+      </if>
+      <if test="param.auth_code!=null">
+        AND auth_code = #{param.auth_code,jdbcType=VARCHAR}
+      </if>
+      <if test="param.state!=null">
+        AND state = #{param.state,jdbcType=VARCHAR}
+      </if>
+      <if test="param.access_token!=null">
+        AND access_token = #{param.access_token,jdbcType=VARCHAR}
+      </if>
+      <if test="param.scope!=null">
+        AND scope = #{param.scope,jdbcType=VARCHAR}
+      </if>
+      <if test="param.refresh_token!=null">
+        AND refresh_token = #{param.refresh_token,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

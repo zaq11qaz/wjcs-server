@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserClassMapper">
+    <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserClassEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="user_id"/>
+        <result column="master_id" jdbcType="BIGINT" property="master_id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="appointment_id" jdbcType="BIGINT" property="appointment_id"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="start_time"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="end_time"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="offset" jdbcType="DECIMAL" property="offset"/>
+        <result column="timezone_id" jdbcType="BIGINT" property="timezone_id"/>
+        <result column="update_appointment_id" jdbcType="BIGINT" property="update_appointment_id"/>
+        <result column="class_type" jdbcType="VARCHAR" property="class_type"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="classroom_type" jdbcType="VARCHAR" property="classroom_type"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user_id, master_id, create_time, update_time, appointment_id, status, start_time,
+    end_time, title, offset, timezone_id, update_appointment_id, class_type, language,classroom_type
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from eg_user_class
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from eg_user_class
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.huihe.eg.user.model.UserClassEntity">
+        insert into eg_user_class (id, user_id, master_id,
+                                   create_time, update_time, appointment_id,
+                                   status, start_time, end_time,
+                                   title, offset, timezone_id,
+                                   update_appointment_id, class_type, language, classroom_type)
+        values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{master_id,jdbcType=BIGINT},
+                #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{appointment_id,jdbcType=BIGINT},
+                #{status,jdbcType=INTEGER}, #{start_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP},
+                #{title,jdbcType=VARCHAR}, #{offset,jdbcType=DECIMAL}, #{timezone_id,jdbcType=BIGINT},
+                #{update_appointment_id,jdbcType=BIGINT}, #{class_type,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR},
+                #{classroom_type,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserClassEntity">
+        insert into eg_user_class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="master_id != null">
+                master_id,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="appointment_id != null">
+                appointment_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="start_time != null">
+                start_time,
+            </if>
+            <if test="end_time != null">
+                end_time,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="offset != null">
+                offset,
+            </if>
+            <if test="timezone_id != null">
+                timezone_id,
+            </if>
+            <if test="update_appointment_id != null">
+                update_appointment_id,
+            </if>
+            <if test="class_type != null">
+                class_type,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            <if test="classroom_type != null">
+                classroom_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null">
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_id != null">
+                #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="start_time != null">
+                #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="offset != null">
+                #{offset,jdbcType=DECIMAL},
+            </if>
+            <if test="timezone_id != null">
+                #{timezone_id,jdbcType=BIGINT},
+            </if>
+            <if test="update_appointment_id != null">
+                #{update_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="class_type != null">
+                #{class_type,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                #{classroom_type,jdbcType=VARCHAR},
+            </if>
+            <if test="classroom_type != null">
+                #{classroom_type,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserClassEntity">
+        update eg_user_class
+        <set>
+            <if test="user_id != null">
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="master_id != null">
+                master_id = #{master_id,jdbcType=BIGINT},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appointment_id != null">
+                appointment_id = #{appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="start_time != null">
+                start_time = #{start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end_time != null">
+                end_time = #{end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="offset != null">
+                offset = #{offset,jdbcType=DECIMAL},
+            </if>
+            <if test="timezone_id != null">
+                timezone_id = #{timezone_id,jdbcType=BIGINT},
+            </if>
+            <if test="update_appointment_id != null">
+                update_appointment_id = #{update_appointment_id,jdbcType=BIGINT},
+            </if>
+            <if test="class_type != null">
+                class_type = #{class_type,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="classroom_type != null">
+                classroom_type = #{classroom_type,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserClassEntity">
+        update eg_user_class
+        set user_id               = #{user_id,jdbcType=BIGINT},
+            master_id             = #{master_id,jdbcType=BIGINT},
+            create_time           = #{create_time,jdbcType=TIMESTAMP},
+            update_time           = #{update_time,jdbcType=TIMESTAMP},
+            appointment_id        = #{appointment_id,jdbcType=BIGINT},
+            status                = #{status,jdbcType=INTEGER},
+            start_time            = #{start_time,jdbcType=TIMESTAMP},
+            end_time              = #{end_time,jdbcType=TIMESTAMP},
+            title                 = #{title,jdbcType=VARCHAR},
+            offset                = #{offset,jdbcType=DECIMAL},
+            timezone_id           = #{timezone_id,jdbcType=BIGINT},
+            update_appointment_id = #{update_appointment_id,jdbcType=BIGINT},
+            class_type            = #{class_type,jdbcType=VARCHAR},
+            language              = #{language,jdbcType=VARCHAR},
+            classroom_type        = #{classroom_type,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserClassEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.class_type!=null">
+                AND class_type = #{param.class_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserClassEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.class_type!=null">
+                AND class_type = #{param.class_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserClassEntity"
+            resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM eg_user_class
+        <where>
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.class_type!=null">
+                AND class_type = #{param.class_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryUserSchedule" parameterType="com.huihe.eg.user.model.UserClassEntity"
+            resultType="com.huihe.eg.user.model.UserClassEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class
+        <where>
+            unix_timestamp(NOW()) &lt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) limit #{param.startRow},#{param.pageSize}
+    </select>
+    <!--查询某个时间段是否有课程安排-->
+    <select id="queryIsClass" parameterType="com.huihe.eg.user.model.UserClassEntity"
+            resultType="com.huihe.eg.user.model.UserClassEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class
+        <where>
+            (status =2 OR status=4 OR status=5)
+            <if test="param.start_time!=null and param.end_time!=null  and param.offset!=null">
+                AND
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60 =
+                unix_timestamp(start_time)
+                AND unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                = unix_timestamp(end_time)
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.class_type!=null">
+                AND class_type = #{param.class_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+        limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryHistoryListPage" parameterType="com.huihe.eg.user.model.UserClassEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class
+        <where>
+            unix_timestamp(NOW()) &gt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null">
+                AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.end_time!=null">
+                AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+            <if test="param.offset!=null">
+                AND offset = #{param.offset,jdbcType=DECIMAL}
+            </if>
+            <if test="param.timezone_id!=null">
+                AND timezone_id = #{param.timezone_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.update_appointment_id!=null">
+                AND update_appointment_id = #{param.update_appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.class_type!=null">
+                AND class_type = #{param.class_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.language!=null">
+                AND language = #{param.language,jdbcType=VARCHAR}
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) DESC limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryUserScheduleCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_user_class
+        <where>
+            unix_timestamp(NOW()) &lt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="queryUserScheduleHistory" resultType="com.huihe.eg.user.model.UserClassEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM eg_user_class
+        <where>
+            unix_timestamp(NOW()) &gt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY UNIX_TIMESTAMP(start_time)+(8-OFFSET*60*60) limit #{param.startRow},#{param.pageSize}
+    </select>
+    <select id="queryUserScheduleHistoryCount" resultType="java.lang.Integer">
+        SELECT
+        coalesce(count(1),0)
+        FROM eg_user_class
+        <where>
+            unix_timestamp(NOW()) &gt; unix_timestamp(end_time) + (8 - OFFSET) * 60 * 60
+            <if test="param.id!=null">
+                AND id = #{param.id,jdbcType=BIGINT}
+            </if>
+            <if test="param.user_id!=null">
+                AND user_id = #{param.user_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.master_id!=null">
+                AND master_id = #{param.master_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.create_time!=null">
+                AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.update_time!=null">
+                AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="param.appointment_id!=null">
+                AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+            </if>
+            <if test="param.status!=null">
+                AND status = #{param.status,jdbcType=INTEGER}
+            </if>
+            <if test="param.start_time!=null and param.offset!=null and param.end_time!=null">
+                AND unix_timestamp(start_time) &gt;=
+                unix_timestamp(#{param.start_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+                AND unix_timestamp(end_time) &lt;=
+                unix_timestamp(#{param.end_time,jdbcType=TIMESTAMP})+(offset-#{param.offset,jdbcType=DECIMAL})*60*60
+            </if>
+            <if test="param.classroom_type!=null">
+                AND classroom_type = #{param.classroom_type,jdbcType=VARCHAR}
+            </if>
+            <if test="param.title!=null">
+                AND title = #{param.title,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

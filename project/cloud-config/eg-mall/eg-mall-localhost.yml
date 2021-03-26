@@ -1,0 +1,210 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/eg_mall?autoReconnect=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据库连接池
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 8000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+   #管理页面配置
+    registration:
+      url: /druid/*
+      addUrlPatterns: /*
+      addInitParameter:
+        #白名单，如果不配置或value为空，则允许所有
+        allow: 127.0.0.1,192.0.0.1
+        #黑名单，与白名单存在相同IP时，优先于白名单
+        deny: 192.0.0.1
+        #用户名
+        loginUsername: root
+        #密码
+        loginPassword: yangchengfu
+        ##禁用页面上的“Reset All”功能
+        resetEnable: false
+        urlPatternsu: /*
+  data:
+    elasticsearch:
+      cluster-name:  docker-cluster
+      cluster-nodes: 101.37.66.151:9300
+      local: false
+      properties:
+        path:
+          logs: ./elasticsearch/log
+          data: ./elasticsearch/data
+  rabbitmq:
+    username: admin
+    password: admin
+  redis:
+    port: 6379
+    password: 123456
+    host: localhost
+    timeout: 3000
+    pool:
+      maxActice: 300
+      maxWait: -1
+      maxIdle: 8
+      minIdle: 0
+  session:
+    store-type: redis
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 30MB
+  jps:
+    showsql: true
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            ##断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试
+            timeoutInMilliseconds: 80000
+  threadpool:
+    default:
+      coreSize: 20
+ribbon:
+  ##请求处理的超时时间
+  ReadTimeout: 30000
+  ##请求连接的超时时间
+  ConnectTimeout: 2000
+  ##对当前实例的重试次数
+  MaxAutoRetries: 0
+  ##对所有操作请求都进行重试
+  OkToRetryOnAllOperations: true
+  ##切换实例的重试次数
+  MaxAutoRetriesNextServer: 1
+management:
+  security:
+    enabled: false
+service:
+  shuli:
+    access_id: sl2018071116062101
+    access_key: 7AxuyGFNiTGnGCjnbmaoKHuGDSjwctthMqZDDp2PvCKb
+    url: https://bds-openapi.shulidata.com
+##权限控制的资源
+  security:
+    resourceId: user_api
+    oauthToken: http://localhost:8768/oauth/token
+    filters: {userInfo:[author,login]}
+    oauth: false
+##短信
+  sms:
+    sname: dlhuihe0
+    spwd: hh123321
+    url: http://cf.51welink.com/submitdata/service.asmx/g_Submit
+    sprdid: 1012812
+    psd: 1012818
+    smsg: 【汇合智能科技】外教超市 您的验证码是：{code}，请妥善保存，切勿泄露，若非本人操作，请忽略此短信。
+    smsv: 【汇合智能科技】外教超市 您的朋友{name}，在外教超市上邀请您参加互动。下载地址http//www.huihejituan.com/tripPictstorage/qmore/download/download.html
+    seconds: 60
+##邮箱
+  mail:
+    title: 邮箱验证码
+    content: 【汇合智能科技】外教超市 您的验证码是：{code}，请妥善保存，切勿泄露，若非本人操作，请忽略此邮件。
+    host: smtp.ym.163.com
+    account: huihejituan@joingp.net
+    password: huihe123321
+    personal: 汇合智能科技
+    seconds: 60
+##swagger api接口配置
+  swagger:
+    basePackage: com.huihe.eg.mall
+    title: 商城接口
+    contactName: 张三
+    contactUrl: https://www.baidu.com
+    email: 772395012@qq.com
+    description: 所有关于商城的基本接口信息
+    ##七牛云
+  qiniu:
+    accessKey: TWFaq_2E4MtUynhwSYMP7dtoR3toGZEPv9aHnjTk
+    secretKey: GOowm1jNDEQPt_FW8YjlbngbtGljn1awGsdx54mc
+    url: http://pp0ebjziu.bkt.clouddn.com/
+    bucket: qmore
+    expires: 72000
+  mapper:
+    location: classpath*:com/huihe/eg/mall/mybatis/mapper/*Mapper.xml
+    config:
+      location: mybatis-config.xml
+  ftp:
+    host: 47.99.122.225
+    port: 21
+    userName: test
+    password: test
+    home: /home/vsftpd/test
+    url: http://47.99.122.225/
+  pay:
+    wx:
+      machId: 1488811802
+      certPath:
+      notify_url: http://101.37.66.151:8768/eg-api/user/pay/wxPayNotify
+      key: YtTZRcCM33M7GBh4YalPI3G1gIS6LqOt
+      ## app
+      appId: wx3c35361c8308daab
+      appSecret:
+      ## 公众号
+      gAppId: wx3c35361c8308daab
+      gAppSecret: a705e9e2141689f6110dd203bf236f56
+      ##小程序
+      xAppid: wx2f4eaeb7b745ba4e
+      xAppSecret: 2af31c3b55215ce8e99144e4c325418a
+      wxip: 101.37.66.151
+    ali:
+      ##请求的url
+      url: https://openapi.alipay.com/gateway.do
+      ##授权的回调链接
+      redirect_url:
+      ## 授权认证的URL
+      auth_url:
+      ##异步通知的url
+      notify_url: http://101.37.66.151:8768/eg-api/user/pay/aliPayNotify
+      #pc/h5支付完成 返回的url
+      return_url: http://101.37.66.151:8768/eg-api/user/pay/aliPayNotify
+      ##支付宝的商户APPID
+      app_id: 2018032202429132
+      ## 商户的私钥
+      app_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCDIFtdvFwfPr2ez8CmEpOi0ZQbDT++FSSeH4CoPlEmVkyAuaiW+HkXjDLD3me8I+WUI3uUeJxIQvFxzlvouxrhw6vs3cm+1uko/BuWksMqlR+V4mNEsUvMEBLFplrFQUjeeAyes6NYeBPC0r6/Llsg8kRRXNwk9g0v+4vyjC28gCZfURwWdXAjNLVdED3ioAUaJ870ZN6xhc0cmMm6zFTUGbb/zIFBL0qPqRuCTXHmWKqr6713YgzPuh5Yhr7LQD67LWKYXExB2/C65hW8EJhZq0pPq1e1DtfKJxfY0NXbzzlNGQEdLoMxBIawU/Vng2s+VM60lWCkagrmH1R8UBNPAgMBAAECggEAH3sHNGviWgYAFD6ga76N/0r9mbkGkqYU0nmRs9KyPNf/KfBoz0X8HHEmRuwAT6T2myghpTWHn7miqcX3Ptqcy5LklctxggWqmJJeNToq7PA8Uwm092rxXZ6GQzl7FVxlGDQOI5PRJY4+gEmETfXdHv3K9RWsLJt98wUbRjHtURHCixZj5yOJ8PO42FrpUHnRFnwAfWw0VsBpICzSE7IwscVWmOYnKQmNLbuwYexYbyfgwWnlakqMmvEmaqMFRYki9VHcfrzm/BJIT2FwHr7fdUMSZd1F0vK14rxUu+eOigyJ7gfbobr/xPREfXuQk7QIKExFITj3gjXNngvIrtDaIQKBgQDOabQyGYzAdiKpsia6qkgadexj7bOw3k3x6GXYxsGZL78+FcZkqZjReXdk4Pb2MfywNFXKHzAekrDZBxSk2YWRPOM399kg5L9mlkjSARUdu0grhpX7Pa+Yktro95md2sCKsl54ITVWfMvZfFbj+8zCqepcWw955vj674CVQv291wKBgQCioJFxh2FD/WtwYXiZx+2tZPy6b37PNn0SrUCathRb14o0N1ySeALtuaqA8aMch72R/VGRhfLBA8SepYpxiRpwFL71ivrkaJPtI2HBVe0oWlXZXD06nrzrPJkmtUfXCdNs3MH+Es6N1vEpFziuo2GZP2EVjREAjvOm9L4SdDp3SQKBgQC1cxB3tiQYEAF6oWQQVZ5avG0Yjx2WDmYAkKXvQRFw4xs/rY6gcMIo6pk9MdGHLPwPvYHo0y/OwG776ZCJNbqHqTmoupTBqLRkrxnGmjMA1uCjeoUfveM9wWL0xqvgqyr1AcWv3qlvpPbh8b7EXVZrjUi69UWOiK84kA+9po0+MwKBgCCL+g+6hGDTCvmGyFgehxa4q0u0nLBju0xNmCxeXFy1Glew7LnzgsKI8fK0aWyAThQ1mmmBYT/3vRXzE239fmkH/d+uXN/xfglrl1jWFYyJ57yElUxyEGUTz6LLjQEgWkvjMn/iy6vfZIxQtWteD15YLNnfTZPLCEBVouSWlkzhAoGAUoRVhJkkxnweJ2RACsHH11AcR9+p4MOzyxuofAJiH7zWvktPNVhejo7gOlJEwO2cf+70iu7/U9hAApD0A6O4iaUbPP5Zr8e2iB6WK1qHxp1qx1v10YXi6h/RiX9zfHqESaekmKDkPue/ioxzgy1KiBGPBZsiMbvasEXhjQK6iTc=
+      ##商户的公钥
+      app_public_key:
+      ## 支付宝的公钥
+      alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm3F7eWXWtKvVz3VESZZzd2dj8Op6ajlpeCxF+d7yCBrKqwy5Ak5uON0OhyvHeKXTHpNaz088wPT0B1nt8ssW1DzN0Ci0jN5znXfjNoQWQGn2+PSkCYIOTfSgCaNKGMdWbA2ufMR50yF0wWhlk7DdXTpe1GcFOfonJJ3RFwHbZ1hZGMC/xeN0xDTugp3wA5nRf963HliKl9yzy7uhkr8PF/cRsN09fp3238askjIysfcYLJFc4L7ray9qGJsYx+DmWICY94I+ELVV8YMex8n9KC+YAGmZ0JUnCtrY7pT5TY+w6zXK1SXKCXuYdGra98z7cx+tBPO/UylLDeAMdab2dwIDAQAB
+      ## 签名的类型
+      sign_type: RSA2
+      ##数据格式化的类型
+      format: JSON
+      ##编码的类型
+      charset: UTF-8
+  tim:
+      url: https://console.tim.qq.com/v4
+      contenttype: json
+      SdkAppId: 1400252099
+      adminName: admin
+      expire : 2592000
+      SecretKey: 76d8e1e48fb663c2f90d76f6722fc9f16e4d390d5ee9bb28c180f5029e651ee4

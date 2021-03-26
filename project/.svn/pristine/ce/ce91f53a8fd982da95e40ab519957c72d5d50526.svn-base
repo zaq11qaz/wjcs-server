@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MasterSummaryMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MasterSummaryEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="master_id" jdbcType="BIGINT" property="master_id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="appointment_id" jdbcType="BIGINT" property="appointment_id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="word" jdbcType="VARCHAR" property="word" />
+    <result column="grammar" jdbcType="VARCHAR" property="grammar" />
+    <result column="proposal" jdbcType="VARCHAR" property="proposal" />
+    <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id" />
+    <result column="photo_url" jdbcType="VARCHAR" property="photo_url" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, master_id, create_time, update_time, appointment_id, content, word, grammar, 
+    proposal,photo_url,mechanism_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_master_summary
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_master_summary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MasterSummaryEntity">
+    insert into eg_master_summary (id, master_id, create_time, 
+      update_time, appointment_id, content, 
+      word, grammar, proposal
+      )
+    values (#{id,jdbcType=BIGINT}, #{master_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{appointment_id,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, 
+      #{word,jdbcType=VARCHAR}, #{grammar,jdbcType=VARCHAR}, #{proposal,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MasterSummaryEntity">
+    insert into eg_master_summary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="master_id != null">
+        master_id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="appointment_id != null">
+        appointment_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="word != null">
+        word,
+      </if>
+      <if test="grammar != null">
+        grammar,
+      </if>
+      <if test="proposal != null">
+        proposal,
+      </if>
+        <if test="photo_url != null">
+          photo_url,
+      </if>
+        <if test="mechanism_id != null">
+          mechanism_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="master_id != null">
+        #{master_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appointment_id != null">
+        #{appointment_id,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="word != null">
+        #{word,jdbcType=VARCHAR},
+      </if>
+      <if test="grammar != null">
+        #{grammar,jdbcType=VARCHAR},
+      </if>
+      <if test="proposal != null">
+        #{proposal,jdbcType=VARCHAR},
+      </if>
+        <if test="photo_url != null">
+        #{photo_url,jdbcType=VARCHAR},
+      </if>
+        <if test="mechanism_id != null">
+        #{mechanism_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MasterSummaryEntity">
+    update eg_master_summary
+    <set>
+      <if test="master_id != null">
+        master_id = #{master_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appointment_id != null">
+        appointment_id = #{appointment_id,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+        <if test="photo_url != null">
+          photo_url = #{photo_url,jdbcType=VARCHAR},
+      </if>
+        <if test="mechanism_id != null">
+          mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      </if>
+      <if test="word != null">
+        word = #{word,jdbcType=VARCHAR},
+      </if>
+      <if test="grammar != null">
+        grammar = #{grammar,jdbcType=VARCHAR},
+      </if>
+      <if test="proposal != null">
+        proposal = #{proposal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MasterSummaryEntity">
+    update eg_master_summary
+    set master_id = #{master_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      appointment_id = #{appointment_id,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      word = #{word,jdbcType=VARCHAR},
+      grammar = #{grammar,jdbcType=VARCHAR},
+      proposal = #{proposal,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.MasterSummaryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_master_summary
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.word!=null">
+        AND word = #{param.word,jdbcType=VARCHAR}
+      </if>
+      <if test="param.grammar!=null">
+        AND grammar = #{param.grammar,jdbcType=VARCHAR}
+      </if>
+      <if test="param.proposal!=null">
+        AND proposal = #{param.proposal,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MasterSummaryEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_master_summary
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.word!=null">
+        AND word = #{param.word,jdbcType=VARCHAR}
+      </if>
+      <if test="param.grammar!=null">
+        AND grammar = #{param.grammar,jdbcType=VARCHAR}
+      </if>
+      <if test="param.proposal!=null">
+        AND proposal = #{param.proposal,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MasterSummaryEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_master_summary
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.master_id!=null">
+        AND master_id = #{param.master_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.appointment_id!=null">
+        AND appointment_id = #{param.appointment_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.word!=null">
+        AND word = #{param.word,jdbcType=VARCHAR}
+      </if>
+      <if test="param.grammar!=null">
+        AND grammar = #{param.grammar,jdbcType=VARCHAR}
+      </if>
+      <if test="param.proposal!=null">
+        AND proposal = #{param.proposal,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

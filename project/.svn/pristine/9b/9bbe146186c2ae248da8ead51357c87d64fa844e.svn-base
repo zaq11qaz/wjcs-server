@@ -1,0 +1,81 @@
+service:
+  type: localhost
+  localhost:
+    port: 8761
+    name: eureka
+    url: localhost
+    ip: localhost
+  dev:
+    port: 8761
+    name: eureka
+    url: 192.168.0.102
+    ip: 192.168.0.102
+  test:
+    port: 8761
+    name: eureka
+    url: 139.186.169.185
+    ip: 139.186.169.185
+  release:
+    port: 8761
+    name: eureka
+    url: 172.16.5.47
+    ip: 172.16.5.47
+  svn:
+    localhost:
+        path: /JavaProjects/eg-go/project/cloud-config/
+        url: svn://121.40.150.184
+        username: admin
+        password: 123456
+    dev:
+        path: /JavaProjects/eg-go/project/cloud-config/
+        url: svn://121.40.150.184
+        username: admin
+        password: 123456
+    test:
+        path: /JavaProjects/eg-go/project/cloud-config/
+        url: svn://121.40.150.184
+        username: admin
+        password: 123456
+    release:
+        path: /JavaProjects/eg-go/project/cloud-config/
+        url: svn://121.40.150.184
+        username: admin
+        password: 123456
+    path: ${service.svn.${service.type}.path}
+    url: ${service.svn.${service.type}.url}
+    password: ${service.svn.${service.type}.password}
+    username: ${service.svn.${service.type}.username}
+  port: ${service.${service.type}.port}
+  name: ${service.${service.type}.name}
+  ip: ${service.${service.type}.ip}
+  url: ${service.${service.type}.url}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${service.url}:${service.port}/${service.name}/
+    register-with-eureka: true
+    fetch-registry: false
+  instance:
+    prefer-ip-address: true
+    ip-address: ${service.ip}
+endpoints:
+  jmx:
+    unique-names: true
+server:
+  port: 6868
+spring:
+  profiles:
+    active: subversion
+  cloud:
+    config:
+      server:
+        svn:
+          uri: ${service.svn.url}${service.svn.path}
+          password: ${service.svn.password}
+          username: ${service.svn.username}
+          default-label: qfx-manager
+      enabled: true
+  application:
+    name: config-service
+
+

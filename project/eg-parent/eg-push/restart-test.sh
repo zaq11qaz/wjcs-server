@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker stop push-service-web && docker rm push-service-web && docker rmi localhost:5000/push-service-web:1.0 && docker rmi localhost:5000/push-service-web:latest && mvn clean package  && docker run -d --name push-service-web -v /etc/localtime:/etc/localtime -e params="-Dservice.type=test" -p 1140:1140 localhost:5000/push-service-web:1.0

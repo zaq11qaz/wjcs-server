@@ -1,0 +1,234 @@
+﻿spring:
+  datasource:
+    url: jdbc:mysql://139.186.169.185:3306/eg_user?autoReconnect=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据库连接池
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 8000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+   #管理页面配置
+    registration:
+      url: /druid/*
+      addUrlPatterns: /*
+      addInitParameter:
+        #白名单，如果不配置或value为空，则允许所有
+        allow:
+        #黑名单，与白名单存在相同IP时，优先于白名单
+        deny:
+        #用户名
+        loginUsername: root
+        #密码
+        loginPassword: yangchengfu
+        ##禁用页面上的“Reset All”功能
+        resetEnable: false
+        urlPatternsu: /*
+  data:
+    elasticsearch:
+      cluster-name:  docker-cluster
+      cluster-nodes: 81.68.133.40:9300
+      local: false
+      properties:
+        path:
+          logs: ./elasticsearch/log
+          data: ./elasticsearch/data
+  rabbitmq:
+    host: localhost
+    username: admin
+    password: admin
+  redis:
+    port: 6379
+    host: localhost
+    timeout: 3000
+    password: 123456
+    pool:
+      maxActice: 300
+      maxWait: -1
+      maxIdle: 8
+      minIdle: 0
+  session:
+    store-type: redis
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 30MB
+  jps:
+    showsql: true
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            ##断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试
+            timeoutInMilliseconds: 80000
+  threadpool:
+    default:
+      coreSize: 20
+ribbon:
+  ##请求处理的超时时间
+  ReadTimeout: 30000
+  ##请求连接的超时时间
+  ConnectTimeout: 2000
+  ##对当前实例的重试次数
+  MaxAutoRetries: 0
+  ##对所有操作请求都进行重试
+  OkToRetryOnAllOperations: true
+  ##切换实例的重试次数
+  MaxAutoRetriesNextServer: 1
+management:
+  security:
+    enabled: false
+service:
+  shuli:
+    access_id: sl2018071116062101
+    access_key: 7AxuyGFNiTGnGCjnbmaoKHuGDSjwctthMqZDDp2PvCKb
+    url: https://bds-openapi.shulidata.com
+##权限控制的资源
+  security:
+    resourceId: user_api
+    oauthToken: http://localhost:8768/oauth/token
+    filters: {userInfo:[author,login]}
+    oauth: false
+##短信
+  sms:
+    sname: dlhuihe0
+    spwd: hh123321
+    url: http://cf.51welink.com/submitdata/service.asmx/g_Submit
+    sprdid: 1012812
+    psd: 1012818
+    smsg: 【汇合智能科技】教付保 您的验证码是：{code}，请妥善保存，切勿泄露，若非本人操作，请忽略此短信。
+    smsv: 【汇合智能科技】教付保 您的朋友{name}，在外教超市上邀请您参加互动。下载地址 "http://www.huihejituan.com/tripPictstorage/qmore/download/download.html"
+    smsi: 【汇合智能科技】教付保 您申请的{content}。请下载软件在线操作,下载地址 "http://www.huihejituan.com/tripPictstorage/qmore/download/download.html"
+    smsp: 【汇合智能科技】教付保 您邀请的{content}。请下载软件在线操作,下载地址 "http://www.huihejituan.com/tripPictstorage/qmore/download/download.html"
+    seconds: 60
+##邮箱
+  mail:
+    title: 邮箱验证码
+    content: 【汇合智能科技】教付保 您的验证码是：{code}，请妥善保存，切勿泄露，若非本人操作，请忽略此邮件。
+    passContent: 【汇合智能科技】教付保 您申请的{content}。请下载软件在线操作,下载地址 "http://www.huihejituan.com/tripPictstorage/qmore/download/download.html"
+    passContentI: 【汇合智能科技】教付保 您邀请的{content}。请下载软件在线操作,下载地址 "http://www.huihejituan.com/tripPictstorage/qmore/download/download.html"
+    host: smtp.ym.163.com
+    account: huihejituan@joingp.net
+    password: huihe123321
+    personal: 汇合智能科技
+    seconds: 60
+##swagger api接口配置
+  swagger:
+    basePackage: com.huihe.eg.user
+    title: 用户接口
+    contactName: 张三
+    contactUrl: https://www.baidu.com
+    email: 772395012@qq.com
+    description: 所有关于用户的基本接口信息
+    ##七牛云
+  qiniu:
+    accessKey: TWFaq_2E4MtUynhwSYMP7dtoR3toGZEPv9aHnjTk
+    secretKey: GOowm1jNDEQPt_FW8YjlbngbtGljn1awGsdx54mc
+    url: http://pp0ebjziu.bkt.clouddn.com/
+    bucket: qmore
+    expires: 72000
+  mapper:
+    location: classpath*:com/huihe/eg/user/mybatis/mapper/*Mapper.xml
+    config:
+      location: mybatis-config.xml
+  ftp:
+    host: 47.99.122.225
+    port: 21
+    userName: test
+    password: test
+    home: /home/vsftpd/test
+    url: http://47.99.122.225/
+  pay:
+    wx:
+      machId: 1488811802
+      certPath:
+      notify_url: http://101.37.66.151:8768/eg-api/user/pay/wxPayNotify
+      redirect_uri :
+      key: YtTZRcCM33M7GBh4YalPI3G1gIS6LQot
+      ## app
+      appId: wx488f197a77f6021b
+      appSecret:
+      ## app
+      tappId: wx3ce48e914898f571
+      tappSecret: 426e24074d22e78e489c32b251e23962
+      ## 公众号
+      gAppId: wx3c35361c8308daab
+      gAppSecret: a705e9e2141689f6110dd203bf236f56
+      ##小程序
+      xAppid: wxb5e61775df4be66c
+      xAppSecret: 3434a1e1754dcae4a2b0a410982b260b
+      wxip: 101.37.66.151
+      ##教付宝小程序
+      tAppidH: wx14913bd70f000eff
+      tAppSecretH: 9dc2158833dc27d4f8a6819fc9a6fbad
+    ali:
+      ##请求的url
+      url: https://openapi.alipay.com/gateway.do
+      ##授权的回调链接
+      redirect_url: http://curiousmore.com:8768/eg-api/user/pay/H5aliPayAuthNotify
+      ## 授权认证的URL
+      auth_url: https://openauth.alipay.com/oauth2/publicAppAuthorize.htm
+      ##异步通知的url
+      notify_url: http://101.37.66.151:8768/eg-api/user/pay/aliPayNotify
+      #pc/h5支付完成 返回的url
+      return_url: http://101.37.66.151:8768/eg-api/user/pay/aliPayNotify
+      #预授权完成 返回的url
+      prepayment_url: http://101.37.66.151:8768/eg-api/user/pay/aliPrepaymentNotify
+      ##支付宝的商户APPID
+      app_id: 2018032202429132
+      ##支付宝收款id
+      payeeLogonId: ceo@joingp.net
+      ## 商户的私钥
+      app_private_key: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCeFtBuf4raEEqybAoZFrxy7+UEjaoiFUcsjJPJnlUpxBcRQTOeI8q6DLotwud1iyhyp6HPLt2Qz23sofHAtcRGVgCL7oqWrkWM/606lrsHsEsJhe/w9xo5uMYaIPg12Ztz7PBU/xbnpW0KuksDYO7u0FVwcP3DLmaubhtXgtB1xvE2jQU+lMWO/bo523GAMswWLH84J/51mHeqozu/IONg8Ax2VY5m5S4aS7UnG8j/I+53/t4xYedKGfWjTJDB0yhqrnBnw9/Cs4G/XVRTYy5NrAZMTcEHxKBVGGsU428NUzV/mCfF9VBu2nvGM+XyQFf4cT59YC1B8gGiJ68VzZotAgMBAAECggEAaQQAu5ZwF4GBDVslrhrjXnqrqMWugeuelyJfPiy2qAMBy82DS4a9MbAosSNq/DNP0DI5E9cvCfYxMGM3o+tbEdopjMsONyBXRV3GpkfgwC/E+POHO4v6WOO8fTjviV4fnPeFgwDdJ05FzD2KfRkUP4IXb5UvjUuynCa6dPyKG+HbPwYsKDa529IaE51EMpyYF6XTNoETnG3QOIMOHUfNaoCHah+ScXAge7/tCizjqKxJ6F+7jEPmZuma1Vnry296CLwITvoqVic7xDQ5ZoD/p4WaYrvzrH9zXUYoCVhBl+0lR6xuMOb5X93ga2ZHrY114xvTc2MQHKkoJbChm7MqRQKBgQDU9QjpnaWZCLVuSR1KIcFmXLGDHlNvQ85FgpuADh5+NsesD/7UAfatJJQrSWugxK7D3o7261/OurrscsJ/96M3exjzCY5MgnqsfZm9RAFF8K5h3pveJg91hyeokEafn1tkT07ThFqhmXxFKE6wAgiegIWVmhAwt1Vdd+/5XwF8ZwKBgQC+CsMJwY2Z6z3xJluKtLtqLi6NmIsznH9jcwCz1tgHej+CoBPpmfmHon2DQYHPM+nGlrj3iFdtZAb9w68lZHG7vb9vD6U0mWlUHE/xq/Aa0zycAABT0QrHmV4GtxBjcTKni5MHLk3U0kF/fvRwtpPxbBpPmY1wWCa2Y5HafNeYSwKBgQC71Sk4TWl7sre8f9bKxT09mTKlMQFsmUT+AHZBm7J/pre1ZyJgQx8dlq7uA0NgOTrg3pQA7JjD0eX/mjU+A+G9lODrtRkDGO8050/MJYht9R0Ki/u1FKL8CesL/b2dG0TUFDO10v7RnHyEz0mgaxrJGxk4W/w9y+cKmzhaHtdDrwKBgQCidOC1/lfmNEsHUxr+P/HWmxQAx154CFh901nOYuLZwY95Qw7Cq3W8lRNmmSE219IIieAk+tCCGvg/BoE7Hdp7+4Eil+VKSbrYxDszBSCETf+J/BZLkG/+oQTYCLZhy+rZf194zASM4hBLxWOA1xMxVpBHa6SVXUX6tLOCayaCcQKBgQDCt0fmpdpOiVql1WxsybKHwRmccfywF4BDRRBcfrBsBBxr+03GaHK5eIQRRhf8V82zEvIFJxtePWv+Y1F4Y6iJqwuTJM6ZDiRy31Luy3/P/qmjLAyrNvKepgxegMjqsc1myu8XIHjxNqFDKiS+5CiMQoWxEp+Mi9uORN/ThbL+1Q==
+      ##商户的公钥
+      app_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnhbQbn+K2hBKsmwKGRa8cu/lBI2qIhVHLIyTyZ5VKcQXEUEzniPKugy6LcLndYsocqehzy7dkM9t7KHxwLXERlYAi+6Klq5FjP+tOpa7B7BLCYXv8PcaObjGGiD4Ndmbc+zwVP8W56VtCrpLA2Du7tBVcHD9wy5mrm4bV4LQdcbxNo0FPpTFjv26OdtxgDLMFix/OCf+dZh3qqM7vyDjYPAMdlWOZuUuGku1JxvI/yPud/7eMWHnShn1o0yQwdMoaq5wZ8PfwrOBv11UU2MuTawGTE3BB8SgVRhrFONvDVM1f5gnxfVQbtp7xjPl8kBX+HE+fWAtQfIBoievFc2aLQIDAQAB
+
+      ## 公钥证书路径
+      app_cert_path: C:\Users\admin\Desktop\project\appCertPublicKey_2018032202429132.crt
+      ## 支付宝公钥证书文件路径
+      alipay_cert_path: C:\Users\admin\Desktop\project\alipayCertPublicKey_RSA2.crt
+      ## 支付宝 CA 根证书文件路径
+      alipay_root_cert_path: C:\Users\admin\Desktop\project\alipayRootCert.crt
+
+      ## 支付宝的公钥
+      alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm3F7eWXWtKvVz3VESZZzd2dj8Op6ajlpeCxF+d7yCBrKqwy5Ak5uON0OhyvHeKXTHpNaz088wPT0B1nt8ssW1DzN0Ci0jN5znXfjNoQWQGn2+PSkCYIOTfSgCaNKGMdWbA2ufMR50yF0wWhlk7DdXTpe1GcFOfonJJ3RFwHbZ1hZGMC/xeN0xDTugp3wA5nRf963HliKl9yzy7uhkr8PF/cRsN09fp3238askjIysfcYLJFc4L7ray9qGJsYx+DmWICY94I+ELVV8YMex8n9KC+YAGmZ0JUnCtrY7pT5TY+w6zXK1SXKCXuYdGra98z7cx+tBPO/UylLDeAMdab2dwIDAQAB
+      ## 签名的类型
+      sign_type: RSA2
+      ##数据格式化的类型
+      format: JSON
+      ##编码的类型
+      charset: UTF-8
+  tim:
+      url: https://console.tim.qq.com/v4
+      contenttype: json
+      SdkAppId: 1400472393
+      adminName: admin
+      expire : 2592000
+      SecretKey: 5b91cf85807189dfc17e905e4af412348c01bf830cbff35a3aae24b0f9b1630f

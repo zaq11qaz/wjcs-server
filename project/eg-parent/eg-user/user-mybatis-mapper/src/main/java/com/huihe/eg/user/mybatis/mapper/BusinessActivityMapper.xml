@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.BusinessActivityMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.BusinessActivityEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+    <result column="activity_show" jdbcType="VARCHAR" property="activity_show" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="background_pic" jdbcType="VARCHAR" property="background_pic" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="master_set_price_id" jdbcType="BIGINT" property="master_set_price_id" />
+    <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id" />
+    <result column="coupon_time" jdbcType="INTEGER" property="coupon_time" />
+    <result column="number_of_people" jdbcType="INTEGER" property="number_of_people" />
+    <result column="each_time_percentage" jdbcType="DECIMAL" property="each_time_percentage" />
+    <result column="each_time_percentage_max" jdbcType="DECIMAL" property="each_time_percentage_max" />
+    <result column="discount_amount" jdbcType="DECIMAL" property="discount_amount" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, title, create_time, start_time, status, end_time, activity_show, content, 
+    background_pic, pic, url, source,price,master_set_price_id,mechanism_id,coupon_time,
+    number_of_people,each_time_percentage,each_time_percentage_max,tags,discount_amount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_business_activity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_business_activity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.BusinessActivityEntity">
+    insert into eg_business_activity (id, type, title, 
+      create_time, start_time, status, 
+      end_time, activity_show, content, 
+      background_pic, pic, url, 
+      source)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{start_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{end_time,jdbcType=TIMESTAMP}, #{activity_show,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{background_pic,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{source,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.BusinessActivityEntity"
+          useGeneratedKeys="true" keyProperty="id">
+    insert into eg_business_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="end_time != null">
+        end_time,
+      </if>
+      <if test="activity_show != null">
+        activity_show,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="background_pic != null">
+        background_pic,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+        <if test="tags != null">
+          tags,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+        <if test="price != null">
+          price,
+      </if>
+        <if test="master_set_price_id != null">
+          master_set_price_id,
+      </if>
+        <if test="mechanism_id != null">
+          mechanism_id,
+      </if>
+        <if test="coupon_time != null">
+          coupon_time,
+      </if>
+        <if test="number_of_people != null">
+          number_of_people,
+      </if>
+        <if test="each_time_percentage != null">
+          each_time_percentage,
+      </if>
+        <if test="each_time_percentage_max != null">
+          each_time_percentage_max,
+      </if>
+        <if test="discount_amount != null">
+          discount_amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="end_time != null">
+        #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activity_show != null">
+        #{activity_show,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="background_pic != null">
+        #{background_pic,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+        <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+        <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+        <if test="master_set_price_id != null">
+        #{master_set_price_id,jdbcType=BIGINT},
+      </if>
+        <if test="mechanism_id != null">
+        #{mechanism_id,jdbcType=BIGINT},
+      </if>
+        <if test="coupon_time != null">
+        #{coupon_time,jdbcType=INTEGER},
+      </if>
+        <if test="number_of_people != null">
+        #{number_of_people,jdbcType=INTEGER},
+      </if>
+        <if test="each_time_percentage != null">
+        #{each_time_percentage,jdbcType=DECIMAL},
+      </if>
+        <if test="each_time_percentage_max != null">
+        #{each_time_percentage_max,jdbcType=DECIMAL},
+      </if>
+        <if test="discount_amount != null">
+        #{discount_amount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.BusinessActivityEntity">
+    update eg_business_activity
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="start_time != null">
+        start_time = #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="end_time != null">
+        end_time = #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activity_show != null">
+        activity_show = #{activity_show,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="background_pic != null">
+        background_pic = #{background_pic,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+        <if test="tags != null">
+          tags = #{tags,jdbcType=VARCHAR},
+      </if>
+        <if test="price != null">
+          price = #{price,jdbcType=DECIMAL},
+      </if>
+        <if test="discount_amount != null">
+          discount_amount = #{discount_amount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.BusinessActivityEntity">
+    update eg_business_activity
+    set type = #{type,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      end_time = #{end_time,jdbcType=TIMESTAMP},
+      activity_show = #{activity_show,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      background_pic = #{background_pic,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.BusinessActivityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_business_activity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.activity_show!=null">
+        AND activity_show = #{param.activity_show,jdbcType=VARCHAR}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.background_pic!=null">
+        AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.tags!=null">
+        AND tags = #{param.tags,jdbcType=VARCHAR}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.coupon_time!=null">
+        AND coupon_time = #{param.coupon_time,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.BusinessActivityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_business_activity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.activity_show!=null">
+        AND activity_show = #{param.activity_show,jdbcType=VARCHAR}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.background_pic!=null">
+        AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.tags!=null">
+        AND tags = #{param.tags,jdbcType=VARCHAR}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.coupon_time!=null">
+        AND coupon_time = #{param.coupon_time,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.BusinessActivityEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_business_activity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.activity_show!=null">
+        AND activity_show = #{param.activity_show,jdbcType=VARCHAR}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.background_pic!=null">
+        AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.coupon_time!=null">
+        AND coupon_time = #{param.coupon_time,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+    <select id="queryIn12" resultType="com.huihe.eg.user.model.BusinessActivityEntity">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM eg_business_activity
+      <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.title!=null">
+        AND title = #{param.title,jdbcType=VARCHAR}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+        <if test="param.status==null">
+        AND status in (1,2)
+      </if>
+      <if test="param.end_time!=null">
+        AND end_time = #{param.end_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.activity_show!=null">
+        AND activity_show = #{param.activity_show,jdbcType=VARCHAR}
+      </if>
+      <if test="param.content!=null">
+        AND content = #{param.content,jdbcType=VARCHAR}
+      </if>
+      <if test="param.background_pic!=null">
+        AND background_pic = #{param.background_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.pic!=null">
+        AND pic = #{param.pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.url!=null">
+        AND url = #{param.url,jdbcType=VARCHAR}
+      </if>
+      <if test="param.source!=null">
+        AND source = #{param.source,jdbcType=VARCHAR}
+      </if>
+      <if test="param.tags!=null">
+        AND tags = #{param.tags,jdbcType=VARCHAR}
+      </if>
+      <if test="param.master_set_price_id!=null">
+        AND master_set_price_id = #{param.master_set_price_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.coupon_time!=null">
+        AND coupon_time = #{param.coupon_time,jdbcType=INTEGER}
+      </if>
+      </where>
+    </select>
+</mapper>
