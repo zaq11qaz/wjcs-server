@@ -169,7 +169,7 @@ ribbtmq
 docker run -d --hostname my-rabbit --name rabbit -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 -p 25672:25672 -p 61613:61613 -p 1883:1883 2888deb59dfc
 
 MYSQL
-docker run -d -p 0.0.0.0:3306:3306 --name mysql -v /opt/mysqlConfig/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /home/mysql/logs:/logs -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD="123456" 69056560eb44
+//docker run -d -p 0.0.0.0:3306:3306 --name mysql -v /opt/mysqlConfig/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v /home/mysql/logs:/logs -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD="123456" 69056560eb44
 
 docker run -d -p 0.0.0.0:3306:3306 --name mysql  -v /home/mysql/logs:/logs -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD="123456" 69056560eb44
 
