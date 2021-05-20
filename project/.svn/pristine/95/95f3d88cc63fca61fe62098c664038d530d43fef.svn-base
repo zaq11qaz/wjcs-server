@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.authorization.mybatis.dao.AuthorizationScreenWhiteMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, status, ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authorization_screen_white
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authorization_screen_white
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity">
+    insert into authorization_screen_white (id, create_time, update_time, 
+      status, ip)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity"
+          useGeneratedKeys="true" keyProperty="id"
+  >
+    insert into authorization_screen_white
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity">
+    update authorization_screen_white
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity">
+    update authorization_screen_white
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_screen_white
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.ip!=null">
+        AND ip = #{param.ip,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM authorization_screen_white
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.ip!=null">
+        AND ip = #{param.ip,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.authorization.model.AuthorizationScreenWhiteEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM authorization_screen_white
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.ip!=null">
+        AND ip = #{param.ip,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

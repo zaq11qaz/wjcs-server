@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.BusinessActivitySponsorsMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.BusinessActivitySponsorsEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="sponsors_name" jdbcType="VARCHAR" property="sponsors_name" />
+    <result column="sponsors_description" jdbcType="VARCHAR" property="sponsors_description" />
+    <result column="sponsors_pic" jdbcType="VARCHAR" property="sponsors_pic" />
+    <result column="sponsors_contect" jdbcType="VARCHAR" property="sponsors_contect" />
+    <result column="sponsors_phone" jdbcType="VARCHAR" property="sponsors_phone" />
+    <result column="sponsors_addr" jdbcType="VARCHAR" property="sponsors_addr" />
+    <result column="sponsors_qrcode" jdbcType="VARCHAR" property="sponsors_qrcode" />
+    <result column="activity_id" jdbcType="BIGINT" property="activity_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, status, sponsors_name, sponsors_description, sponsors_pic, 
+    sponsors_contect, sponsors_phone, sponsors_addr, sponsors_qrcode, activity_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_business_activity_sponsors
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_business_activity_sponsors
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity">
+    insert into eg_business_activity_sponsors (id, create_time, update_time, 
+      status, sponsors_name, sponsors_description, 
+      sponsors_pic, sponsors_contect, sponsors_phone, 
+      sponsors_addr, sponsors_qrcode, activity_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{sponsors_name,jdbcType=VARCHAR}, #{sponsors_description,jdbcType=VARCHAR}, 
+      #{sponsors_pic,jdbcType=VARCHAR}, #{sponsors_contect,jdbcType=VARCHAR}, #{sponsors_phone,jdbcType=VARCHAR}, 
+      #{sponsors_addr,jdbcType=VARCHAR}, #{sponsors_qrcode,jdbcType=VARCHAR}, #{activity_id,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity">
+    insert into eg_business_activity_sponsors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="sponsors_name != null">
+        sponsors_name,
+      </if>
+      <if test="sponsors_description != null">
+        sponsors_description,
+      </if>
+      <if test="sponsors_pic != null">
+        sponsors_pic,
+      </if>
+      <if test="sponsors_contect != null">
+        sponsors_contect,
+      </if>
+      <if test="sponsors_phone != null">
+        sponsors_phone,
+      </if>
+      <if test="sponsors_addr != null">
+        sponsors_addr,
+      </if>
+      <if test="sponsors_qrcode != null">
+        sponsors_qrcode,
+      </if>
+      <if test="activity_id != null">
+        activity_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sponsors_name != null">
+        #{sponsors_name,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_description != null">
+        #{sponsors_description,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_pic != null">
+        #{sponsors_pic,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_contect != null">
+        #{sponsors_contect,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_phone != null">
+        #{sponsors_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_addr != null">
+        #{sponsors_addr,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_qrcode != null">
+        #{sponsors_qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_id != null">
+        #{activity_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity">
+    update eg_business_activity_sponsors
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sponsors_name != null">
+        sponsors_name = #{sponsors_name,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_description != null">
+        sponsors_description = #{sponsors_description,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_pic != null">
+        sponsors_pic = #{sponsors_pic,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_contect != null">
+        sponsors_contect = #{sponsors_contect,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_phone != null">
+        sponsors_phone = #{sponsors_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_addr != null">
+        sponsors_addr = #{sponsors_addr,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsors_qrcode != null">
+        sponsors_qrcode = #{sponsors_qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_id != null">
+        activity_id = #{activity_id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity">
+    update eg_business_activity_sponsors
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      sponsors_name = #{sponsors_name,jdbcType=VARCHAR},
+      sponsors_description = #{sponsors_description,jdbcType=VARCHAR},
+      sponsors_pic = #{sponsors_pic,jdbcType=VARCHAR},
+      sponsors_contect = #{sponsors_contect,jdbcType=VARCHAR},
+      sponsors_phone = #{sponsors_phone,jdbcType=VARCHAR},
+      sponsors_addr = #{sponsors_addr,jdbcType=VARCHAR},
+      sponsors_qrcode = #{sponsors_qrcode,jdbcType=VARCHAR},
+      activity_id = #{activity_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_business_activity_sponsors
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.sponsors_name!=null">
+        AND sponsors_name = #{param.sponsors_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_description!=null">
+        AND sponsors_description = #{param.sponsors_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_pic!=null">
+        AND sponsors_pic = #{param.sponsors_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_contect!=null">
+        AND sponsors_contect = #{param.sponsors_contect,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_phone!=null">
+        AND sponsors_phone = #{param.sponsors_phone,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_addr!=null">
+        AND sponsors_addr = #{param.sponsors_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_qrcode!=null">
+        AND sponsors_qrcode = #{param.sponsors_qrcode,jdbcType=VARCHAR}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_business_activity_sponsors
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.sponsors_name!=null">
+        AND sponsors_name = #{param.sponsors_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_description!=null">
+        AND sponsors_description = #{param.sponsors_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_pic!=null">
+        AND sponsors_pic = #{param.sponsors_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_contect!=null">
+        AND sponsors_contect = #{param.sponsors_contect,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_phone!=null">
+        AND sponsors_phone = #{param.sponsors_phone,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_addr!=null">
+        AND sponsors_addr = #{param.sponsors_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_qrcode!=null">
+        AND sponsors_qrcode = #{param.sponsors_qrcode,jdbcType=VARCHAR}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_business_activity_sponsors
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.sponsors_name!=null">
+        AND sponsors_name = #{param.sponsors_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_description!=null">
+        AND sponsors_description = #{param.sponsors_description,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_pic!=null">
+        AND sponsors_pic = #{param.sponsors_pic,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_contect!=null">
+        AND sponsors_contect = #{param.sponsors_contect,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_phone!=null">
+        AND sponsors_phone = #{param.sponsors_phone,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_addr!=null">
+        AND sponsors_addr = #{param.sponsors_addr,jdbcType=VARCHAR}
+      </if>
+      <if test="param.sponsors_qrcode!=null">
+        AND sponsors_qrcode = #{param.sponsors_qrcode,jdbcType=VARCHAR}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="querySponsorsList" resultType="com.huihe.eg.user.model.BusinessActivitySponsorsEntity">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_business_activity_sponsors
+    where
+    id in
+    <foreach item="item" index="index" collection="split" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+  </select>
+</mapper>

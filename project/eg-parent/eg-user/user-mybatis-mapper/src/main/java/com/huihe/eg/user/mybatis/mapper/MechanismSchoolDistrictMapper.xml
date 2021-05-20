@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MechanismSchoolDistrictMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MechanismSchoolDistrictEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="mechanism_id" jdbcType="BIGINT" property="mechanism_id" />
+    <result column="school_district" jdbcType="VARCHAR" property="school_district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+    <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, status, mechanism_id, school_district, address, latitude, 
+    longitude
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_mechanism_school_district
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_mechanism_school_district
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MechanismSchoolDistrictEntity">
+    insert into eg_mechanism_school_district (id, create_time, update_time, 
+      status, mechanism_id, school_district, 
+      address, latitude, longitude
+      )
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{mechanism_id,jdbcType=BIGINT}, #{school_district,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{latitude,jdbcType=DECIMAL}, #{longitude,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MechanismSchoolDistrictEntity">
+    insert into eg_mechanism_school_district
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id,
+      </if>
+      <if test="school_district != null">
+        school_district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="mechanism_id != null">
+        #{mechanism_id,jdbcType=BIGINT},
+      </if>
+      <if test="school_district != null">
+        #{school_district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MechanismSchoolDistrictEntity">
+    update eg_mechanism_school_district
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="mechanism_id != null">
+        mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      </if>
+      <if test="school_district != null">
+        school_district = #{school_district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MechanismSchoolDistrictEntity">
+    update eg_mechanism_school_district
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      mechanism_id = #{mechanism_id,jdbcType=BIGINT},
+      school_district = #{school_district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=DECIMAL},
+      longitude = #{longitude,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.MechanismSchoolDistrictEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_school_district
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.school_district!=null">
+        AND school_district = #{param.school_district,jdbcType=VARCHAR}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.latitude!=null">
+        AND latitude = #{param.latitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.longitude!=null">
+        AND longitude = #{param.longitude,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MechanismSchoolDistrictEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_school_district
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.school_district!=null">
+        AND school_district = #{param.school_district,jdbcType=VARCHAR}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.latitude!=null">
+        AND latitude = #{param.latitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.longitude!=null">
+        AND longitude = #{param.longitude,jdbcType=DECIMAL}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MechanismSchoolDistrictEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_mechanism_school_district
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.mechanism_id!=null">
+        AND mechanism_id = #{param.mechanism_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.school_district!=null">
+        AND school_district = #{param.school_district,jdbcType=VARCHAR}
+      </if>
+      <if test="param.address!=null">
+        AND address = #{param.address,jdbcType=VARCHAR}
+      </if>
+      <if test="param.latitude!=null">
+        AND latitude = #{param.latitude,jdbcType=DECIMAL}
+      </if>
+      <if test="param.longitude!=null">
+        AND longitude = #{param.longitude,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </select>
+</mapper>

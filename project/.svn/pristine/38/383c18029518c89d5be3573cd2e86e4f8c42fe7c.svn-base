@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserRecommenderActivityMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserRecommenderActivityEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="recommender_id" jdbcType="BIGINT" property="recommender_id" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="activity_id" jdbcType="BIGINT" property="activity_id" />
+    <result column="invite_count" jdbcType="INTEGER" property="invite_count" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, status, recommender_id, user_id, activity_id, invite_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_recommender_activity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_recommender_activity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserRecommenderActivityEntity">
+    insert into eg_user_recommender_activity (id, create_time, update_time, 
+      status, recommender_id, user_id, 
+      activity_id, invite_count)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{recommender_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, 
+      #{activity_id,jdbcType=BIGINT}, #{invite_count,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserRecommenderActivityEntity">
+    insert into eg_user_recommender_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="recommender_id != null">
+        recommender_id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="activity_id != null">
+        activity_id,
+      </if>
+      <if test="invite_count != null">
+        invite_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="recommender_id != null">
+        #{recommender_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="activity_id != null">
+        #{activity_id,jdbcType=BIGINT},
+      </if>
+      <if test="invite_count != null">
+        #{invite_count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserRecommenderActivityEntity">
+    update eg_user_recommender_activity
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="recommender_id != null">
+        recommender_id = #{recommender_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="activity_id != null">
+        activity_id = #{activity_id,jdbcType=BIGINT},
+      </if>
+      <if test="invite_count != null">
+        invite_count = #{invite_count,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserRecommenderActivityEntity">
+    update eg_user_recommender_activity
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      recommender_id = #{recommender_id,jdbcType=BIGINT},
+      user_id = #{user_id,jdbcType=BIGINT},
+      activity_id = #{activity_id,jdbcType=BIGINT},
+      invite_count = #{invite_count,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <update id="updatePayCount">
+      update eg_user_recommender_activity
+      set invite_count=invite_count+1
+      where recommender_id = #{param.id}
+        and activity_id = #{param.activity_id}
+    </update>
+    <select id="query" parameterType="com.huihe.eg.user.model.UserRecommenderActivityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_activity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.invite_count!=null">
+        AND invite_count = #{param.invite_count,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserRecommenderActivityEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_activity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.invite_count!=null">
+        AND invite_count = #{param.invite_count,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserRecommenderActivityEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_recommender_activity
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.recommender_id!=null">
+        AND recommender_id = #{param.recommender_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.user_id!=null">
+        AND user_id = #{param.user_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.invite_count!=null">
+        AND invite_count = #{param.invite_count,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

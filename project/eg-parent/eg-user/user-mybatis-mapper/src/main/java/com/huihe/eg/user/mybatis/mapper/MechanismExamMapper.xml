@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MechanismExamMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MechanismExamEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="mechansim_id" jdbcType="BIGINT" property="mechansim_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="exam_items" jdbcType="VARCHAR" property="exam_items" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, mechansim_id, name, type, start_time, exam_items, status, 
+    school
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_mechanism_exam
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_mechanism_exam
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MechanismExamEntity">
+    insert into eg_mechanism_exam (id, create_time, update_time, 
+      mechansim_id, name, type, 
+      start_time, exam_items, status, 
+      school)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{mechansim_id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{start_time,jdbcType=TIMESTAMP}, #{exam_items,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{school,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MechanismExamEntity">
+    insert into eg_mechanism_exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="mechansim_id != null">
+        mechansim_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="exam_items != null">
+        exam_items,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechansim_id != null">
+        #{mechansim_id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exam_items != null">
+        #{exam_items,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MechanismExamEntity">
+    update eg_mechanism_exam
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechansim_id != null">
+        mechansim_id = #{mechansim_id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null">
+        start_time = #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exam_items != null">
+        exam_items = #{exam_items,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MechanismExamEntity">
+    update eg_mechanism_exam
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      mechansim_id = #{mechansim_id,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      exam_items = #{exam_items,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      school = #{school,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.MechanismExamEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_exam
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechansim_id!=null">
+        AND mechansim_id = #{param.mechansim_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.exam_items!=null">
+        AND exam_items = #{param.exam_items,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.school!=null">
+        AND school = #{param.school,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MechanismExamEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_exam
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechansim_id!=null">
+        AND mechansim_id = #{param.mechansim_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.exam_items!=null">
+        AND exam_items = #{param.exam_items,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.school!=null">
+        AND school = #{param.school,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MechanismExamEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_mechanism_exam
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechansim_id!=null">
+        AND mechansim_id = #{param.mechansim_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.name!=null">
+        AND name = #{param.name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.start_time!=null">
+        AND start_time = #{param.start_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.exam_items!=null">
+        AND exam_items = #{param.exam_items,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.school!=null">
+        AND school = #{param.school,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

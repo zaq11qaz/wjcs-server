@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.RechargeRecordRobotLogMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.RechargeRecordRobotLogEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="add_count" jdbcType="INTEGER" property="add_count" />
+    <result column="activity_id" jdbcType="BIGINT" property="activity_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, mobile, add_count, activity_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_recharge_record_robot_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eg_recharge_record_robot_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.RechargeRecordRobotLogEntity">
+    insert into eg_recharge_record_robot_log (id, create_time, update_time, 
+      mobile, add_count, activity_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{mobile,jdbcType=VARCHAR}, #{add_count,jdbcType=INTEGER}, #{activity_id,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.RechargeRecordRobotLogEntity">
+    insert into eg_recharge_record_robot_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="add_count != null">
+        add_count,
+      </if>
+      <if test="activity_id != null">
+        activity_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="add_count != null">
+        #{add_count,jdbcType=INTEGER},
+      </if>
+      <if test="activity_id != null">
+        #{activity_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.RechargeRecordRobotLogEntity">
+    update eg_recharge_record_robot_log
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="add_count != null">
+        add_count = #{add_count,jdbcType=INTEGER},
+      </if>
+      <if test="activity_id != null">
+        activity_id = #{activity_id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.RechargeRecordRobotLogEntity">
+    update eg_recharge_record_robot_log
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      add_count = #{add_count,jdbcType=INTEGER},
+      activity_id = #{activity_id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.RechargeRecordRobotLogEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_recharge_record_robot_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_count!=null">
+        AND add_count = #{param.add_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.RechargeRecordRobotLogEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_recharge_record_robot_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_count!=null">
+        AND add_count = #{param.add_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.RechargeRecordRobotLogEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_recharge_record_robot_log
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=INTEGER}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mobile!=null">
+        AND mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.add_count!=null">
+        AND add_count = #{param.add_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.UserRecommenderGroupMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.UserRecommenderGroupEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="group_name" jdbcType="VARCHAR" property="group_name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="admin_id" jdbcType="BIGINT" property="admin_id" />
+    <result column="total_orders" jdbcType="INTEGER" property="total_orders" />
+    <result column="today_orders" jdbcType="INTEGER" property="today_orders" />
+    <result column="today_share_count" jdbcType="INTEGER" property="today_share_count" />
+    <result column="total_share_count" jdbcType="INTEGER" property="total_share_count" />
+    <result column="activity_id" jdbcType="BIGINT" property="activity_id" />
+    <result column="group_user_count" jdbcType="INTEGER" property="group_user_count" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, status, group_name, type, admin_id, total_orders, today_orders, 
+    today_share_count, total_share_count, activity_id, group_user_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_user_recommender_group
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_user_recommender_group
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.UserRecommenderGroupEntity">
+    insert into eg_user_recommender_group (id, create_time, update_time, 
+      status, group_name, type, 
+      admin_id, total_orders, today_orders, 
+      today_share_count, total_share_count, activity_id, 
+      group_user_count)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{group_name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{admin_id,jdbcType=BIGINT}, #{total_orders,jdbcType=INTEGER}, #{today_orders,jdbcType=INTEGER}, 
+      #{today_share_count,jdbcType=INTEGER}, #{total_share_count,jdbcType=INTEGER}, #{activity_id,jdbcType=BIGINT}, 
+      #{group_user_count,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.UserRecommenderGroupEntity"
+          useGeneratedKeys="true" keyProperty="id"
+  >
+    insert into eg_user_recommender_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="group_name != null">
+        group_name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="admin_id != null">
+        admin_id,
+      </if>
+      <if test="total_orders != null">
+        total_orders,
+      </if>
+      <if test="today_orders != null">
+        today_orders,
+      </if>
+      <if test="today_share_count != null">
+        today_share_count,
+      </if>
+      <if test="total_share_count != null">
+        total_share_count,
+      </if>
+      <if test="activity_id != null">
+        activity_id,
+      </if>
+      <if test="group_user_count != null">
+        group_user_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="group_name != null">
+        #{group_name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="admin_id != null">
+        #{admin_id,jdbcType=BIGINT},
+      </if>
+      <if test="total_orders != null">
+        #{total_orders,jdbcType=INTEGER},
+      </if>
+      <if test="today_orders != null">
+        #{today_orders,jdbcType=INTEGER},
+      </if>
+      <if test="today_share_count != null">
+        #{today_share_count,jdbcType=INTEGER},
+      </if>
+      <if test="total_share_count != null">
+        #{total_share_count,jdbcType=INTEGER},
+      </if>
+      <if test="activity_id != null">
+        #{activity_id,jdbcType=BIGINT},
+      </if>
+      <if test="group_user_count != null">
+        #{group_user_count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+    <insert id="addGroupCount">
+      update eg_user_recommender_group set group_user_count=group_user_count+1 where  id = #{group_id}
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.UserRecommenderGroupEntity">
+    update eg_user_recommender_group
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="group_name != null">
+        group_name = #{group_name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="admin_id != null">
+        admin_id = #{admin_id,jdbcType=BIGINT},
+      </if>
+      <if test="total_orders != null">
+        total_orders = #{total_orders,jdbcType=INTEGER},
+      </if>
+      <if test="today_orders != null">
+        today_orders = #{today_orders,jdbcType=INTEGER},
+      </if>
+      <if test="today_share_count != null">
+        today_share_count = #{today_share_count,jdbcType=INTEGER},
+      </if>
+      <if test="total_share_count != null">
+        total_share_count = #{total_share_count,jdbcType=INTEGER},
+      </if>
+      <if test="activity_id != null">
+        activity_id = #{activity_id,jdbcType=BIGINT},
+      </if>
+      <if test="group_user_count != null">
+        group_user_count = #{group_user_count,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.UserRecommenderGroupEntity">
+    update eg_user_recommender_group
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      group_name = #{group_name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      admin_id = #{admin_id,jdbcType=BIGINT},
+      total_orders = #{total_orders,jdbcType=INTEGER},
+      today_orders = #{today_orders,jdbcType=INTEGER},
+      today_share_count = #{today_share_count,jdbcType=INTEGER},
+      total_share_count = #{total_share_count,jdbcType=INTEGER},
+      activity_id = #{activity_id,jdbcType=BIGINT},
+      group_user_count = #{group_user_count,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateGroupCount">
+    update eg_user_recommender_group set group_user_count=group_user_count+1 where  id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.UserRecommenderGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.admin_id!=null">
+        AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.total_orders!=null">
+        AND total_orders = #{param.total_orders,jdbcType=INTEGER}
+      </if>
+      <if test="param.today_orders!=null">
+        AND today_orders = #{param.today_orders,jdbcType=INTEGER}
+      </if>
+      <if test="param.today_share_count!=null">
+        AND today_share_count = #{param.today_share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.total_share_count!=null">
+        AND total_share_count = #{param.total_share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_user_count!=null">
+        AND group_user_count = #{param.group_user_count,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.UserRecommenderGroupEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_user_recommender_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.admin_id!=null">
+        AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.total_orders!=null">
+        AND total_orders = #{param.total_orders,jdbcType=INTEGER}
+      </if>
+      <if test="param.today_orders!=null">
+        AND today_orders = #{param.today_orders,jdbcType=INTEGER}
+      </if>
+      <if test="param.today_share_count!=null">
+        AND today_share_count = #{param.today_share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.total_share_count!=null">
+        AND total_share_count = #{param.total_share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_user_count!=null">
+        AND group_user_count = #{param.group_user_count,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.UserRecommenderGroupEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_user_recommender_group
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.group_name!=null">
+        AND group_name = #{param.group_name,jdbcType=VARCHAR}
+      </if>
+      <if test="param.type!=null">
+        AND type = #{param.type,jdbcType=VARCHAR}
+      </if>
+      <if test="param.admin_id!=null">
+        AND admin_id = #{param.admin_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.total_orders!=null">
+        AND total_orders = #{param.total_orders,jdbcType=INTEGER}
+      </if>
+      <if test="param.today_orders!=null">
+        AND today_orders = #{param.today_orders,jdbcType=INTEGER}
+      </if>
+      <if test="param.today_share_count!=null">
+        AND today_share_count = #{param.today_share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.total_share_count!=null">
+        AND total_share_count = #{param.total_share_count,jdbcType=INTEGER}
+      </if>
+      <if test="param.activity_id!=null">
+        AND activity_id = #{param.activity_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.group_user_count!=null">
+        AND group_user_count = #{param.group_user_count,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

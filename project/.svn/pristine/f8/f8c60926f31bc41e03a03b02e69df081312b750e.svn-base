@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huihe.eg.user.mybatis.dao.MechanismExamScoreMapper">
+  <resultMap id="BaseResultMap" type="com.huihe.eg.user.model.MechanismExamScoreEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="mechansim_id" jdbcType="BIGINT" property="mechansim_id" />
+    <result column="exam_id" jdbcType="BIGINT" property="exam_id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="upper_limit" jdbcType="INTEGER" property="upper_limit" />
+    <result column="lower_limit" jdbcType="INTEGER" property="lower_limit" />
+    <result column="is_global" jdbcType="BIT" property="is_global" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, mechansim_id, exam_id, status, school, upper_limit, 
+    lower_limit, is_global, level
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eg_mechanism_exam_score
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eg_mechanism_exam_score
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huihe.eg.user.model.MechanismExamScoreEntity">
+    insert into eg_mechanism_exam_score (id, create_time, update_time, 
+      mechansim_id, exam_id, status, 
+      school, upper_limit, lower_limit, 
+      is_global, level)
+    values (#{id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{mechansim_id,jdbcType=BIGINT}, #{exam_id,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{school,jdbcType=VARCHAR}, #{upper_limit,jdbcType=INTEGER}, #{lower_limit,jdbcType=INTEGER}, 
+      #{is_global,jdbcType=BIT}, #{level,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huihe.eg.user.model.MechanismExamScoreEntity">
+    insert into eg_mechanism_exam_score
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="mechansim_id != null">
+        mechansim_id,
+      </if>
+      <if test="exam_id != null">
+        exam_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="upper_limit != null">
+        upper_limit,
+      </if>
+      <if test="lower_limit != null">
+        lower_limit,
+      </if>
+      <if test="is_global != null">
+        is_global,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechansim_id != null">
+        #{mechansim_id,jdbcType=BIGINT},
+      </if>
+      <if test="exam_id != null">
+        #{exam_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="upper_limit != null">
+        #{upper_limit,jdbcType=INTEGER},
+      </if>
+      <if test="lower_limit != null">
+        #{lower_limit,jdbcType=INTEGER},
+      </if>
+      <if test="is_global != null">
+        #{is_global,jdbcType=BIT},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huihe.eg.user.model.MechanismExamScoreEntity">
+    update eg_mechanism_exam_score
+    <set>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mechansim_id != null">
+        mechansim_id = #{mechansim_id,jdbcType=BIGINT},
+      </if>
+      <if test="exam_id != null">
+        exam_id = #{exam_id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="upper_limit != null">
+        upper_limit = #{upper_limit,jdbcType=INTEGER},
+      </if>
+      <if test="lower_limit != null">
+        lower_limit = #{lower_limit,jdbcType=INTEGER},
+      </if>
+      <if test="is_global != null">
+        is_global = #{is_global,jdbcType=BIT},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huihe.eg.user.model.MechanismExamScoreEntity">
+    update eg_mechanism_exam_score
+    set create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      mechansim_id = #{mechansim_id,jdbcType=BIGINT},
+      exam_id = #{exam_id,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      school = #{school,jdbcType=VARCHAR},
+      upper_limit = #{upper_limit,jdbcType=INTEGER},
+      lower_limit = #{lower_limit,jdbcType=INTEGER},
+      is_global = #{is_global,jdbcType=BIT},
+      level = #{level,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="query" parameterType="com.huihe.eg.user.model.MechanismExamScoreEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_exam_score
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechansim_id!=null">
+        AND mechansim_id = #{param.mechansim_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.exam_id!=null">
+        AND exam_id = #{param.exam_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.school!=null">
+        AND school = #{param.school,jdbcType=VARCHAR}
+      </if>
+      <if test="param.upper_limit!=null">
+        AND upper_limit = #{param.upper_limit,jdbcType=INTEGER}
+      </if>
+      <if test="param.lower_limit!=null">
+        AND lower_limit = #{param.lower_limit,jdbcType=INTEGER}
+      </if>
+      <if test="param.is_global!=null">
+        AND is_global = #{param.is_global,jdbcType=BIT}
+      </if>
+      <if test="param.level!=null">
+        AND level = #{param.level,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="queryListPage" parameterType="com.huihe.eg.user.model.MechanismExamScoreEntity" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM eg_mechanism_exam_score
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechansim_id!=null">
+        AND mechansim_id = #{param.mechansim_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.exam_id!=null">
+        AND exam_id = #{param.exam_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.school!=null">
+        AND school = #{param.school,jdbcType=VARCHAR}
+      </if>
+      <if test="param.upper_limit!=null">
+        AND upper_limit = #{param.upper_limit,jdbcType=INTEGER}
+      </if>
+      <if test="param.lower_limit!=null">
+        AND lower_limit = #{param.lower_limit,jdbcType=INTEGER}
+      </if>
+      <if test="param.is_global!=null">
+        AND is_global = #{param.is_global,jdbcType=BIT}
+      </if>
+      <if test="param.level!=null">
+        AND level = #{param.level,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY id DESC limit #{param.startRow},#{param.pageSize}
+  </select>
+  <select id="queryListPageCount" parameterType="com.huihe.eg.user.model.MechanismExamScoreEntity" resultType="java.lang.Integer">
+    SELECT
+    count(0)
+    FROM eg_mechanism_exam_score
+    <where>
+      <if test="param.id!=null">
+        AND id = #{param.id,jdbcType=BIGINT}
+      </if>
+      <if test="param.create_time!=null">
+        AND create_time = #{param.create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.update_time!=null">
+        AND update_time = #{param.update_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="param.mechansim_id!=null">
+        AND mechansim_id = #{param.mechansim_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.exam_id!=null">
+        AND exam_id = #{param.exam_id,jdbcType=BIGINT}
+      </if>
+      <if test="param.status!=null">
+        AND status = #{param.status,jdbcType=INTEGER}
+      </if>
+      <if test="param.school!=null">
+        AND school = #{param.school,jdbcType=VARCHAR}
+      </if>
+      <if test="param.upper_limit!=null">
+        AND upper_limit = #{param.upper_limit,jdbcType=INTEGER}
+      </if>
+      <if test="param.lower_limit!=null">
+        AND lower_limit = #{param.lower_limit,jdbcType=INTEGER}
+      </if>
+      <if test="param.is_global!=null">
+        AND is_global = #{param.is_global,jdbcType=BIT}
+      </if>
+      <if test="param.level!=null">
+        AND level = #{param.level,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>
